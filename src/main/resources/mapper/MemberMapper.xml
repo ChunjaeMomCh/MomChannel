@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace의 값은 Mapper.interface의 경로 -->
+<mapper namespace="mybatis.mapper.MemberMapper">
+    <select id="memJoin" parameterType="vo.MemberVO" resultType="int">
+        INSERT INTO member(mem_id, mem_pw, mem_region, mem_addr, mem_child_grade, mem_phone, mem_email)
+        VALUES (#{mem_id}, #{mem_pw}, #{mem_region}, #{mem_addr}, #{mem_child_grade}, #{mem_phone}, #{mem_email})
+    </select>
+</mapper>
