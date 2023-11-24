@@ -5,7 +5,7 @@ package com.example.jspmvc2.dao;
 
 import com.example.jspmvc2.dto.MVCBoardDTO;
 import com.example.jspmvc2.mybatis.factory.MyBatisSessionFactory;
-import com.example.jspmvc2.mybatis.mapper.MVCBoardMapper;
+import com.example.jspmvc2.mybatis.mapper.QNABoardMapper;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.HashMap;

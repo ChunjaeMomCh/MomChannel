@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.QNABoardMapper">
+    <select id="selectCount" parameterType="map" resultType="int">
+        select count(*)
+        from qna
+<!--        <if test="searchWord != null and !searchWord.equals('')">-->
+<!--            where-->
+<!--            <choose>-->
+<!--                <when test="searchField == 'title'">-->
+<!--                    title like concat('%', #{searchWord}, '%')-->
+<!--                </when>-->
+<!--                <otherwise>-->
+<!--                    content like concat('%', #{searchWord}, '%')-->
+<!--                </otherwise>-->
+<!--            </choose>-->
+<!--        </if>-->
+        order by qna_no desc
+    </select>
+</mapper>
