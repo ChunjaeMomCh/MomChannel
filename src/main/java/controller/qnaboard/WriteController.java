@@ -30,17 +30,16 @@ public class WriteController extends HttpServlet {
 
         // 2. 파일 업로드 외 처리 =============================
         // 폼값을 DTO에 저장
-        Encrypt en = new Encrypt();
-        QNABoardVO dto = new QNABoardVO();
-//        dto.setName(req.getParameter("name"));
-//        dto.setTitle(req.getParameter("title"));
-//        dto.setContent(req.getParameter("content"));
-//        dto.setPass(en.getEncrypt(req.getParameter("pass")));
-
+//        Encrypt en = new Encrypt();
+        QNABoardVO vo = new QNABoardVO();
+        vo.setMemId(req.getParameter("memId"));
+        vo.setQnaTitle(req.getParameter("qnaTitle"));
+        vo.setQnaContent(req.getParameter("qnaContent"));
+        vo.setQnaPNo(0);
 
         // DAO를 통해 DB에 게시 내용 저장
         QNABoardDAO dao = new QNABoardDAO();
-        int result = dao.insertWrite(dto);
+        int result = dao.insertWrite(vo);
 
         // 성공 or 실패?
         if (result == 1) {  // 글쓰기 성공

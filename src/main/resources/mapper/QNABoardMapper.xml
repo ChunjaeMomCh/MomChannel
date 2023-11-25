@@ -43,22 +43,16 @@
 
     <insert id="insertWrite" parameterType="vo.QNABoardVO">
         INSERT
-        INTO mvcboard(name, title, content, ofile, sfile, pass)
-        VALUES(#{name}, #{title}, #{content}, #{ofile}, #{sfile}, #{pass})
+        INTO qna( mem_id, qna_title, qna_content, qna_p_no)
+        VALUES( #{memId}, #{qnaTitle}, #{qnaContent}, #{qnaPNo})
     </insert>
 
     <select id="selectView" parameterType="String" resultType="vo.QNABoardVO">
         select *
         from qna
-        where qna_no = #{qna_no}
+        where qna_no = #{qnaNo}
     </select>
 
-    <update id="updateVisitCount" parameterType="String">
-        update mvcboard
-        set visitcount = visitcount + 1
-        where idx = #{idx}
-        <!--        이 실행 결과로 인해서 실제 update된 row의 개수를 return-->
-    </update>
 
     <select id="confirmPassword" parameterType="map">
         select count(idx)
