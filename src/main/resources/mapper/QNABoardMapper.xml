@@ -3,20 +3,86 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.QNABoardMapper">
+
     <select id="selectCount" parameterType="map" resultType="int">
         select count(*)
         from qna
-<!--        <if test="searchWord != null and !searchWord.equals('')">-->
-<!--            where-->
-<!--            <choose>-->
-<!--                <when test="searchField == 'title'">-->
-<!--                    title like concat('%', #{searchWord}, '%')-->
-<!--                </when>-->
-<!--                <otherwise>-->
-<!--                    content like concat('%', #{searchWord}, '%')-->
-<!--                </otherwise>-->
-<!--            </choose>-->
-<!--        </if>-->
+        <if test="searchWord != null and !searchWord.equals('')">
+            where
+            <choose>
+                <when test="searchField == 'title'">
+                    title like concat('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    content like concat('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
         order by qna_no desc
     </select>
+
+    <select id="selectListPageWithPaging" parameterType="map" resultType="vo.QNABoardVO">
+        SELECT * FROM
+        ( SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
+        FROM  qna b,(SELECT @ROWNUM := 0 ) TMP
+
+        <if test="searchWord != null and !searchWord.equals('')">
+            <choose>
+                <when test="searchField == 'title'">
+                    WHERE qna_title LIKE CONCAT('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    WHERE qna_content LIKE CONCAT('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
+
+        ORDER BY qna_no DESC ) T
+        WHERE ROWNUM BETWEEN #{ start } AND #{ end } ;
+    </select>
+
+    <insert id="insertWrite" parameterType="vo.QNABoardVO">
+        INSERT
+        INTO mvcboard(name, title, content, ofile, sfile, pass)
+        VALUES(#{name}, #{title}, #{content}, #{ofile}, #{sfile}, #{pass})
+    </insert>
+
+    <select id="selectView" parameterType="String" resultType="vo.QNABoardVO">
+        select *
+        from mvcboard
+        where idx = #{idx}
+    </select>
+
+    <update id="updateVisitCount" parameterType="String">
+        update mvcboard
+        set visitcount = visitcount + 1
+        where idx = #{idx}
+        <!--        이 실행 결과로 인해서 실제 update된 row의 개수를 return-->
+    </update>
+
+    <select id="confirmPassword" parameterType="map">
+        select count(idx)
+        from mvcboard
+        where pass = #{pass} and idx = #{idx}
+    </select>
+
+
+    <delete id="deletePost">
+        delete
+        from mvcboard
+        where idx = #{idx}
+    </delete>
+
+    <update id="updatePost" parameterType="vo.QNABoardVO">
+        update mvcboard
+        set title = #{title}, name = #{name},
+        content = #{content}, ofile = #{ofile}, sfile = #{sfile}
+        where idx = #{idx} and pass = #{pass}
+    </update>
+
+    <update id="downCountPlus" parameterType="String">
+        update mvcboard
+        set downcount = downcount + 1
+        where idx = #{idx}
+    </update>
 </mapper>

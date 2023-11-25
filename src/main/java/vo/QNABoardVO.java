@@ -10,7 +10,8 @@ import java.time.LocalDate;
 @Setter
 @ToString
 public class QNABoardVO {
-    private int qnaNo;
+    private String qnaNo;
+//    private String idx;
     private int qnaPNo;
     private String memId;
     private String qnaTitle;
