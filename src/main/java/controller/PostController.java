@@ -30,6 +30,6 @@ public class PostController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher("/post/Post.jsp").forward(req, resp);
+        req.getRequestDispatcher("/post/PostLayout.jsp").forward(req, resp);
     }
 }
