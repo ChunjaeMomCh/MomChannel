@@ -1,0 +1,44 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1;
+}
+.wrapper {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: 'Noto Sans KR', 'Public Sans', sans-serif;
+    font-style: normal;
+    vertical-align: baseline;
+}
+.content_menu .inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: nowrap;
+}
+.inner {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 60px;
+    margin: 0 auto;
+}
+/* 사이드바 */
+.mo_none {
+    display: block;
+}
+.content_snb {
+    width: 189px;
+}
+/* 조회 중인 게시판 이름 */
+.content_snb .snb_title {
+    margin-bottom: 38px;
+    color: #0a64ff;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.48px;
+}
