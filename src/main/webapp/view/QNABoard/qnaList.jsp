@@ -9,7 +9,7 @@
     <style>a{text-decoration:none;}</style>
 </head>
 <body>
-<h2>문의사항</h2>
+<h2 align="">문의사항</h2>
 
 <!-- 검색 폼 -->
 <form method="get">
@@ -50,7 +50,7 @@
                             ${ map.totalCount - (((map.pageNum-1) * map.pageSize) + loop.index)}
                     </td>
                     <td align="left">  <!-- 제목(링크) -->
-                        <a href="../qnaboard/view.do?idx=${ row.qnaNo }">${ row.qnaTitle }</a>
+                        <a href="../qnaboard/view.do?qnaNo=${ row.qnaNo }">${ row.qnaTitle }</a>
                     </td>
                     <td>${ row.memId }</td>  <!-- 작성자 -->
                     <td>${ row.qnaDate }</td>  <!-- 작성일 -->

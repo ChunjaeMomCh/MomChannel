@@ -20,10 +20,10 @@ public class QNABoardDAO {
         return result;
     }
 
-    public int insertWrite(QNABoardVO dto) {
+    public int insertWrite(QNABoardVO vo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);
-        int result = mapper.insertWrite(dto);
+        int result = mapper.insertWrite(vo);
         if (result == 1) {
             sqlSession.commit();
             System.out.println("새로운 mvcboard 저장 성공");
@@ -42,44 +42,18 @@ public class QNABoardDAO {
         return result;
     }
 
-    public QNABoardVO selectView(String idx) {
+    public QNABoardVO selectView(String qnoNo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);
-        QNABoardVO dto = mapper.selectView(idx);
+        QNABoardVO vo = mapper.selectView(qnoNo);
         sqlSession.close();
-        return dto;
+        return vo;
     }
 
-    public void updateVisitCount(String idx) {
-        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
-        QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);
-        int result = mapper.updateVisitCount(idx);
-        System.out.println("update query result val = " + result);
-        if (result == 1) {
-            sqlSession.commit();
-        } else {
-            System.out.println("조회수 증가 중 오류 발생");
-        }
-        sqlSession.close();
-    }
-
-    public void downCountPlus(String idx) {
-        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
-        QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);
-        int result = mapper.downCountPlus(idx);
-        System.out.println("downCountPlus - update query result val = " + result);
-        if (result == 1) {
-            sqlSession.commit();
-        } else {
-            System.out.println("다운로드 횟수 1증가 중 오류 발생");
-        }
-        sqlSession.close();
-    }
-
-    public boolean confirmPassword(String pass, String idx) {
+    public boolean confirmPassword(String pass, String qnoNo) {
         Map<String, String> map = new HashMap<>();
         map.put("pass", pass);
-        map.put("idx", idx);
+        map.put("qnoNo", qnoNo);
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);
         int result = mapper.confirmPassword(map);
@@ -90,10 +64,10 @@ public class QNABoardDAO {
         }
     }
 
-    public int deletePost(String idx) {
+    public int deletePost(String qnoNo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);
-        int result = mapper.deletePost(idx);
+        int result = mapper.deletePost(qnoNo);
         if (result == 1) {
             sqlSession.commit();
         } else {
@@ -102,10 +76,10 @@ public class QNABoardDAO {
         return result;
     }
 
-    public int updatePost(QNABoardVO dto) {
+    public int updatePost(QNABoardVO vo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);
-        int result = mapper.updatePost(dto);
+        int result = mapper.updatePost(vo);
         if (result == 1) {
             sqlSession.commit();
         } else {

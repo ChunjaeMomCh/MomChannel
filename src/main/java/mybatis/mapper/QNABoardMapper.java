@@ -12,17 +12,13 @@ public interface QNABoardMapper {
 
     List<QNABoardVO> selectListPageWithPaging(Map<String, Object> map);
 
-    int insertWrite(QNABoardVO dto);
+    int insertWrite(QNABoardVO vo);
 
-    QNABoardVO selectView(String idx);
-
-    int updateVisitCount(String idx);
-
-    int downCountPlus(String idx);
+    QNABoardVO selectView(String qnoNo);
 
     int confirmPassword(Map<String, String> map);
 
-    int deletePost(String idx);
+    int deletePost(String qnoNo);
 
-    int updatePost(QNABoardVO dto);
+    int updatePost(QNABoardVO vo);
 }

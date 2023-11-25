@@ -11,10 +11,10 @@
             where
             <choose>
                 <when test="searchField == 'title'">
-                    title like concat('%', #{searchWord}, '%')
+                    qna_title like concat('%', #{searchWord}, '%')
                 </when>
                 <otherwise>
-                    content like concat('%', #{searchWord}, '%')
+                    qna_content like concat('%', #{searchWord}, '%')
                 </otherwise>
             </choose>
         </if>
@@ -49,8 +49,8 @@
 
     <select id="selectView" parameterType="String" resultType="vo.QNABoardVO">
         select *
-        from mvcboard
-        where idx = #{idx}
+        from qna
+        where qna_no = #{qna_no}
     </select>
 
     <update id="updateVisitCount" parameterType="String">

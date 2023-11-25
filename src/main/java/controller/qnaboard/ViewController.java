@@ -21,17 +21,14 @@ public class ViewController extends HttpServlet {
             throws ServletException, IOException {
         // 게시물 불러오기
         QNABoardDAO dao = new QNABoardDAO();
-        String idx = req.getParameter("idx");
-        dao.updateVisitCount(idx);  // 조회수 1 증가
-        QNABoardVO dto = dao.selectView(idx);
+        String qnaNo = req.getParameter("qnaNo");
+        QNABoardVO vo = dao.selectView(qnaNo);
 
         // 줄바꿈 처리
-//        dto.setContent(dto.getContent().replaceAll("\r\n", "<br/>"));
+        vo.setQnaContent(vo.getQnaContent().replaceAll("\r\n", "<br/>"));
 
-
-
-        // 게시물(dto) 저장 후 뷰로 포워드
-        req.setAttribute("dto", dto);
+        // 게시물(vo) 저장 후 뷰로 포워드
+        req.setAttribute("vo", vo);
         req.getRequestDispatcher("/view/QNABoard/View.jsp").forward(req, resp);
     }
 }
