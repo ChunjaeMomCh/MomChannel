@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import vo.PostVO;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Mapper

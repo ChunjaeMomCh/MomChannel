@@ -4,20 +4,27 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 public class MyBatisConfig {
+    private SqlSessionFactory factory = null;
 
-    public void myBatisConfig() {
+    public MyBatisConfig() {
+        String resource = "mybatis/config/mybatis-config.xml";
+        InputStream iStream = null;
 
         try {
+            iStream = Resources.getResourceAsStream(resource);
 
-            String resource = "mybatis/config/mybatis-config.xml";
-            InputStream inputStream = Resources.getResourceAsStream(resource);
-            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(inputStream);
-
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+
+        this.factory = new SqlSessionFactoryBuilder().build(iStream);
+    }  // MyBatisConfig()
+
+    public SqlSessionFactory getSqlSessionFactory() {
+        return this.factory;
+    }  // getSqlSessionFactory()
 }

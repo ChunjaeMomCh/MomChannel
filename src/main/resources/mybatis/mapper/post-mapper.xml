@@ -4,8 +4,9 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.PostMapper">
     <!-- 게시글 목록 불러오기 -->
-    <select id="showPosts" parameterType="map">
+    <select id="showPosts" parameterType="map" resultType="pvo">
         SELECT *
-        FROM momchannel
+        FROM post
+        ORDER BY post_no
     </select>
 </mapper>
