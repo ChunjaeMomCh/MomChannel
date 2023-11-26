@@ -1,6 +1,7 @@
 package controller.qnaboard;
 
 import dao.QNABoardDAO;
+import vo.MemberVO;
 import vo.QNABoardVO;
 import utils.JSFunction;
 
@@ -38,11 +39,14 @@ public class EditController extends HttpServlet {
         String qnaContent = req.getParameter("qnaContent");
 
         // 비밀번호는 session에서 가져옴
-//        HttpSession session = req.getSession();
-//        String pass = (String)session.getAttribute("pass");
-
+        MemberVO mvo= new MemberVO();
+        HttpSession session = req.getSession();
+        mvo = (MemberVO) session.getAttribute("loginMember");
+        String memId = mvo.getMemId();
+        System.out.println(memId);
         // DTO에 저장
         QNABoardVO vo = new QNABoardVO();
+        vo.setMemId(memId);
         vo.setQnaNo(qnaNo);
         vo.setQnaTitle(qnaTitle);
         vo.setQnaContent(qnaContent);

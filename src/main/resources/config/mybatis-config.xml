@@ -19,5 +19,6 @@
     </environments>
     <mappers>
         <mapper resource="mapper/QNABoardMapper.xml" />
+        <mapper resource="mapper/MemberMapper.xml" />
     </mappers>
 </configuration>

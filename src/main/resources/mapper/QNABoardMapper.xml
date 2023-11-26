@@ -70,7 +70,8 @@
     <update id="updatePost" parameterType="vo.QNABoardVO">
         update qna
         set qna_title = #{qnaTitle},
-        qna_content = #{qnaContent}
+            qna_content = #{qnaContent},
+            mem_id = #{memId}
         where qna_no = #{qnaNo}
 <!--        and pass = #{pass}-->
     </update>
