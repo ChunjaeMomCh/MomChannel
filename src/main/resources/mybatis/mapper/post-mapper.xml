@@ -9,4 +9,10 @@
         FROM post
         ORDER BY post_no
     </select>
+    <!-- 게시글 상세 보기 화면 불러오기 -->
+    <select id="viewPost" parameterType="String" resultType="pvo">
+        SELECT *
+        FROM post
+        WHERE post_no = #{post_no}
+    </select>
 </mapper>
