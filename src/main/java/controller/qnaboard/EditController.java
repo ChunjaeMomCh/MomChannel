@@ -39,7 +39,7 @@ public class EditController extends HttpServlet {
         String qnaContent = req.getParameter("qnaContent");
 
 
-        // 비밀번호는 session에서 가져옴
+        // 로그인 된 아이디는 session에서 가져옴
         MemberVO mvo= new MemberVO();
         HttpSession session = req.getSession();
         mvo = (MemberVO) session.getAttribute("loginMember");
@@ -56,6 +56,8 @@ public class EditController extends HttpServlet {
 
         // DB에 수정 내용 반영
         QNABoardDAO dao = new QNABoardDAO();
+
+        //작성자와 현재 로그인된 아이디가 일치하는지 확인후 수정
         if (memId.equals(mvo.getMemId())){
             int result = dao.updatePost(vo);
             // 성공 or 실패?
