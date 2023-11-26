@@ -19,11 +19,11 @@ public class EditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String idx = req.getParameter("idx");
+        String qnaNo = req.getParameter("qnaNo");
         QNABoardDAO dao = new QNABoardDAO();
-        QNABoardVO dto = dao.selectView(idx);
-        req.setAttribute("dto", dto);
-        req.getRequestDispatcher("/QNABoard/Edit.jsp").forward(req, resp);
+        QNABoardVO vo = dao.selectView(qnaNo);
+        req.setAttribute("vo", vo);
+        req.getRequestDispatcher("/view/QNABoard/Edit.jsp").forward(req, resp);
     }
 
     @Override
@@ -32,37 +32,36 @@ public class EditController extends HttpServlet {
 
         // 2. 파일 업로드 외 처리 =============================
         // 수정 내용을 매개변수에서 얻어옴
-        String idx = req.getParameter("idx");
-
-        String name = req.getParameter("name");
-        String title = req.getParameter("title");
-        String content = req.getParameter("content");
+        String qnaNo = req.getParameter("qnaNo");
+        String mode = req.getParameter("mode");
+//        String name = req.getParameter("name");
+        String qnaTitle = req.getParameter("qnaTitle");
+        String qnaContent = req.getParameter("qnaContent");
 
         // 비밀번호는 session에서 가져옴
-        HttpSession session = req.getSession();
-        String pass = (String)session.getAttribute("pass");
+//        HttpSession session = req.getSession();
+//        String pass = (String)session.getAttribute("pass");
 
         // DTO에 저장
-        QNABoardVO dto = new QNABoardVO();
-//        dto.setIdx(idx);
-//        dto.setName(name);
-//        dto.setTitle(title);
-//        dto.setContent(content);
+        QNABoardVO vo = new QNABoardVO();
+        vo.setQnaNo(qnaNo);
+        vo.setQnaTitle(qnaTitle);
+        vo.setQnaContent(qnaContent);
 //        dto.setPass(pass);
 
 
         // DB에 수정 내용 반영
         QNABoardDAO dao = new QNABoardDAO();
-        int result = dao.updatePost(dto);
+        int result = dao.updatePost(vo);
 
         // 성공 or 실패?
         if (result == 1) {  // 수정 성공
-            session.removeAttribute("pass");
-            resp.sendRedirect("../qnaboard/view.do?idx=" + idx);
+//            session.removeAttribute("pass");
+            resp.sendRedirect("../qnaboard/view.do?qnaNo=" + qnaNo);
         }
         else {  // 수정 실패
             JSFunction.alertLocation(resp, "비밀번호 검증을 다시 진행해주세요.",
-                    "../qnaboard/view.do?idx=" + idx);
+                    "../qnaboard/view.do?qnaNo=" + qnaNo);
         }
     }
 }

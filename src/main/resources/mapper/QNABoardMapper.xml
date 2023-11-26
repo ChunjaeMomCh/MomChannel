@@ -63,20 +63,16 @@
 
     <delete id="deletePost">
         delete
-        from mvcboard
-        where idx = #{idx}
+        from qna
+        where qna_no = #{qnaNo}
     </delete>
 
     <update id="updatePost" parameterType="vo.QNABoardVO">
-        update mvcboard
-        set title = #{title}, name = #{name},
-        content = #{content}, ofile = #{ofile}, sfile = #{sfile}
-        where idx = #{idx} and pass = #{pass}
+        update qna
+        set qna_title = #{qnaTitle},
+        qna_content = #{qnaContent}
+        where qna_no = #{qnaNo}
+<!--        and pass = #{pass}-->
     </update>
 
-    <update id="downCountPlus" parameterType="String">
-        update mvcboard
-        set downcount = downcount + 1
-        where idx = #{idx}
-    </update>
 </mapper>

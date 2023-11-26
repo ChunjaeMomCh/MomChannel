@@ -41,7 +41,7 @@ public class PassController extends HttpServlet {
             if (mode.equals("edit")) {  // 수정 모드
                 HttpSession session = req.getSession();
                 session.setAttribute("pass", pass);
-                resp.sendRedirect("../qnaboard/edit.do?idx=" + idx);
+//                resp.sendRedirect("../qnaboard/edit.do?qnaNo=" + qnaNo);
             }
             else if (mode.equals("delete")) {  // 삭제 모드
                 dao = new QNABoardDAO();
