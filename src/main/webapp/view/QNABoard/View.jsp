@@ -45,7 +45,7 @@
 <%--            <button type="button" onclick="location.href='../qnaboard/pass.do?mode=delete&qnaNo=${ param.qnaNo }';">--%>
 <%--                삭제하기--%>
 <%--            </button>            --%>
-            <button type="button" onclick="location.href='../qnaboard/edit.do?mode=edit&qnaNo=${ param.qnaNo }';">
+            <button type="button" onclick="location.href='../qnaboard/edit.do?qnaNo=${ param.qnaNo }';">
                 수정하기
             </button>
             <button type="button" onclick="location.href='../qnaboard/delete.do?qnaNo=${ param.qnaNo }';">

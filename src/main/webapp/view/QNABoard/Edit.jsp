@@ -27,7 +27,7 @@
     </script>
 </head>
 <h2>파일 첨부형 게시판 - 수정하기(Edit)</h2>
-<form name="writeFrm" method="post" enctype="multipart/form-data" action="../qnaboard/edit.do" onsubmit="return validateForm(this);">
+<form method="post" action="../qnaboard/edit.do" onsubmit="return validateForm(this);">
     <input type="hidden" name="qnaNo" value="${ vo.qnaNo }"/>
 
     <table border="1" width="90%">

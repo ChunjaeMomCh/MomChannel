@@ -33,7 +33,6 @@ public class EditController extends HttpServlet {
         // 2. 파일 업로드 외 처리 =============================
         // 수정 내용을 매개변수에서 얻어옴
         String qnaNo = req.getParameter("qnaNo");
-        String mode = req.getParameter("mode");
 //        String name = req.getParameter("name");
         String qnaTitle = req.getParameter("qnaTitle");
         String qnaContent = req.getParameter("qnaContent");
