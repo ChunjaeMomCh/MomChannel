@@ -5,7 +5,8 @@
          version="4.0">
 
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+<!--        <welcome-file>index.jsp</welcome-file>-->
+        <welcome-file>view/Login/loginForm.jsp</welcome-file>
     </welcome-file-list>
 
     <!--  한글필터  -->

@@ -29,6 +29,8 @@
 <h2>파일 첨부형 게시판 - 수정하기(Edit)</h2>
 <form method="post" action="../qnaboard/edit.do" onsubmit="return validateForm(this);">
     <input type="hidden" name="qnaNo" value="${ vo.qnaNo }"/>
+    <input type="hidden" name="memId" value="${ vo.memId }"/>
+
 
     <table border="1" width="90%">
 <%--        <tr>--%>
