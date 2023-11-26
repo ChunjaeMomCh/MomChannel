@@ -1,6 +1,7 @@
 package controller.qnaboard;
 
 import dao.QNABoardDAO;
+import vo.MemberVO;
 import vo.QNABoardVO;
 import utils.Encrypt;
 import utils.JSFunction;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -26,16 +28,22 @@ public class WriteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        
+        MemberVO mvo= new MemberVO();
+        HttpSession session = req.getSession();
+        mvo = (MemberVO) session.getAttribute("loginMember");
 
         // 2. 파일 업로드 외 처리 =============================
         // 폼값을 DTO에 저장
 //        Encrypt en = new Encrypt();
         QNABoardVO vo = new QNABoardVO();
-        vo.setMemId(req.getParameter("memId"));
+        vo.setMemId(mvo.getMemId());
         vo.setQnaTitle(req.getParameter("qnaTitle"));
         vo.setQnaContent(req.getParameter("qnaContent"));
-        vo.setQnaPNo(0);
+        if (mvo.getMemId().equals("admin")){
+            vo.setQnaPNo(1);
+        }else {
+            vo.setQnaPNo(0);
+        }
 
         // DAO를 통해 DB에 게시 내용 저장
         QNABoardDAO dao = new QNABoardDAO();
