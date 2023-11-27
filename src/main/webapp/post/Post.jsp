@@ -23,7 +23,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=
-  Public+Sans&display=swap" rel="stylesheet">  <%-- 웹폰트 적용 --%>
+  Public+Sans&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  
 </head>
 <body>
 <div class="wrapper">
@@ -41,26 +45,34 @@
             <div class="snb_menu"></div>
               <%-- 게시글 작성 버튼 --%>
             <div class="snb_btns">
-              <button type="reset">초기화</button>
-              <button type="submit">게시글 등록하기</button>
+              <button class="btn large gray reset" type="reset">초기화</button>
+              <button class="btn large unit_add" type="submit" onclick="location.href='../post/write.do'">게시글 등록하기</button>
             </div>
           </div>
           <div class="content_tab_area">
             <%-- 추천 게시글 목록 --%>
             <div class="top_channel_area">
               <%-- 슬라이드 버튼 --%>
-              <div class="channel_arrow"></div>
-                <%-- 스와이퍼 구현 --%>
-              <div class="swiper top_channel">
-                <ul class="swiper_wrapper">
-                  <li class="swiper-slide">
-                    <a href="">
-                      <figure><img src="" alt=""></figure>
-                      <p class="channel_name">채널 이름</p>
-                      <span class="tag">지역/학년태그</span>
-                    </a>
-                  </li>
+              <div class="channel_arrow">
+                <h2 class="top_channel_title">지역별<span>추천 포스트</span></h2>
+                <div class="swiper-button-next channel_next swiper-button-disabled" tabindex="0" role="button" aria-label="Next slide" aria-disabled="true"></div>
+                <div class="swiper-button-prev channel_prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
+              </div>
+                <%-- 슬라이드 메뉴 구현 --%>
+              <div class="swiper top_channel swiper-container-initialized swiper-container-horizontal swiper-container-free-mode">
+                <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+                  <c:forEach items="${ postLists }" var="row" varStatus="loop">
+                    <li class="swiper-slide swiper-slide-active" style="width: 137.333px;">
+                      <a href="../post/postview.do?idx=${ row.postNo }">
+                        <figure><img src="" alt=""></figure>
+                        <p class="content_name">${ row.postTitle }</p>
+                        <p class="channel_name">${ row.memId }</p>
+                        <span class="tag">${ row.postGrade }</span>
+                      </a>
+                    </li>
+                  </c:forEach>
                 </ul>
+<%--                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>--%>
               </div>
             </div>
             <%-- 총 게시물 수와 게시글 정렬 버튼 --%>
@@ -107,6 +119,21 @@
                   </c:choose>
                 </li>
               </ul>
+              <div class="pagination-module">
+                <nav aria-level="Page navigation">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a href="#" class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
             </div>
           </div>
         </div>
