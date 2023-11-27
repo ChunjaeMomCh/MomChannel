@@ -5,6 +5,7 @@ import mybatis.mapper.PostMapper;
 import org.apache.ibatis.session.SqlSession;
 import vo.PostVO;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +57,18 @@ public class PostDAO {
         PostMapper mapper = session.getMapper(PostMapper.class);
 
         PostVO result = mapper.viewPost(postNo);
+
+        session.close();
+        return result;
+    }
+
+    // 게시물 작성 페이지
+    public int writePost(HashMap<String, Object> map) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        int result = mapper.writePost(map);
 
         session.close();
         return result;

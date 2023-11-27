@@ -51,4 +51,10 @@
         FROM post
         WHERE post_no = #{post_no}
     </select>
+    <!-- 게시물 작성하기 -->
+    <insert id="writePost" parameterType="map">
+        INSERT INTO
+        post(mem_id, post_title, post_content, post_region, post_grade)
+        VALUES (#{mem_id}, #{post_title}, #{post_content}, #{post_region}, #{post_grade})
+    </insert>
 </mapper>
