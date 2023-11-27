@@ -5,11 +5,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>파일 첨부형 게시판</title>
+    <title>맘채널</title>
     <style>a{text-decoration:none;}</style>
 </head>
 <body>
-<h2>파일 첨부형 게시판 - 목록 보기(List)</h2>
+<h2>공지사항</h2>
 
 <!-- 검색 폼 -->
 <form method="get">
@@ -17,8 +17,10 @@
         <tr>
             <td align="center">
                 <select name="searchField">
-                    <option value="title">제목</option>
-                    <option value="content">내용</option>
+                    <option value="전체">전체</option>
+                    <option value="중요">중요 </option>
+                    <option value="공지">공지</option>
+                    <option value="이벤트">이벤트</option>
                 </select>
                 <input type="text" name="searchWord" value="${ param.searchWord }" />
                 <input type="submit" value="검색하기" />

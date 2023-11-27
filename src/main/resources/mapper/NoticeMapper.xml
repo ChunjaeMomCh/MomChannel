@@ -8,7 +8,11 @@
         select count(*)
         from notice
         <if test="searchWord != null and !searchWord.equals('')">
-            where notice_category like #{searchField} and notice_title like concat('%', #{searchWord}, '%')
+            where
+            <if test="!searchField.equals('전체')">
+                    notice_category like #{searchField} and
+            </if>
+            notice_title like concat('%', #{searchWord}, '%')
         </if>
         order by notice_no desc
     </select>
@@ -19,7 +23,11 @@
         FROM notice b,(SELECT @ROWNUM := 0 ) TMP
 
         <if test="searchWord != null and !searchWord.equals('')">
-            where notice_category like #{searchField} and notice_title like concat('%', #{searchWord}, '%')
+            where
+            <if test="!searchField.equals('전체')">
+                notice_category like #{searchField} and
+            </if>
+            notice_title like concat('%', #{searchWord}, '%')
         </if>
 
         ORDER BY notice_no DESC ) T
