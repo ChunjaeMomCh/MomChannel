@@ -8,5 +8,6 @@
 <h1><%= "Hello World!" %></h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
+<a href="/notice/list.do">공지사항</a>
 </body>
 </html>
