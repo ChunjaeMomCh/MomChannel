@@ -12,10 +12,37 @@ public class PostDAO {
 
 
     // 게시글 목록 불러오기
+    // 검색 기능 구현
+    public int selectCount(Map<String, Object> map) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        int result = mapper.selectCount(map);
+
+        System.out.println("selectCount - 행 개수 = " + result);
+        session.close();
+        return result;
+
+    }
+    // 페이징 처리
+    public List<PostVO> selectListPage(Map<String, Object> map) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> result = mapper.selectListPage(map);
+
+        session.close();
+        return result;
+
+    }
+
     public List<PostVO> showPosts(Map<String, Object> map) {
 
         SqlSession session = MyBatisSessionFactory.getSqlSession();
         PostMapper mapper = session.getMapper(PostMapper.class);
+
         List<PostVO> postList = mapper.showPosts(map);
 
         session.close();
@@ -27,6 +54,7 @@ public class PostDAO {
 
         SqlSession session = MyBatisSessionFactory.getSqlSession();
         PostMapper mapper = session.getMapper(PostMapper.class);
+
         PostVO result = mapper.viewPost(postNo);
 
         session.close();

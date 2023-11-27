@@ -15,7 +15,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>쌤채널</title>
+  <title>맘채널</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/froala_style.css"
         type="text/css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css"
@@ -76,14 +76,14 @@
           <div class="content_card_area">
             <div class="inner">
               <ul class="card_area">  <%-- 게시글들을 배치 --%>
-                <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
-                  <c:choose>
-                    <c:when test="${ empty postLists }">  <%-- 게시물이 없을 때 --%>
-                      <p>등록된 게시물이 없습니다 ☺️</p>
-                    </c:when>
-                    <c:otherwise>  <%-- 게시물이 있을 때 --%>
-                      <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
-                      <c:forEach items="${ postLists }" var="row" varStatus="loop">
+                <c:choose>
+                  <c:when test="${ empty postLists }">  <%-- 게시물이 없을 때 --%>
+                    <p>등록된 게시물이 없습니다 ☺️</p>
+                  </c:when>
+                  <c:otherwise>  <%-- 게시물이 있을 때 --%>
+                    <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
+                    <c:forEach items="${ postLists }" var="row" varStatus="loop">
+                     <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
                         <a href="../post/postview.do?idx=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
                           <figure class="content_img"></figure>
                           <div class="text_area">
