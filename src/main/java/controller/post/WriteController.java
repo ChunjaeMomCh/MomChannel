@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/post/write.do")
+@WebServlet("/view/post/write.do")
 public class WriteController extends HttpServlet {
 
     // 작성폼으로 진입
@@ -15,7 +15,7 @@ public class WriteController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher("/post/Write.jsp").forward(req, resp);
+        req.getRequestDispatcher("view/post/Write.jsp").forward(req, resp);
     }
 
     @Override

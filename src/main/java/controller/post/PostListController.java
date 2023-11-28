@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.*;
 
 // 게시물 목록 읽기
-@WebServlet("/post/post.do")
+@WebServlet("/view/post/post.do")
 public class PostListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

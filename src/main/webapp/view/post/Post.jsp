@@ -63,7 +63,7 @@
                 <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
                   <c:forEach items="${ postLists }" var="row" varStatus="loop">
                     <li class="swiper-slide swiper-slide-active" style="width: 137.333px;">
-                      <a href="../post/postview.do?idx=${ row.postNo }">
+                      <a href="../view/post/postview.do?postNo=${ row.postNo }">
                         <figure><img src="" alt=""></figure>
                         <p class="content_name">${ row.postTitle }</p>
                         <p class="channel_name">${ row.memId }</p>
@@ -96,13 +96,13 @@
                     <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
                     <c:forEach items="${ postLists }" var="row" varStatus="loop">
                      <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
-                        <a href="../post/postview.do?idx=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
+                        <a href="../view/post/postview.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
                           <figure class="content_img"></figure>
                           <div class="text_area">
                           <%-- 제목(상세보기 페이지로 바로가기 링크) --%>
                           <%-- 게시물의 일련번호를 매개변수로 사용한다. --%>
                             <a class="content_name"
-                              href="../post/postview.do?idx=${ row.postNo }"
+                              href="../view/post/postview.do?postNo=${ row.postNo }"
                               style="text-decoration: none; color: black;">
                               ${ row.postTitle }
                             </a>

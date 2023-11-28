@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/post/postview.do")
+@WebServlet("/view/post/postview.do")
 public class PostViewController extends HttpServlet {
 
     @Override
@@ -69,7 +69,7 @@ public class PostViewController extends HttpServlet {
         // DTO 객체와 isImage를 request 영역에 저장하고 View.jsp 로 포워드한다.
         req.setAttribute("vo", vo);
         req.setAttribute("isImage", isImage);
-        req.getRequestDispatcher("/post/PostView.jsp").forward(req, resp);
+        req.getRequestDispatcher("view/post/PostView.jsp").forward(req, resp);
 
     }  // service()
 

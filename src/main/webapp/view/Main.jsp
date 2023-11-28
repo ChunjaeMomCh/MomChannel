@@ -14,6 +14,6 @@
 </head>
 <body>
 <h2>임시 메인 페이지</h2>
-<a href="../post/post.do">게시판 목록 바로가기</a>
+<a href="../view/post/post.do">게시판 목록 바로가기</a>
 </body>
 </html>
