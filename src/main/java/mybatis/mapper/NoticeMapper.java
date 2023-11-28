@@ -9,14 +9,9 @@ import java.util.Map;
 @Mapper
 public interface NoticeMapper {
     int selectCount(Map<String, Object> map);
-
     List<NoticeVO> selectNoticeListWithPaging(Map<String, Object> map);
-
-    int insertNoticeWrite(NoticeVO vo);
-
     NoticeVO selectNoticeView(String noticeNo);
-
+    int insertNoticeWrite(NoticeVO vo);
     int deleteNotice(String noticeNo);
-
     int deleteNotice(NoticeVO vo);
 }

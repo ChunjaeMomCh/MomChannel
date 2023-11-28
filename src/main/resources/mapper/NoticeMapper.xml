@@ -34,5 +34,11 @@
         WHERE ROWNUM BETWEEN #{ start } AND #{ end } ;
     </select>
 
+    <select id="selectNoticeView" parameterType="String" resultType="vo.NoticeVO">
+        select *
+        from notice
+        where notice_no = #{noticeNo}
+    </select>
+
 
 </mapper>
