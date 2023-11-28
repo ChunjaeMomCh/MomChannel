@@ -1,6 +1,6 @@
-package com.example.jspmvc2.mybatis.factory;
+package mybatis.factory;
 
-import com.example.jspmvc2.mybatis.config.MyBatisConfig;
+import mybatis.config.MyBatisConfig;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
