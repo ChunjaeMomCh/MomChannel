@@ -35,14 +35,7 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>
-      <dependency>
-          <groupId>org.projectlombok</groupId>
-          <artifactId>lombok</artifactId>
-          <version>1.18.28</version>
-          <scope>compile</scope>
-      </dependency>
-  </dependencies>
+    </dependency>  </dependencies>
 
   <build>
     <plugins>
