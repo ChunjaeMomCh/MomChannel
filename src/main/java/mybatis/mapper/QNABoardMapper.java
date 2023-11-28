@@ -13,6 +13,7 @@ public interface QNABoardMapper {
     List<QNABoardVO> selectListPageWithPaging(Map<String, Object> map);
 
     int insertWrite(QNABoardVO vo);
+    int insertWriteAnswer(QNABoardVO vo);
 
     QNABoardVO selectView(String qnoNo);
 

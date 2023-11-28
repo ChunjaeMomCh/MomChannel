@@ -33,6 +33,19 @@ public class QNABoardDAO {
         sqlSession.close();
         return result;
     }
+    public int insertWriteAnswer(QNABoardVO vo) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);
+        int result = mapper.insertWriteAnswer(vo);
+        if (result == 1) {
+            sqlSession.commit();
+            System.out.println("새로운 mvcboard 저장 성공");
+        } else {
+            System.out.println("새로운 mvcboard 저장 실패");
+        }
+        sqlSession.close();
+        return result;
+    }
 
     public List<QNABoardVO> selectListPageWithPaging(Map<String, Object> map) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();

@@ -40,12 +40,10 @@
         <td colspan="4" align="center">
             <input type="hidden" name="qnaNo" value="${ vo.qnaNo }"/>
             <input type="hidden" name="memId" value="${ vo.memId }"/>
-<%--            <button type="button" onclick="location.href='../qnaboard/pass.do?mode=edit&qnaNo=${ param.qnaNo }';">--%>
-<%--                수정하기--%>
-<%--            </button>--%>
-<%--            <button type="button" onclick="location.href='../qnaboard/pass.do?mode=delete&qnaNo=${ param.qnaNo }';">--%>
-<%--                삭제하기--%>
-<%--            </button>            --%>
+
+            <button type="button" onclick="location.href='../qnaboard/answer.do?qnaNo=${ param.qnaNo }';">
+                답변 작성
+            </button>
             <button type="button" onclick="location.href='../qnaboard/edit.do?qnaNo=${ param.qnaNo }';">
                 수정하기
             </button>
