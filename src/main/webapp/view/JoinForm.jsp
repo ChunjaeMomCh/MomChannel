@@ -45,7 +45,7 @@
 <body>
 <div class="container border">
     <h2>회원가입</h2>
-    <form name="joinform" method="post" action="#회원가입 컨트롤러"
+    <form name="joinform" method="post" action="../controller/join.do"
           class="form-label" onsubmit="return validateForm(this)">
         <table>
             <tr>
@@ -90,6 +90,12 @@
                         <option value="gyeongsang">경상</option>
                         <option value="jeju">제주</option>
                     </select>
+                </td>
+            </tr>
+            <tr>
+                <td>상세 지역</td>
+                <td>
+                    <input type="text" name="mem_addr"/>
                 </td>
             </tr>
             <tr>
