@@ -22,7 +22,7 @@
         ORDER BY post_no DESC
     </select>
     <!-- 페이지 내에 게시물을 불러온다. -->
-    <select id="selectListPage" parameterType="map" resultType="pvo">
+    <select id="selectListPage" parameterType="map" resultType="vo.PostVO">
         SELECT *
         FROM (SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
         FROM  post b,(SELECT @ROWNUM := 0 ) TMP

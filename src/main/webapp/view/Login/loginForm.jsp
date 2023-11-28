@@ -20,7 +20,7 @@
 <body>
 <h2>로그인 페이지</h2>
 <%--<form action="../login/login.do" method="post"--%>
-<form action="http://localhost:8090/team_pj_mamchannel_war_exploded/member/login.do" method="post"
+<form action="../../member/login.do" method="post"
       onsubmit="return validateForm(this);">
     아이디 : <input type="text" name="memId" /><br/>
     패스워드 : <input type ="password" name="memPw" /><br/>

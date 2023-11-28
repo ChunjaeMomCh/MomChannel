@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.System.out;
+
 @WebServlet("/member/login.do")
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -25,22 +27,27 @@ public class LoginController extends HttpServlet {
         MemberDAO dao = new MemberDAO();
         String memId = req.getParameter("memId");
         String memPw = req.getParameter("memPw");
-        System.out.println(memId);
-        System.out.println(memPw);
+        out.println(memId);
+        out.println(memPw);
         MemberVO vo = null;
         if (memId != null && memPw != null) {
             // 쿼리스트링으로 전달받은 매개변수 중 검색어가 있다면 map에 저장
-            System.out.println(memId);
+            out.println(memId);
             map.put("memId", memId);
             map.put("memPw", memPw);
         }
         boolean check = dao.memCheck(memId,memPw);
-        System.out.println(check);
+        out.println(check);
         if (check){
             vo = dao.getMember(memId);
             HttpSession session = req.getSession();
-            session.setAttribute("loginMember",vo);
-            resp.sendRedirect("../qnaboard/list.do");
+            if(session.isNew() || session.getAttribute("loginMember")==null) {
+                session.setAttribute("loginMember", vo);
+                    if(session.isNew())
+                        out.println("Session 생성 후, 로그인 완료");
+                    else out.println("로그인을 완료하였습니다.");
+                resp.sendRedirect("../index.jsp");//qnaboard/list.do");
+            }
 
         }
         else {
