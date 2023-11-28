@@ -51,6 +51,12 @@
         FROM post
         WHERE post_no = #{post_no}
     </select>
+    <!-- 게시물 상세 보기 시 조회수 업데이트 -->
+    <update id="updateVisitCount" parameterType="String">
+        UPDATE post
+        SET post_hit = post_hit + 1
+        WHERE post_no = #{post_no}
+    </update>
     <!-- 게시물 작성하기 -->
     <insert id="writePost" parameterType="map">
         INSERT INTO

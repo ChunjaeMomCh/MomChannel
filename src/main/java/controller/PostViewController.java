@@ -28,36 +28,35 @@ public class PostViewController extends HttpServlet {
         PostDAO dao = new PostDAO();  // DAO 객체 생성
         // 게시물의 일련번호를 매개변수로 받아 조회수를 증가시킨다.
         String postNo = req.getParameter("postNo");
-//        dao.updateVisitCount(idx);
+        dao.updateVisitCount(postNo);
 
         // 게시물 내용 가져오기
         PostVO vo = dao.viewPost(postNo);
-//        dao.close();
 
         // 줄바꿈 처리 : 일반 텍스트 문서의 줄바꿈 문자(\r\n) => html이 인식하는 줄바꿈 태그(<br>)
-//        vo.setContent(vo.getContent().replaceAll("\r\n", "<br>"));
+        vo.setPostContent(vo.getPostContent().replaceAll("\r\n", "<br>"));
 
         // 첨부 파일 확장자 추출 및 이미지 타입 확인
         // 첨부 파일이 이미지라면 <img> 태그로 상세보기 화면에 보여준다.
-//        String ext = null, fileName = vo.getSfile();
+        String ext = null, fileName = vo.getSfile();
 
-//        if (fileName != null) {
-//            ext = fileName.substring(fileName.lastIndexOf(".") + 1);
-//        }
+        if (fileName != null) {
+            ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+        }
 
 
         String[] mimeStr = {"png", "jpg", "jpeg", "gif"};  // String 타입 배열에 이미지 확장자들을 저장
         List<String> mimeList = Arrays.asList(mimeStr);  // 배열을 List 컬렉션으로 변환
 
         // 컬렉션에 포함된 확장자이면 isImage 변수의 값을 true로 변경한다.
-//        boolean isImage = false;
-//        if (mimeList.contains(ext)) {
-//            isImage = true;
-//        }
+        boolean isImage = false;
+        if (mimeList.contains(ext)) {
+            isImage = true;
+        }
 
         // DTO 객체와 isImage를 request 영역에 저장하고 View.jsp 로 포워드한다.
         req.setAttribute("vo", vo);
-//        req.setAttribute("isImage", isImage);
+        req.setAttribute("isImage", isImage);
         req.getRequestDispatcher("/post/PostView.jsp").forward(req, resp);
     }
 }

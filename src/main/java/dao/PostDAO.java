@@ -62,6 +62,18 @@ public class PostDAO {
         return result;
     }
 
+    // 게시물 상세 보기 시 조회수 업데이트
+    public int updateVisitCount(String postNo) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        int result = mapper.updateVisitCount(postNo);
+
+        session.close();
+        return result;
+    }
+
     // 게시물 작성 페이지
     public int writePost(HashMap<String, Object> map) {
 
