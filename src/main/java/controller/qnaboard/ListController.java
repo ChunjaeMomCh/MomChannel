@@ -18,7 +18,7 @@ import java.util.Map;
 
 
 @WebServlet("/qnaboard/list.do")
-public class ListController extends HttpServlet {
+public class ListController extends HttpServlet { // merge
     private static final long serialVersionUID = 1L;
 
     @Override

@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List; 
 
 @WebServlet("/qnaboard/view.do")
-public class ViewController extends HttpServlet {
+public class ViewController extends HttpServlet { // merge
     private static final long serialVersionUID = 1L;
 
     @Override
