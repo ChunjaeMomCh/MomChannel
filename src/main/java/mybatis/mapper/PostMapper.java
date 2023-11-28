@@ -15,4 +15,5 @@ public interface PostMapper {
     PostVO viewPost(String postNo);  // 특정 게시물의 상세 보기 페이지를 불러온다.
     int updateVisitCount(String postNo);  // 상세 보기 시 조회수를 1 더한다.
     int writePost(HashMap<String, Object> map);  // 새 게시물을 작성한다.
+    int updatePost(PostVO vo);  // 게시물을 수정한다.
 }

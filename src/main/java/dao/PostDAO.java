@@ -85,4 +85,16 @@ public class PostDAO {
         session.close();
         return result;
     }
+
+    // 게시물 수정 기능
+    public int updatePost(PostVO vo) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        int result = mapper.updatePost(vo);
+
+        session.close();
+        return result;
+    }
 }
