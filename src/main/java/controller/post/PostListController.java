@@ -1,4 +1,4 @@
-package controller;
+package controller.post;
 
 import dao.PostDAO;
 import vo.PostVO;

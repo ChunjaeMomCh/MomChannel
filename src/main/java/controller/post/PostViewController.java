@@ -1,7 +1,7 @@
 /**
  * 개별 게시글 상세보기 뷰로 요청을 넘긴다.
  * */
-package controller;
+package controller.post;
 
 import dao.PostDAO;
 import vo.PostVO;
