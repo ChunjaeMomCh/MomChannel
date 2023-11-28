@@ -1,4 +1,4 @@
-package com.example.jspmvc2.mybatis.config;
+package mybatis.config;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,7 +12,7 @@ public class MyBatisConfig {
     private SqlSessionFactory sqlSessionFactory = null;
 
     public MyBatisConfig() {
-        String resource = "com/example/jspmvc2/mybatis/config/mybatis-config.xml";
+        String resource = "config/mybatis-config.xml"; // resource 디렉토리부터 경로 잡음
         InputStream inputStream = null;
         try {
             inputStream = Resources.getResourceAsStream(resource);
