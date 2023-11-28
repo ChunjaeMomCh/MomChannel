@@ -11,13 +11,13 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="org.mariadb.jdbc.Driver" />
-                <property name="url" value="jdbc:mariadb://localhost:3306/jspmvc2" />
+                <property name="url" value="jdbc:mariadb://localhost:3306/momchannel" />
                 <property name="username" value="root" />
                 <property name="password" value="12345" />
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/example/jspmvc2/mybatis/mapper/MVCBoardMapper.xml" />
+        <mapper resource="mapper/NoticeMapper.xml" />
     </mappers>
 </configuration>
