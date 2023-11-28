@@ -6,7 +6,7 @@ public class MemberVO {
     private String mem_pw;
     private String mem_region;
     private String mem_addr;
-    private int mem_child_grade;
+    private String mem_child_grade;
     private String mem_phone;
     private String mem_email;
     private String mem_img;
@@ -51,11 +51,11 @@ public class MemberVO {
         this.mem_addr = mem_addr;
     }
 
-    public int getMem_child_grade() {
+    public String getMem_child_grade() {
         return mem_child_grade;
     }
 
-    public void setMem_child_grade(int mem_child_grade) {
+    public void setMem_child_grade(String mem_child_grade) {
         this.mem_child_grade = mem_child_grade;
     }
 
