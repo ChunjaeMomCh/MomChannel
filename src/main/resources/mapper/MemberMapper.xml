@@ -11,7 +11,7 @@
     </select>
 
 
-    <select id="memCheck" parameterType="map" >
+    <select id="memCheck" parameterType="map" resultType="int">
         select count(mem_id)
         from member
         where mem_id = #{memId} and mem_pw = #{memPw}

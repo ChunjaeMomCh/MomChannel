@@ -1,9 +1,9 @@
-package controller.notice;
+package controller.qnaboard;
 
 
-import dao.NoticeDAO;
+import dao.QNABoardDAO;
 import utils.BoardPage;
-import vo.NoticeVO;
+import vo.QNABoardVO;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,17 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List; 
+import java.util.List;
 import java.util.Map;
 
 
-@WebServlet("/notice/list.do")
+@WebServlet("/qnaboard/list.do")
 public class ListController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        NoticeDAO dao = new NoticeDAO();
+        QNABoardDAO dao = new QNABoardDAO();
 
         // 뷰에 전달할 매개변수 저장용 맵 생성
         Map<String, Object> map = new HashMap<String, Object>();
@@ -55,12 +55,12 @@ public class ListController extends HttpServlet {
         map.put("end", end);
         /* 페이지 처리 end */
 
-        List<NoticeVO> boardLists = dao.selectNoticeListWithPaging(map);  // 게시물 목록 받기
+        List<QNABoardVO> boardLists = dao.selectListPageWithPaging(map);  // 게시물 목록 받기
 //        dao.close(); // DB 연결 닫기
 
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
-                blockPage, pageNum,searchField,searchWord, "../notice/list.do");  // 바로가기 영역 HTML 문자열
+                blockPage, pageNum,searchField,searchWord, "../qnaboard/list.do");  // 바로가기 영역 HTML 문자열
         System.out.println(totalCount);
         map.put("pagingImg", pagingImg);
         map.put("totalCount", totalCount);
@@ -71,6 +71,6 @@ public class ListController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 List.jsp로 포워드
         req.setAttribute("boardLists", boardLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher("/view/notice/List.jsp").forward(req, resp);
+        req.getRequestDispatcher("/view/QNABoard/qnaList.jsp").forward(req, resp);
     }
 }

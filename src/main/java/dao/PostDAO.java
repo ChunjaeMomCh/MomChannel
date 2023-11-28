@@ -40,7 +40,6 @@ public class PostDAO {
     }
 
     public List<PostVO> showPosts(Map<String, Object> map) {
-
         SqlSession session = MyBatisSessionFactory.getSqlSession();
         PostMapper mapper = session.getMapper(PostMapper.class);
 
