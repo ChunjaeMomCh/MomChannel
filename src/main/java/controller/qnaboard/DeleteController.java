@@ -29,8 +29,6 @@ public class DeleteController extends HttpServlet {
         QNABoardDAO dao = new QNABoardDAO();
         QNABoardVO vo = dao.selectView(qnaNo);
         String memId = vo.getMemId();
-        System.out.println(memId);
-        System.out.println(mvo.getMemId());
         req.setAttribute("vo", vo);
         if (memId.equals(mvo.getMemId())) {
             dao.deletePost(qnaNo);  // 게시물 삭제

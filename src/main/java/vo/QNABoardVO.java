@@ -13,6 +13,7 @@ public class QNABoardVO {
     private String qnaNo;
 //    private String idx;
     private int qnaPNo;
+    private int qnaGroup;
     private String memId;
     private String qnaTitle;
     private String qnaContent;
