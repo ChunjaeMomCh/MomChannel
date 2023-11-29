@@ -46,7 +46,7 @@ public class LoginController extends HttpServlet {
                     if(session.isNew())
                         out.println("Session 생성 후, 로그인 완료");
                     else out.println("로그인을 완료하였습니다.");
-                resp.sendRedirect("../index.jsp");//qnaboard/list.do");
+                resp.sendRedirect("../qnaboard/list.do");
             }
 
         }
