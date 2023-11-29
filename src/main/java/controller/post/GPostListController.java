@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.*;
 
 // 게시물 목록 읽기
-@WebServlet("../view/post/by-grade/post.do")
+@WebServlet("/view/post/by-grade/post.do")
 public class GPostListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -33,6 +33,13 @@ public class GPostListController extends HttpServlet {
             // 쿼리스트링으로 전달받은 매개변수 중 검색어가 있다면 map에 저장
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
+        }
+
+        // 학년별 검색값
+        String postGrade = req.getParameter("postGrade");
+
+        if (postGrade != null && !postGrade.equals("")) {
+            map.put("postGrade", postGrade);
         }
         /* 검색 end */
 
@@ -60,6 +67,6 @@ public class GPostListController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher("view/post/by-grade/Post.jsp").forward(req, resp);
+        req.getRequestDispatcher("../by-grade/Post.jsp").forward(req, resp);
     }
 }

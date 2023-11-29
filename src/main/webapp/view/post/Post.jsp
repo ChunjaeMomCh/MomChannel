@@ -30,60 +30,6 @@
   
 </head>
 <body>
-<div class="wrapper">
-  <%-- 헤더 --%>
-  <div class="header"></div>
-
-  <%-- 메인 영역 --%>
-    <div class="content">
-      <div class="content-menu">
-        <div class="inner">
-          <%-- 사이드바 --%>
-          <div class="content_snb mo_none">
-            <%-- 현재 조회 중인 메뉴 이름 표시, 비활성화 메뉴는 표기만 --%>
-            <p class="snb_title">학년별</p>
-            <div class="snb_menu"></div>
-              <%-- 게시글 작성 버튼 --%>
-            <div class="snb_btns">
-              <button class="btn large gray reset" type="reset">초기화</button>
-              <button class="btn large unit_add" type="submit" onclick="location.href='../post/write.do'">게시글 등록하기</button>
-            </div>
-          </div>
-          <div class="content_tab_area">
-            <%-- 추천 게시글 목록 --%>
-            <div class="top_channel_area">
-              <%-- 슬라이드 버튼 --%>
-              <div class="channel_arrow">
-                <h2 class="top_channel_title">지역별<span>추천 포스트</span></h2>
-                <div class="swiper-button-next channel_next swiper-button-disabled" tabindex="0" role="button" aria-label="Next slide" aria-disabled="true"></div>
-                <div class="swiper-button-prev channel_prev swiper-button-disabled" tabindex="0" role="button" aria-label="Previous slide" aria-disabled="true"></div>
-              </div>
-                <%-- 슬라이드 메뉴 구현 --%>
-              <div class="swiper top_channel swiper-container-initialized swiper-container-horizontal swiper-container-free-mode">
-                <ul class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
-                  <c:forEach items="${ postLists }" var="row" varStatus="loop">
-                    <li class="swiper-slide swiper-slide-active" style="width: 137.333px;">
-                      <a href="../view/post/postview.do?postNo=${ row.postNo }">
-                        <figure><img src="" alt=""></figure>
-                        <p class="content_name">${ row.postTitle }</p>
-                        <p class="channel_name">${ row.memId }</p>
-                        <span class="tag">${ row.postGrade }</span>
-                      </a>
-                    </li>
-                  </c:forEach>
-                </ul>
-<%--                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>--%>
-              </div>
-            </div>
-            <%-- 총 게시물 수와 게시글 정렬 버튼 --%>
-            <div class="tab_btns">
-              <div class="select_area"><span class="content_num">게시물의 총 개수</span></div>
-              <select name="arrangement" id="arrangement">
-                <option value="post_time">최신순</option>
-                <option value="popularity">인기순</option>
-              </select>
-            </div>
-          </div>
           <%-- 게시글 목록을 구현한다. --%>
           <div class="content_card_area">
             <div class="inner">
@@ -136,11 +82,5 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <%-- 푸터 --%>
-  <div class="footer"></div>
-</div>
 </body>
 </html>
