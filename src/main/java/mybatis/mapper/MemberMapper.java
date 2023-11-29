@@ -5,6 +5,6 @@ import vo.MemberVO;
 import java.util.Map;
 
 public interface MemberMapper {
-    MemberVO getMember(String memId);
-    int memCheck(Map<String, String> map);
+    int memJoin(MemberVO vo);
+    MemberVO memLogin(Map<String, String> map);
 }

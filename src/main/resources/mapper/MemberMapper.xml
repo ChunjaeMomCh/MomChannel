@@ -2,20 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace의 값은 Mapper.interface의 경로 -->
 <mapper namespace="mybatis.mapper.MemberMapper">
+    <insert id="memJoin" parameterType="vo.MemberVO">
+        INSERT INTO member(mem_id, mem_pw, mem_name, mem_region, mem_addr, mem_child_grade, mem_phone, mem_email)
+        VALUES (#{mem_id}, #{mem_pw}, #{mem_name}, #{mem_region}, #{mem_addr}, #{mem_child_grade}, #{mem_phone}, #{mem_email})
+    </insert>
 
-    <select id="getMember" parameterType="String" resultType="vo.MemberVO">
-        select *
-        from member
-        where mem_id = #{memId}
+    <select id="memLogin" parameterType="map" resultType="vo.MemberVO">
+        SELECT *
+        FROM member
+        WHERE mem_id=#{mem_id} AND mem_pw=#{mem_pwd}
     </select>
-
-
-    <select id="memCheck" parameterType="map" resultType="int">
-        select count(mem_id)
-        from member
-        where mem_id = #{memId} and mem_pw = #{memPw}
-    </select>
-
-
 </mapper>
