@@ -39,12 +39,37 @@ public class PostDAO {
 
     }
 
+    // 지역별 게시판 페이지 불러오기
     public List<PostVO> showPosts(Map<String, Object> map) {
 
         SqlSession session = MyBatisSessionFactory.getSqlSession();
         PostMapper mapper = session.getMapper(PostMapper.class);
 
-        List<PostVO> postList = mapper.showPosts(map);
+        List<PostVO> postList = mapper.showPostsByRegion(map);
+
+        session.close();
+        return postList;
+    }
+
+    // 지역별 게시판 페이지 불러오기
+    public List<PostVO> showPostsByRegion(Map<String, Object> map) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showPostsByRegion(map);
+
+        session.close();
+        return postList;
+    }
+
+    // 학년별 게시판 페이지 불러오기
+    public List<PostVO> showPostsByGrade(Map<String, Object> map) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showPostsByGrade(map);
 
         session.close();
         return postList;

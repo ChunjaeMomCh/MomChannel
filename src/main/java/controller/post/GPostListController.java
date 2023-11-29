@@ -7,20 +7,15 @@ package controller.post;
 import dao.PostDAO;
 import vo.PostVO;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 // 게시물 목록 읽기
-@WebServlet("/view/post/post.do")
-public class PostListController extends HttpServlet {
+@WebServlet("../view/post/by-grade/post.do")
+public class GPostListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -65,6 +60,6 @@ public class PostListController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher("../post/Post.jsp").forward(req, resp);
+        req.getRequestDispatcher("view/post/by-grade/Post.jsp").forward(req, resp);
     }
 }

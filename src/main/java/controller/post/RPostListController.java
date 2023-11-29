@@ -1,5 +1,5 @@
 /**
- * 학년별 게시판 보기 페이지를 연결하는 서블릿
+ * 지역별 게시판 페이지 보기와 연결하는 서블릿
  * */
 
 package controller.post;
@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 // 게시물 목록 읽기
-@WebServlet("/view/post/post.do")
-public class PostListController extends HttpServlet {
+@WebServlet("/view/post/by-region/post.do")
+public class RPostListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -65,6 +65,6 @@ public class PostListController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher("../post/Post.jsp").forward(req, resp);
+        req.getRequestDispatcher("view/post/by-region/Post.jsp").forward(req, resp);
     }
 }
