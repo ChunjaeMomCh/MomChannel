@@ -39,28 +39,28 @@ public class AnswerContoller extends HttpServlet {
         vo.setMemId(mvo.getMemId());
         vo.setQnaTitle(qnaTitle.concat(req.getParameter("qnaTitle")));
         vo.setQnaContent(req.getParameter("qnaContent"));
+        vo.setQnaPNo(Integer.parseInt(req.getParameter("qnaNo")));
+        vo.setQnaGroup(Integer.parseInt(req.getParameter("qnaNo")));
+
+
         if (mvo.getMemId().equals("admin")){
-            vo.setQnaPNo(Integer.parseInt(req.getParameter("qnaNo")));
-            vo.setQnaGroup(vo.getQnaPNo());
-            System.out.println(vo.getQnaPNo());
-            System.out.println(vo.getQnaGroup());
-//            vo.setQnaGroup(Integer.parseInt(req.getParameter("qnaNo")));
+            // DAO를 통해 DB에 게시 내용 저장
+            QNABoardDAO dao = new QNABoardDAO();
+            int result = dao.insertWriteAnswer(vo);
+
+            // 성공 or 실패?
+            if (result == 1) {  // 글쓰기 성공
+                resp.sendRedirect("../qnaboard/list.do");
+            }
+            else {  // 글쓰기 실패
+                JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.",
+                        "../qnaboard/write.do");
+            }
         }
         else {
             JSFunction.alertBack(resp, "관리자가 아닙니다.");
         }
 
-        // DAO를 통해 DB에 게시 내용 저장
-        QNABoardDAO dao = new QNABoardDAO();
-        int result = dao.insertWriteAnswer(vo);
 
-        // 성공 or 실패?
-        if (result == 1) {  // 글쓰기 성공
-            resp.sendRedirect("../qnaboard/list.do");
-        }
-        else {  // 글쓰기 실패
-            JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.",
-                    "../qnaboard/write.do");
-        }
     }
 }
