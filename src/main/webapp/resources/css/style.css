@@ -5719,7 +5719,8 @@ body.ovh {
 .ico.search_01 {
   width: 18px;
   height: 18px;
-  margin-top: -8px;
+  margin-top: -100px;
+  margin-left: 420px;
   background-image: url("../images/ico_search_01.png");
 }
 @media (max-width: 767px) {
