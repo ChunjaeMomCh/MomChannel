@@ -60,4 +60,11 @@ public class MemberDAO {
         sqlSession.close();
         return result;
     }
+    public MemberVO selectMember(String memId) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+        MemberVO mvo = mapper.selectMember(memId);
+        sqlSession.close();
+        return mvo;
+    }
 }

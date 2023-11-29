@@ -27,4 +27,10 @@
         INTO member( mem_id, mem_name, mem_pw, mem_region, mem_addr, mem_child_grade, mem_phone, mem_email)
         VALUES( #{memId}, #{memName}, #{memPw}, #{memRegion}, #{memAddr},#{memChildGrade},#{memPhone},#{memEmail})
     </insert>
+
+    <select id="selectMember" parameterType="String" resultType="vo.MemberVO">
+        select *
+        from member
+        where mem_id = #{memId}
+    </select>
 </mapper>

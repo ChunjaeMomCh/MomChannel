@@ -10,8 +10,9 @@
 <a href="hello-servlet">Hello Servlet</a><br>
 <a href="./notice/list.do">공지사항</a><br>
 <a href="./qnaboard/list.do">문의하기</a><br>
-<a href="./view/Login/loginForm.jsp">로그인</a>
-<a href="./view/Login/signForm.jsp">회원가입</a>
+<a href="./view/Login/loginForm.jsp">로그인</a><br>
+<a href="./view/Login/signForm.jsp">회원가입</a><br>
+<a href="./member/myinfo.do">내정보</a>
 
 </body>
 </html>
