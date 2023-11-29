@@ -85,7 +85,7 @@
           </div>
           <%-- 게시글 작성 버튼 --%>
           <div class="snb_btns">
-            <button class="btn large unit_add" type="submit" onclick="location.href='../write.do'">게시글 등록하기</button>
+            <button class="btn large unit_add" type="submit" onclick="location.href='.././write.do'">게시글 등록하기</button>
           </div>
         </div>
         <%-- 사이드바 끝 --%>

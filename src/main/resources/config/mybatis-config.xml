@@ -22,13 +22,9 @@
         </environment>
     </environments>
     <mappers>
-<<<<<<< HEAD
-        <mapper resource="mapper/PostMapper.xml"/>
-=======
         <mapper resource="mapper/MemberMapper.xml" />
         <mapper resource="mapper/NoticeMapper.xml" />
         <mapper resource="mapper/PostMapper.xml" />
         <mapper resource="mapper/QNABoardMapper.xml" />
->>>>>>> develop
     </mappers>
 </configuration>

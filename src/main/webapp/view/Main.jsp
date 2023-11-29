@@ -41,8 +41,8 @@
       <%-- nav 메뉴 --%>
       <nav class="menu">
         <ul>
-          <li><a href="../view/post/by-region/Post.jsp">지역별</a></li>
-          <li><a href="../view/post/by-grade/Post.jsp">학년별</a></li>
+          <li><a href="./post/by-region/Post.jsp">지역별</a></li>
+          <li><a href="./post/by-grade/Post.jsp">학년별</a></li>
           <%--<li>전체 채널</li>--%>
           <li>서비스 안내</li>
         </ul>
