@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%--
   Created by IntelliJ IDEA.
   User: sec
@@ -105,4 +104,4 @@
 </div> <%-- content의 끝 --%>
 
 <%@ include file="include/footer.jsp"%>
->>>>>>> develop
+
