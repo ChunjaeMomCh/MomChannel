@@ -8,23 +8,27 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class MyBatisConfig {
-    private SqlSessionFactory factory = null;
+
+    private SqlSessionFactory sqlSessionFactory = null;
 
     public MyBatisConfig() {
+<<<<<<< HEAD
         String resource = "config/mybatis-config.xml";
         InputStream iStream = null;
 
+=======
+        String resource = "config/mybatis-config.xml"; // resource 디렉토리부터 경로 잡음
+        InputStream inputStream = null;
+>>>>>>> 45e46782bebd9da789e797dc8a788fbb3b25d4a0
         try {
-            iStream = Resources.getResourceAsStream(resource);
-
+            inputStream = Resources.getResourceAsStream(resource);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        this.factory = new SqlSessionFactoryBuilder().build(iStream);
-    }  // MyBatisConfig()
+        this.sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+    }
 
     public SqlSessionFactory getSqlSessionFactory() {
-        return this.factory;
-    }  // getSqlSessionFactory()
+        return this.sqlSessionFactory;
+    }
 }

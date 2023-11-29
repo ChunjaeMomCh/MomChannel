@@ -22,7 +22,11 @@
         ORDER BY post_no DESC
     </select>
     <!-- 페이지 내에 게시물을 불러온다. -->
+<<<<<<< HEAD
     <select id="selectListPage" parameterType="map" resultType="pvo">
+=======
+    <select id="selectListPage" parameterType="map" resultType="vo.PostVO">
+>>>>>>> 45e46782bebd9da789e797dc8a788fbb3b25d4a0
         SELECT *
         FROM (SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
         FROM  post b,(SELECT @ROWNUM := 0 ) TMP
@@ -40,13 +44,21 @@
         ORDER BY post_no DESC ) T
         WHERE ROWNUM BETWEEN #{start} AND #{end}
     </select>
+<<<<<<< HEAD
     <select id="showPosts" parameterType="map" resultType="pvo">
+=======
+    <select id="showPosts" parameterType="map" resultType="vo.PostVO">
+>>>>>>> 45e46782bebd9da789e797dc8a788fbb3b25d4a0
         SELECT *
         FROM post
         ORDER BY post_no DESC
     </select>
     <!-- 게시글 상세 보기 화면 불러오기 -->
+<<<<<<< HEAD
     <select id="viewPost" parameterType="String" resultType="pvo">
+=======
+    <select id="viewPost" parameterType="String" resultType="vo.PostVO">
+>>>>>>> 45e46782bebd9da789e797dc8a788fbb3b25d4a0
         SELECT *
         FROM post
         WHERE post_no = #{post_no}
