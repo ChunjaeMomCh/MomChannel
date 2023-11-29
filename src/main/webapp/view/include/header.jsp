@@ -61,7 +61,4 @@
       </header>
     </div>
   </div> <!-- header 끝 -->
-      <!-- 상단 고정 헤더 -->
-  <div class="kjw">
-    test
-  </div>
+  <!-- 상단 고정 헤더 -->
