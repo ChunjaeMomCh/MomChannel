@@ -1,3 +1,21 @@
 ﻿.kjw {
     font-size: 100px;
 }
+.input_form {
+    font-size: 18px;
+    margin: -30px 10px 40px 10px;
+}
+.input_form_title {
+    font-weight: bold;
+    margin: 10px 0px 10px 3px;
+}
+.input_form_title:before{
+    content:'· ';
+    color: #0A63FF;
+}
+.input_form_btn {
+    font-weight: bold;
+    float: right;
+    height: 45px;
+    font-size: 15px;
+}
