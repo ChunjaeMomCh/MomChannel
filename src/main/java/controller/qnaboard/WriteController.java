@@ -39,11 +39,8 @@ public class WriteController extends HttpServlet {
         vo.setMemId(mvo.getMemId());
         vo.setQnaTitle(req.getParameter("qnaTitle"));
         vo.setQnaContent(req.getParameter("qnaContent"));
-        if (mvo.getMemId().equals("admin")){
-            vo.setQnaPNo(1);
-        }else {
-            vo.setQnaPNo(0);
-        }
+        vo.setQnaPNo(0);
+
 
         // DAO를 통해 DB에 게시 내용 저장
         QNABoardDAO dao = new QNABoardDAO();
