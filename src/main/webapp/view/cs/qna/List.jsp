@@ -11,7 +11,7 @@
 
             <!-- 문의하기 table -->
             <div class="content_tab_area" x-data="getQnaList()" x-init="initFn">
-                <form method="get" id="searchContent" action="./List.jsp" onsubmit="return false;">
+                <form method="get" id="searchContent">
                     <input type="hidden" name="categoryId" x-model="categoryId"/>
                     <input type="hidden" name="pageIndex" x-model="pageIndex"/>
                     <input type="hidden" id="pageSize" name="pageSize" x-model="pageSize"/>
@@ -25,18 +25,14 @@
                             <span class="content_num mo_none" id="pcTotalCount" x-text="'총 ' + totCnt + '개의 게시글이 있습니다.'"></span>
                             <span class="content_num pc_none" id="mobileTotalCount" x-text="'총 ' + totCnt + '개'"></span>
                             <div class="form_box">
-                                <div class="select_area h34">
-                                    <a href="#none">제목+내용<i class="ico arrow_03"></i></a>
-                                    <ul class="option_list">
-                                        <li><a href="#none">제목+내용</a></li>
-                                        <li><a href="#none">제목</a></li>
-                                        <li><a href="#none">내용</a></li>
-                                    </ul>
-                                </div>
+                                <select class="form-select search_category" name="searchField">
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                </select>
                                 <div class="search_bar_area border">
-                                    <input type="text" name="word" class="search_bar" x-on:keypress="searchEnter" placeholder="검색어를 입력하세요.">
-                                    <a href="javascript:void(0);" x-on:click="search()"><i class="ico search_02"></i></a>
+                                    <input type="text" name="searchWord" class="search_bar" placeholder="검색어를 입력하세요." value="${ param.searchWord }"/>
                                 </div>
+                                <button type="submit" class="btn btn-light search_form_btn">검색</button>
                             </div>
                         </div>
                     </div>
