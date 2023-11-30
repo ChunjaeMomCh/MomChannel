@@ -71,7 +71,7 @@
           <figure style="position: relative;">
             <img src="${pageContext.request.contextPath}/resources/images/default_thumbnail.png" height="150px" alt="썸네일 디폴트 이미지">
           </figure>
-          <div style="z-index: 1; text-align: center;"><input type="file" name="postThumbnail"></div>
+<%--          <div style="z-index: 1; text-align: center;"><input type="file" name="Thumbnail"></div>--%>
         </td>
       </tr>
     </table>
@@ -84,62 +84,12 @@
       </tr>
       <tr>
         <td colspan="2" style="text-align: right">
-          <button type="button" onclick="location.href='./post.do'">등록</button>
-          <button type="reset">취소</button>
+          <button type="submit">등록</button>
+          <button type="reset" onclick="location.href='./post.do'">취소</button>
         </td>
       </tr>
     </table>
   </div>
-  <%--<div class="title_container">
-    <div class="title_inner">
-      <div class="title_text_container">
-        &lt;%&ndash; ToDo: 카테고리 선택 상자 2개 &ndash;%&gt;
-        <div class="categories">
-          <Select name="post_category" id="post_region">
-            <option value="national">전체</option>
-            <option value="seoul">서울</option>
-            <option value="kyeonggi">경기</option>
-            <option value="kangwon">강원</option>
-            <option value="chungcheong">충청</option>
-            <option value="jeolla">전라</option>
-            <option value="kyeongsang">경상</option>
-            <option value="cheju">제주</option>
-          </select>
-          <select name="post_category" id="post_grade">
-            <option value="1st-grade">1학년</option>
-            <option value="2nd_grade">2학년</option>
-            <option value="3rd-grade">3학년</option>
-            <option value="4th-grade">4학년</option>
-            <option value="5th-grade">5학년</option>
-            <option value="6th-grade">6학년</option>
-          </select>
-        </div>
-        &lt;%&ndash; ToDo: 제목 입력 창 &ndash;%&gt;
-        <div class="title_area">
-          <input name="title" type="text" placeholder="제목을 입력하세요.">
-        </div>
-      </div>
-      <div class="title_img_container">
-        &lt;%&ndash; ToDo: 썸네일 이미지 설정 버튼 &ndash;%&gt;
-        <div class="title_img_inner">
-          <div class="img_box"></div>
-          <span>썸네일 설정</span>
-        </div>
-      </div>
-    </div>
-    <div class="input_file">
-      <p><input type="file" name="ofile">첨부파일</p>
-    </div>
-  </div>
-  <div class="content_container">
-    <div class="content_input">
-      <textarea name="content" placeholder="내용을 입력하세요."></textarea>
-    </div>
-    <div class="button_container">
-      <button type="submit">등록</button>
-      <button type="reset">취소</button>
-    </div>
-  </div>--%>
 </form>
 <%@ include file="../include/footer.jsp"%>
 </body>

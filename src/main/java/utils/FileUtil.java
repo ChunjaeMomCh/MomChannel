@@ -107,9 +107,8 @@ public class FileUtil {
             e.printStackTrace();
 
         }  // try ~ catch
-    }  // download()
-    /* Nov 19. 16:31 작성 완료 */
-    /* 파일 삭제 메서드 추가 [15d9383] */
+    }  // download()   
+
     // 지정한 위치의 파일을 삭제한다.
     public static void deleteFile(HttpServletRequest req,
                                   String directory, String filename) {

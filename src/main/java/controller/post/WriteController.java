@@ -7,6 +7,7 @@ import vo.MemberVO;
 import vo.PostVO;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet("/write.do")
+@WebServlet("/view/post/write.do")
+@MultipartConfig(
+        maxFileSize = 1024 * 1024 * 1,
+        maxRequestSize = 1024 * 1024 * 10
+)
 public class WriteController extends HttpServlet {
 
     // 작성폼으로 진입
@@ -23,7 +28,7 @@ public class WriteController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.getRequestDispatcher("./post/Write.jsp").forward(req, resp);
+        req.getRequestDispatcher("./Write.jsp").forward(req, resp);
     }
 
     @Override
@@ -32,7 +37,7 @@ public class WriteController extends HttpServlet {
 
         // 1. 파일 업로드 처리 =======================================================
         // 업로드 디렉터리의 물리적 경로 확인
-        String saveDirectory = req.getServletContext().getRealPath("/Uploads");
+        String saveDirectory = req.getServletContext().getRealPath("../../Uploads");
 
         // FileUtil.uploadFile() 메소드를 호출하여 파일 업로드
         String originalFileName = "";
@@ -43,7 +48,7 @@ public class WriteController extends HttpServlet {
         } catch (Exception e) {
             // 파일 업로드에 실패할 경우 경고창을 띄우고 작성 페이지로 재이동한다.
             JSFunction.alertLocation(resp, "파일 업로드 오류입니다.",
-                    req.getContextPath() + "/mvcboard/write.do");
+                    req.getContextPath() + "./write.do");
 
             return;
         }
@@ -76,15 +81,15 @@ public class WriteController extends HttpServlet {
 
         // DAO를 통해 DB에 게시 내용 저장
         PostDAO dao = new PostDAO();
-        HashMap map = new HashMap<String, Object>();
-        int result = dao.writePost(map);
+        PostVO  vo = new PostVO();
+        int result = dao.writePost(vo);
 
         // 성공, 실패 여부에 따라 처리
         if (result == 1) {  // 글쓰기 성공 => 목록으로 이동
-            resp.sendRedirect(req.getContextPath() + "./post.do");
+            resp.sendRedirect(req.getContextPath() + "../../view/post/post.do");
 
         } else {  // 글쓰기 실패 => 경고창을 띄우고 글쓰기 페이지로 재이동
-            JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.",
+            JSFunction.alertLocation(resp, "글 등록에 실패했습니다.",
                     req.getContextPath() + "./write.do");
         }
 
