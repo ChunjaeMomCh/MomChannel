@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-@WebServlet("/qnaboard/view.do")
+@WebServlet("/view/cs/qna/view.do")
 public class ViewController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -29,6 +29,6 @@ public class ViewController extends HttpServlet {
 
         // 게시물(vo) 저장 후 뷰로 포워드
         req.setAttribute("vo", vo);
-        req.getRequestDispatcher("/view/QNABoard/View.jsp").forward(req, resp);
+        req.getRequestDispatcher("./View.jsp").forward(req, resp);
     }
 }
