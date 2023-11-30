@@ -39,7 +39,7 @@ public class PostDAO {
 
     }
 
-    // 지역별 게시판 페이지 불러오기
+    // 전체 게시판 페이지 불러오기
     public List<PostVO> showPosts(Map<String, Object> map) {
         SqlSession session = MyBatisSessionFactory.getSqlSession();
         PostMapper mapper = session.getMapper(PostMapper.class);
