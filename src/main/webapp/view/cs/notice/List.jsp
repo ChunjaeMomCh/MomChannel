@@ -11,7 +11,7 @@
 
             <!-- 문의하기 table -->
             <div class="content_tab_area" x-data="getNoticeList()" x-init="initFn">
-<%--                <form method="get" id="searchContent" action="/cs/notice_data.html" onsubmit="return false;">--%>
+                <form method="get" id="searchContent">
 <%--                    <input type="hidden" name="categoryId" x-model="categoryId"/>--%>
 <%--                    <input type="hidden" name="pageIndex" x-model="pageIndex"/>--%>
 <%--                    <input type="hidden" id="pageSize" name="pageSize" x-model="pageSize"/>--%>
@@ -19,13 +19,13 @@
 
                     <div class="customer_title_area">
                         <p class="customer_title mo_none">공지사항
-                            <button type="submit" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">공지작성</button>
+                            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">공지작성</button>
                         </p>
                         <div class="tab_btns select_search">
                             <span class="content_num mo_none" id="pcTotalCount" x-text="'총 ' + totCnt + '개의 게시글이 있습니다.'"></span>
                             <span class="content_num pc_none" id="mobileTotalCount" x-text="'총 ' + totCnt + '개'"></span>
                             <div class="form_box">
-                                <form method="get" id="searchContent">
+<%--                                <form method="get">--%>
                                     <select class="form-select search_category" name="searchField">
                                         <option value="전체">전체</option>
                                         <option value="중요">중요 </option>
@@ -36,7 +36,7 @@
                                         <input type="text" name="searchWord" class="search_bar" placeholder="검색어를 입력하세요." value="${ param.searchWord }"/>
                                     </div>
                                     <button type="submit" class="btn btn-light search_form_btn">검색</button>
-                                </form>
+<%--                                </form>--%>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <a href="javascript:void(0);" class="btn list_load" x-show="list.length < totCnt" id="btnMobileMore" @click="addList" >더보기</a>
                         </div>
                     </div>
-<%--                </form>--%>
+                </form>
             </div>
         </div>
     </div>
