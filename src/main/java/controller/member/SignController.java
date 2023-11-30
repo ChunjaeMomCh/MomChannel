@@ -50,8 +50,10 @@ public class SignController extends HttpServlet {
 
         // 성공 or 실패?
         if (result == 1) {  // 글쓰기 성공
-            resp.sendRedirect("../view/Login/loginForm.jsp");
+//            resp.sendRedirect("../view/Login/loginForm.jsp");
 //            req.getRequestDispatcher("/view/Login/loginForm.jsp").forward(req, resp);
+            JSFunction.alertLocation(resp, "회원가입에 성공했습니다.",
+                    "../view/Login/loginForm.jsp");
         }
         else {  // 글쓰기 실패
             JSFunction.alertBack(resp, "회원가입에 실패했습니다.");
