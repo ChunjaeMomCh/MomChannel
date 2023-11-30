@@ -21,7 +21,7 @@
         </if>
         ORDER BY post_no DESC
     </select>
-    <!-- 페이지 내에 게시물을 불러온다. -->
+    <!-- 게시물 전체 (페이징) -->
     <select id="selectListPage" parameterType="map" resultType="vo.PostVO">
         SELECT *
         FROM (SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
@@ -40,25 +40,7 @@
         ORDER BY post_no DESC ) T
         WHERE ROWNUM BETWEEN #{start} AND #{end}
     </select>
-    <!-- 지역별 게시글 보기 -->
-    <select id="showPostsByRegion" parameterType="map" resultType="vo.PostVO">
-        SELECT *
-        FROM post
-        <if test="searchWord != null and !searchWord.equals('')">
-            WHERE (post_region IS NOT NULL) AND (
-            <choose>
-                <when test="searchField == 'title'">
-                    title like concat('%', #{searchWord}, '%')
-                </when>
-                <otherwise>
-                    content like concat('%', #{searchWord}, '%')
-                </otherwise>
-            </choose>
-             )
-        </if>
-        ORDER BY post_no DESC
-    </select>
-    <!-- 학년별 게시글 보기 -->
+    <!-- 게시글 보기 - 전체 -->
     <select id="showPosts" parameterType="map" resultType="vo.PostVO">
         SELECT *
         FROM post
@@ -74,11 +56,23 @@
             </choose>
         </if>
         ORDER BY post_no DESC
-        WHERE #{post_grade} != null
+    </select>
+    <!-- 지역별 게시글 보기 -->
+    <select id="showPostsByRegion" parameterType="map" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        WHERE post_region IS NOT NULL
+        ORDER BY post_no DESC
+    </select>
+    <!-- 학년별 게시글 보기 -->
+    <select id="showPostsByGrade" parameterType="map" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        WHERE post_grade IS NOT NULL
+        ORDER BY post_no DESC
     </select>
     <!-- 게시글 상세 보기 화면 불러오기 -->
     <select id="viewPost" parameterType="String" resultType="vo.PostVO">
-
         SELECT *
         FROM post
         WHERE post_no = #{post_no}
@@ -92,7 +86,15 @@
     <!-- 게시물 작성하기 -->
     <insert id="writePost" parameterType="map">
         INSERT INTO
-        post(mem_id, post_title, post_content, post_region, post_grade)
-        VALUES (#{mem_id}, #{post_title}, #{post_content}, #{post_region}, #{post_grade})
+        post(mem_id, post_title, post_content, post_region, post_grade, thumbnail, ofile, sfile)
+        VALUES (#{mem_id}, #{post_title}, #{post_content}, #{post_region}, #{post_grade}, #{thumbnail}, #{ofile}, #{sfile})
     </insert>
+    <!-- 게시물 수정하기 -->
+    <update id="updatePost" parameterType="vo.PostVO">
+        UPDATE post
+        SET post_title = #{post_title}, post_content = #{post_content},
+        post_region = #{post_region}, post_grade = #{post_grade},
+        thumbnail = #{thumbnail}, ofile = #{ofile}, sfile = #{sfile})
+        WHERE post_no = #{post_no} AND mem_id = #{mem_id}
+    </update>
 </mapper>
