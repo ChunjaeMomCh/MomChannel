@@ -12,11 +12,6 @@
             <!-- 문의하기 table -->
             <div class="content_tab_area" x-data="getQnaList()" x-init="initFn">
                 <form method="get" id="searchContent">
-                    <input type="hidden" name="categoryId" x-model="categoryId"/>
-                    <input type="hidden" name="pageIndex" x-model="pageIndex"/>
-                    <input type="hidden" id="pageSize" name="pageSize" x-model="pageSize"/>
-                    <input type="hidden" name="field" value="title, description"/>
-
                     <div class="customer_title_area">
                         <p class="customer_title mo_none">문의하기
                         <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">문의글 작성</button>

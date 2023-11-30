@@ -10,7 +10,13 @@ public class BoardPage {
 
         // 단계 4 : '이전 페이지 블록 바로가기' 출력
         int pageTemp = (((pageNum - 1) / blockPage) * blockPage) + 1;
-        pagingStr += "<li><a href='" + reqUrl + "?pageNum=1'><i class=\"ico pprev\"></i></a></li>"; // 첫페이지
+        // 첫 페이지
+        pagingStr += "<li><a href='" + reqUrl + "?pageNum=1";
+        if(searchField != null){
+            pagingStr += "&searchField"+ "=" + searchField + "&searchWord"+ "=" + searchWord;
+        }
+        pagingStr += "'><i class=\"ico pprev\"></i></a></li>";
+        // 이전 페이지
         if (pageNum == 1)
             pagingStr += "<li><a href='" + reqUrl + "?pageNum=1";
         else {
@@ -31,10 +37,9 @@ public class BoardPage {
                 pagingStr += "<li>";
             pagingStr += "<a href='" + reqUrl + "?pageNum=" + pageTemp;
             if(searchField != null){
-                pagingStr += "&nbsp;"
-                        + "&searchField"+ "=" + searchField + "&searchWord"+ "=" + searchWord;
+                pagingStr += "&searchField"+ "=" + searchField + "&searchWord"+ "=" + searchWord;
             }
-            pagingStr += "'>" + pageTemp + "</a></li>&nbsp;";
+            pagingStr += "'>" + pageTemp + "</a></li>";
 
             pageTemp++;
             blockCount++;
