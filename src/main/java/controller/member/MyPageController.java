@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @WebServlet("/member/myinfo.do")
 public class MyPageController extends HttpServlet {
@@ -30,10 +32,22 @@ public class MyPageController extends HttpServlet {
         System.out.println(memId);
         MemberVO mvo = dao.selectMember(memId);
 
+        String ext = null, fileName =  mvo.getMemImg();
+        if(fileName!=null) {
+            ext = fileName.substring(fileName.lastIndexOf(".")+1);
+        }
+        String[] mimeStr = {"png","jpg","gif"};
+        List<String> mimeList = Arrays.asList(mimeStr);
+        boolean isImage = false;
+        if(mimeList.contains(ext)) {
+            isImage = true;
+        }
+
         // 게시물(vo) 저장 후 뷰로 포워드
         req.setAttribute("mvo", mvo);
         System.out.println(mvo.getMemName());
         System.out.println(mvo.getMemPhone());
+        req.setAttribute("isImage", isImage);
         req.getRequestDispatcher("/view/member/myPage.jsp").forward(req, resp);
     }
 }

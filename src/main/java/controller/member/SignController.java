@@ -31,9 +31,9 @@ public class SignController extends HttpServlet {
 
         String memId = (String) session.getAttribute("memId");
         if (req.getParameter("roadAddr")==null){
-            addr = req.getParameter("postCode").concat(" / ").concat(req.getParameter("roadAddr")).concat(" / ").concat(req.getParameter("detailAddr"));
+            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("roadAddr")).concat("/").concat(req.getParameter("detailAddr"));
         }else {
-            addr = req.getParameter("postCode").concat(" / ").concat(req.getParameter("jibunAddr")).concat(" / ").concat(req.getParameter("detailAddr"));
+            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("jibunAddr")).concat("/").concat(req.getParameter("detailAddr"));
         }
         mvo.setMemId(memId);
         mvo.setMemName(req.getParameter("memName"));

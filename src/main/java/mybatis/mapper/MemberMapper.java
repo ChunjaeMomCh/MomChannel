@@ -11,4 +11,5 @@ public interface MemberMapper {
     int idCheck(Map<String, String> map);
     int insertMember(MemberVO mvo);
     MemberVO selectMember(String memId);
+    int updateMember(MemberVO mvo);
 }

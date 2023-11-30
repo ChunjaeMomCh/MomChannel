@@ -23,8 +23,14 @@
     <!-- 게시글 정보 -->
     <tr>
         <td>회원 이미지</td>
-        <td colspan="3">${ mvo.memImg }</td>
+        <td colspan="3">
+<%--            <c:if test="${ isImage eq true }">--%>
+                <img src="../Uploads/${ mvo.memSImg }" style="max-width:20%;"/>
+<%--            </c:if>--%>
+        </td>
+
     </tr>
+
     <tr>
         <td>아이디</td>
         <td colspan="3">${ mvo.memId }</td>
@@ -43,7 +49,7 @@
     </tr>
     <tr>
         <td>자녀 학년</td>
-        <td colspan="3">${ mvo.memChildGrade }</td>
+        <td colspan="3">${ mvo.memChildGrade }학년</td>
     </tr>
     <tr>
         <td>전화번호</td>
@@ -59,7 +65,7 @@
          <td colspan="4" align="center">
 <%--            <input type="hidden" name="qnaNo" value="${ vo.qnaNo }"/>--%>
 <%--            <input type="hidden" name="memId" value="${ vo.memId }"/>--%>
-            <button type="button" onclick="location.href='../member/myinfoedit.do?memId=${ param.memId }';">
+            <button type="button" onclick="location.href='../member/myinfoedit.do?memId=${ mvo.memId }';">
                 수정하기
             </button>
 

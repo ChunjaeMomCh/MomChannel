@@ -67,4 +67,16 @@ public class MemberDAO {
         sqlSession.close();
         return mvo;
     }
+    public int updateMember(MemberVO mvo) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+        int result = mapper.updateMember(mvo);
+        if (result == 1) {
+            sqlSession.commit();
+        } else {
+            System.out.println("member update 중 오류 발생...");
+        }
+        sqlSession.commit();
+        return result;
+    }
 }
