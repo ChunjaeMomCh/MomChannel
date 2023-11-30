@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/qnaboard/answer.do")
+@WebServlet("/view/cs/qna/answer.do")
 public class AnswerContoller extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -23,7 +23,7 @@ public class AnswerContoller extends HttpServlet {
         QNABoardDAO dao = new QNABoardDAO();
         QNABoardVO vo = dao.selectView(qnaNo);
         req.setAttribute("vo", vo);
-        req.getRequestDispatcher("/view/QNABoard/answer.jsp").forward(req, resp);
+        req.getRequestDispatcher("/view/cs/qna/answer.jsp").forward(req, resp);
     }
 
     @Override
@@ -50,17 +50,15 @@ public class AnswerContoller extends HttpServlet {
 
             // 성공 or 실패?
             if (result == 1) {  // 글쓰기 성공
-                resp.sendRedirect("../qnaboard/list.do");
+                resp.sendRedirect("./list.do");
             }
             else {  // 글쓰기 실패
                 JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.",
-                        "../qnaboard/write.do");
+                        "./write.do");
             }
         }
         else {
             JSFunction.alertBack(resp, "관리자가 아닙니다.");
         }
-
-
     }
 }
