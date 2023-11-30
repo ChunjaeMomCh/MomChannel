@@ -19,3 +19,17 @@
     height: 45px;
     font-size: 15px;
 }
+.search_form_btn {
+    font-weight: bold;
+    float: right;
+    height: 40px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+.form-select.search_category {
+    width: 100px;
+    height: 40px;
+}
+.customer_box .customer_title_area .customer_title {
+    height: 30px;
+}
