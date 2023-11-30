@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.*;
 
 // 게시물 목록 읽기
-@WebServlet("/post/by-grade/post.do")
+@WebServlet("/view/post/by-grade/post.do")
 public class GPostListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -41,6 +41,7 @@ public class GPostListController extends HttpServlet {
         if (postGrade != null && !postGrade.equals("")) {
             map.put("postGrade", postGrade);
         }
+
         /* 검색 end */
 
         // 페이징 처리문
@@ -67,6 +68,6 @@ public class GPostListController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher("./post/by-grade/Post.jsp").forward(req, resp);
+        req.getRequestDispatcher(req.getContextPath() + "/view/post/by-grade/Post.jsp").forward(req, resp);
     }
 }

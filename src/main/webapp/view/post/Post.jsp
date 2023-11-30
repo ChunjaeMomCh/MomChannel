@@ -31,6 +31,14 @@
 </head>
 <body>
 <%@ include file="../include/header.jsp"%>
+          <%-- 총 게시물 수와 게시글 정렬 버튼 --%>
+          <div class="tab_btns">
+            <div class="select_area"><span class="content_num">총 ${ map.end } 개의 게시글이 존재합니다.</span></div>
+            <select name="arrangement" id="arrangement">
+              <option value="post_time">최신순</option>
+              <option value="popularity">인기순</option>
+            </select>
+          </div>
           <%-- 게시글 목록을 구현한다. --%>
           <div class="content_card_area">
             <a href="./write.do">글쓰기
