@@ -69,6 +69,79 @@
 
     function setProfileImage(){
     }
+
+    $(function(){
+      const path = window.location.pathname;
+      // 모바일 header 메뉴 노출 여부
+      if(path.indexOf('/community/E-community-list.html') > -1
+              || path.indexOf('/index.html') > -1){
+        $("#_app_header").removeClass("header_02");
+        $("#_header_nav").removeClass("mo_none");
+      }
+
+      // header 선택 메뉴 밑줄 표시
+      $("ul.header_menu > li").removeClass("active");
+      if(path.indexOf("/cs/") > -1){
+        $("ul.header_menu > li:eq(5)").addClass("active");
+      }else if(path.indexOf("/channel/") > -1){
+        $("ul.header_menu > li:eq(4)").addClass("active");
+      }else if(path.indexOf("/community/") > -1){
+        $("ul.header_menu > li:eq(1)").addClass("active");
+      }
+
+      // 올리기 메뉴 클릭
+      $("ul.upload_menu > li > a").click(function(){
+        location.href = this.href;
+      });
+
+      // 프로필
+      $("ul.profile_menu > li > a").click(function(){
+        location.href = this.href;
+      });
+
+      $("#keywordSearch").keyup(function(e){
+        if(e.keyCode==13){
+          search($(this).attr("id"));
+        }
+      });
+
+      $("#keywordSearch2").keyup(function(e){
+        if(e.keyCode==13){
+          search($(this).attr("id"));
+        }
+      });
+
+      $("#mKeywordSearch").keyup(function(e){
+        if(e.keyCode==13){
+          search($(this).attr("id"));
+        }
+      });
+
+    });
+    function doLogin() {
+      let loginUrl = "/view/Login/loginForm.jsp";
+      location.href = loginUrl;
+    }
+    function logout() {
+      $.post("/ssoLogout.do")
+              .done(function (data) {
+                if (data.success) {
+                  let returnUrl = location.protocol + '//' + location.host + '/index.html';
+                  document.location.href = "https://sso.chunjae.co.kr:446/api/auth/logout?returnUrl=" + returnUrl;
+                } else {
+                  alert(data.message);
+                }
+
+              });
+    }
+    function search(id){
+      const keywordSearch = document.getElementById(id).value;
+      if(keywordSearch.trim().length == 0){
+        alert("검색어를 입력하세요.");
+        return;
+      }
+      location.href = "/search/search_result.html?keyword=" + keywordSearch;
+    }
   </script>
   <script src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/js/jquery-1.12.4.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/javascript/script.js"></script>
