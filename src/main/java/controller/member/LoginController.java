@@ -53,6 +53,5 @@ public class LoginController extends HttpServlet {
         else {
             JSFunction.alertBack(resp, "비밀번호 검증에 실패했습니다.");
         }
-//        req.getRequestDispatcher("/view/QNABoard/qnaList.jsp").forward(req, resp);
     }
 }
