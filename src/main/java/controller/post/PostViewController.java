@@ -69,7 +69,7 @@ public class PostViewController extends HttpServlet {
         // DTO 객체와 isImage를 request 영역에 저장하고 View.jsp 로 포워드한다.
         req.setAttribute("vo", vo);
         req.setAttribute("isImage", isImage);
-        req.getRequestDispatcher("../view/post/PostView.jsp").forward(req, resp);
+        req.getRequestDispatcher("../../view/post/PostView.jsp").forward(req, resp);
 
     }  // service()
 

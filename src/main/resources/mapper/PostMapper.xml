@@ -84,7 +84,7 @@
         WHERE post_no = #{post_no}
     </update>
     <!-- 게시물 작성하기 -->
-    <insert id="writePost" parameterType="map">
+    <insert id="writePost" parameterType="vo.PostVO">
         INSERT INTO
         post(mem_id, post_title, post_content, post_region, post_grade, thumbnail, ofile, sfile)
         VALUES (#{mem_id}, #{post_title}, #{post_content}, #{post_region}, #{post_grade}, #{thumbnail}, #{ofile}, #{sfile})
@@ -97,4 +97,11 @@
         thumbnail = #{thumbnail}, ofile = #{ofile}, sfile = #{sfile})
         WHERE post_no = #{post_no} AND mem_id = #{mem_id}
     </update>
+    <!-- 게시물 삭제하기 -->
+    <delete id="deletePost" parameterType="String">
+        DELETE *
+        FROM post
+        WHERE post_no = #{post_no}
+    </delete>
+
 </mapper>
