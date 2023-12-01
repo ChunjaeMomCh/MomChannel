@@ -1,9 +1,9 @@
 package controller.notice;
 
-import dao.QNABoardDAO;
+
+import dao.NoticeDAO;
 import utils.JSFunction;
-import vo.MemberVO;
-import vo.QNABoardVO;
+import vo.NoticeVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +20,11 @@ public class EditController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String qnaNo = req.getParameter("qnaNo");
-        QNABoardDAO dao = new QNABoardDAO();
-        QNABoardVO vo = dao.selectView(qnaNo);
+        String noticeNo = req.getParameter("idx");
+        NoticeDAO dao = new NoticeDAO();
+        NoticeVO vo = dao.selectNoticeView(noticeNo);
         req.setAttribute("vo", vo);
-        req.getRequestDispatcher("/view/cs/qna/Edit.jsp").forward(req, resp);
+        req.getRequestDispatcher("./Edit.jsp").forward(req, resp);
     }
 
     @Override
@@ -33,44 +33,33 @@ public class EditController extends HttpServlet {
 
         // 2. 파일 업로드 외 처리 =============================
         // 수정 내용을 매개변수에서 얻어옴
-        String qnaNo = req.getParameter("qnaNo");
-        String memId = req.getParameter("memId");
-        String qnaTitle = req.getParameter("qnaTitle");
-        String qnaContent = req.getParameter("qnaContent");
+        String noticeNo = req.getParameter("noticeNo");
+        String noticeCategory = req.getParameter("noticeCategory");
+        String noticeTitle = req.getParameter("noticeTitle");
+        String noticeContent = req.getParameter("noticeContent");
 
 
-        // 로그인 된 아이디는 session에서 가져옴
-        MemberVO mvo= new MemberVO();
-        HttpSession session = req.getSession();
-        mvo = (MemberVO) session.getAttribute("loginMember");
-//        String memId = mvo.getMemId();
-        System.out.println(mvo.getMemId());
-        // DTO에 저장
-        QNABoardVO vo = new QNABoardVO();
-        vo.setMemId(mvo.getMemId());
-        vo.setQnaNo(qnaNo);
-        vo.setQnaTitle(qnaTitle);
-        vo.setQnaContent(qnaContent);
-//        dto.setPass(pass);
+
+
+        NoticeVO vo = new NoticeVO();
+        vo.setNoticeNo(Integer.parseInt(req.getParameter("noticeNo")));
+        vo.setNoticeCategory(req.getParameter("noticeCategory"));
+        vo.setNoticeTitle(req.getParameter("noticeTitle"));
+        vo.setNoticeContent(req.getParameter("noticeContent"));
 
 
         // DB에 수정 내용 반영
-        QNABoardDAO dao = new QNABoardDAO();
+        NoticeDAO dao = new NoticeDAO();
 
-        //작성자와 현재 로그인된 아이디가 일치하는지 확인후 수정
-        if (memId.equals(mvo.getMemId())){
-            int result = dao.updatePost(vo);
-            // 성공 or 실패?
-            if (result == 1) {  // 수정 성공
-//            session.removeAttribute("pass");
-                resp.sendRedirect("./view.do?qnaNo=" + qnaNo);
-            }
-            else {  // 수정 실패
-                JSFunction.alertLocation(resp, "비밀번호 검증을 다시 진행해주세요.",
-                        "./view.do?qnaNo=" + qnaNo);
-            }
-        }else {
-            JSFunction.alertBack(resp, "이 글의 작성자가 아닙니다.");
+
+        int result = dao.updateNotice(vo);
+        // 성공 or 실패?
+        if (result == 1) {  // 수정 성공
+            resp.sendRedirect("./view.do?idx=" + noticeNo);
+        }
+        else {  // 수정 실패
+            JSFunction.alertLocation(resp, "비밀번호 검증을 다시 진행해주세요.",
+                    "./view.do?idx=" + noticeNo);
         }
 
 
