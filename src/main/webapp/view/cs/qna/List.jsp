@@ -14,7 +14,9 @@
                 <form method="get" id="searchContent">
                     <div class="customer_title_area">
                         <p class="customer_title mo_none">문의하기
-                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">문의글 작성</button>
+                            <c:if test="${not empty memId && memId ne 'admin'}">
+                                <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">문의글 작성</button>
+                            </c:if>
                         </p>
                         <div class="tab_btns select_search">
                             <span class="content_num mo_none" id="pcTotalCount" x-text="'총 ' + totCnt + '개의 게시글이 있습니다.'"></span>

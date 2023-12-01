@@ -13,9 +13,11 @@
             <div class="content_tab_area" x-data="getNoticeList()" x-init="initFn">
                 <form method="get" id="searchContent">
                     <div class="customer_title_area">
-                        <p class="customer_title mo_none">공지사항
-                            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">공지작성</button>
-                        </p>
+                        <c:if test="${memId eq 'admin'}">
+                            <p class="customer_title mo_none">공지사항
+                                <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">공지작성</button>
+                            </p>
+                        </c:if>
                         <div class="tab_btns select_search">
                             <span class="content_num mo_none" id="pcTotalCount" x-text="'총 ' + totCnt + '개의 게시글이 있습니다.'"></span>
                             <span class="content_num pc_none" id="mobileTotalCount" x-text="'총 ' + totCnt + '개'"></span>

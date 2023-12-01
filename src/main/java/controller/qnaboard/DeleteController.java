@@ -23,14 +23,14 @@ public class DeleteController extends HttpServlet {
         MemberVO mvo= new MemberVO();
         HttpSession session = req.getSession();
         mvo = (MemberVO) session.getAttribute("loginMember");
-
+        String loginId = (String)session.getAttribute("memId");
         String qnaNo = req.getParameter("qnaNo");
 
         QNABoardDAO dao = new QNABoardDAO();
         QNABoardVO vo = dao.selectView(qnaNo);
         String memId = vo.getMemId();
         req.setAttribute("vo", vo);
-        if (memId.equals(mvo.getMemId())) {
+        if (memId.equals(mvo.getMemId()) || loginId.equals("admin")){
             dao.deletePost(qnaNo);  // 게시물 삭제
             JSFunction.alertLocation(resp, "삭제되었습니다.", "./list.do");
         }

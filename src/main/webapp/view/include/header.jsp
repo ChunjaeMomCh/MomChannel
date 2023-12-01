@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -164,14 +165,26 @@
             </div>
           </div>
           <div class="header_btn_area">
-            <a href="javascript:void(0);" class="search_btn pc_none"><i class="ico search_01"></i></a>
-            <div class="profile_group">
-              <div class="profile_name">${loginMember.memId}님</div>
-              <a href="javascript:void(0)" onclick="doLogin()" class="profile"></a>
-              <a href="javascript:void(0)" class="profile_hover" onclick="doLogin()">로그인하기</a>
-              <div class="mo_none">
-              </div>
-            </div>
+            <div>
+              <c:choose>
+                <c:when test="${empty loginMember.memId}">
+                  <a href="/view/Login/loginForm.jsp">로그인</a>
+                  <a href="/view/Login/signForm.jsp">회원가입</a>
+                </c:when>
+                <c:when test="${not empty loginMember.memId}">
+                  <a href="javascript:void(0);" class="search_btn pc_none"><i class="ico search_01"></i></a>
+                  <div class="profile_group">
+                    <div class="profile_name">${loginMember.memId}님</div>
+                    <a href="javascript:void(0)" onclick="doLogin()" class="profile"></a>
+                    <a href="javascript:void(0)" class="profile_hover" onclick="doLogin()">로그인하기</a>
+                    <div class="mo_none">
+                    </div>
+                  </div>
+                  <a href="/member/logout.do">로그아웃</a>
+                  <a href="/member/myinfo.do">내정보</a>
+                </c:when>
+              </c:choose>
+            </div> <%-- content의 끝 --%>
           </div>
         </div>
         <nav class="header_nav ">
@@ -189,5 +202,6 @@
         </nav>
       </header>
     </div>
-  </div> <!-- header 끝 -->
+  </div>
+  <!-- header 끝 -->
   <!-- 상단 고정 헤더 -->
