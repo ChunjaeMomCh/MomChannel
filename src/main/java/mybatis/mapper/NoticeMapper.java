@@ -11,7 +11,7 @@ public interface NoticeMapper {
     int selectCount(Map<String, Object> map);
     List<NoticeVO> selectNoticeListWithPaging(Map<String, Object> map);
     NoticeVO selectNoticeView(String noticeNo);
-    int insertNoticeWrite(NoticeVO vo);
+    int insertWrite(NoticeVO vo);
+    int updateNotice(NoticeVO vo);
     int deleteNotice(String noticeNo);
-    int deleteNotice(NoticeVO vo);
 }

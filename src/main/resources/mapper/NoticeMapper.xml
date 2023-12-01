@@ -40,5 +40,32 @@
         where notice_no = #{noticeNo}
     </select>
 
+    <insert id="insertWrite" parameterType="vo.NoticeVO">
+        INSERT
+        INTO notice(notice_category, notice_title, notice_content)
+        VALUES( #{noticeCategory}, #{noticeTitle}, #{noticeContent})
+    </insert>
+
+    <!-- 게시물 상세 보기 시 조회수 업데이트 -->
+    <update id="updateVisitCount" parameterType="String">
+        UPDATE notice
+        SET notice_hit = notice_hit + 1
+        WHERE notice_no = #{noticeNo}
+    </update>
+
+    <update id="updateNotice" parameterType="vo.NoticeVO">
+        update notice
+        set
+        notice_category = #{noticeCategory},
+        notice_title = #{noticeTitle},
+        notice_content = #{noticeContent}
+        where notice_no = #{noticeNo}
+    </update>
+
+    <delete id="deleteNotice">
+        delete
+        from notice
+        where notice_no = #{noticeNo}
+    </delete>
 
 </mapper>

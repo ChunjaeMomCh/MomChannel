@@ -1,10 +1,10 @@
-package controller.qnaboard;
+package controller.notice;
 
 
-import dao.QNABoardDAO;
+import dao.NoticeDAO;
 import utils.JSFunction;
 import vo.MemberVO;
-import vo.QNABoardVO;
+import vo.NoticeVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/view/cs/qna/delete.do")
+@WebServlet("/view/cs/notice/delete.do")
 public class DeleteController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -24,19 +24,14 @@ public class DeleteController extends HttpServlet {
         HttpSession session = req.getSession();
         mvo = (MemberVO) session.getAttribute("loginMember");
 
-        String qnaNo = req.getParameter("qnaNo");
+        String NoticeNo = req.getParameter("idx");
 
-        QNABoardDAO dao = new QNABoardDAO();
-        QNABoardVO vo = dao.selectView(qnaNo);
-        String memId = vo.getMemId();
+        NoticeDAO dao = new NoticeDAO();
+        NoticeVO vo = dao.selectNoticeView(NoticeNo);
         req.setAttribute("vo", vo);
-        if (memId.equals(mvo.getMemId())) {
-            dao.deletePost(qnaNo);  // 게시물 삭제
-            JSFunction.alertLocation(resp, "삭제되었습니다.", "./list.do");
-        }
-        else {
-            JSFunction.alertBack(resp, "이 글의 작성자가 아닙니다.");
-        }
+
+        dao.deleteNotice(NoticeNo);  // 게시물 삭제
+        JSFunction.alertLocation(resp, "삭제되었습니다.", "./list.do");
 
     }
 

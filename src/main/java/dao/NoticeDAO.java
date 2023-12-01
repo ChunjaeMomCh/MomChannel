@@ -3,8 +3,10 @@ package dao;
 
 import mybatis.factory.MyBatisSessionFactory;
 import mybatis.mapper.NoticeMapper;
+import mybatis.mapper.QNABoardMapper;
 import org.apache.ibatis.session.SqlSession;
 import vo.NoticeVO;
+import vo.QNABoardVO;
 
 import java.util.List;
 import java.util.Map;
@@ -35,6 +37,33 @@ public class NoticeDAO {
         return vo;
     }
 
+    public int insertWrite(NoticeVO vo) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+        int result = mapper.insertWrite(vo);
+        if (result == 1) {
+            sqlSession.commit();
+            System.out.println("새로운 mvcboard 저장 성공");
+        } else {
+            System.out.println("새로운 mvcboard 저장 실패");
+        }
+        sqlSession.close();
+        return result;
+    }
+
+    public int updateNotice(NoticeVO vo) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+        int result = mapper.updateNotice(vo);
+        if (result == 1) {
+            sqlSession.commit();
+        } else {
+            System.out.println("board update 중 오류 발생...");
+        }
+        sqlSession.commit();
+        return result;
+    }
+
     public int deleteNotice(String noticeNo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
@@ -46,5 +75,9 @@ public class NoticeDAO {
         }
         return result;
     }
+
+
+
+
 
 }

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException; 
 
-@WebServlet("/qnaboard/edit.do")
+@WebServlet("/view/cs/qna/edit.do")
 public class EditController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -24,7 +24,7 @@ public class EditController extends HttpServlet {
         QNABoardDAO dao = new QNABoardDAO();
         QNABoardVO vo = dao.selectView(qnaNo);
         req.setAttribute("vo", vo);
-        req.getRequestDispatcher("/view/QNABoard/Edit.jsp").forward(req, resp);
+        req.getRequestDispatcher("/view/cs/qna/Edit.jsp").forward(req, resp);
     }
 
     @Override
@@ -63,11 +63,11 @@ public class EditController extends HttpServlet {
             // 성공 or 실패?
             if (result == 1) {  // 수정 성공
 //            session.removeAttribute("pass");
-                resp.sendRedirect("../qnaboard/view.do?qnaNo=" + qnaNo);
+                resp.sendRedirect("./view.do?qnaNo=" + qnaNo);
             }
             else {  // 수정 실패
                 JSFunction.alertLocation(resp, "비밀번호 검증을 다시 진행해주세요.",
-                        "../qnaboard/view.do?qnaNo=" + qnaNo);
+                        "./view.do?qnaNo=" + qnaNo);
             }
         }else {
             JSFunction.alertBack(resp, "이 글의 작성자가 아닙니다.");
