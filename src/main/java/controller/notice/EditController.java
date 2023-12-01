@@ -1,9 +1,9 @@
-package controller.qnaboard;
+package controller.notice;
 
 import dao.QNABoardDAO;
+import utils.JSFunction;
 import vo.MemberVO;
 import vo.QNABoardVO;
-import utils.JSFunction;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException; 
 
-@WebServlet("/view/cs/qna/edit.do")
+@WebServlet("/view/cs/notice/edit.do")
 public class EditController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
