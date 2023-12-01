@@ -32,10 +32,17 @@ public class EditController extends HttpServlet {
         String postNo = req.getParameter("postNo");  // 수정할 게시물의 일련번호
         PostDAO dao = new PostDAO();
         PostVO vo = dao.viewPost(postNo);  // 기존 게시물 내용을 담은 DTO 객체
-        System.out.println("vo---->"+vo);
+        HttpSession session = req.getSession();
+        String sessionMemId = (String)session.getAttribute("memId");
 
-        req.setAttribute("vo", vo);  // 게시물 일련번호를 DTO 객체의 request 영역에 저장
-        req.getRequestDispatcher(req.getContextPath() + "../post/Update.jsp").forward(req, resp);  // Edit.jsp로 포워드
+        // 현재 로그인된 아이디와 작성자가 일치하는지 확인
+        if (sessionMemId.equals(vo.getMemId())) {
+            req.setAttribute("vo", vo);  // 게시물 일련번호를 DTO 객체의 request 영역에 저장
+            req.getRequestDispatcher(req.getContextPath() + "./Edit.jsp").forward(req, resp);  // Edit.jsp로 포워드
+        }
+        else {
+            JSFunction.alertBack(resp, "이 글의 작성자가 아닙니다.");
+        }
     }
 
     @Override
@@ -76,9 +83,8 @@ public class EditController extends HttpServlet {
         /*String postThumbnail = req.getParameter("postThumbnail");*/
 
         // 세션에서 로그인된 아이디를 받아온다.
-        MemberVO mvo= new MemberVO();
         HttpSession session = req.getSession();
-        mvo = (MemberVO) session.getAttribute("loginMember");
+        MemberVO mvo = (MemberVO) session.getAttribute("loginMember");
         System.out.println(mvo);
 
         // DTO에 저장
@@ -114,24 +120,18 @@ public class EditController extends HttpServlet {
 
         // DB에 수정 내용 반영
         PostDAO dao = new PostDAO();
-        System.out.println(memId);
-        System.out.println(mvo.getMemId());
-        // 현재 로그인된 아이디와 작성자가 일치하는지 확인
-        if (memId.equals(mvo.getMemId())) {
+//        System.out.println(memId);
+//        System.out.println(mvo.getMemId());
 
-            int result = dao.updatePost(vo);
-            // 성공/실패 여부에 따라 진행
-            if (result == 1) {  // 수정 성공 => 해당 게시물의 상세 페이지에서 수정된 내용을 확인
+        int result = dao.updatePost(vo);
+        // 성공/실패 여부에 따라 진행
+        if (result == 1) {  // 수정 성공 => 해당 게시물의 상세 페이지에서 수정된 내용을 확인
 
-                resp.sendRedirect(req.getContextPath() + "./postview.do?postNo=" + postNo);  // 상세 보기 뷰로 이동해 수정된 내용을 확인시킨다.
+            resp.sendRedirect(req.getContextPath() + "./view.do?postNo=" + postNo);  // 상세 보기 뷰로 이동해 수정된 내용을 확인시킨다.
 
-            } else {  // 수정 실패
-                JSFunction.alertBack(resp, "내용 수정에 실패했습니다. 수정 화면으로 돌아갑니다.");  // 수정 폼에서 다시 작성하도록 한다.
-            }
-
-        } else {
-            JSFunction.alertBack(resp, "이 글의 작성자가 아닙니다.");
-        }  //
+        } else {  // 수정 실패
+            JSFunction.alertBack(resp, "내용 수정에 실패했습니다. 수정 화면으로 돌아갑니다.");  // 수정 폼에서 다시 작성하도록 한다.
+        }
 
 
     }  // doPost()

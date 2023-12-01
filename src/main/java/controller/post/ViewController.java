@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-@WebServlet("/view/post/postview.do")
+@WebServlet("/view/post/view.do")
 public class ViewController extends HttpServlet {
 
     @Override
@@ -67,7 +67,7 @@ public class ViewController extends HttpServlet {
         // DTO 객체와 isImage를 request 영역에 저장하고 View.jsp 로 포워드한다.
         req.setAttribute("vo", vo);
         req.setAttribute("isImage", isImage);
-        req.getRequestDispatcher("../../view/post/PostView.jsp").forward(req, resp);
+        req.getRequestDispatcher("./View.jsp").forward(req, resp);
 
     }  // service()
 

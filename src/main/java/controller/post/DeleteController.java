@@ -35,7 +35,7 @@ public class DeleteController extends HttpServlet {
         if (memId.equals(mvo.getMemId())) {  // 삭제하려는 글의 게시자임을 확인한 경우
 
             dao.deletePost(postNo);  // 게시물 삭제
-            JSFunction.alertLocation(resp, "삭제되었습니다.", "./post.do");
+            JSFunction.alertLocation(resp, "삭제되었습니다.", "./list.do");
 
         } else {
             // 작성자가 아닌 사람이 삭제를 시도한 경우

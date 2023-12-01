@@ -52,7 +52,7 @@
                     <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
                     <c:forEach items="${ postLists }" var="row" varStatus="loop">
                      <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
-                        <a href="${pageContext.request.contextPath}/view/post/postview.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
+                        <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
                           <figure class="content_img"></figure>
                           <div class="text_area">
                           <%-- 제목(상세보기 페이지로 바로가기 링크) --%>

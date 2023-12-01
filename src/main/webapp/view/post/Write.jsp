@@ -86,7 +86,7 @@
       <tr>
         <td colspan="2" style="text-align: right">
           <button type="submit">등록</button>
-          <button type="reset" onclick="location.href='./post.do'">취소</button>
+          <button type="reset" onclick="location.href='./list.do'">취소</button>
         </td>
       </tr>
     </table>

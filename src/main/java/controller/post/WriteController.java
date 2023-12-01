@@ -90,11 +90,10 @@ public class WriteController extends HttpServlet {
 
         // 성공, 실패 여부에 따라 처리
         if (result == 1) {  // 글쓰기 성공 => 목록으로 이동
-            resp.sendRedirect("../post/post.do");
+            resp.sendRedirect("./list.do");
 
         } else {  // 글쓰기 실패 => 경고창을 띄우고 글쓰기 페이지로 재이동
-            JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.",
-                    "./write.do");
+            JSFunction.alertLocation(resp, "글쓰기에 실패했습니다.", "./write.do");
         }
     }  // doPost()
 }

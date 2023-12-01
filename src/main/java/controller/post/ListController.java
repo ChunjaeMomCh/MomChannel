@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 // 게시물 목록 읽기
-@WebServlet("/view/post/post.do")
+@WebServlet("/view/post/list.do")
 public class ListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -65,6 +65,6 @@ public class ListController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher("./Post.jsp").forward(req, resp);
+        req.getRequestDispatcher("./List.jsp").forward(req, resp);
     }
 }
