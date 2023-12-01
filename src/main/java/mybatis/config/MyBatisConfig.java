@@ -12,10 +12,14 @@ public class MyBatisConfig {
     private SqlSessionFactory sqlSessionFactory = null;
 
     public MyBatisConfig() {
+
         String resource = "config/mybatis-config.xml"; // resource 디렉토리부터 경로 잡음
+
         InputStream inputStream = null;
+
         try {
             inputStream = Resources.getResourceAsStream(resource);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,4 +29,5 @@ public class MyBatisConfig {
     public SqlSessionFactory getSqlSessionFactory() {
         return this.sqlSessionFactory;
     }
+
 }

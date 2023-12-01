@@ -202,6 +202,5 @@
         </nav>
       </header>
     </div>
-  </div>
-  <!-- header 끝 -->
+  </div>  <!-- header 끝 -->
   <!-- 상단 고정 헤더 -->

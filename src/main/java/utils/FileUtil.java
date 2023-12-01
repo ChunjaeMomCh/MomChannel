@@ -1,23 +1,15 @@
+/**
+ * 파일 업로드, 다운로드 및 삭제를 위한 유틸리티 메서드
+ * */
+
 package utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
+import java.io.*;
 
 public class FileUtil {
 
@@ -30,7 +22,8 @@ public class FileUtil {
         System.out.println("aaaaaaaaaaaaaa");
 
         //Part 객체를 통해 서버로 전송된 파일명 읽어오기
-        Part part = req.getPart("memImg");
+        Part part = req.getPart("postOFile");
+        System.out.println(part);
 
         System.out.println("bbbbbbbbbbbbb");
 
@@ -74,14 +67,16 @@ public class FileUtil {
         File newFile = new File(sDirectory + File.separator + newFileName);
         oldFile.renameTo(newFile);
 
-        //변경된 파일명 반환
+        // 변경된 파일명을 반환한다.
         return newFileName;
-    }
+    }  // renameFile()
+    
 
     //파일 다운로드
     public static void download(HttpServletRequest req, HttpServletResponse resp,
                                 String directory, String sfileName, String ofileName) {
         String sDirectory = req.getServletContext().getRealPath(directory);
+
         try {
             // 파일을 찾아 입력 스트림 생성
             File file = new File(sDirectory, sfileName);
@@ -103,39 +98,42 @@ public class FileUtil {
                     "attachment; filename=\"" + ofileName + "\"");
             resp.setHeader("Content-Length", "" + file.length() );
 
-            //out.clear();  // 출력 스트림 초기화
-
             // response 내장 객체로부터 새로운 출력 스트림 생성
             OutputStream oStream = resp.getOutputStream();
 
             // 출력 스트림에 파일 내용 출력
-            byte b[] = new byte[(int)file.length()];
+            byte b[] = new byte[(int) file.length()];
+
             int readBuffer = 0;
+
             while ( (readBuffer = iStream.read(b)) > 0 ) {
                 oStream.write(b, 0, readBuffer);
             }
 
-            // 입/출력 스트림 닫음
+            // 입/출력 스트림 닫기
             iStream.close();
             oStream.close();
-        }
-        catch (FileNotFoundException e) {
+
+        } catch (FileNotFoundException e) {
             System.out.println("파일을 찾을 수 없습니다.");
             e.printStackTrace();
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             System.out.println("예외가 발생하였습니다.");
             e.printStackTrace();
-        }
-    }
+
+        }  // try ~ catch
+    }  // download()   
 
     //파일 삭제
     public static void deleteFile(HttpServletRequest req,
                                   String directory, String filename) {
         String sDirectory = req.getServletContext().getRealPath(directory);
         File file = new File(sDirectory + File.separator + filename);
+
         if (file.exists()) {
             file.delete();
         }
     }
+
 }
