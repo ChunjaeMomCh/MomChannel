@@ -11,10 +11,12 @@
 
             <div class="content_tab_area">
                 <div class="customer_title_area">
-                    <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>공지사항
-                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?idx=${ param.idx }';">삭제하기</button>
-                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?idx=${ param.idx }';">수정하기</button>
-                    </p>
+                    <c:if test="${memId eq 'admin'}">
+                        <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>공지사항
+                            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?idx=${ param.idx }';">삭제하기</button>
+                            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?idx=${ param.idx }';">수정하기</button>
+                        </p>
+                    </c:if>
                     <input type="hidden" name="noticeNo" value="${ vo.noticeNo }"/>
                 </div>
                 <div class="detail_area" >

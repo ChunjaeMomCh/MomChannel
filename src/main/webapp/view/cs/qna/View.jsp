@@ -12,9 +12,20 @@
             <div class="content_tab_area">
                 <div class="customer_title_area">
                     <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>문의하기
-                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?qnaNo=${ param.qnaNo }';">삭제하기</button>
-                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?qnaNo=${ param.qnaNo }';">수정하기</button>
-                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./answer.do?qnaNo=${ param.qnaNo }';">답변작성</button>
+                        <c:if test="${not empty memId }">
+                            <c:if test="${vo.qnaPNo eq 0 || memId eq 'admin'}">
+                                <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?qnaNo=${ param.qnaNo }';">삭제하기</button>
+                            </c:if>
+                        </c:if>
+                        <c:if test="${not empty memId && memId ne 'admin' && vo.qnaPNo eq 0}">
+                            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?qnaNo=${ param.qnaNo }';">수정하기</button>
+                        </c:if>
+                        <c:if test="${memId eq 'admin' && vo.qnaPNo ne 0}">
+                            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?qnaNo=${ param.qnaNo }';">수정하기</button>
+                        </c:if>
+                        <c:if test="${ memId eq 'admin' && vo.qnaPNo eq 0}">
+                            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./answer.do?qnaNo=${ param.qnaNo }';">답변작성</button>
+                        </c:if>
                     </p>
                     <input type="hidden" name="qnaNo" value="${ vo.qnaNo }"/>
                     <input type="hidden" name="memId" value="${ vo.memId }"/>
