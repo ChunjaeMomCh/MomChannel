@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-<%@ page contentType="text/html;charset=UTF-8" language="java"
-         pageEncoding="utf-8" %>
-
-=======
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
->>>>>>> 0388693b94bcf03c9855a58d20cfe9451f3560a4
 <%@ include file="include/header.jsp"%>
 
 <div class="content">
