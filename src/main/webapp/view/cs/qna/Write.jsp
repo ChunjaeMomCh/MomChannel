@@ -4,11 +4,6 @@
 
 <script type="text/javascript">
     function validateForm(form) {  // 필수 항목 입력 확인
-        // if (form.memId.value == "") {
-        //     alert("작성자를 입력하세요.");
-        //     form.memId.focus();
-        //     return false;
-        // }
         if (form.qnaTitle.value == "") {
             alert("제목을 입력하세요.");
             form.qnaTitle.focus();
