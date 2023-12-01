@@ -11,20 +11,13 @@
 
             <div class="content_tab_area">
                 <div class="customer_title_area">
-                    <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>문의하기</p>
+                    <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>문의하기
+                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?qnaNo=${ param.qnaNo }';">삭제하기</button>
+                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?qnaNo=${ param.qnaNo }';">수정하기</button>
+                        <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./answer.do?qnaNo=${ param.qnaNo }';">답변작성</button>
+                    </p>
                     <input type="hidden" name="qnaNo" value="${ vo.qnaNo }"/>
                     <input type="hidden" name="memId" value="${ vo.memId }"/>
-
-                    <button type="button" onclick="location.href='../qna/answer.do?qnaNo=${ param.qnaNo }';">
-                        답변 작성
-                    </button>
-                    <button type="button" onclick="location.href='../qna/edit.do?qnaNo=${ param.qnaNo }';">
-                        수정하기
-                    </button>
-                    <button type="button" onclick="location.href='../qna/delete.do?qnaNo=${ param.qnaNo }';">
-                        삭제하기
-                    </button>
-
                 </div>
                 <div class="detail_area" >
                     <div class="detail_title_area">

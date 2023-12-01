@@ -51,6 +51,19 @@ public class NoticeDAO {
         return result;
     }
 
+    public int updateNotice(NoticeVO vo) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+        int result = mapper.updateNotice(vo);
+        if (result == 1) {
+            sqlSession.commit();
+        } else {
+            System.out.println("board update 중 오류 발생...");
+        }
+        sqlSession.commit();
+        return result;
+    }
+
     public int deleteNotice(String noticeNo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
@@ -62,6 +75,8 @@ public class NoticeDAO {
         }
         return result;
     }
+
+
 
 
 
