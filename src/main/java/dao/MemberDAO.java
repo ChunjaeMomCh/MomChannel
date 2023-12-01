@@ -3,14 +3,8 @@ package dao;
 
 import mybatis.factory.MyBatisSessionFactory;
 import mybatis.mapper.MemberMapper;
-<<<<<<< HEAD
-
-=======
-import mybatis.mapper.QNABoardMapper;
->>>>>>> 0388693b94bcf03c9855a58d20cfe9451f3560a4
 import org.apache.ibatis.session.SqlSession;
 import vo.MemberVO;
-import vo.QNABoardVO;
 
 
 import java.util.HashMap;
