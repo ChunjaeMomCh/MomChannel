@@ -93,6 +93,7 @@ public class PostDAO {
         PostMapper mapper = session.getMapper(PostMapper.class);
 
         int result = mapper.updateVisitCount(postNo);
+        session.commit();
 
         session.close();
         return result;
@@ -127,6 +128,7 @@ public class PostDAO {
         int result = mapper.updatePost(vo);
         
         if (result == 1) {
+            session.commit();
             System.out.println("게시물 수정 성공");
             
         } else {
@@ -144,6 +146,7 @@ public class PostDAO {
         int result = mapper.deletePost(postNo);
 
         if (result == 1) {
+            session.commit();
             System.out.println("게시물 삭제 성공");
 
         } else {

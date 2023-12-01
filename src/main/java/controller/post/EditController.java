@@ -3,6 +3,7 @@ package controller.post;
 import dao.PostDAO;
 import utils.FileUtil;
 import utils.JSFunction;
+import vo.MemberVO;
 import vo.PostVO;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ import java.io.IOException;
         maxFileSize = 1024 * 1024 * 1,
         maxRequestSize = 1024 * 1024 * 10
 )
-public class UpdateController extends HttpServlet {
+public class EditController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,7 +31,8 @@ public class UpdateController extends HttpServlet {
 
         String postNo = req.getParameter("postNo");  // 수정할 게시물의 일련번호
         PostDAO dao = new PostDAO();
-        PostVO vo = dao.viewPost("postNo");  // 기존 게시물 내용을 담은 DTO 객체
+        PostVO vo = dao.viewPost(postNo);  // 기존 게시물 내용을 담은 DTO 객체
+        System.out.println("vo---->"+vo);
 
         req.setAttribute("vo", vo);  // 게시물 일련번호를 DTO 객체의 request 영역에 저장
         req.getRequestDispatcher(req.getContextPath() + "../post/Update.jsp").forward(req, resp);  // Edit.jsp로 포워드
@@ -57,64 +59,71 @@ public class UpdateController extends HttpServlet {
 
         // 2. 파일 업로드 외 처리 =====================================================
         // 매개변수로부터 수정 내용을 얻어 온다.
+        PostVO pvo = new PostVO();
+
         String postNo = req.getParameter("postNo");
         String prevOfile = req.getParameter("prevOfile");
         String prevSfile = req.getParameter("prevSfile");
-        String prevThumbnail = req.getParameter("prevThumbnail");
+        /*String prevThumbnail = req.getParameter("prevThumbnail");*/
 
-//        String memId = req.getParameter("memId");
-        String memId = "tester";
+        String memId = req.getParameter("memId");
         String postTitle = req.getParameter("postTitle");
         String postContent = req.getParameter("postContent");
         String postRegion = req.getParameter("postRegion");
         String postGrade = req.getParameter("postGrade");
-        String postThumbnail = req.getParameter("postThumbnail");
+        String postOFile = req.getParameter("postOFile");
+        String postSFile = req.getParameter("postSFile");
+        /*String postThumbnail = req.getParameter("postThumbnail");*/
 
         // 세션에서 로그인된 아이디를 받아온다.
+        MemberVO mvo= new MemberVO();
         HttpSession session = req.getSession();
-        String sMemId = (String) session.getAttribute("memId");
-
+        mvo = (MemberVO) session.getAttribute("loginMember");
+        System.out.println(mvo);
 
         // DTO에 저장
         PostVO vo = new PostVO();
-        vo.setPostNo(Integer.parseInt(postNo));
         vo.setMemId(memId);
+        vo.setPostNo(Integer.parseInt(postNo));
         vo.setPostTitle(postTitle);
         vo.setPostContent(postContent);
         vo.setPostRegion(postRegion);
-        vo.setPostGrade(Integer.parseInt(postGrade));
-        vo.setPostThumbnail(postThumbnail);
+        vo.setPostGrade(postGrade);
+        vo.setPostOFile(postOFile);
+        vo.setPostSFile(postSFile);
+        /*vo.setPostThumbnail(postThumbnail);*/
 
         // 첨부 파일이 있는 경우 원본 파일명과 저장된 파일 이름 설정
         if (originalFileName != "" && !originalFileName.equals("")) {
             String savedFileName = FileUtil.renameFile(saveDirectory,
                     originalFileName);
 
-            vo.setOfile(originalFileName);  // 원래 파일 이름
-            vo.setSfile(savedFileName);  // 서버에 저장된 파일 이름
+            vo.setPostOFile(originalFileName);  // 원래 파일 이름
+            vo.setPostSFile(savedFileName);  // 서버에 저장된 파일 이름
 
             // 기존 파일 삭제
             FileUtil.deleteFile(req, "/Uploads", prevSfile);
 
         } else {
             // 첨부 파일이 없으면 기존 이름 유지
-            vo.setOfile(prevOfile);
-            vo.setSfile(prevSfile);
-            vo.setPostThumbnail(prevThumbnail);
+            vo.setPostOFile(prevOfile);
+            vo.setPostSFile(prevSfile);
+            /*vo.setPostThumbnail(prevThumbnail);*/
 
         }  // if ~ else
 
         // DB에 수정 내용 반영
         PostDAO dao = new PostDAO();
-
+        System.out.println(memId);
+        System.out.println(mvo.getMemId());
         // 현재 로그인된 아이디와 작성자가 일치하는지 확인
-        if (memId.equals("sMemId")) {
+        if (memId.equals(mvo.getMemId())) {
 
             int result = dao.updatePost(vo);
             // 성공/실패 여부에 따라 진행
-            if (result == 1) {  // 수정 성공
-                session.removeAttribute("pass");
-                resp.sendRedirect(req.getContextPath() + "/post/postview.do");  // 상세 보기 뷰로 이동해 수정된 내용을 확인시킨다.
+            if (result == 1) {  // 수정 성공 => 해당 게시물의 상세 페이지에서 수정된 내용을 확인
+
+                resp.sendRedirect(req.getContextPath() + "./postview.do?postNo=" + postNo);  // 상세 보기 뷰로 이동해 수정된 내용을 확인시킨다.
 
             } else {  // 수정 실패
                 JSFunction.alertBack(resp, "내용 수정에 실패했습니다. 수정 화면으로 돌아갑니다.");  // 수정 폼에서 다시 작성하도록 한다.

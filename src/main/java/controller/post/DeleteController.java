@@ -10,7 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/post/delete.do")
+import static java.lang.System.out;
+
+@WebServlet("/view/post/delete.do")
 public class DeleteController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -26,14 +28,14 @@ public class DeleteController extends HttpServlet {
         String postNo = req.getParameter("postNo");  // 게시물 번호
 
         PostDAO dao = new PostDAO();
-        PostVO vo = dao.viewPost(postNo);
-        String memId = vo.getMemId();
-        req.setAttribute("vo", vo);
+        PostVO pvo = dao.viewPost(postNo);
+        String memId = pvo.getMemId();
+        req.setAttribute("pvo", pvo);
 
-        if (memId.equals(mvo.getMemId())) {
-            // 삭제하려는 글의 게시자임을 확인한 경우
-            dao.deletePost(postNo);
-            JSFunction.alertLocation(resp, "삭제되었습니다.", "../post/post.do");
+        if (memId.equals(mvo.getMemId())) {  // 삭제하려는 글의 게시자임을 확인한 경우
+
+            dao.deletePost(postNo);  // 게시물 삭제
+            JSFunction.alertLocation(resp, "삭제되었습니다.", "./post.do");
 
         } else {
             // 작성자가 아닌 사람이 삭제를 시도한 경우

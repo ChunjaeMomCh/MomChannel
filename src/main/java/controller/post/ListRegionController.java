@@ -1,5 +1,5 @@
 /**
- * 학년별 게시판 보기 페이지를 연결하는 서블릿
+ * 지역별 게시판 페이지 보기와 연결하는 서블릿
  * */
 
 package controller.post;
@@ -7,15 +7,20 @@ package controller.post;
 import dao.PostDAO;
 import vo.PostVO;
 
-import javax.servlet.*;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 // 게시물 목록 읽기
-@WebServlet("/view/post/by-grade/post.do")
-public class GPostListController extends HttpServlet {
+@WebServlet("/post/by-region/post.do")
+public class ListRegionController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -34,14 +39,6 @@ public class GPostListController extends HttpServlet {
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
         }
-
-        // 학년별 검색값
-        String postGrade = req.getParameter("postGrade");
-
-        if (postGrade != null && !postGrade.equals("")) {
-            map.put("postGrade", postGrade);
-        }
-
         /* 검색 end */
 
         // 페이징 처리문
@@ -63,11 +60,11 @@ public class GPostListController extends HttpServlet {
         /* 페이지 처리 end */
 
         // 게시물 목록 받기
-        List<PostVO> postLists = dao.showPostsByGrade(map);
+        List<PostVO> postLists = dao.showPosts(map);
 
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher(req.getContextPath() + "/view/post/by-grade/Post.jsp").forward(req, resp);
+        req.getRequestDispatcher(req.getContextPath() + "/post/by-region/Post.jsp").forward(req, resp);
     }
 }

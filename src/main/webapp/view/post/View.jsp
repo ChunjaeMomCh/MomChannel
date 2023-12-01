@@ -70,44 +70,44 @@
             <%-- 게시자 정보 영역 --%>
             <div class="author_area">
               <%-- ToDo: 게시자 정보 영역 - 프로필 이미지, 채널명 (링크) --%>
-<%--              <div class="author_profile"></div>--%>
-<%--                <a href="#" class="author_channel">채널명</a>--%>
-<%--            </div>--%>
-            <%-- 수정, 삭제 버튼 영역 : 게시자일 경우에만 --%>
-            <div class="post_edit_area">
-              <ul class="option_list post_edit_menu">
-                <li>
-                  <a href="./update.do?postNo=${postNo}">수정하기</a>
-                </li>
-                <li>
-                  <button type="button" onclick="location.href='../post/delete.do?postNo=${ param.postNo }';">삭제하기</button>
-                </li>
-              </ul>
+              <%--              <div class="author_profile"></div>--%>
+              <%--                <a href="#" class="author_channel">채널명</a>--%>
+              <%--            </div>--%>
+              <%-- 수정, 삭제 버튼 영역 : 게시자일 경우에만 --%>
+              <div <%--class="post_edit_area"--%>>
+                <ul <%--class="option_list post_edit_menu"--%>>
+                  <li>
+                    <a href="./update.do?postNo=${vo.postNo}">수정하기</a>
+                  </li>
+                  <li>
+                    <button type="button" onclick="location.href='../post/delete.do?postNo=${ param.postNo }';">삭제하기</button>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <%-- 버튼 및 첨부파일 영역 --%>
-          <div class="post_btns_area">
-            <%-- 좋아요 및 공유 --%>
+            <%-- 버튼 및 첨부파일 영역 --%>
+            <div class="post_btns_area">
+              <%-- 좋아요 및 공유 --%>
               <div class="post_btns">
                 <a href="#" class="like_btn">Likes ${ vo.postLikes }</a>
                 <a href="#" class="url_share_btn"></a>
               </div>
-            <%-- 첨부파일 --%>
+              <%-- 첨부파일 --%>
               <div class="attached_file_area">
                 <%-- ToDo: 첨부파일 리스트 --%>
               </div>
+            </div>
+            <%-- 게시글 내용 영역 --%>
+            <div class="text_body">
+              <p>${ vo.postContent }</p>
+            </div>
+            <%-- 댓글 영역 --%>
+            <div class="comments_area"></div>
           </div>
-          <%-- 게시글 내용 영역 --%>
-          <div class="text_body">
-            <p>${ vo.postContent }</p>
-          </div>
-          <%-- 댓글 영역 --%>
-          <div class="comments_area"></div>
+          <%-- aside --%>
+          <div class="related_posts"></div>
         </div>
-        <%-- aside --%>
-        <div class="related_posts"></div>
       </div>
     </div>
   </div>
-</div>
-<%@ include file="../include/footer.jsp"%>
+  <%@ include file="../include/footer.jsp"%>

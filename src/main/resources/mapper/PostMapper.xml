@@ -75,33 +75,33 @@
     <select id="viewPost" parameterType="String" resultType="vo.PostVO">
         SELECT *
         FROM post
-        WHERE post_no = #{post_no}
+        WHERE post_no = #{postNo}
     </select>
     <!-- 게시물 상세 보기 시 조회수 업데이트 -->
     <update id="updateVisitCount" parameterType="String">
         UPDATE post
         SET post_hit = post_hit + 1
-        WHERE post_no = #{post_no}
+        WHERE post_no = #{postNo}
     </update>
     <!-- 게시물 작성하기 -->
     <insert id="writePost" parameterType="vo.PostVO">
         INSERT INTO
-        post(mem_id, post_title, post_content, post_region, post_grade, thumbnail, ofile, sfile)
-        VALUES (#{mem_id}, #{post_title}, #{post_content}, #{post_region}, #{post_grade}, #{thumbnail}, #{ofile}, #{sfile})
+        post(mem_id, post_title, post_content, post_region, post_grade, <!--post_thumbnail,--> post_ofile, post_sfile)
+        VALUES (#{memId}, #{postTitle}, #{postContent}, #{postRegion}, #{postGrade}, <!--#{postThumbnail},--> #{postOFile}, #{postSFile})
     </insert>
     <!-- 게시물 수정하기 -->
     <update id="updatePost" parameterType="vo.PostVO">
         UPDATE post
-        SET post_title = #{post_title}, post_content = #{post_content},
-        post_region = #{post_region}, post_grade = #{post_grade},
-        thumbnail = #{thumbnail}, ofile = #{ofile}, sfile = #{sfile})
-        WHERE post_no = #{post_no} AND mem_id = #{mem_id}
+        SET post_title = #{postTitle}, post_content = #{postContent},
+        post_region = #{postRegion}, post_grade = #{postGrade},
+        post_thumbnail = #{postThumbnail}, post_ofile = #{postOFile}, post_sfile = #{postSFile}
+        WHERE post_no = #{postNo}
     </update>
     <!-- 게시물 삭제하기 -->
-    <delete id="deletePost" parameterType="String">
-        DELETE *
+    <delete id="deletePost">
+        DELETE
         FROM post
-        WHERE post_no = #{post_no}
+        WHERE post_no = #{postNo}
     </delete>
 
 </mapper>

@@ -13,12 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet("/view/post/postview.do")
-public class PostViewController extends HttpServlet {
+public class ViewController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
@@ -50,7 +48,7 @@ public class PostViewController extends HttpServlet {
 
         // 첨부 파일 확장자 추출 및 이미지 타입 확인
         // 첨부 파일이 이미지라면 <img> 태그로 상세보기 화면에 보여준다.
-        String ext = null, fileName = vo.getSfile();
+        String ext = null, fileName = vo.getPostSFile();
 
         if (fileName != null) {
             ext = fileName.substring(fileName.lastIndexOf(".") + 1);

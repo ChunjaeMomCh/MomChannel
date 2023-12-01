@@ -57,11 +57,12 @@
                           <div class="text_area">
                           <%-- 제목(상세보기 페이지로 바로가기 링크) --%>
                           <%-- 게시물의 일련번호를 매개변수로 사용한다. --%>
-                            <a class="content_name"
-                              href="${pageContext.request.contextPath}/view/post/postview.do?postNo=${ row.postNo }"
-                              style="text-decoration: none; color: black;">
-                              ${ row.postTitle }
-                            </a>
+                            ${ row.postTitle }
+<%--                            <a class="content_name"--%>
+<%--                              href="${pageContext.request.contextPath}/view/post/postview.do?postNo=${ row.postNo }"--%>
+<%--                              style="text-decoration: none; color: black;">--%>
+<%--                              ${ row.postTitle }--%>
+<%--                            </a>--%>
                             <p class="user_name"><i></i><span>${ row.memId }</span></p>
                           </div>
                         </a>
