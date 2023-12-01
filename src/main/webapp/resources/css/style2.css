@@ -37,3 +37,6 @@
 .radio_opt{
     margin-top: 10px;
 }
+.customer_box .tbl_list tr th{
+    font-weight: bold;
+}

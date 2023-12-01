@@ -27,7 +27,7 @@
                                 <div class="search_bar_area border">
                                     <input type="text" name="searchWord" class="search_bar" placeholder="검색어를 입력하세요." value="${ param.searchWord }"/>
                                 </div>
-                                <button type="submit" class="btn btn-light search_form_btn">검색</button>
+                                <button type="submit" class="btn btn-secondary search_form_btn">검색</button>
                             </div>
                         </div>
                     </div>
