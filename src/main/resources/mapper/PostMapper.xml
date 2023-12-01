@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.PostMapper">
+    <!-- 게시글 목록 불러오기 -->
+    <!-- 검색 조건에 맞는 목록 불러오기 -->
+    <select id="selectCount" parameterType="map" resultType="int">
+        SELECT *
+        FROM post
+        <if test="searchWord != null and !searchWord.equals('')">
+            WHERE
+            <choose>
+                <when test="searchField == 'title'">
+                    title like concat('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    content like concat('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
+        ORDER BY post_no DESC
+    </select>
+    <!-- 게시물 전체 (페이징) -->
+    <select id="selectListPage" parameterType="map" resultType="vo.PostVO">
+        SELECT *
+        FROM (SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
+        FROM post b,(SELECT @ROWNUM := 0 ) TMP
+        <if test="searchWord != null and !searchWord.equals('')">
+            WHERE
+            <choose>
+                <when test="searchField == 'title'">
+                    title like concat('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    content like concat('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
+        ORDER BY post_no DESC ) T
+        WHERE ROWNUM BETWEEN #{start} AND #{end}
+    </select>
+    <!-- 게시글 보기 - 전체 -->
+    <select id="showPosts" parameterType="map" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        <if test="searchWord != null and !searchWord.equals('')">
+            WHERE
+            <choose>
+                <when test="searchField == 'title'">
+                    title like concat('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    content like concat('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
+        ORDER BY post_no DESC
+    </select>
+    <!-- 지역별 게시글 보기 -->
+    <select id="showPostsByRegion" parameterType="map" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        WHERE post_region IS NOT NULL
+        ORDER BY post_no DESC
+    </select>
+    <!-- 학년별 게시글 보기 -->
+    <select id="showPostsByGrade" parameterType="map" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        WHERE post_grade IS NOT NULL
+        ORDER BY post_no DESC
+    </select>
+    <!-- 게시글 상세 보기 화면 불러오기 -->
+    <select id="viewPost" parameterType="String" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        WHERE post_no = #{postNo}
+    </select>
+    <!-- 게시물 상세 보기 시 조회수 업데이트 -->
+    <update id="updateVisitCount" parameterType="String">
+        UPDATE post
+        SET post_hit = post_hit + 1
+        WHERE post_no = #{postNo}
+    </update>
+    <!-- 게시물 작성하기 -->
+    <insert id="writePost" parameterType="vo.PostVO">
+        INSERT INTO
+        post(mem_id, post_title, post_content, post_region, post_grade, <!--post_thumbnail,--> post_ofile, post_sfile)
+        VALUES (#{memId}, #{postTitle}, #{postContent}, #{postRegion}, #{postGrade}, <!--#{postThumbnail},--> #{postOFile}, #{postSFile})
+    </insert>
+    <!-- 게시물 수정하기 -->
+    <update id="updatePost" parameterType="vo.PostVO">
+        UPDATE post
+        SET post_title = #{postTitle}, post_content = #{postContent},
+        post_region = #{postRegion}, post_grade = #{postGrade},
+        post_thumbnail = #{postThumbnail}, post_ofile = #{postOFile}, post_sfile = #{postSFile}
+        WHERE post_no = #{postNo}
+    </update>
+    <!-- 게시물 삭제하기 -->
+    <delete id="deletePost">
+        DELETE
+        FROM post
+        WHERE post_no = #{postNo}
+    </delete>
+
+</mapper>

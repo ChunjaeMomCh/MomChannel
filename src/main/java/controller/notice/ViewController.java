@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List; 
 
-@WebServlet("/notice/view.do")
+@WebServlet("/view/cs/notice/view.do")
 public class ViewController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -27,6 +29,6 @@ public class ViewController extends HttpServlet {
 
         // 게시물(vo) 저장 후 뷰로 포워드
         req.setAttribute("vo", vo);
-        req.getRequestDispatcher("/view/notice/View.jsp").forward(req, resp);
+        req.getRequestDispatcher("./View.jsp").forward(req, resp);
     }
 }

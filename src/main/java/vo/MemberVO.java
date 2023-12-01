@@ -14,8 +14,9 @@ public class MemberVO {
     private String memPw;
     private String memRegion;
     private String memAddr;
-    private String memChildGrade;
+    private int memChildGrade;
     private String memPhone;
     private String memEmail;
     private String memImg;
+    private String memSImg;
 }

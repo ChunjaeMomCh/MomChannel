@@ -18,6 +18,9 @@
         </environment>
     </environments>
     <mappers>
+        <mapper resource="mapper/MemberMapper.xml" />
         <mapper resource="mapper/NoticeMapper.xml" />
+        <mapper resource="mapper/PostMapper.xml" />
+        <mapper resource="mapper/QNABoardMapper.xml" />
     </mappers>
 </configuration>

@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 
 
-@WebServlet("/notice/list.do")
+@WebServlet("/view/cs/notice/list.do")
 public class ListController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -60,7 +60,7 @@ public class ListController extends HttpServlet {
 
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
-                blockPage, pageNum,searchField,searchWord, "../notice/list.do");  // 바로가기 영역 HTML 문자열
+                blockPage, pageNum,searchField,searchWord, "./list.do");  // 바로가기 영역 HTML 문자열
         System.out.println(totalCount);
         map.put("pagingImg", pagingImg);
         map.put("totalCount", totalCount);
@@ -71,6 +71,6 @@ public class ListController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 List.jsp로 포워드
         req.setAttribute("boardLists", boardLists);
         req.setAttribute("map", map);
-        req.getRequestDispatcher("/view/notice/List.jsp").forward(req, resp);
+        req.getRequestDispatcher("/view/cs/notice/List.jsp").forward(req, resp);
     }
 }
