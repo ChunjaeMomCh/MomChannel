@@ -62,4 +62,10 @@
         where notice_no = #{noticeNo}
     </update>
 
+    <delete id="deleteNotice">
+        delete
+        from notice
+        where notice_no = #{noticeNo}
+    </delete>
+
 </mapper>
