@@ -192,9 +192,9 @@
             <ul class="header_menu">
               <!-- 선택 시 해당 li에 active 클래스 추가해주세요 -->
               <li class="pc_none"><a href="/">홈</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/post.do">전체 게시판</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/post.do">학년별 게시판</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/post.do">지역별 게시판</a></li>
+              <li><a href="${pageContext.request.contextPath}/view/post/list.do">전체 게시판</a></li>
+              <li><a href="${pageContext.request.contextPath}/view/post/list.do">학년별 게시판</a></li>
+              <li><a href="${pageContext.request.contextPath}/view/post/list.do">지역별 게시판</a></li>
               <li class="line"><a href="/channel/all.html">전체 채널</a></li>
               <li class="line"><a href="${pageContext.request.contextPath}/view/cs/introduce.jsp">서비스 안내</a></li>
             </ul>
