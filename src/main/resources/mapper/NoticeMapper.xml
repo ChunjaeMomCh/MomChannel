@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.NoticeMapper">
+
+    <select id="selectCount" parameterType="map" resultType="int">
+        select count(*)
+        from notice
+        <if test="searchWord != null and !searchWord.equals('')">
+            where
+            <if test="!searchField.equals('전체')">
+                    notice_category like #{searchField} and
+            </if>
+            notice_title like concat('%', #{searchWord}, '%')
+        </if>
+        order by notice_no desc
+    </select>
+
+    <select id="selectNoticeListWithPaging" parameterType="map" resultType="vo.NoticeVO">
+        SELECT * FROM
+        ( SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
+        FROM notice b,(SELECT @ROWNUM := 0 ) TMP
+
+        <if test="searchWord != null and !searchWord.equals('')">
+            where
+            <if test="!searchField.equals('전체')">
+                notice_category like #{searchField} and
+            </if>
+            notice_title like concat('%', #{searchWord}, '%')
+        </if>
+
+        ORDER BY notice_no DESC ) T
+        WHERE ROWNUM BETWEEN #{ start } AND #{ end } ;
+    </select>
+
+    <select id="selectNoticeView" parameterType="String" resultType="vo.NoticeVO">
+        select *
+        from notice
+        where notice_no = #{noticeNo}
+    </select>
+
+    <insert id="insertWrite" parameterType="vo.NoticeVO">
+        INSERT
+        INTO notice(notice_category, notice_title, notice_content)
+        VALUES( #{noticeCategory}, #{noticeTitle}, #{noticeContent})
+    </insert>
+
+    <!-- 게시물 상세 보기 시 조회수 업데이트 -->
+    <update id="updateVisitCount" parameterType="String">
+        UPDATE notice
+        SET notice_hit = notice_hit + 1
+        WHERE notice_no = #{noticeNo}
+    </update>
+
+    <update id="updateNotice" parameterType="vo.NoticeVO">
+        update notice
+        set
+        notice_category = #{noticeCategory},
+        notice_title = #{noticeTitle},
+        notice_content = #{noticeContent}
+        where notice_no = #{noticeNo}
+    </update>
+
+    <delete id="deleteNotice">
+        delete
+        from notice
+        where notice_no = #{noticeNo}
+    </delete>
+
+</mapper>
