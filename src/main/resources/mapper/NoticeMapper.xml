@@ -40,5 +40,11 @@
         where notice_no = #{noticeNo}
     </select>
 
+    <insert id="insertWrite" parameterType="vo.NoticeVO">
+        INSERT
+        INTO notice(notice_category, notice_title, notice_content)
+        VALUES( #{noticeCategory}, #{noticeTitle}, #{noticeContent})
+    </insert>
+
 
 </mapper>
