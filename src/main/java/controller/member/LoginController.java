@@ -2,6 +2,7 @@ package controller.member;
 
 
 import dao.MemberDAO;
+import utils.Encrypt;
 import utils.JSFunction;
 import vo.MemberVO;
 
@@ -25,8 +26,9 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, Object> map = new HashMap<String, Object>();
         MemberDAO dao = new MemberDAO();
+        Encrypt en = new Encrypt();
         String memId = req.getParameter("memId");
-        String memPw = req.getParameter("memPw");
+        String memPw = en.getEncrypt(req.getParameter("memPw"));
         out.println(memId);
         out.println(memPw);
         MemberVO vo = null;

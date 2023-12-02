@@ -2,6 +2,7 @@ package controller.member;
 
 import dao.MemberDAO;
 import dao.QNABoardDAO;
+import utils.Encrypt;
 import utils.JSFunction;
 import vo.MemberVO;
 import vo.QNABoardVO;
@@ -29,6 +30,9 @@ public class SignController extends HttpServlet {
         MemberVO mvo= new MemberVO();
         String addr = null;
 
+        //암호화해서 저장(sha256+salt)
+        Encrypt en = new Encrypt();
+
         String memId = (String) session.getAttribute("memId");
         if (req.getParameter("roadAddr")==null){
             addr = req.getParameter("postCode").concat("/").concat(req.getParameter("roadAddr")).concat("/").concat(req.getParameter("detailAddr"));
@@ -37,7 +41,7 @@ public class SignController extends HttpServlet {
         }
         mvo.setMemId(memId);
         mvo.setMemName(req.getParameter("memName"));
-        mvo.setMemPw(req.getParameter("memPw"));
+        mvo.setMemPw(en.getEncrypt(req.getParameter("memPw")));
         mvo.setMemRegion(req.getParameter("memRegion"));
         mvo.setMemAddr(addr);
         mvo.setMemChildGrade(Integer.parseInt(req.getParameter("memChildGrade")));
