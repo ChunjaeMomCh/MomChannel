@@ -1300,7 +1300,7 @@ header .search_bar_area {
   font-weight: 700;
   text-align: center;
   letter-spacing: -0.8px;
-  z-index: 11100;
+  z-index: 10;
   color:#333333;
 }
 .header_nav .header_menu > li > a {

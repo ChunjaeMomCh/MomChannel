@@ -143,9 +143,22 @@
       }
       location.href = "/search/search_result.html?keyword=" + keywordSearch;
     }
+
   </script>
   <script src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/js/jquery-1.12.4.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/javascript/script.js"></script>
+  <script src="javascript/jquery-1.12.3.js"></script>
+  <script>
+  jQuery(document).ready(function () {
+    $('.navi>li').mouseover(function () {
+      $('.submenu').stop().slideDown(500);
+      $("#menu_bg").stop().slideDown(500);
+    }).mouseout(function () {
+      $('.submenu').stop().slideUp(500);
+      $("#menu_bg").stop().slideUp(500);
+    });
+  });
+  </script>
 
 </head>
 <body>
@@ -154,6 +167,7 @@
   <!-- header -->
   <div id="header">
     <div class="header_wrap " >
+      <div id="menu_bg"></div>
       <header>
         <div class="inner">
           <a href="#none" class="menu_btn pc_none"><i class="ico menu"></i></a>
@@ -187,16 +201,53 @@
             </div> <%-- content의 끝 --%>
           </div>
         </div>
-        <nav class="header_nav ">
+
+        <nav class="header_nav">
           <div class="inner">
-            <ul class="header_menu">
+            <ul class="header_menu navi">
               <!-- 선택 시 해당 li에 active 클래스 추가해주세요 -->
               <li class="pc_none"><a href="/">홈</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/list.do">전체 게시판</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/list.do">학년별 게시판</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/list.do">지역별 게시판</a></li>
-              <li class="line"><a href="/channel/all.html">전체 채널</a></li>
-              <li class="line"><a href="${pageContext.request.contextPath}/view/cs/introduce.jsp">서비스 안내</a></li>
+              <li><a href="${pageContext.request.contextPath}/view/post/list.do">전체 게시판</a>
+                <ul class="submenu" >
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+              <li><a href="${pageContext.request.contextPath}/view/post/list.do">학년별 게시판</a>
+                <ul class="submenu" >
+                  <li><a href="#">1-2학년</a></li>
+                  <li><a href="#">3-4학년</a></li>
+                  <li><a href="#">5-6학년</a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+              <li><a href="${pageContext.request.contextPath}/view/post/list.do">지역별 게시판</a>
+                <ul class="submenu" >
+                  <li><a href="#">서울/경기</a></li>
+                  <li><a href="#">강원/충청</a></li>
+                  <li><a href="#">경상/전라</a></li>
+                  <li><a href="#">전라/제주</a></li>
+                </ul>
+              </li>
+              <li class="line"><a href="/channel/all.html">전체 채널</a>
+                <ul class="submenu" >
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+              <li class="line"><a href="${pageContext.request.contextPath}/view/cs/introduce.jsp">서비스 안내</a>
+                <ul class="submenu" >
+                  <li><a href="#">맘채널 소개</a></li>
+                  <li><a href="#">공지사항</a></li>
+                  <li><a href="#">문의하기</a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+
             </ul>
           </div>
         </nav>
