@@ -1,11 +1,10 @@
 package dao;
 
+
 import mybatis.factory.MyBatisSessionFactory;
 import mybatis.mapper.MemberMapper;
-import mybatis.mapper.QNABoardMapper;
 import org.apache.ibatis.session.SqlSession;
 import vo.MemberVO;
-import vo.QNABoardVO;
 
 
 import java.util.HashMap;
