@@ -229,9 +229,8 @@
 #### [ 하단 고정 메뉴 ( Footer ) ]
 - 팀원들의 GitHub와 회의 내용을 기록한 Notion을 표시
 
-| 상품전체보기 |
-|----------|
-|![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/c0801a23-3e3a-4c2a-8c12-162d39f1b70f)|
+![image](https://github.com/LMH9999/MomChannel/assets/145963633/871a3c12-bd13-429c-87d0-473bc784c109)
+
 
 <br>
 
