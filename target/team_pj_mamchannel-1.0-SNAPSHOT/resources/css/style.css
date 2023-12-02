@@ -1179,9 +1179,19 @@ header .search_bar_area {
 }
 .profile_group {
   position: relative;
+  display: flex;
+  justify-content: center;
+
 }
+.profile_group > .profile_name{
+   position: relative;
+   display: inline-block;
+  height: 38px;
+  line-height: 38px;
+  color: #7b7a7a;
+ }
 .profile_group > .profile {
-  display: block;
+  display: inline-block;
   width: 38px;
   height: 38px;
   margin-left: 12px;
@@ -13447,6 +13457,7 @@ body.ovh {
   font-size: 16px;
   line-height: 28px;
   letter-spacing: -0.16px;
+  margin: 0px 30px;
 }
 .customer_box .detail_area .text_box .notice_img {
   width: 100%;
@@ -13518,6 +13529,7 @@ body.ovh {
 }
 .customer_box .tbl_list .num {
   width: 60px;
+  font-weight: bold;
 }
 .customer_box .tbl_list .notice_title {
   text-align: left;
@@ -13542,6 +13554,9 @@ body.ovh {
 }
 .customer_box .list_load {
   margin-top: 28px;
+}
+.customer_box .tbl_list .notice_category {
+  font-weight: bold;
 }
 .ask_list_area .ask_list {
   width: 100%;
@@ -13637,6 +13652,7 @@ body.ovh {
     padding: 0 2rem;
     line-height: 4.6rem;
     font-size: 1.6rem;
+    margin-bottom: 5px;
   }
   .customer_box .customer_title_area .customer_title .ico {
     margin-top: 0;
