@@ -1,5 +1,6 @@
 package controller.member;
 
+import dao.ChannelDAO;
 import dao.MemberDAO;
 import dao.QNABoardDAO;
 import utils.Encrypt;
@@ -22,7 +23,6 @@ public class SignController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-
 
         // 2. 파일 업로드 외 처리 =============================
         // 폼값을 DTO에 저장
@@ -52,12 +52,20 @@ public class SignController extends HttpServlet {
         MemberDAO dao = new MemberDAO();
         int result = dao.insertMember(mvo);
 
+        ChannelDAO cdao = new ChannelDAO();
+
         // 성공 or 실패?
         if (result == 1) {  // 글쓰기 성공
 //            resp.sendRedirect("../view/Login/loginForm.jsp");
 //            req.getRequestDispatcher("/view/Login/loginForm.jsp").forward(req, resp);
-            JSFunction.alertLocation(resp, "회원가입에 성공했습니다.",
-                    "../view/Login/loginForm.jsp");
+            int chResult = cdao.insertChannel(memId);
+            if (chResult==1){
+                JSFunction.alertLocation(resp, "회원가입에 성공했습니다.",
+                        "../view/Login/loginForm.jsp");
+            }
+            else {
+                JSFunction.alertBack(resp, "채널 생성에 실패했습니다.");
+            }
         }
         else {  // 글쓰기 실패
             JSFunction.alertBack(resp, "회원가입에 실패했습니다.");
