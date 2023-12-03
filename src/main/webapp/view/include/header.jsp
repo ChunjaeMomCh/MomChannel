@@ -239,7 +239,7 @@
 <%--                  <li><a href="#"></a></li>--%>
 <%--                </ul>--%>
 <%--              </li>--%>
-              <li class="line"><a href="/ch/chview.do">전체 채널</a>
+              <li class="line"><a href="/ch/chview.do?channelTitle='${loginMember.memId}'">전체 채널</a>
                 <ul class="submenu" >
                   <li><a href="#"></a></li>
                   <li><a href="#"></a></li>

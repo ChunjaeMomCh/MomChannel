@@ -3,9 +3,12 @@ package dao;
 import mybatis.factory.MyBatisSessionFactory;
 import mybatis.mapper.ChannelMapper;
 import mybatis.mapper.MemberMapper;
+import mybatis.mapper.SubMapper;
 import org.apache.ibatis.session.SqlSession;
 import vo.ChannelVO;
 import vo.MemberVO;
+
+import java.util.Map;
 
 public class ChannelDAO {
     public int insertChannel(String memId) {
@@ -28,4 +31,18 @@ public class ChannelDAO {
         sqlSession.close();
         return cvo;
     }
+    public void subPlus(String channelTitle){
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
+        mapper.subPlus(channelTitle);
+        sqlSession.commit();
+
+    }
+    public void subMinus(String channelTitle){
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
+        mapper.subMinus(channelTitle);
+        sqlSession.commit();
+    }
+
 }

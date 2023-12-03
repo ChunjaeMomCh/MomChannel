@@ -43,9 +43,19 @@
             <td>구독자</td>
             <td colspan="3">${ cvo.channelSub }</td>
         </tr>
-
-
     </table>
+    <div class="row">
+
+        <div class="col-lg-6 mt-3">
+            <c:if test="${check eq 1}">
+             <a onclick="return confirm('구독 하시겠습니까?')" href="/ch/subup.do">구독하기</a>
+            </c:if>
+            <c:if test="${check eq 0}">
+             <a onclick="return confirm('구독 취소 하시겠습니까?')" href="/ch/subdown.do">구독취소</a>
+            </c:if>
+        </div>
+
+    </div>
     <div class="inner">
         <ul class="card_area">  <%-- 게시글들을 배치 --%>
             <c:choose>
