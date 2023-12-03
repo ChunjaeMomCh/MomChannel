@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/view/post/update.do")
+@WebServlet("/view/post/edit.do")
 @MultipartConfig(
         maxFileSize = 1024 * 1024 * 1,
         maxRequestSize = 1024 * 1024 * 10
@@ -35,7 +35,7 @@ public class EditController extends HttpServlet {
         System.out.println("vo---->"+vo);
 
         req.setAttribute("vo", vo);  // 게시물 일련번호를 DTO 객체의 request 영역에 저장
-        req.getRequestDispatcher(req.getContextPath() + "../post/Update.jsp").forward(req, resp);  // Edit.jsp로 포워드
+        req.getRequestDispatcher(req.getContextPath() + "../post/Edit.jsp").forward(req, resp);  // Edit.jsp로 포워드
     }
 
     @Override
@@ -123,7 +123,7 @@ public class EditController extends HttpServlet {
             // 성공/실패 여부에 따라 진행
             if (result == 1) {  // 수정 성공 => 해당 게시물의 상세 페이지에서 수정된 내용을 확인
 
-                resp.sendRedirect(req.getContextPath() + "./postview.do?postNo=" + postNo);  // 상세 보기 뷰로 이동해 수정된 내용을 확인시킨다.
+                resp.sendRedirect(req.getContextPath() + "./view.do?postNo=" + postNo);  // 상세 보기 뷰로 이동해 수정된 내용을 확인시킨다.
 
             } else {  // 수정 실패
                 JSFunction.alertBack(resp, "내용 수정에 실패했습니다. 수정 화면으로 돌아갑니다.");  // 수정 폼에서 다시 작성하도록 한다.
