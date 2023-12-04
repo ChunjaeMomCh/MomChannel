@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.ChannelMapper">
+
+    <insert id="insertChannel" parameterType="vo.ChannelVO">
+        INSERT
+        INTO channel( mem_id )
+        VALUES( #{memId})
+    </insert>
+
+    <select id="selectChannel" parameterType="String" resultType="vo.ChannelVO">
+        select *
+        from channel
+        where channel_title = #{channelTitle}
+    </select>
+
+    <update id="subPlus" parameterType="String">
+        update channel
+        set channel_sub = channel_sub + 1
+        where channel_title = #{channelTitle};
+    </update>
+    <update id="subMinus" parameterType="String">
+        update channel
+        set channel_sub = channel_sub - 1
+        where channel_title = #{channelTitle};
+    </update>
+
+</mapper>
