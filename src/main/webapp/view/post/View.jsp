@@ -78,10 +78,12 @@
             <!-- 20230428 :: 버튼 공통화 적용 -->
             <!-- 클릭 시 disabled 클래스 추가해주세요 -->
           </div>
-          <div class="post_btns">
-            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?postNo=${vo.postNo}';">수정하기</button>
-            <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?postNo=${ vo.postNo }';">삭제하기</button>
-          </div>
+          <c:if test="${vo.memId eq loginMember.memId}">
+            <div class="post_btns">
+              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?postNo=${vo.postNo}';">수정하기</button>
+              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?postNo=${ vo.postNo }';">삭제하기</button>
+            </div>
+          </c:if>
         </div>
         <div class="text_body">
           <p>
