@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="team_pj_mamchannel">
+    <output-path>$PROJECT_DIR$/out/artifacts/team_pj_mamchannel</output-path>
+    <root id="archive" name="team_pj_mamchannel_war.war">
+      <element id="artifact" artifact-name="team_pj_mamchannel:war exploded" />
+    </root>
+  </artifact>
+</component>
