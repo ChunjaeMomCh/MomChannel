@@ -6,20 +6,20 @@
     <!-- 게시글 목록 불러오기 -->
     <!-- 검색 조건에 맞는 목록 불러오기 -->
     <select id="selectCount" parameterType="map" resultType="int">
-        SELECT *
-        FROM post
+        select count(*)
+        from post
         <if test="searchWord != null and !searchWord.equals('')">
-            WHERE
+            where
             <choose>
                 <when test="searchField == 'title'">
-                    title like concat('%', #{searchWord}, '%')
+                    post_title like concat('%', #{searchWord}, '%')
                 </when>
                 <otherwise>
-                    content like concat('%', #{searchWord}, '%')
+                    post_content like concat('%', #{searchWord}, '%')
                 </otherwise>
             </choose>
         </if>
-        ORDER BY post_no DESC
+        order by #{postSortBy} desc
     </select>
     <!-- 게시물 전체 (페이징) -->
     <select id="selectListPage" parameterType="map" resultType="vo.PostVO">
@@ -48,10 +48,10 @@
             WHERE
             <choose>
                 <when test="searchField == 'title'">
-                    title like concat('%', #{searchWord}, '%')
+                    post_title like concat('%', #{searchWord}, '%')
                 </when>
                 <otherwise>
-                    content like concat('%', #{searchWord}, '%')
+                    post_content like concat('%', #{searchWord}, '%')
                 </otherwise>
             </choose>
         </if>

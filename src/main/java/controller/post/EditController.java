@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/view/post/update.do")
+@WebServlet("/view/post/edit.do")
 @MultipartConfig(
         maxFileSize = 1024 * 1024 * 1,
         maxRequestSize = 1024 * 1024 * 10
@@ -34,6 +34,7 @@ public class EditController extends HttpServlet {
         PostVO vo = dao.viewPost(postNo);  // 기존 게시물 내용을 담은 DTO 객체
         HttpSession session = req.getSession();
         String sessionMemId = (String)session.getAttribute("memId");
+        System.out.println("sessionMemId"+sessionMemId);
 
         // 현재 로그인된 아이디와 작성자가 일치하는지 확인
         if (sessionMemId.equals(vo.getMemId())) {

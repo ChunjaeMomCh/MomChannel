@@ -21,9 +21,9 @@ public class BoardPage {
             pagingStr += "<li><a href='" + reqUrl + "?pageNum=1";
         else {
             pagingStr += "<li><a href='" + reqUrl + "?pageNum=" + (pageNum - 1);
-            if(searchField != null){
-                pagingStr += "&searchField"+ "=" + searchField + "&searchWord"+ "=" + searchWord;
-            }
+        }
+        if(searchField != null){
+            pagingStr += "&searchField"+ "=" + searchField + "&searchWord"+ "=" + searchWord;
         }
         pagingStr += "'><i class=\"ico prev_04\"></i></a></li>";
 
