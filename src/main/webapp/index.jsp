@@ -1,6 +1,15 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="view/include/header.jsp"%>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(".slider").bxSlider();
+    });
+</script>
 
 <%--<div class="content">--%>
 <%--    <c:choose>--%>
@@ -15,6 +24,12 @@
 <%--    <a href="./member/myinfo.do">내정보</a>--%>
 <!-- contents -->
 <div class="content">
+    <div class="slider">
+        <div><img src="resources/images/banner_01.jpg"></div>
+        <div><img src="resources/images/banner_02.jpg"></div>
+        <div><img src="resources/images/banner_03.jpg"></div>
+    </div>
+
     <div class="swiper main_banner pc_none">
         <ul class="swiper-wrapper">
             <li class="swiper-slide" style="background-color: #D1FFB8;">
@@ -48,53 +63,6 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="swiper main_banner mo_none">
-        <div class="fixed_banner">
-            <figure style="cursor: pointer">
-                <img src="//cdata2.tsherpa.co.kr/tsherpa///ssam_channel/미니 배너.png" alt="서비스 안내 페이지" link-url="https://sschannel.tsherpa.co.kr/cs/introduce.html">
-            </figure>
-        </div>
-        <ul class="swiper-wrapper">
-            <li class="swiper-slide" style="background-color: #D1FFB8;">
-                <figure>
-                    <img class="mo_none" src="//cdata2.tsherpa.co.kr/tsherpa///ssam_channel/메인 배너_5.png" alt="5" link-url="">
-                </figure>
-            </li>
-            <li class="swiper-slide" style="background-color: #FFF5B0;">
-                <figure>
-                    <img class="mo_none" src="//cdata2.tsherpa.co.kr/tsherpa///ssam_channel/메인 배너_4.png" alt="4" link-url="">
-                </figure>
-            </li>
-            <li class="swiper-slide" style="background-color: #FFCAD8;">
-                <figure>
-                    <img class="mo_none" src="//cdata2.tsherpa.co.kr/tsherpa///ssam_channel/메인 배너_3.png" alt="3" link-url="">
-                </figure>
-            </li>
-            <li class="swiper-slide" style="background-color: #D4C7FE;">
-                <figure>
-                    <img class="mo_none" src="//cdata2.tsherpa.co.kr/tsherpa///ssam_channel/메인 배너_2.png" alt="2" link-url="">
-                </figure>
-            </li>
-            <li class="swiper-slide" style="background-color: #BFDCFF;">
-                <figure>
-                    <img class="mo_none" src="//cdata2.tsherpa.co.kr/tsherpa///ssam_channel/메인 배너_1.png" alt="1" link-url="">
-                </figure>
-            </li>
-        </ul>
-        <div class="swiper-button-next main_slide_next"></div>
-        <div class="swiper-button-prev main_slide_prev"></div>
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <script>
-        $(function(){
-            $("div.main_banner figure > img").click(function(){
-                if($(this).is("[link-url]") && $(this).attr("link-url") != ""){
-                    window.open($(this).attr("link-url"));
-                }
-            });
-        });
-    </script>
 
     <div class="best_channel_area">
         <div class="inner">
