@@ -61,12 +61,13 @@
                                id="floatingPassword" placeholder="비밀번호">
                         <label for="floatingPassword">비밀번호</label>
                     </div>
-                    <div class="form-check text-start my-3">
+                    <%-- 아이디 기억 --%>
+                    <%--<div class="form-check text-start my-3">
                         <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             Remember me
                         </label>
-                    </div>
+                    </div>--%>
                     <button class="btn btn-primary w-100 py-2" type="submit">로그인</button>
                     <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2023</p>
                 </form>

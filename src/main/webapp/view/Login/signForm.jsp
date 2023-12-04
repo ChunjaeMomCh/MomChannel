@@ -155,108 +155,106 @@
                     </div>
                 </form>
                 <%-- 패스워드 확인 및 개인정보 입력 --%>
-                    <div action="../../member/sign.do" method="post"
-                         onsubmit="return validateForm(this);"
-                         style="margin-bottom: 6em;">
-                        <input type="hidden" name="memId" value="${ mvo.memId }"/>
-                        <div class="row mb-3">
-                            <label for="memPw" class="col-sm-2 col-form-label">패스워드</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control"
-                                       name="memPw" id="memPw">
-                            </div>
+                <form action="../../member/sign.do" method="post"
+                     onsubmit="return validateForm(this);"
+                     style="margin-bottom: 6em;">
+                    <input type="hidden" name="memId" value="${ mvo.memId }"/>
+                    <div class="row mb-3">
+                        <label for="memPw" class="col-sm-2 col-form-label">패스워드</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control"
+                                   name="memPw" id="memPw">
                         </div>
-                        <div class="row mb-3">
-                            <label for="memPw" class="col-sm-2 col-form-label">패스워드 확인</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control"
-                                       name="memPw2" id="memPw2">
-                            </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="memPw" class="col-sm-2 col-form-label">패스워드 확인</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control"
+                                   name="memPw2" id="memPw2">
                         </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="memName" class="col-sm-2 col-form-label">이름</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control"
+                                   name="memName" id="memName">
+                        </div>
+                    </div>
+                    <%-- 지역 select --%>
+                    <div class="row mb-3">
+                        <label for="memRegion" class="col-sm-2 col-form-label">지역</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="memRegion"
+                                    id="memRegion">
+                                <option value="seoul">서울</option>
+                                <option value="kyeonggi">경기</option>
+                                <option value="kangwon">강원</option>
+                                <option value="chungcheong">충청</option>
+                                <option value="jeolla">전라</option>
+                                <option value="kyeongsang">경상</option>
+                                <option value="cheju">제주</option>
+                            </select>
+                        </div>
+                    </div>
+                    <%-- 주소 입력 --%>
+                    <div class="input_addr" style="margin: 1em 0;">
                         <div class="row mb-3">
-                            <label for="memName" class="col-sm-2 col-form-label">이름</label>
-                            <div class="col-sm-10">
+                            <label for="sample4_postcode" class="col-sm-2 col-form-label">주소</label>
+                            <div class="col-sm-7">
                                 <input type="text" class="form-control"
-                                       name="memName" id="memName">
+                                       name="postCode" id="sample4_postcode"
+                                       placeholder="우편번호">
                             </div>
-                        </div>
-                        <%-- 지역 select --%>
-                        <div class="row mb-3">
-                            <label for="memRegion" class="col-sm-2 col-form-label">지역</label>
                             <div class="col-sm-3">
-                                <select class="form-control" name="memRegion"
-                                        id="memRegion">
-                                    <option value="seoul">서울</option>
-                                    <option value="kyeonggi">경기</option>
-                                    <option value="kangwon">강원</option>
-                                    <option value="chungcheong">충청</option>
-                                    <option value="jeolla">전라</option>
-                                    <option value="kyeongsang">경상</option>
-                                    <option value="cheju">제주</option>
-                                </select>
+                                <input type="button" class="btn btn-light btn-sm"
+                                 onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
                             </div>
                         </div>
-                        <%-- 주소 입력 --%>
-                        <div class="input_addr" style="margin: 1em 0;">
-                            <div class="row mb-3">
-                                <label for="sample4_postcode" class="col-sm-2 col-form-label">주소</label>
-                                <div class="col-sm-7">
-                                    <input type="text" class="form-control"
-                                           name="postCode" id="sample4_postcode"
-                                           placeholder="우편번호">
-                                </div>
-                                <div class="col-sm-3">
-                                    <input type="button" class="btn btn-light btn-sm"
-                                     onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-sm-2"></div>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="roadAddr" id="sample4_roadAddress" placeholder="도로명주소" size="60" ><br>
-                                    <input type="hidden" class="form-control" name="jibunAddr" id="sample4_jibunAddress" placeholder="지번주소"  size="60">
-                                    <span id="guide" style="color:#999;display:none"></span>
-                                    <input type="text" class="form-control" name="detailAddr" id="sample4_detailAddress" placeholder="상세주소"  size="60"><br>
-                                    <input type="hidden" class="form-control" id="sample4_extraAddress" placeholder="참고항목"  size="60">
-                                    <input type="hidden" class="form-control" id="sample4_engAddress" placeholder="영문주소"  size="60" >
-                                </div>
-                            </div>
-                        </div>
-                        <%-- 학년 select --%>
                         <div class="row mb-3">
-                            <label for="memChildGrade" class="col-sm-2 col-form-label">자녀 학년</label>
-                            <div class="col-sm-3">
-                                <select class="form-control" name="memChildGrade"
-                                        id="memChildGrade">
-                                    <option value="1">1학년</option>
-                                    <option value="2">2학년</option>
-                                    <option value="3">3학년</option>
-                                    <option value="4">4학년</option>
-                                    <option value="5">5학년</option>
-                                    <option value="6">6학년</option>
-                                </select>
-                            </div>
-                        </div>
-                        <%--  // 학년 select --%>
-                        <div class="row mb-3">
-                            <label for="memPhone" class="col-sm-2 col-form-label">전화번호</label>
+                            <div class="col-sm-2"></div>
                             <div class="col-sm-10">
-                                <input type="tel" class="form-control"
-                                       name="memPhone" id="memPhone" />
+                                <input type="text" class="form-control" name="roadAddr" id="sample4_roadAddress" placeholder="도로명주소" size="60" ><br>
+                                <input type="hidden" class="form-control" name="jibunAddr" id="sample4_jibunAddress" placeholder="지번주소"  size="60">
+                                <span id="guide" style="color:#999;display:none"></span>
+                                <input type="text" class="form-control" name="detailAddr" id="sample4_detailAddress" placeholder="상세주소"  size="60"><br>
+                                <input type="hidden" class="form-control" id="sample4_extraAddress" placeholder="참고항목"  size="60">
+                                <input type="hidden" class="form-control" id="sample4_engAddress" placeholder="영문주소"  size="60" >
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="memEmail" class="col-sm-2 col-form-label">이메일</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control"
-                                       name="memEmail" id="memEmail" />
-                            </div>
+                    </div>
+                    <%-- 학년 select --%>
+                    <div class="row mb-3">
+                        <label for="memChildGrade" class="col-sm-2 col-form-label">자녀 학년</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" name="memChildGrade"
+                                    id="memChildGrade">
+                                <option value="1">1학년</option>
+                                <option value="2">2학년</option>
+                                <option value="3">3학년</option>
+                                <option value="4">4학년</option>
+                                <option value="5">5학년</option>
+                                <option value="6">6학년</option>
+                            </select>
+                        </div>
+                    </div>
+                    <%--  // 학년 select --%>
+                    <div class="row mb-3">
+                        <label for="memPhone" class="col-sm-2 col-form-label">전화번호</label>
+                        <div class="col-sm-10">
+                            <input type="tel" class="form-control"
+                                   name="memPhone" id="memPhone" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="memEmail" class="col-sm-2 col-form-label">이메일</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control"
+                                   name="memEmail" id="memEmail" />
                         </div>
                     </div>
                     <%--  // 개인정보 입력 --%>
                     <input type="submit" class="btn btn-light input_form_btn" value="회원가입" />
                     <%--<a href="../member/logout.do">[로그아웃]</a>--%>
-                   
                 </form>
             </main>
         </div>
