@@ -7,7 +7,7 @@
     <!-- 검색 조건에 맞는 목록 불러오기 -->
     <select id="selectCount" parameterType="map" resultType="int">
         select count(*)
-        from qna
+        from post
         <if test="searchWord != null and !searchWord.equals('')">
             where
             <choose>
@@ -48,10 +48,10 @@
             WHERE
             <choose>
                 <when test="searchField == 'title'">
-                    title like concat('%', #{searchWord}, '%')
+                    post_title like concat('%', #{searchWord}, '%')
                 </when>
                 <otherwise>
-                    content like concat('%', #{searchWord}, '%')
+                    post_content like concat('%', #{searchWord}, '%')
                 </otherwise>
             </choose>
         </if>

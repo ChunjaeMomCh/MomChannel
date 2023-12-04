@@ -68,7 +68,7 @@ public class ListController extends HttpServlet {
 
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
-                blockPage, pageNum,searchField,searchWord, "/view/cs/qna/list.do");  // 바로가기 영역 HTML 문자열
+                blockPage, pageNum,searchField,searchWord, "/view/post/list.do");  // 바로가기 영역 HTML 문자열
         System.out.println(totalCount);
         map.put("pagingImg", pagingImg);
         map.put("totalCount", totalCount);
