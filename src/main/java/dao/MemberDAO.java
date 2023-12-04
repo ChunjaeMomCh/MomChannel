@@ -39,7 +39,7 @@ public class MemberDAO {
         map.put("memId", memId);
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-        int result = mapper.idCheck(map);
+        int result = mapper.idCheck(memId);
         if (result == 1) {
             return true;
         } else {
