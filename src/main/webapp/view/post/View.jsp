@@ -62,12 +62,18 @@
             <span class="date">${ vo.postDate }</span>
           </div>
           <figure>
-            <img src="//cdata2.tsherpa.co.kr/tsherpa//ssam_channel/upload/2023/11/27/fdac4496-0375-46fe-b5d2-73d6aa634e40/슬라이드0001.jpg" alt="게시글 배너이미지">
+            <c:if test="${vo.postSFile eq null}">
+              <img src="/Uploads/default_thumbnail.jpg" alt="게시물 썸네일 이미지">
+            </c:if>
+            <c:if test="${vo.postSFile ne null}">
+              <img src="/Uploads/${ vo.postSFile }" alt="게시물 썸네일 이미지">
+            </c:if>
           </figure>
         </div>
         <div class="post_btns_area">
           <div class="channel_name_area">
-            <figure><img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/08/24/3edff180-0518-4e9c-b6a5-f011a7043a90/1-removebg-preview (2).png" alt="사용자 프로필 이미지"></figure>
+            <figure>
+              <img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/08/24/3edff180-0518-4e9c-b6a5-f011a7043a90/1-removebg-preview (2).png" alt="사용자 프로필 이미지"></figure>
             <a href="/channel/home.html?channel_id=1327" class="user_neme">${vo.memId}</a>
             <!-- 20230428 :: 버튼 공통화 적용 -->
             <!-- 클릭 시 disabled 클래스 추가해주세요 -->
@@ -77,24 +83,6 @@
             <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?postNo=${ vo.postNo }';">삭제하기</button>
           </div>
         </div>
-        <template x-if="chasiIs">
-          <div class="post_unit">
-            <p class="mo_none"><i class="ico list"></i>관련 차시</p>
-            <p class="pc_none">관련된 차시</p>
-            <ul class="unit_list">
-              <template x-for="(item, idx) in chasi" :key="idx">
-                <li>
-                  <div class="unit_route">
-                    <p>
-                      <span x-text="item.name"></span>
-                      <a href="javascript:void(0)" @click="if(!checkUserLoggIn()){return;}" class="unit_open"><i class="ico open"></i></a>
-                    </p>
-                  </div>
-                </li>
-              </template>
-            </ul>
-          </div>
-        </template>
         <div class="text_body">
           <p>
           <p id="isPasted" style='box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-size: 16px; font-family: "Public Sans", "Noto Sans KR", sans-serif; font-style: normal; vertical-align: baseline; line-height: 28px; letter-spacing: -0.16px; color: rgb(0, 0, 0); font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;'>
@@ -102,9 +90,6 @@
               ${ vo.postContent }
             </span>
           </p>
-          <figure id="idBodyImageFigure">
-
-          </figure>
 
         </div>
         <div class="attached_file_area">

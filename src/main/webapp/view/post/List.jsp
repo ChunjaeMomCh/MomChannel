@@ -86,20 +86,26 @@
                         <c:forEach items="${ postLists }" var="row" varStatus="loop">
                         <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
                             <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
-                                <figure class="content_img"></figure>
+<%--                                <figure class="content_img"></figure>--%>
+                                <figure class="content_img">
+                                    <c:if test="${row.postSFile eq null}">
+                                        <img src="/Uploads/default_thumbnail.jpg" alt="">
+                                    </c:if>
+                                    <c:if test="${row.postSFile ne null}">
+                                        <img src="/Uploads/${ row.postSFile }" alt="">
+                                    </c:if>
+                                </figure>
                                 <div class="text_area">
-                                        <%-- 제목(상세보기 페이지로 바로가기 링크) --%>
-                                        <%-- 게시물의 일련번호를 매개변수로 사용한다. --%>
-                                        ${ row.postTitle }
-                                        <%--                            <a class="content_name"--%>
-                                        <%--                              href="${pageContext.request.contextPath}/view/post/postview.do?postNo=${ row.postNo }"--%>
-                                        <%--                              style="text-decoration: none; color: black;">--%>
-                                        <%--                              ${ row.postTitle }--%>
-                                        <%--                            </a>--%>
-                                    <p class="user_name"><i></i><span>${ row.memId }</span></p>
+                                    <p class="content_name">${ row.postTitle }</p>
+                                    <p class="user_name" @click="goChannelHome(item.channelId)">
+                                        <i>
+                                            <img :src="item.channelProfile" onerror="this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">
+                                        </i>
+                                        <span>${ row.memId }</span>
+                                    </p>
                                 </div>
+                                <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span>${ row.postLikes }</span></a>
                             </a>
-                            <a href="#">${ row.postLikes }</a> <%-- 좋아요 버튼 --%>
                             <div class="tag_area">  <%-- 게시글 태그 --%>
                                 <span class="badge">${ row.postRegion }</span>
                                 <span class="badge">${ row.postGrade }</span>
