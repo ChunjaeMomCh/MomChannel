@@ -48,57 +48,78 @@
         <div class="inner">
             <%@ include file="../include/submenu_post.jsp"%>
 
-            <!-- inner content -->
-            <div class="content_tab_area">
-                <a href="./write.do">글쓰기</a>
-                <ul class="card_area">  <%-- 게시글들을 배치 --%>
-                    <c:choose>
-                    <c:when test="${ empty postLists }">  <%-- 게시물이 없을 때 --%>
-                        <p>등록된 게시물이 없습니다 ☺️</p>
-                    </c:when>
-                    <c:otherwise> <%-- 게시물이 있을 때 --%>
-                        <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
-                    <c:forEach items="${ postLists }" var="row" varStatus="loop">
-                    <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
-                        <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
-                            <figure class="content_img"></figure>
-                            <div class="text_area">
-                                    <%-- 제목(상세보기 페이지로 바로가기 링크) --%>
-                                    <%-- 게시물의 일련번호를 매개변수로 사용한다. --%>
-                                    ${ row.postTitle }
-                                    <%--                            <a class="content_name"--%>
-                                    <%--                              href="${pageContext.request.contextPath}/view/post/postview.do?postNo=${ row.postNo }"--%>
-                                    <%--                              style="text-decoration: none; color: black;">--%>
-                                    <%--                              ${ row.postTitle }--%>
-                                    <%--                            </a>--%>
-                                <p class="user_name"><i></i><span>${ row.memId }</span></p>
+            <!-- 문의하기 table -->
+            <div class="content_tab_area" x-data="getQnaList()" x-init="initFn">
+                <form method="get" id="searchContent">
+                    <div class="customer_title_area">
+                        <p class="customer_title mo_none">전체 게시물
+                            <c:if test="${not empty memId && memId ne 'admin'}">
+                                <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">글쓰기</button>
+                            </c:if>
+                        </p>
+                        <div class="tab_btns select_search">
+
+                            <span class="content_num mo_none" id="pcTotalCount">총 <b>${map.totalCount}개</b>의 게시글이 있습니다.</span>
+                            <span class="content_num pc_none" id="mobileTotalCount">총 <b>${map.totalCount}개</b>의 게시글이 있습니다.</span>
+                            <div class="form_box">
+                                <select class="form-select search_category" name="searchField">
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                </select>
+                                <div class="search_bar_area border">
+                                    <input type="text" name="searchWord" class="search_bar" placeholder="검색어를 입력하세요." value="${ param.searchWord }"/>
+                                </div>
+                                <button type="submit" class="btn btn-secondary search_form_btn">검색</button>
                             </div>
-                        </a>
-                        <a href="#">${ row.postLikes }</a> <%-- 좋아요 버튼 --%>
-                        <div class="tag_area">  <%-- 게시글 태그 --%>
-                            <span class="badge">${ row.postRegion }</span>
-                            <span class="badge">${ row.postGrade }</span>
                         </div>
-                        </c:forEach>
-                        </c:otherwise>
-                        </c:choose>
-                    </li>
-                </ul>
-                <div class="pagination-module">
-                    <nav aria-level="Page navigation">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a href="#" class="page-link" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
+                    </div>
+
+
+                <div class="content_card_area">
+                    <ul class="card_area">  <%-- 게시글들을 배치 --%>
+                        <c:choose>
+                        <c:when test="${ empty postLists }">  <%-- 게시물이 없을 때 --%>
+                            <p>등록된 게시물이 없습니다 ☺️</p>
+                        </c:when>
+                        <c:otherwise> <%-- 게시물이 있을 때 --%>
+                            <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
+                        <c:forEach items="${ postLists }" var="row" varStatus="loop">
+                        <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
+                            <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
+                                <figure class="content_img"></figure>
+                                <div class="text_area">
+                                        <%-- 제목(상세보기 페이지로 바로가기 링크) --%>
+                                        <%-- 게시물의 일련번호를 매개변수로 사용한다. --%>
+                                        ${ row.postTitle }
+                                        <%--                            <a class="content_name"--%>
+                                        <%--                              href="${pageContext.request.contextPath}/view/post/postview.do?postNo=${ row.postNo }"--%>
+                                        <%--                              style="text-decoration: none; color: black;">--%>
+                                        <%--                              ${ row.postTitle }--%>
+                                        <%--                            </a>--%>
+                                    <p class="user_name"><i></i><span>${ row.memId }</span></p>
+                                </div>
+                            </a>
+                            <a href="#">${ row.postLikes }</a> <%-- 좋아요 버튼 --%>
+                            <div class="tag_area">  <%-- 게시글 태그 --%>
+                                <span class="badge">${ row.postRegion }</span>
+                                <span class="badge">${ row.postGrade }</span>
+                            </div>
+                            </c:forEach>
+                            </c:otherwise>
+                            </c:choose>
+                        </li>
+                    </ul>
+                    <!-- 하단 메뉴(바로가기, 글쓰기) -->
+                    <div class="mo_none" id="pcPaging">
+                        <ul class="paging">
+                            ${ map.pagingImg }
                         </ul>
-                    </nav>
-                </div> <!--pagination-module-->
+                    </div>
+
+
+                </div>
+
+                </form>
             </div>
         </div><!--inner-->
     </div><!--content_card_area-->
