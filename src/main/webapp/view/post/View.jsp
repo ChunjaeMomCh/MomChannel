@@ -50,29 +50,36 @@
     <div class="inner">
       <div class="content_tab_area">
         <div class="customer_title_area">
-<%--          &lt;%&ndash; 해당 게시물의 게시자일 때에만 수정, 삭제 버튼 &ndash;%&gt;--%>
-<%--          <p class="customer_title">--%>
-<%--            <c:if test="${not empty memId && memId ne 'admin' && vo.qnaPNo eq 0}">--%>
-<%--              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?qnaNo=${ param.qnaNo }';">수정하기</button>--%>
-<%--            </c:if>--%>
-<%--            <c:if test="${memId eq 'admin' && vo.qnaPNo ne 0}">--%>
-<%--              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?qnaNo=${ param.qnaNo }';">수정하기</button>--%>
-<%--            </c:if>--%>
-<%--            <c:if test="${ memId eq 'admin' && vo.qnaPNo eq 0}">--%>
-<%--              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./answer.do?qnaNo=${ param.qnaNo }';">답변작성</button>--%>
-<%--            </c:if>--%>
-<%--          </p>--%>
           <input type="hidden" name="postNo" value="${ vo.postNo }"/>
           <input type="hidden" name="memId" value="${ vo.memId }"/>
         </div>
+        <%-- 게시글 제목 영역 --%>
         <div class="detail_area" >
           <div class="detail_title_area">
+            <%-- 지역별, 학년별 태그 요소 --%>
+            <div class="text_area">
+              <span class="tag" style="background-color: #0a64ff">${ vo.postRegion }</span>
+              <span class="tag" style="background-color: #00b69e">${ vo.postGrade }</span>
+            </div>
+            <%-- 게시글 제목, 날짜, 작성자 아이디--%>
             <p>${ vo.postTitle }</p>
             <span class="date">${ vo.postDate }</span>
             <span class="date">| ${ vo.memId }</span>
+            <%-- 수정, 삭제 버튼 --%>
+            <p class="customer_title">
+              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?postNo=${ param.postNo }';">수정하기</button>
+              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./delete.do?postNo=${ param.postNo }';">삭제하기</button>
+            </p>
           </div>
+          <%-- 게시글 내용 영역 --%>
           <div class="text_box">
             <p>${ vo.postContent }</p>
+            <%-- 이미지 첨부 파일이 있다면 <img> 태그를 이용해 이미지를 출력한다. --%>
+            <c:if test="${ not empty vo.postOFile and isImage eq true }">
+              <br><img src="/Uploads/${ vo.postSFile }"
+              <%-- 이미지가 출력될 영역보다 작으면 원본 크기로, 크다면 해당 영역만큼만 출력한다. --%>
+                       style="max-width: 100%;">
+            </c:if>
           </div>
           <div class="notice_page">
             <a href="/view/post/list.do" class="btn large gray list_load">목록</a>
@@ -91,31 +98,31 @@
 <%--    <col width="15%"><col width="*">--%>
 <%--  </colgroup>--%>
 <%--</table>--%>
-<div class="wrapper">
+<%--<div class="wrapper">
   <div class="header"></div>
   <div class="content">
     <div class="innter detail">
       <div class="content_detail_area">
-        <%-- main --%>
+        &lt;%&ndash; main &ndash;%&gt;
         <div class="content_post">
-          <%-- 제목 영역 --%>
+          &lt;%&ndash; 제목 영역 &ndash;%&gt;
           <div class="post_title_area">
-            <%-- 게시글 정보 영역 --%>
+            &lt;%&ndash; 게시글 정보 영역 &ndash;%&gt;
             <div class="text_area">
               <span class="tag" style="background-color: #0a64ff">${ vo.postRegion }</span>
               <span class="tag" style="background-color: #00b69e">${ vo.postGrade }</span>
               <h4 class="content_title">${ vo.postTitle } </h4>
               <span class="date">${ vo.postDate }</span>
             </div>
-            <%-- 게시자 정보 영역 --%>
+            &lt;%&ndash; 게시자 정보 영역 &ndash;%&gt;
             <div class="author_area">
-              <%-- ToDo: 게시자 정보 영역 - 프로필 이미지, 채널명 (링크) --%>
-              <%--              <div class="author_profile"></div>--%>
-              <%--                <a href="#" class="author_channel">채널명</a>--%>
-              <%--            </div>--%>
-              <%-- 수정, 삭제 버튼 영역 : 게시자일 경우에만 --%>
-              <div <%--class="post_edit_area"--%>>
-                <ul <%--class="option_list post_edit_menu"--%>>
+              &lt;%&ndash; ToDo: 게시자 정보 영역 - 프로필 이미지, 채널명 (링크) &ndash;%&gt;
+              &lt;%&ndash;              <div class="author_profile"></div>&ndash;%&gt;
+              &lt;%&ndash;                <a href="#" class="author_channel">채널명</a>&ndash;%&gt;
+              &lt;%&ndash;            </div>&ndash;%&gt;
+              &lt;%&ndash; 수정, 삭제 버튼 영역 : 게시자일 경우에만 &ndash;%&gt;
+              <div &lt;%&ndash;class="post_edit_area"&ndash;%&gt;>
+                <ul &lt;%&ndash;class="option_list post_edit_menu"&ndash;%&gt;>
                   <li>
                     <a href="./update.do?postNo=${vo.postNo}">수정하기</a>
                   </li>
@@ -125,29 +132,29 @@
                 </ul>
               </div>
             </div>
-            <%-- 버튼 및 첨부파일 영역 --%>
+            &lt;%&ndash; 버튼 및 첨부파일 영역 &ndash;%&gt;
             <div class="post_btns_area">
-              <%-- 좋아요 및 공유 --%>
+              &lt;%&ndash; 좋아요 및 공유 &ndash;%&gt;
               <div class="post_btns">
                 <a href="#" class="like_btn">Likes ${ vo.postLikes }</a>
                 <a href="#" class="url_share_btn"></a>
               </div>
-              <%-- 첨부파일 --%>
+              &lt;%&ndash; 첨부파일 &ndash;%&gt;
               <div class="attached_file_area">
-                <%-- ToDo: 첨부파일 리스트 --%>
+                &lt;%&ndash; ToDo: 첨부파일 리스트 &ndash;%&gt;
               </div>
             </div>
-            <%-- 게시글 내용 영역 --%>
+            &lt;%&ndash; 게시글 내용 영역 &ndash;%&gt;
             <div class="text_body">
               <p>${ vo.postContent }</p>
             </div>
-            <%-- 댓글 영역 --%>
+            &lt;%&ndash; 댓글 영역 &ndash;%&gt;
             <div class="comments_area"></div>
           </div>
-          <%-- aside --%>
+          &lt;%&ndash; aside &ndash;%&gt;
           <div class="related_posts"></div>
         </div>
       </div>
     </div>
-  </div>
+  </div>--%>
   <%@ include file="../include/footer.jsp"%>
