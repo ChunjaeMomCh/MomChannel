@@ -104,6 +104,7 @@
   <summary>유스케이스 다이어그램</summary>
 
  <!-- ![image (4)](https://github.com/jyeeeh/Shopping-CLI-Java/assets/145963612/a04ebb93-1788-4e51-98d7-df8a6b5d033b) -->
+  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/d143c9f2-23a2-4e43-8e5f-be24c2611a71)
 
 
 
@@ -114,13 +115,17 @@
 <details>
   <summary>시퀀스 다이어그램</summary>
 
-  1. Actor : 회원
- <!--  ![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/288f651e-bcb9-43cb-b96b-845c0ed1aa15) -->
+  1. Actor : 회원 ( Post )
 
-  
-  
+  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/bede9070-4422-4788-8f79-61428f1b29eb)
+
+  2. Actor : 회원 ( CS )
+
+  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/30e7e127-7d20-41f8-b853-8a7bed173d48)
+
   3. Actor : 관리자
- <!--  ![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/ca35abda-51d9-4136-b2bf-62bf1b17337c) -->
+
+  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/91e895c6-7ce4-47b2-b9cd-fe4e7842477f)
 
 
 </details>
