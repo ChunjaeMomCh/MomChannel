@@ -70,7 +70,7 @@
                       <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
                     <c:forEach items="${ postLists }" var="row" varStatus="loop">
                     <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
-                      <a href="${pageContext.request.contextPath}/view/post/postview.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
+                      <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
                         <div class="thumbnailImg" style="width: 320px; height: 280px;">
                           <figure class="content_img"><img src="/Uploads/${ row.postSFile }" alt=""></figure>
                         </div>
@@ -79,7 +79,7 @@
                             <%-- 게시물의 일련번호를 매개변수로 사용한다. --%>
                             ${ row.postTitle }
                             <a class="content_name"
-                              href="${pageContext.request.contextPath}/view/post/postview.do?postNo=${ row.postNo }"
+                              href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }"
                               style="text-decoration: none; color: black;">
                               ${ row.postTitle }
                             </a>
