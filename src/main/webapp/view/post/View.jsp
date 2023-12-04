@@ -44,6 +44,46 @@
 <body>
 <%@ include file="../include/header.jsp"%>
 <%-- 게시판 상세 보기 --%>
+<!-- contents -->
+<div class="content">
+  <div class="content_menu customer_box">
+    <div class="inner">
+      <div class="content_tab_area">
+        <div class="customer_title_area">
+<%--          &lt;%&ndash; 해당 게시물의 게시자일 때에만 수정, 삭제 버튼 &ndash;%&gt;--%>
+<%--          <p class="customer_title">--%>
+<%--            <c:if test="${not empty memId && memId ne 'admin' && vo.qnaPNo eq 0}">--%>
+<%--              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?qnaNo=${ param.qnaNo }';">수정하기</button>--%>
+<%--            </c:if>--%>
+<%--            <c:if test="${memId eq 'admin' && vo.qnaPNo ne 0}">--%>
+<%--              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./edit.do?qnaNo=${ param.qnaNo }';">수정하기</button>--%>
+<%--            </c:if>--%>
+<%--            <c:if test="${ memId eq 'admin' && vo.qnaPNo eq 0}">--%>
+<%--              <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./answer.do?qnaNo=${ param.qnaNo }';">답변작성</button>--%>
+<%--            </c:if>--%>
+<%--          </p>--%>
+          <input type="hidden" name="postNo" value="${ vo.postNo }"/>
+          <input type="hidden" name="memId" value="${ vo.memId }"/>
+        </div>
+        <div class="detail_area" >
+          <div class="detail_title_area">
+            <p>${ vo.postTitle }</p>
+            <span class="date">${ vo.postDate }</span>
+            <span class="date">| ${ vo.memId }</span>
+          </div>
+          <div class="text_box">
+            <p>${ vo.postContent }</p>
+          </div>
+          <div class="notice_page">
+            <a href="/view/post/list.do" class="btn large gray list_load">목록</a>
+          </div>
+        </div>
+      </div>
+    </div><!-- inner -->
+  </div>
+</div>
+<!--// contents -->
+
 <div class="content"></div>
 <%--<table>--%>
 <%--  <colgroup>--%>

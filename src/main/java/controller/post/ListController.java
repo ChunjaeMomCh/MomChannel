@@ -5,6 +5,7 @@
 package controller.post;
 
 import dao.PostDAO;
+import utils.BoardPage;
 import vo.PostVO;
 
 import javax.servlet.ServletContext;
@@ -21,12 +22,16 @@ import java.util.Map;
 // 게시물 목록 읽기
 @WebServlet("/view/post/list.do")
 public class ListController extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         // DAO 생성
         PostDAO dao = new PostDAO();
+
         // 뷰에 전달할 매개변수를 저장할 맵 생성
         Map<String, Object> map = new HashMap<String, Object>();
 
@@ -40,6 +45,8 @@ public class ListController extends HttpServlet {
             map.put("searchWord", searchWord);
         }
         /* 검색 end */
+
+        int totalCount = dao.selectCount(map);  // 게시물 개수
 
         // 페이징 처리문
         ServletContext application = getServletContext();
@@ -60,7 +67,16 @@ public class ListController extends HttpServlet {
         /* 페이지 처리 end */
 
         // 게시물 목록 받기
-        List<PostVO> postLists = dao.showPosts(map);
+        List<PostVO> postLists = dao.selectListPage(map);
+
+        // 뷰에 전달할 매개변수 추가
+        String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
+                blockPage, pageNum,searchField,searchWord, "/view/cs/qna/list.do");  // 바로가기 영역 HTML 문자열
+        System.out.println(totalCount);
+        map.put("pagingImg", pagingImg);
+        map.put("totalCount", totalCount);
+        map.put("pageSize", pageSize);
+        map.put("pageNum", pageNum);
 
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);

@@ -31,7 +31,6 @@ public class PostDAO {
 
         SqlSession session = MyBatisSessionFactory.getSqlSession();
         PostMapper mapper = session.getMapper(PostMapper.class);
-
         List<PostVO> result = mapper.selectListPage(map);
 
         session.close();

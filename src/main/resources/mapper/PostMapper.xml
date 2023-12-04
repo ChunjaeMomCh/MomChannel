@@ -6,7 +6,7 @@
     <!-- 게시글 목록 불러오기 -->
     <!-- 검색 조건에 맞는 목록 불러오기 -->
     <select id="selectCount" parameterType="map" resultType="int">
-        SELECT *
+        SELECT count(*)
         FROM post
         <if test="searchWord != null and !searchWord.equals('')">
             WHERE
