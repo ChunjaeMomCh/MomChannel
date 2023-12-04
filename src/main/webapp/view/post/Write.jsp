@@ -25,7 +25,7 @@
     <div class="inner">
       <div class="content_tab_area">
         <div class="customer_title_area">
-          <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>문의하기</p>
+          <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>게시물 등록</p>
         </div>
         <div class="detail_area">
           <div class="text_box">
@@ -73,7 +73,7 @@
                   <textarea class="form-control" rows="5" id="postContent" name="postContent"></textarea>
                 </div>
                 <button type="submit" class="btn btn-light input_form_btn">작성 완료</button>
-                <button type="reset" class="btn btn-gray input_form_btn" onclick="location.href='./list.do'">취소</button>
+<%--                <button type="reset" class="btn btn-secondary input_form_btn" onclick="location.href='./list.do'">취소</button>--%>
               </form>
             </div>
           </div>
