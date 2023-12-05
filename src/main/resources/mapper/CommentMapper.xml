@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.mapper.CommentMapper">
+
+    <select id="selectCount" parameterType="map" resultType="int">
+        select count(*)
+        from qna
+        <if test="searchWord != null and !searchWord.equals('')">
+            where
+            <choose>
+                <when test="searchField == 'title'">
+                    qna_title like concat('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    qna_content like concat('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
+        order by qna_no desc
+    </select>
+
+    <select id="selectListPageWithPaging" parameterType="map" resultType="vo.QNABoardVO">
+        SELECT * FROM
+        ( SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
+        FROM  qna b,(SELECT @ROWNUM := 0 ) TMP
+
+        <if test="searchWord != null and !searchWord.equals('')">
+            <choose>
+                <when test="searchField == 'title'">
+                    WHERE qna_title LIKE CONCAT('%', #{searchWord}, '%')
+                </when>
+                <otherwise>
+                    WHERE qna_content LIKE CONCAT('%', #{searchWord}, '%')
+                </otherwise>
+            </choose>
+        </if>
+        ORDER BY qna_group DESC, qna_p_no asc) T
+        WHERE ROWNUM BETWEEN #{ start } AND #{ end } ;
+    </select>
+
+    <insert id="insertWrite" parameterType="vo.CommentVO">
+        INSERT
+        INTO comment(mem_id, post_no, comment_txt)
+        VALUES(#{memId}, #{postNo}, #{commentTxt})
+    </insert>
+
+    <insert id="insertWriteAnswer" parameterType="vo.QNABoardVO">
+        INSERT
+        INTO qna(mem_id, qna_title, qna_content, qna_p_no, qna_group)
+        VALUES(#{memId}, #{qnaTitle}, #{qnaContent}, #{qnaPNo}, #{qnaGroup})
+    </insert>
+
+    <select id="selectView" parameterType="String" resultType="vo.QNABoardVO">
+        select *
+        from qna
+        where qna_no = #{qnaNo}
+    </select>
+
+
+    <delete id="deletePost">
+        delete
+        from qna
+        where qna_no = #{qnaNo}
+    </delete>
+
+    <update id="updatePost" parameterType="vo.QNABoardVO">
+        update qna
+        set qna_title = #{qnaTitle},
+            qna_content = #{qnaContent},
+            mem_id = #{memId}
+        where qna_no = #{qnaNo}
+<!--        and pass = #{pass}-->
+    </update>
+
+</mapper>

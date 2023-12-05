@@ -24,5 +24,6 @@
         <mapper resource="mapper/QNABoardMapper.xml" />
         <mapper resource="mapper/ChannelMapper.xml" />
         <mapper resource="mapper/SubMapper.xml" />
+        <mapper resource="mapper/CommentMapper.xml" />
     </mappers>
 </configuration>
