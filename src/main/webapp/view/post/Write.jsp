@@ -17,6 +17,22 @@
       return false;
     }
   }
+  function setThumbnail(event){
+      var reader = new FileReader();
+      reader.onload = function(event){
+          var img = document.createElement("img");
+          img.setAttribute("src", event.target.result);
+          img.setAttribute("class", "post_thumbnail");
+          var parent = document.querySelector("div#image_container");
+          var imgs = document.querySelectorAll("img.post_thumbnail");
+          if( imgs.length>=1 ){
+              parent.removeChild(imgs[0]);
+          }
+          parent.appendChild(img);
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+  }
 </script>
 
 <!-- contents -->
@@ -32,8 +48,8 @@
             <div class="input_form">
               <form name="writeFrm" method="post" enctype="multipart/form-data" action="./write.do" onsubmit="return validateForm(this);">
                 <div class="select_post">
-                  <span class="input_form_title">지역</span>
-                  <select name="postRegion" id="postRegion" class="form-select" style="width: 20%;display: inline-block;">
+                  <span class="input_form_title" style="display: inline-block">지역</span>
+                  <select name="postRegion" id="postRegion" class="form-select" style="display: inline-block;">
                     <option value="전국">전국</option>
                     <option value="서울">서울</option>
                     <option value="경기">경기</option>
@@ -45,8 +61,8 @@
                   </select>
                 </div>
                 <div class="select_post">
-                  <span class="input_form_title">학년</span>
-                  <select name="postGrade" id="postGrade" class="form-select" style="width: 20%;display:  inline-block;">
+                  <span class="input_form_title" style="display: inline-block">학년</span>
+                  <select name="postGrade" id="postGrade" class="form-select" style="display:  inline-block;">
                     <option value="전학년">전학년</option>
                     <option value="1학년">1학년</option>
                     <option value="2학년">2학년</option>
@@ -58,8 +74,9 @@
                 </div>
                 <input type="hidden" name="memId" val="memId">
                 <div class="mb-3">
-                  <label for="postOFile" class="input_form_title">썸네일 이미지</label>
-                  <input class="form-control" type="file" id="postOFile" name="postOFile">
+                    <label for="postOFile" class="input_form_title">썸네일 이미지</label>
+                    <input class="form-control" type="file" id="postOFile" name="postOFile" onchange="setThumbnail(event);"/>
+                    <div id="image_container"></div>
 <%--                  <figure style="position: relative;">--%>
 <%--                    <img src="${pageContext.request.contextPath}/resources/images/default_thumbnail.jpg" height="150px" alt="썸네일 디폴트 이미지">--%>
 <%--                  </figure>--%>

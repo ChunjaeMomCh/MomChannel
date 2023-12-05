@@ -115,5 +115,10 @@
 .select_post{
     width: 20%;
     display: inline-block;
+    margin-top: 10px;
     margin-bottom: 10px;
+}
+.post_thumbnail{
+    width: 25%;
+    margin-top: 10px;
 }
