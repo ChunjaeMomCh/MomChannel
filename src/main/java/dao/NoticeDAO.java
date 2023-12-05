@@ -40,7 +40,11 @@ public class NoticeDAO {
     public int insertWrite(NoticeVO vo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+        System.out.println("vo"+vo);
         int result = mapper.insertWrite(vo);
+
+
+        System.out.println("result"+result);
         if (result == 1) {
             sqlSession.commit();
             System.out.println("새로운 mvcboard 저장 성공");
