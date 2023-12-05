@@ -64,21 +64,14 @@
                             <td class="field" colspan="3">${ mvo.memEmail }</td>
                             <th class="table-light" style="text-align: center">회원 이미지</th>
                         </tr>
-                        
                     </table>
-                    
-                        <!-- 하단 메뉴(버튼) -->
-                        <%--tr>
-                            <td colspan="4" align="center">--%>
-                                <%--            <input type="hidden" name="qnaNo" value="${ vo.qnaNo }"/>--%>
-                                <%--            <input type="hidden" name="memId" value="${ vo.memId }"/>--%>
-                                <button type="button" class="btn large gray list_load"
-                                        onclick="location.href='../member/myinfoedit.do?memId=${ mvo.memId }';">
-                                    수정하기
-                                </button>
-                       <%--
-                            </td>
-                        </tr>--%>
+                    <!-- 하단 메뉴(버튼) -->
+                    <div class="btn_field">
+                        <button type="button" class="btn large primary list_load"
+                                onclick="location.href='../member/myinfoedit.do?memId=${ mvo.memId }';">
+                            수정하기
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

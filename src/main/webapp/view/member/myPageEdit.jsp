@@ -1,12 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>내 정보 수정</title>
+<%@ include file="../include/header.jsp"%>
+
     <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script>
         //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -100,112 +96,133 @@
             reader.readAsDataURL(event.target.files[0]);
         }
     </script>
-</head>
-<body>
-<%--<%@ include file="include/header.jsp"%>--%>
+
+<style>
+    td.field {
+        border-left: 1px solid #dee2e6;
+        border-right: 1px solid #dee2e6;
+    }
+    tr {
+        border-bottom: 1px solid #dee2e6;
+    }
+</style>
 
 <div class="content">
-<h2>내 정보 수정</h2>
-<form method="post" action="../member/myinfoedit.do" enctype="multipart/form-data" onsubmit="return validateForm(this);">
-    <table border="1" width="90%">
-        <input type="hidden" name="memId" value="${ mvo.memId }"/>
-<%--        <input type="hidden" name="memImg" value="${ mvo.memImg }"/>--%>
-        <input type="hidden" name="memSImg" value="${ mvo.memSImg }" />
-
-
-<%--        <tr>--%>
-<%--            <td>회원 이미지</td>--%>
-<%--            <td>--%>
-<%--                <input type="text" name="memImg" style="width:90%;" value="${ mvo.memImg }" />--%>
-<%--            </td>--%>
-<%--        </tr>--%>
-        <tr>
-            <td>회원 이미지</td>
-            <td>
-<%--                <img src="../Uploads/${ mvo.memSImg }" style="max-width:20%;"/>--%>
-                <input type="file" name="memImg" onchange="setThumbnail(event);"/>
-<%--                <% originImg =  mvo.memImg }%>--%>
-                <div id="image_container"></div>
-            </td>
-
-        </tr>
-            <tr>
-                <td>아이디</td>
-                <td>
-                    ${ mvo.memId }
-                </td>
-            </tr>
-            <tr>
-                <td>이름</td>
-                <td>
-                    ${ mvo.memName }
-                </td>
-            </tr>
-            <tr>
-                <td>지역</td>
-                <td>
-                    <select name="memRegion">
-                        <option value="seoul" ${ mvo.memRegion == "seoul" ? "selected" : "" }>서울</option>
-                        <option value="kyeonggi" ${ mvo.memRegion == "kyeonggi" ? "selected" : "" }>경기</option>
-                        <option value="kangwon" ${ mvo.memRegion == "kangwon" ? "selected" : "" }>강원</option>
-                        <option value="chungcheong" ${ mvo.memRegion == "chungcheong" ? "selected" : "" }>충청</option>
-                        <option value="jeolla" ${ mvo.memRegion == "jeolla" ? "selected" : "" }>전라</option>
-                        <option value="kyeongsang" ${ mvo.memRegion == "kyeongsang" ? "selected" : "" }>경상</option>
-                        <option value="cheju" ${ mvo.memRegion == "cheju" ? "selected" : "" }>제주</option>
-                    </select><br><br>
-                </td>
-            </tr>
-            <tr>
-                <td>주소</td>
-                <td>
-                    <input type="text" name="postCode" id="sample4_postcode" value="${fn:split(mvo.memAddr,'/')[0]}" placeholder="우편번호">
-                    <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                    <input type="text" name="roadAddr" id="sample4_roadAddress" value="${fn:split(mvo.memAddr,'/')[1]}" placeholder="도로명주소" size="60" ><br>
-                    <input type="hidden" name="jibunAddr" id="sample4_jibunAddress" placeholder="지번주소"  size="60">
-                    <span id="guide" style="color:#999;display:none"></span>
-                    <input type="text" name="detailAddr" id="sample4_detailAddress" value="${fn:split(mvo.memAddr,'/')[2]}" placeholder="상세주소"  size="60"><br>
-                    <input type="hidden" id="sample4_extraAddress" placeholder="참고항목"  size="60">
-                    <input type="hidden" id="sample4_engAddress" placeholder="영문주소"  size="60" ><br><br>
-                </td>
-            </tr>
-        <tr>
-            <td>자녀 학년</td>
-            <td>
-                <select name="memChildGrade">
-                    <option value="1" ${ mvo.memChildGrade == "1" ? "selected" : "" }>1학년</option>
-                    <option value="2" ${ mvo.memChildGrade == "2" ? "selected" : "" }>2학년</option>
-                    <option value="3" ${ mvo.memChildGrade == "3" ? "selected" : "" }>3학년</option>
-                    <option value="4" ${ mvo.memChildGrade == "4" ? "selected" : "" }>4학년</option>
-                    <option value="5" ${ mvo.memChildGrade == "5" ? "selected" : "" }>5학년</option>
-                    <option value="6" ${ mvo.memChildGrade == "6" ? "selected" : "" }>6학년</option>
-                </select><br><br>
-            </td>
-        </tr>
-        <tr>
-            <td>전화번호</td>
-            <td>
-                <input type="text" name="memPhone" style="width:90%;" value="${ mvo.memPhone }" />
-            </td>
-        </tr>
-        <tr>
-            <td>이메일</td>
-            <td>
-                <input type="text" name="memEmail" style="width:90%;" value="${ mvo.memEmail }" />
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="center">
-                <button type="submit">수정하기</button>
-                <button type="reset">RESET</button>
-                <button type="button" onclick="location.href='../member/myinfo.do';">
-                    취소하기
-                </button>
-            </td>
-        </tr>
-    </table>
-</form>
+    <div class="content_menu customer_box">
+        <div class="inner">
+            <div class="content_tab_area">
+                <div class="customer_title_area">
+                    <div class="customer_title">내 정보 수정</div>
+                </div>
+                <div class="detail_area">
+                    <form method="post" action="../member/myinfoedit.do" enctype="multipart/form-data" onsubmit="return validateForm(this);">
+                        <table class="table" border="1" width="90%">
+                            <input type="hidden" name="memId" value="${ mvo.memId }"/>
+                            <%--        <input type="hidden" name="memImg" value="${ mvo.memImg }"/>--%>
+                            <input type="hidden" name="memSImg" value="${ mvo.memSImg }" />
+                            
+                            
+                            <%--        <tr>--%>
+                            <%--            <td>회원 이미지</td>--%>
+                            <%--            <td>--%>
+                            <%--                <input type="text" name="memImg" style="width:90%;" value="${ mvo.memImg }" />--%>
+                            <%--            </td>--%>
+                            <%--        </tr>--%>
+                            <%--<tr>
+                                <td>회원 이미지</td>
+                                <td>
+                                    &lt;%&ndash;                <img src="../Uploads/${ mvo.memSImg }" style="max-width:20%;"/>&ndash;%&gt;
+                                    <input type="file" name="memImg" onchange="setThumbnail(event);"/>
+                                    &lt;%&ndash;                <% originImg =  mvo.memImg }%>&ndash;%&gt;
+                                    <div id="image_container"></div>
+                                </td>
+                            
+                            </tr>--%>
+                            <tr>
+                                <th class="table-light">아이디</th>
+                                <td class="field">
+                                    ${ mvo.memId }
+                                </td>
+                                <td rowspan="6" style="vertical-align: middle;" >
+                                    <%--                <img src="../Uploads/${ mvo.memSImg }" style="max-width:20%;"/>--%>
+                                    <input class="form-control" id="formFile" type="file" name="memImg" onchange="setThumbnail(event);"/>
+                                    <%--                <% originImg =  mvo.memImg }%>--%>
+                                    <div id="image_container"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="table-light">이름</th>
+                                <td class="field">
+                                    ${ mvo.memName }
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="table-light">지역</th>
+                                <td class="field">
+                                    <select name="memRegion">
+                                        <option value="seoul" ${ mvo.memRegion == "seoul" ? "selected" : "" }>서울</option>
+                                        <option value="kyeonggi" ${ mvo.memRegion == "kyeonggi" ? "selected" : "" }>경기</option>
+                                        <option value="kangwon" ${ mvo.memRegion == "kangwon" ? "selected" : "" }>강원</option>
+                                        <option value="chungcheong" ${ mvo.memRegion == "chungcheong" ? "selected" : "" }>충청</option>
+                                        <option value="jeolla" ${ mvo.memRegion == "jeolla" ? "selected" : "" }>전라</option>
+                                        <option value="kyeongsang" ${ mvo.memRegion == "kyeongsang" ? "selected" : "" }>경상</option>
+                                        <option value="cheju" ${ mvo.memRegion == "cheju" ? "selected" : "" }>제주</option>
+                                    </select><br><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="table-light">주소</th>
+                                <td class="field">
+                                    <input type="text" name="postCode" id="sample4_postcode" value="${fn:split(mvo.memAddr,'/')[0]}" placeholder="우편번호">
+                                    <input type="button" class="btn btn-light btn-sm" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                                    <input type="text" name="roadAddr" id="sample4_roadAddress" value="${fn:split(mvo.memAddr,'/')[1]}" placeholder="도로명주소" size="60" ><br>
+                                    <input type="hidden" name="jibunAddr" id="sample4_jibunAddress" placeholder="지번주소"  size="60">
+                                    <span id="guide" style="color:#999;display:none"></span>
+                                    <input type="text" name="detailAddr" id="sample4_detailAddress" value="${fn:split(mvo.memAddr,'/')[2]}" placeholder="상세주소"  size="60"><br>
+                                    <input type="hidden" id="sample4_extraAddress" placeholder="참고항목"  size="60">
+                                    <input type="hidden" id="sample4_engAddress" placeholder="영문주소"  size="60" ><br><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="table-light">자녀 학년</th>
+                                <td class="field">
+                                    <select name="memChildGrade">
+                                        <option value="1" ${ mvo.memChildGrade == "1" ? "selected" : "" }>1학년</option>
+                                        <option value="2" ${ mvo.memChildGrade == "2" ? "selected" : "" }>2학년</option>
+                                        <option value="3" ${ mvo.memChildGrade == "3" ? "selected" : "" }>3학년</option>
+                                        <option value="4" ${ mvo.memChildGrade == "4" ? "selected" : "" }>4학년</option>
+                                        <option value="5" ${ mvo.memChildGrade == "5" ? "selected" : "" }>5학년</option>
+                                        <option value="6" ${ mvo.memChildGrade == "6" ? "selected" : "" }>6학년</option>
+                                    </select><br><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="table-light">전화번호</th>
+                                <td class="field">
+                                    <input type="text" name="memPhone" style="width:90%;" value="${ mvo.memPhone }" />
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid black">
+                                <th class="table-light">이메일</th>
+                                <td class="field">
+                                    <input type="text" name="memEmail" style="width:90%;" value="${ mvo.memEmail }" />
+                                </td>
+                                <th class="table-light" style="text-align: center">회원 이미지</th>
+                            </tr>
+                        </table>
+                        <!-- 하단 메뉴(버튼) -->
+                        <div class="btn_field" align="center">
+                            <button type="submit" class="btn btn-primary btn-sm">수정하기</button>
+                            <button type="reset" class="btn btn-primary btn-sm">RESET</button>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='../member/myinfo.do';">
+                                취소하기
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div> <%-- content의 끝 --%>
 
-<%--    <%@ include file="include/footer.jsp"%>--%>
-</body>
-</html>
+<%@ include file="../include/footer.jsp"%>
