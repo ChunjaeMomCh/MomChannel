@@ -32,8 +32,8 @@
             <div class="input_form">
               <form name="writeFrm" method="post" enctype="multipart/form-data" action="./write.do" onsubmit="return validateForm(this);">
                 <div class="select_post">
-                  <span class="input_form_title">지역</span>
-                  <select name="postRegion" id="postRegion" class="form-select" style="width: 20%;display: inline-block;">
+                  <span class="input_form_title" style="display: inline-block">지역</span>
+                  <select name="postRegion" id="postRegion" class="form-select" style="display: inline-block;">
                     <option value="전국">전국</option>
                     <option value="서울">서울</option>
                     <option value="경기">경기</option>
@@ -45,8 +45,8 @@
                   </select>
                 </div>
                 <div class="select_post">
-                  <span class="input_form_title">학년</span>
-                  <select name="postGrade" id="postGrade" class="form-select" style="width: 20%;display:  inline-block;">
+                  <span class="input_form_title" style="display: inline-block">학년</span>
+                  <select name="postGrade" id="postGrade" class="form-select" style="display:  inline-block;">
                     <option value="전학년">전학년</option>
                     <option value="1학년">1학년</option>
                     <option value="2학년">2학년</option>
