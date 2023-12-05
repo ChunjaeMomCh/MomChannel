@@ -3,6 +3,7 @@ package dao;
 
 import mybatis.factory.MyBatisSessionFactory;
 import mybatis.mapper.CommentMapper;
+import mybatis.mapper.PostMapper;
 import mybatis.mapper.QNABoardMapper;
 import org.apache.ibatis.session.SqlSession;
 import vo.CommentVO;
@@ -13,6 +14,13 @@ import java.util.List;
 import java.util.Map;
 
 public class CommentDAO {
+    public List<CommentVO> selectCommentList(String postNo) {
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        CommentMapper mapper = session.getMapper(CommentMapper.class);
+        List<CommentVO> comments= mapper.selectCommentList(postNo);
+        session.close();
+        return comments;
+    }
 
     public int insertWrite(CommentVO vo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();

@@ -4,40 +4,11 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.mapper.CommentMapper">
 
-    <select id="selectCount" parameterType="map" resultType="int">
-        select count(*)
-        from qna
-        <if test="searchWord != null and !searchWord.equals('')">
-            where
-            <choose>
-                <when test="searchField == 'title'">
-                    qna_title like concat('%', #{searchWord}, '%')
-                </when>
-                <otherwise>
-                    qna_content like concat('%', #{searchWord}, '%')
-                </otherwise>
-            </choose>
-        </if>
-        order by qna_no desc
-    </select>
-
-    <select id="selectListPageWithPaging" parameterType="map" resultType="vo.QNABoardVO">
-        SELECT * FROM
-        ( SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
-        FROM  qna b,(SELECT @ROWNUM := 0 ) TMP
-
-        <if test="searchWord != null and !searchWord.equals('')">
-            <choose>
-                <when test="searchField == 'title'">
-                    WHERE qna_title LIKE CONCAT('%', #{searchWord}, '%')
-                </when>
-                <otherwise>
-                    WHERE qna_content LIKE CONCAT('%', #{searchWord}, '%')
-                </otherwise>
-            </choose>
-        </if>
-        ORDER BY qna_group DESC, qna_p_no asc) T
-        WHERE ROWNUM BETWEEN #{ start } AND #{ end } ;
+    <select id="selectCommentList" parameterType="String" resultType="vo.CommentVO">
+        SELECT *
+        from comment
+        where post_no = #{postNo}
+        order by comment_date desc
     </select>
 
     <insert id="insertWrite" parameterType="vo.CommentVO">

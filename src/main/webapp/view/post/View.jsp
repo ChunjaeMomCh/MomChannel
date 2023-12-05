@@ -1,4 +1,4 @@
-<%--&lt;%&ndash;--%>
+<%@ page import="java.util.Date" %><%--&lt;%&ndash;--%>
 <%--  Created by IntelliJ IDEA.--%>
 <%--  User: sec--%>
 <%--  Date: 2023-11-26--%>
@@ -46,6 +46,7 @@
 <%-- 게시판 상세 보기 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="../include/header.jsp" %>
 
 
@@ -137,7 +138,7 @@
                     }
                 </script>
                 <div class="comments_area">
-                    <p class="post_type_title">댓글<span class="num">00(댓글갯수)</span></p>
+                    <p class="post_type_title">댓글<span class="num">${commentTotal}</span></p>
                     <div class="reply_list">
                         <div class="reply_box">
                             <div class="text_box">
@@ -149,77 +150,77 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="reply">
-
-                            <div class="reple_inner">
-
-                            <figure><img :src="item.userImage" alt=""></figure>
-                            <div class="text_box">
-                                <a :href="'/channel/home.html?channel_id='+item.userChannelId" class="user_name"
-                                   x-text="item.userChannelName" href="/channel/home.html?channel_id=">댓글단아이디</a>
-                                <p class="reply_text">댓글내용</p>
-                                <div class="reply_footer">
-                                    <div class="reply_date">
-                                        <p>2023-12-04댓글단날짜</p>
-                                        <span class="time">17:54:31댓글단시간</span>
-                                        <a href="#none" class="re_reply"
-                                           @click="reply(idx,item.id), $('.reply').removeClass('modify_ing');">답글</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            </div>
-                            <template x-if="item.disabled == 'false'">
+                        <c:forEach items="${ commentLists }" var="row" varStatus="loop">
+                            <div class="reply">
                                 <div class="reple_inner">
-                                    <template x-if="item.userImage != ''">
-                                        <figure><img :src="item.userImage" alt=""></figure>
-                                    </template>
-                                    <template x-if="item.userImage == ''">
-                                        <figure></figure>
-                                    </template>
-                                    <div class="text_box">
-                                        <a :href="'/channel/home.html?channel_id='+item.userChannelId" class="user_name"
-                                           x-text="item.userChannelName"></a>
-                                        <p class="reply_text" x-text="item.text"></p>
-                                        <div class="reply_footer">
-                                            <div class="reply_date">
-                                                <p x-text="item.createDate"></p>
-                                                <span class="time" x-text="item.createTime"></span>
-                                                <a href="#none" class="re_reply"
-                                                   @click="reply(idx,item.id), $('.reply').removeClass('modify_ing');">답글</a>
-                                            </div>
+                                <figure><img :src="item.userImage" alt=""></figure>
+                                <div class="text_box">
+                                    <a :href="'/channel/home.html?channel_id='+item.userChannelId" class="user_name"
+                                       x-text="item.userChannelName" href="/channel/home.html?channel_id=">${row.memId}</a>
+                                    <p class="reply_text">${row.commentTxt}</p>
+                                    <div class="reply_footer">
+                                        <div class="reply_date">
+                                            <p><fmt:formatDate value="${row.commentDate}" pattern="yyyy-MM-dd"/></p>
+                                            <span class="time"><fmt:formatDate value="${row.commentDate}" type="time" pattern="hh:mm:ss"/></span>
+                                            <a href="#none" class="re_reply"
+                                               @click="reply(idx,item.id), $('.reply').removeClass('modify_ing');">답글</a>
                                         </div>
                                     </div>
                                 </div>
-                            </template>
-                            <template x-for="(items,index) in item.replyComment" :key="index">
-                                <div class="re_reply_area">
-                                    <div class="reply">
-                                        <div class="reple_inner">
-                                            <template x-if="items.userImage != ''">
-                                                <figure><img :src="items.userImage" alt=""></figure>
-                                            </template>
-                                            <template x-if="items.userImage == ''">
-                                                <figure></figure>
-                                            </template>
-                                            <div class="text_box">
-                                                <a :href="'/channel/home.html?channel_id='+item.userChannelId"
-                                                   class="user_name" x-text="items.userChannelName"></a>
-                                                <p class="reply_text" x-text="items.text"></p>
-                                                <div class="reply_footer">
-                                                    <div class="reply_date">
-                                                        <p x-text="items.createDate"></p>
-                                                        <span class="time" x-text="items.createTime"></span>
-                                                    </div>
-                                                    <div class="reply_btns">
+
+                                </div>
+                                <template x-if="item.disabled == 'false'">
+                                    <div class="reple_inner">
+                                        <template x-if="item.userImage != ''">
+                                            <figure><img :src="item.userImage" alt=""></figure>
+                                        </template>
+                                        <template x-if="item.userImage == ''">
+                                            <figure></figure>
+                                        </template>
+                                        <div class="text_box">
+                                            <a :href="'/channel/home.html?channel_id='+item.userChannelId" class="user_name"
+                                               x-text="item.userChannelName"></a>
+                                            <p class="reply_text" x-text="item.text"></p>
+                                            <div class="reply_footer">
+                                                <div class="reply_date">
+                                                    <p x-text="item.createDate"></p>
+                                                    <span class="time" x-text="item.createTime"></span>
+                                                    <a href="#none" class="re_reply"
+                                                       @click="reply(idx,item.id), $('.reply').removeClass('modify_ing');">답글</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                                <template x-for="(items,index) in item.replyComment" :key="index">
+                                    <div class="re_reply_area">
+                                        <div class="reply">
+                                            <div class="reple_inner">
+                                                <template x-if="items.userImage != ''">
+                                                    <figure><img :src="items.userImage" alt=""></figure>
+                                                </template>
+                                                <template x-if="items.userImage == ''">
+                                                    <figure></figure>
+                                                </template>
+                                                <div class="text_box">
+                                                    <a :href="'/channel/home.html?channel_id='+item.userChannelId"
+                                                       class="user_name" x-text="items.userChannelName"></a>
+                                                    <p class="reply_text" x-text="items.text"></p>
+                                                    <div class="reply_footer">
+                                                        <div class="reply_date">
+                                                            <p x-text="items.createDate"></p>
+                                                            <span class="time" x-text="items.createTime"></span>
+                                                        </div>
+                                                        <div class="reply_btns">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </template>
-                        </div>
+                                </template>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
                 <a href="/view/post/list.do" class="btn large gray list_load">목록</a>

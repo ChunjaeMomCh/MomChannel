@@ -9,9 +9,8 @@ import java.util.Map;
 
 @Mapper
 public interface CommentMapper {
-    int selectCount(Map<String, Object> map);
 
-    List<QNABoardVO> selectListPageWithPaging(Map<String, Object> map);
+    List<CommentVO> selectCommentList(String postNo);
 
     int insertWrite(CommentVO vo);
     int insertWriteAnswer(QNABoardVO vo);

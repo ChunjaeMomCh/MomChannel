@@ -3,7 +3,9 @@
  * */
 package controller.post;
 
+import dao.CommentDAO;
 import dao.PostDAO;
+import vo.CommentVO;
 import vo.PostVO;
 
 import javax.servlet.ServletException;
@@ -64,9 +66,17 @@ public class ViewController extends HttpServlet {
             isImage = true;
         }
 
+        // 댓글 load
+        CommentDAO cdao = new CommentDAO();
+        List<CommentVO> commentLists = cdao.selectCommentList(postNo); // 게시물의 댓글 리스트 불러오기
+        int commentTotal = commentLists.size(); // 게시물의 댓글 수 불러오기
+
+
         // DTO 객체와 isImage를 request 영역에 저장하고 View.jsp 로 포워드한다.
         req.setAttribute("vo", vo);
         req.setAttribute("isImage", isImage);
+        req.setAttribute("commentLists", commentLists);
+        req.setAttribute("commentTotal", commentTotal);
         req.getRequestDispatcher("./View.jsp").forward(req, resp);
 
     }  // service()
