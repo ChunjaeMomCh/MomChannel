@@ -186,7 +186,7 @@
                     <div class="row mb-3">
                         <label for="memRegion" class="col-sm-2 col-form-label">지역</label>
                         <div class="col-sm-3">
-                            <select class="form-control" name="memRegion"
+                            <select class="form-select form-control" name="memRegion"
                                     id="memRegion">
                                 <option value="seoul">서울</option>
                                 <option value="kyeonggi">경기</option>
@@ -228,7 +228,7 @@
                     <div class="row mb-3">
                         <label for="memChildGrade" class="col-sm-2 col-form-label">자녀 학년</label>
                         <div class="col-sm-3">
-                            <select class="form-control" name="memChildGrade"
+                            <select class="form-select form-control" name="memChildGrade"
                                     id="memChildGrade">
                                 <option value="1">1학년</option>
                                 <option value="2">2학년</option>
