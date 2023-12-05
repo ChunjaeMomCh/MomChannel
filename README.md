@@ -1,7 +1,7 @@
 # 👨‍👩‍👦 '맘채널' JSP 프로그램
 
-![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/de76197b-ea4a-4f3b-9ce7-259cc508b6fb)
 
+![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/3054c13b-8c4c-4a5d-a99f-41775fd7ef54)
 
 
 <br>
@@ -159,7 +159,8 @@
 <details>
   <summary>ER 다이어그램</summary>
   
-  ![image](https://github.com/LMH9999/MomChannel/assets/145963633/b28899ae-247f-4538-b150-9f905200b356)
+  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/6e51e4f2-7afa-4a09-9b06-6b089305d3c9)
+
 
 </details>
 
