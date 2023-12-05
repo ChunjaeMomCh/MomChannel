@@ -22,9 +22,9 @@
       reader.onload = function(event){
           var img = document.createElement("img");
           img.setAttribute("src", event.target.result);
-          img.setAttribute("class", "post_thumnail");
+          img.setAttribute("class", "post_thumbnail");
           var parent = document.querySelector("div#image_container");
-          var imgs = document.querySelectorAll("img.post_thumnail");
+          var imgs = document.querySelectorAll("img.post_thumbnail");
           if( imgs.length>=1 ){
               parent.removeChild(imgs[0]);
           }
