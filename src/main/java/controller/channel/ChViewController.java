@@ -1,12 +1,10 @@
 package controller.channel;
 
-import dao.ChannelDAO;
-import dao.MemberDAO;
-import dao.QNABoardDAO;
-import dao.SubDAO;
+import dao.*;
 import utils.JSFunction;
 import vo.ChannelVO;
 import vo.MemberVO;
+import vo.PostVO;
 import vo.QNABoardVO;
 
 import javax.servlet.ServletException;
@@ -32,17 +30,22 @@ public class ChViewController extends HttpServlet {
         String channelTitle = req.getParameter("channelTitle");
         ChannelVO cvo = cdao.selectChannel(channelTitle);
 
+        PostDAO pdao = new PostDAO();
+
+
         SubDAO sdao = new SubDAO();
         HttpSession session = req.getSession();
         String memId = (String) session.getAttribute("memId");
+//        List<Integer> chPosts = pdao.selectChPost(channelTitle);
+
+        List<PostVO> postLists = pdao.showPostsByCh(channelTitle);
 
         Map<String, String> map = new HashMap<>();
-
-
         map.put("memId", memId);
         map.put("channelTitle", cvo.getChannelTitle());
 
         req.setAttribute("cvo", cvo);
+        req.setAttribute("postLists", postLists);
 
         if (memId == null||memId.equals(cvo.getChannelTitle())){
             req.getRequestDispatcher("/view/channel/chView.jsp").forward(req, resp);
