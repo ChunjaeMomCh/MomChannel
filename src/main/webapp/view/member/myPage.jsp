@@ -3,12 +3,26 @@
 <%@ include file="../include/header.jsp"%>
 
 <style>
-        td.field {
+        /*td.field {
             border-left: 1px solid #dee2e6;
             border-right: 1px solid #dee2e6;
         }
         tr {
             border-bottom: 1px solid #dee2e6;
+        }*/
+        .detail_area_content {
+            padding: 1.2em 0.8em;
+            display: block;
+        }
+        .row {
+            text-size: 1rem;
+            line-height: 1.5rem;
+            height: 2rem;
+            margin-bottom: 0.4rem;
+        }
+        .row.info_field {
+            height: 100%;
+            border-bottom: 1px solid #000;
         }
 </style>
 
@@ -20,57 +34,58 @@
                     <div class="customer_title">내 정보 보기</div>
                 </div>
                 <div class="detail_area">
-                    <table class="table" border="1" width="90%">
-                        <colgroup>
-                            <col width="15%"/> <col width="35%"/>
-                            <col width="15%"/> <col width="*"/>
-                        </colgroup>
-                        
-                        <!-- 게시글 정보 -->
-                        <tr>
-                            <th class="table-light">아이디</th>
-                            <td class="field" colspan="3">${ mvo.memId }</td>
-                            <td rowspan="6">
-                                <%--            <c:if test="${ isImage eq true }">--%>
-                                <img src="../Uploads/${ mvo.memSImg }" style="max-width:20%;"/>
-                                <%--            </c:if>--%>
-                            </td>
-                        </tr>
-                        <%--<tr>
-                        
-                        </tr>--%>
-                        <tr>
-                            <th class="table-light">이름</th>
-                            <td class="field" colspan="3">${ mvo.memName }</td>
-                        </tr>
-                        <tr>
-                            <th class="table-light">지역</th>
-                            <td class="field" colspan="3">${ mvo.memRegion }</td>
-                        </tr>
-                        <tr>
-                            <th class="table-light">주소</th>
-                            <td class="field" colspan="3">${ mvo.memAddr }</td>
-                        </tr>
-                        <tr>
-                            <th class="table-light">자녀 학년</th>
-                            <td class="field" colspan="3">${ mvo.memChildGrade }학년</td>
-                        </tr>
-                        <tr>
-                            <th class="table-light">전화번호</th>
-                            <td class="field" colspan="3">${ mvo.memPhone }</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid black">
-                            <th class="table-light">이메일</th>
-                            <td class="field" colspan="3">${ mvo.memEmail }</td>
-                            <th class="table-light" style="text-align: center">회원 이미지</th>
-                        </tr>
-                    </table>
-                    <!-- 하단 메뉴(버튼) -->
-                    <div class="btn_field">
-                        <button type="button" class="btn large primary list_load"
-                                onclick="location.href='../member/myinfoedit.do?memId=${ mvo.memId }';">
-                            수정하기
-                        </button>
+                    <div class="detail_area_content">
+                        <div class="row info_field">
+                            <%-- 텍스트 정보 --%>
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <div class="col-sm-3">아이디</div>
+                                    <div class="col-sm-6">${ mvo.memId }</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">이름</div>
+                                    <div class="col">${ mvo.memName }</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">지역</div>
+                                    <div class="col">${ mvo.memRegion }</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">주소</div>
+                                    <div class="col">${ mvo.memAddr }</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">자녀 학년</div>
+                                    <div class="col">${ mvo.memChildGrade }</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">전화번호</div>
+                                    <div class="col">${ mvo.memPhone }</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">이메일</div>
+                                    <div class="col">${ mvo.memEmail }</div>
+                                </div>
+                            </div>
+                            <%-- 회원 이미지 --%>
+                            <div class="col-sm-3 align-items-center img_field">
+                                <div class="row text-center">
+                                    <%--            <c:if test="${ isImage eq true }">--%>
+                                    <img src="../Uploads/${ mvo.memSImg }" style="max-width:100%; max-height:80px"/>
+                                    <%--            </c:if>--%>
+                                </div>
+                                <div class="row align-items-end text-center"><p>회원 이미지</p></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- 하단 메뉴(버튼) -->
+                            <div class="btn_field">
+                                <button type="button" class="btn large primary list_load"
+                                        onclick="location.href='../member/myinfoedit.do?memId=${ mvo.memId }';">
+                                    수정하기
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
