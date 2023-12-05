@@ -159,7 +159,7 @@
                             <tr>
                                 <th class="table-light">지역</th>
                                 <td class="field">
-                                    <select name="memRegion">
+                                    <select class="form-select form-control" name="memRegion" style="width: 30%">
                                         <option value="seoul" ${ mvo.memRegion == "seoul" ? "selected" : "" }>서울</option>
                                         <option value="kyeonggi" ${ mvo.memRegion == "kyeonggi" ? "selected" : "" }>경기</option>
                                         <option value="kangwon" ${ mvo.memRegion == "kangwon" ? "selected" : "" }>강원</option>
@@ -167,7 +167,7 @@
                                         <option value="jeolla" ${ mvo.memRegion == "jeolla" ? "selected" : "" }>전라</option>
                                         <option value="kyeongsang" ${ mvo.memRegion == "kyeongsang" ? "selected" : "" }>경상</option>
                                         <option value="cheju" ${ mvo.memRegion == "cheju" ? "selected" : "" }>제주</option>
-                                    </select><br><br>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
@@ -186,14 +186,14 @@
                             <tr>
                                 <th class="table-light">자녀 학년</th>
                                 <td class="field">
-                                    <select name="memChildGrade">
+                                    <select class="form-select form-control" name="memChildGrade" style="width: 30%">
                                         <option value="1" ${ mvo.memChildGrade == "1" ? "selected" : "" }>1학년</option>
                                         <option value="2" ${ mvo.memChildGrade == "2" ? "selected" : "" }>2학년</option>
                                         <option value="3" ${ mvo.memChildGrade == "3" ? "selected" : "" }>3학년</option>
                                         <option value="4" ${ mvo.memChildGrade == "4" ? "selected" : "" }>4학년</option>
                                         <option value="5" ${ mvo.memChildGrade == "5" ? "selected" : "" }>5학년</option>
                                         <option value="6" ${ mvo.memChildGrade == "6" ? "selected" : "" }>6학년</option>
-                                    </select><br><br>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
