@@ -20,4 +20,6 @@ public interface PostMapper {
     int writePost(PostVO vo);  // 새 게시물을 작성한다.
     int updatePost(PostVO vo);  // 게시물을 수정한다.
     int deletePost(String postNo);  // 게시물을 삭제한다.
+    List<Integer> selectChPost(String memId);
+    List<PostVO> showPostsByCh(String channelTitle);
 }

@@ -74,6 +74,17 @@ public class PostDAO {
         return postList;
     }
 
+    public List<PostVO> showPostsByCh(String channelTitle) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showPostsByCh(channelTitle);
+
+        session.close();
+        return postList;
+    }
+
     // 게시글 상세 보기 화면 불러오기
     public PostVO viewPost(String postNo) {
 
@@ -155,5 +166,15 @@ public class PostDAO {
 
         session.close();
         return result;
+    }
+
+    public List<Integer> selectChPost(String memId) {
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<Integer> chPost = mapper.selectChPost(memId);
+
+        session.close();
+        return chPost;
     }
 }

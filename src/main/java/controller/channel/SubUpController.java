@@ -28,11 +28,13 @@ public class SubUpController extends HttpServlet {
         String memId = (String) session.getAttribute("memId");
         ChannelVO cvo = cdao.selectChannel(channelTitle);
 
+        String chMemId = cvo.getMemId();
+
         Map<String, String> map = new HashMap<>();
         map.put("memId",memId);
-        map.put("channelTitle", cvo.getChannelTitle());
+        map.put("channelTitle", channelTitle);
 
-        cdao.subPlus(cvo.getMemId());
+        cdao.subPlus(chMemId);
         sdao.subUp(map);
 
         resp.sendRedirect("../ch/chview.do?channelTitle=" + channelTitle);
