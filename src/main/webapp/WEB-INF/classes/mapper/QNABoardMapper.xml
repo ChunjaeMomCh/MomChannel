@@ -36,19 +36,14 @@
                 </otherwise>
             </choose>
         </if>
-
-<!--        ORDER BY qna_no DESC ) T-->
-        ORDER BY qna_group DESC, qna_p_no asc ) T
+        ORDER BY qna_group DESC, qna_p_no asc) T
         WHERE ROWNUM BETWEEN #{ start } AND #{ end } ;
     </select>
 
     <insert id="insertWrite" parameterType="vo.QNABoardVO">
-<!--        INSERT-->
-<!--        INTO qna( mem_id, qna_title, qna_content, qna_p_no)-->
-<!--        VALUES( #{memId}, #{qnaTitle}, #{qnaContent}, #{qnaPNo})-->
         INSERT
-        INTO qna( mem_id, qna_title, qna_content, qna_p_no, qna_group)
-        VALUES( #{memId}, #{qnaTitle}, #{qnaContent}, #{qnaPNo},
+        INTO qna(mem_id, qna_title, qna_content, qna_p_no, qna_group)
+        VALUES(#{memId}, #{qnaTitle}, #{qnaContent}, #{qnaPNo},
             (SELECT AUTO_INCREMENT
             FROM information_schema.tables
             WHERE table_name = 'qna'
@@ -57,21 +52,14 @@
 
     <insert id="insertWriteAnswer" parameterType="vo.QNABoardVO">
         INSERT
-        INTO qna( mem_id, qna_title, qna_content, qna_p_no, qna_group)
-        VALUES( #{memId}, #{qnaTitle}, #{qnaContent}, #{qnaPNo}, #{qnaGroup})
+        INTO qna(mem_id, qna_title, qna_content, qna_p_no, qna_group)
+        VALUES(#{memId}, #{qnaTitle}, #{qnaContent}, #{qnaPNo}, #{qnaGroup})
     </insert>
 
     <select id="selectView" parameterType="String" resultType="vo.QNABoardVO">
         select *
         from qna
         where qna_no = #{qnaNo}
-    </select>
-
-
-    <select id="confirmPassword" parameterType="map">
-        select count(idx)
-        from mvcboard
-        where pass = #{pass} and idx = #{idx}
     </select>
 
 
