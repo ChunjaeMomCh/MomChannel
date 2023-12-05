@@ -17,6 +17,22 @@
       return false;
     }
   }
+  function setThumbnail(event){
+      var reader = new FileReader();
+      reader.onload = function(event){
+          var img = document.createElement("img");
+          img.setAttribute("src", event.target.result);
+          img.setAttribute("class", "post_thumnail");
+          var parent = document.querySelector("div#image_container");
+          var imgs = document.querySelectorAll("img.post_thumnail");
+          if( imgs.length>=1 ){
+              parent.removeChild(imgs[0]);
+          }
+          parent.appendChild(img);
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+  }
 </script>
 
 <!-- contents -->
@@ -58,8 +74,9 @@
                 </div>
                 <input type="hidden" name="memId" val="memId">
                 <div class="mb-3">
-                  <label for="postOFile" class="input_form_title">썸네일 이미지</label>
-                  <input class="form-control" type="file" id="postOFile" name="postOFile">
+                    <label for="postOFile" class="input_form_title">썸네일 이미지</label>
+                    <input class="form-control" type="file" id="postOFile" name="postOFile" onchange="setThumbnail(event);"/>
+                    <div id="image_container"></div>
 <%--                  <figure style="position: relative;">--%>
 <%--                    <img src="${pageContext.request.contextPath}/resources/images/default_thumbnail.jpg" height="150px" alt="썸네일 디폴트 이미지">--%>
 <%--                  </figure>--%>
