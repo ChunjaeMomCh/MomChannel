@@ -19,13 +19,10 @@ public class FileUtil {
         Path saveDirectoryPath = Paths.get(sDirectory);
         Files.createDirectories(saveDirectoryPath);
 
-        System.out.println("aaaaaaaaaaaaaa");
 
         //Part 객체를 통해 서버로 전송된 파일명 읽어오기
         Part part = req.getPart("postOFile");
-        System.out.println(part);
 
-        System.out.println("bbbbbbbbbbbbb");
 
         //Part 객체의 헤더값 중 content-disposition 읽어오기
         String partHeader = part.getHeader("content-disposition");
@@ -35,11 +32,8 @@ public class FileUtil {
         //헤더값에서 파일명 잘라내기
         String[] phArr = partHeader.split("filename=");
 
-        System.out.println("ccccccccc");
 
         String originalFileName = phArr[1].trim().replace("\"", "");
-
-        System.out.println("dddddddd");
 
 
         //전송된 파일이 있다면 디렉토리에 저장
@@ -47,7 +41,6 @@ public class FileUtil {
             part.write(sDirectory+ File.separator +originalFileName);
         }
 
-        System.out.println("eeeeeeeeeee");
 
         //원본 파일명 반환
         return originalFileName;

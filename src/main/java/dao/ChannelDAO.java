@@ -3,11 +3,14 @@ package dao;
 import mybatis.factory.MyBatisSessionFactory;
 import mybatis.mapper.ChannelMapper;
 import mybatis.mapper.MemberMapper;
+import mybatis.mapper.QNABoardMapper;
 import mybatis.mapper.SubMapper;
 import org.apache.ibatis.session.SqlSession;
 import vo.ChannelVO;
 import vo.MemberVO;
+import vo.QNABoardVO;
 
+import java.util.List;
 import java.util.Map;
 
 public class ChannelDAO {
@@ -43,6 +46,23 @@ public class ChannelDAO {
         ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
         mapper.subMinus(channelTitle);
         sqlSession.commit();
+    }
+
+    public int selectChCount(Map<String, Object> map) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
+        int result = mapper.selectChCount(map);
+        System.out.println("selectCount - 행 개수 = " + result);
+        sqlSession.close();
+        return result;
+    }
+
+    public List<ChannelVO> selectChList(Map<String, Object> map) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
+        List<ChannelVO> result = mapper.selectChList(map);
+        sqlSession.close();
+        return result;
     }
 
 }
