@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/view/post/edit.do")
 @MultipartConfig(
@@ -35,6 +37,8 @@ public class EditController extends HttpServlet {
         HttpSession session = req.getSession();
         String sessionMemId = (String)session.getAttribute("memId");
         System.out.println("sessionMemId"+sessionMemId);
+        System.out.println("getPostSFile"+vo.getPostSFile());
+
 
         // 현재 로그인된 아이디와 작성자가 일치하는지 확인
         if (sessionMemId.equals(vo.getMemId())) {
@@ -58,6 +62,7 @@ public class EditController extends HttpServlet {
 
         try {
             originalFileName = FileUtil.uploadFile(req, saveDirectory);
+            System.out.println("originalFileName"+originalFileName);
 
             // 업로드 중 예외가 발생하면 경고창을 띄우고 글쓰기 페이지로 이동한다.
         } catch (Exception e) {
@@ -67,12 +72,12 @@ public class EditController extends HttpServlet {
 
         // 2. 파일 업로드 외 처리 =====================================================
         // 매개변수로부터 수정 내용을 얻어 온다.
-        PostVO pvo = new PostVO();
-
         String postNo = req.getParameter("postNo");
         String prevOfile = req.getParameter("prevOfile");
         String prevSfile = req.getParameter("prevSfile");
         /*String prevThumbnail = req.getParameter("prevThumbnail");*/
+        System.out.println("prevOfile"+prevOfile);
+        System.out.println("prevSfile"+prevSfile);
 
         String memId = req.getParameter("memId");
         String postTitle = req.getParameter("postTitle");
@@ -112,6 +117,10 @@ public class EditController extends HttpServlet {
             FileUtil.deleteFile(req, "/Uploads", prevSfile);
 
         } else {
+            if(prevOfile.equals("null")){
+                prevOfile = "default_thumbnail.jpg";
+                prevSfile = "default_thumbnail.jpg";
+            }
             // 첨부 파일이 없으면 기존 이름 유지
             vo.setPostOFile(prevOfile);
             vo.setPostSFile(prevSfile);

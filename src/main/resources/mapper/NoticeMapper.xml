@@ -19,8 +19,8 @@
 
     <select id="selectNoticeListWithPaging" parameterType="map" resultType="vo.NoticeVO">
         SELECT * FROM
-        ( SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
-        FROM notice b,(SELECT @ROWNUM := 0 ) TMP
+        (SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
+        FROM notice b,(SELECT @ROWNUM := 0) TMP
 
         <if test="searchWord != null and !searchWord.equals('')">
             where
@@ -31,7 +31,7 @@
         </if>
 
         ORDER BY notice_no DESC ) T
-        WHERE ROWNUM BETWEEN #{ start } AND #{ end } ;
+        WHERE ROWNUM BETWEEN #{start} AND #{end} ;
     </select>
 
     <select id="selectNoticeView" parameterType="String" resultType="vo.NoticeVO">
@@ -43,7 +43,7 @@
     <insert id="insertWrite" parameterType="vo.NoticeVO">
         INSERT
         INTO notice(notice_category, notice_title, notice_content)
-        VALUES( #{noticeCategory}, #{noticeTitle}, #{noticeContent})
+        VALUES(#{noticeCategory}, #{noticeTitle}, #{noticeContent})
     </insert>
 
     <!-- 게시물 상세 보기 시 조회수 업데이트 -->

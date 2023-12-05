@@ -25,7 +25,7 @@
     <select id="selectListPage" parameterType="map" resultType="vo.PostVO">
         SELECT *
         FROM (SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, b.*
-        FROM post b,(SELECT @ROWNUM := 0 ) TMP
+        FROM post b,(SELECT @ROWNUM := 0) TMP
         <if test="searchWord != null and !searchWord.equals('')">
             WHERE
             <choose>
@@ -37,7 +37,7 @@
                 </otherwise>
             </choose>
         </if>
-        ORDER BY post_no DESC ) T
+        ORDER BY post_no DESC) T
         WHERE ROWNUM BETWEEN #{start} AND #{end}
     </select>
     <!-- 게시글 보기 - 전체 -->
