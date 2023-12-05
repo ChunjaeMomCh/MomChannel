@@ -40,6 +40,7 @@ public class WriteController extends HttpServlet {
         vo.setNoticeCategory(req.getParameter("noticeCategory"));
         vo.setNoticeTitle(req.getParameter("noticeTitle"));
         vo.setNoticeContent(req.getParameter("noticeContent"));
+        System.out.println(vo);
 
         // DAO를 통해 DB에 게시 내용 저장
         NoticeDAO dao = new NoticeDAO();

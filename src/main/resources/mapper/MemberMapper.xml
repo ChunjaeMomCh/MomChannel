@@ -16,7 +16,7 @@
         where mem_id = #{memId} and mem_pw = #{memPw}
     </select>
 
-    <select id="idCheck" parameterType="map" resultType="int">
+    <select id="idCheck" parameterType="String" resultType="int">
         select count(mem_id)
         from member
         where mem_id = #{memId}
@@ -24,8 +24,8 @@
 
     <insert id="insertMember" parameterType="vo.MemberVO">
         INSERT
-        INTO member( mem_id, mem_name, mem_pw, mem_region, mem_addr, mem_child_grade, mem_phone, mem_email)
-        VALUES( #{memId}, #{memName}, #{memPw}, #{memRegion}, #{memAddr},#{memChildGrade},#{memPhone},#{memEmail})
+        INTO member(mem_id, mem_name, mem_pw, mem_region, mem_addr, mem_child_grade, mem_phone, mem_email)
+        VALUES(#{memId}, #{memName}, #{memPw}, #{memRegion}, #{memAddr},#{memChildGrade},#{memPhone},#{memEmail})
     </insert>
 
     <select id="selectMember" parameterType="String" resultType="vo.MemberVO">

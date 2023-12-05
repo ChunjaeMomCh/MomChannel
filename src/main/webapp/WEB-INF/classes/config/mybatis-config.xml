@@ -22,5 +22,7 @@
         <mapper resource="mapper/NoticeMapper.xml" />
         <mapper resource="mapper/PostMapper.xml" />
         <mapper resource="mapper/QNABoardMapper.xml" />
+        <mapper resource="mapper/ChannelMapper.xml" />
+        <mapper resource="mapper/SubMapper.xml" />
     </mappers>
 </configuration>

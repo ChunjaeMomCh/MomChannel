@@ -18,16 +18,20 @@
     }
   }
   function setThumbnail(event){
-    var reader = new FileReader();
+      var reader = new FileReader();
+      reader.onload = function(event){
+          var img = document.createElement("img");
+          img.setAttribute("src", event.target.result);
+          img.setAttribute("class", "post_thumbnail");
+          var parent = document.querySelector("div#image_container");
+          var imgs = document.querySelectorAll("img.post_thumbnail");
+          if( imgs.length>=1 ){
+              parent.removeChild(imgs[0]);
+          }
+          parent.appendChild(img);
+      };
 
-    reader.onload = function(event){
-      var img = document.createElement("img");
-      img.setAttribute("src", event.target.result);
-      img.setAttribute("class", "col-lg-6");
-      document.querySelector("div#image_container").appendChild(img);
-    };
-
-    reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(event.target.files[0]);
   }
 </script>
 
@@ -43,41 +47,49 @@
           <div class="text_box">
             <div class="input_form">
               <form name="updateFrm" method="post" enctype="multipart/form-data" action="./edit.do" onsubmit="return validateForm(this);">
-                <div class="select_post">
-                  <span class="input_form_title">지역</span>
-                  <select name="postRegion" id="postRegion" class="form-select" style="width: 20%;display: inline-block;">
-                    <option value="전국">전국</option>
-                    <option value="서울">서울</option>
-                    <option value="경기">경기</option>
-                    <option value="강원">강원</option>
-                    <option value="충청">충청</option>
-                    <option value="전라">전라</option>
-                    <option value="경상">경상</option>
-                    <option value="제주">제주</option>
-                  </select>
-                </div>
-                <div class="select_post">
-                  <span class="input_form_title">학년</span>
-                  <select name="postGrade" id="postGrade" class="form-select" style="width: 20%;display:  inline-block;">
-                    <option value="전학년">전학년</option>
-                    <option value="1학년">1학년</option>
-                    <option value="2학년">2학년</option>
-                    <option value="3학년">3학년</option>
-                    <option value="4학년">4학년</option>
-                    <option value="5학년">5학년</option>
-                    <option value="6학년">6학년</option>
-                  </select>
-                </div>
+                  <input type="hidden" name="postNo" value="${vo.postNo}">
+                  <div class="select_post">
+                      <span class="input_form_title" style="display: inline-block">지역</span>
+                      <select name="postRegion" id="postRegion" class="form-select" style="display: inline-block;">
+                          <option value="전국" <c:if test="${vo.postRegion eq '전국'}">selected='selected'</c:if>>전국</option>
+                          <option value="서울" <c:if test="${vo.postRegion eq '서울'}">selected='selected'</c:if>>서울</option>
+                          <option value="경기" <c:if test="${vo.postRegion eq '경기'}">selected='selected'</c:if>>경기</option>
+                          <option value="강원" <c:if test="${vo.postRegion eq '강원'}">selected='selected'</c:if>>강원</option>
+                          <option value="충청" <c:if test="${vo.postRegion eq '충청'}">selected='selected'</c:if>>충청</option>
+                          <option value="전라" <c:if test="${vo.postRegion eq '전라'}">selected='selected'</c:if>>전라</option>
+                          <option value="경상" <c:if test="${vo.postRegion eq '경상'}">selected='selected'</c:if>>경상</option>
+                          <option value="제주" <c:if test="${vo.postRegion eq '제주'}">selected='selected'</c:if>>제주</option>
+                      </select>
+                  </div>
+                  <div class="select_post">
+                      <span class="input_form_title" style="display: inline-block">학년</span>
+                      <select name="postGrade" id="postGrade" class="form-select" style="display:  inline-block;">
+                          <option value="전학년" <c:if test="${vo.postGrade eq '전학년'}">selected='selected'</c:if>>전학년</option>
+                          <option value="1학년" <c:if test="${vo.postGrade eq '1학년'}">selected='selected'</c:if>>1학년</option>
+                          <option value="2학년" <c:if test="${vo.postGrade eq '2학년'}">selected='selected'</c:if>>2학년</option>
+                          <option value="3학년" <c:if test="${vo.postGrade eq '3학년'}">selected='selected'</c:if>>3학년</option>
+                          <option value="4학년" <c:if test="${vo.postGrade eq '4학년'}">selected='selected'</c:if>>4학년</option>
+                          <option value="5학년" <c:if test="${vo.postGrade eq '5학년'}">selected='selected'</c:if>>5학년</option>
+                          <option value="6학년" <c:if test="${vo.postGrade eq '6학년'}">selected='selected'</c:if>>6학년</option>
+                      </select>
+                  </div>
                 <input type="hidden" name="memId" val="memId">
-                <div class="mb-3">
+                <div class="mb-3"> <%-- 파일 업로드 --%>
                   <label for="postOFile" class="input_form_title">썸네일 이미지</label>
-                  <input class="form-control" type="file" id="postOFile" name="postOFile" onchange="setThumbnail(event);">
-                  <figure style="position: relative;">
-                    <img id="image_container" src="${pageContext.request.contextPath}/resources/images/default_thumbnail.jpg" height="150px" alt="썸네일 디폴트 이미지">
-                  </figure>
-                  <input type="file" name="memImg" onchange="setThumbnail(event);"/>
-                  <%--                <% originImg =  mvo.memImg }%>--%>
-<%--                  <div id="image_container"></div>--%>
+                    <input class="form-control" type="file" id="postOFile" name="postOFile" onchange="setThumbnail(event);"/>
+                    <div id="image_container">
+                        <c:if test="${vo.postSFile eq null}">
+                            <img class="post_thumbnail" src="/Uploads/default_thumbnail.jpg" alt="디폴트 이미지">
+                            <input type="hidden" name="prevOFile" value="default_thumbnail.jpg">
+                            <input type="hidden" name="prevSFile" value="default_thumbnail.jpg">
+                        </c:if>
+                        <c:if test="${vo.postSFile ne null}">
+                            ${vo.postOFile}
+                            <img class="post_thumbnail" src="/Uploads/${ vo.postSFile }" alt="기존 이미지">
+                        </c:if>
+                    </div>
+                    <input type="hidden" name="prevOFile" value="${vo.postOFile}">
+                    <input type="hidden" name="prevSFile" value="${vo.postSFile}">
                 </div>
                 <div class="mb-3 mt-3">
                   <label for="postTitle" class="input_form_title">제목</label>

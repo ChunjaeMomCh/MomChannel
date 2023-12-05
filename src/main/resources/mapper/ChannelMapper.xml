@@ -6,8 +6,8 @@
 
     <insert id="insertChannel" parameterType="vo.ChannelVO">
         INSERT
-        INTO channel( mem_id )
-        VALUES( #{memId})
+        INTO channel(mem_id)
+        VALUES(#{memId})
     </insert>
 
     <select id="selectChannel" parameterType="String" resultType="vo.ChannelVO">
@@ -27,4 +27,12 @@
         where channel_title = #{channelTitle};
     </update>
 
+    <select id="selectChCount" parameterType="map" resultType="int">
+        select count(*)
+        from channel
+    </select>
+
+    <select id="selectChList" parameterType="map" resultType="vo.ChannelVO">
+        SELECT * FROM channel order by channel_title
+    </select>
 </mapper>
