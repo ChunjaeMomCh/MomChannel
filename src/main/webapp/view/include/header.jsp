@@ -231,14 +231,6 @@
                   <li><a href="#">전라/제주</a></li>
                 </ul>
               </li>
-<%--              <li class="line"><a href="/channel/all.html">전체 채널</a>--%>
-<%--                <ul class="submenu" >--%>
-<%--                  <li><a href="#"></a></li>--%>
-<%--                  <li><a href="#"></a></li>--%>
-<%--                  <li><a href="#"></a></li>--%>
-<%--                  <li><a href="#"></a></li>--%>
-<%--                </ul>--%>
-<%--              </li>--%>
               <li class="line"><a href="${pageContext.request.contextPath}/ch/chlist.do">전체 채널</a>
                 <ul class="submenu" >
                   <li><a href="#"></a></li>
@@ -249,9 +241,9 @@
               </li>
               <li class="line"><a href="${pageContext.request.contextPath}/view/cs/introduce.jsp">서비스 안내</a>
                 <ul class="submenu" >
-                  <li><a href="#">맘채널 소개</a></li>
-                  <li><a href="#">공지사항</a></li>
-                  <li><a href="#">문의하기</a></li>
+                  <li><a href="${pageContext.request.contextPath}/view/cs/introduce.jsp">맘채널 소개</a></li>
+                  <li><a href="${pageContext.request.contextPath}/view/cs/notice/list.do">공지사항</a></li>
+                  <li><a href="${pageContext.request.contextPath}/view/cs/qna/list.do">문의하기</a></li>
                   <li><a href="#"></a></li>
                 </ul>
               </li>

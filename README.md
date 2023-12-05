@@ -119,11 +119,15 @@
 
   ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/bede9070-4422-4788-8f79-61428f1b29eb)
 
-  2. Actor : 회원 ( CS )
+  2. Actor : 회원 ( MyPage, Channel )
+  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145524819/3e1d72e9-6597-42b8-9ad6-58f7b1293a3d)
+
+
+  3. Actor : 회원 ( CS )
 
   ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/30e7e127-7d20-41f8-b853-8a7bed173d48)
 
-  3. Actor : 관리자
+  4. Actor : 관리자
 
   ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/91e895c6-7ce4-47b2-b9cd-fe4e7842477f)
 
