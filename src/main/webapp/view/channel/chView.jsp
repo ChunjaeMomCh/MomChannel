@@ -48,10 +48,10 @@
 
         <div class="col-lg-6 mt-3">
             <c:if test="${check eq 1}">
-             <a onclick="return confirm('구독 하시겠습니까?')" href="/ch/subup.do">구독하기</a>
+             <a onclick="return confirm('구독 하시겠습니까?')" href="/ch/subup.do?channelTitle=${ cvo.channelTitle }">구독하기</a>
             </c:if>
             <c:if test="${check eq 0}">
-             <a onclick="return confirm('구독 취소 하시겠습니까?')" href="/ch/subdown.do">구독취소</a>
+             <a onclick="return confirm('구독 취소 하시겠습니까?')" href="/ch/subdown.do?channelTitle=${ cvo.channelTitle }">구독취소</a>
             </c:if>
         </div>
 
