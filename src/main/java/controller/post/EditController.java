@@ -116,7 +116,9 @@ public class EditController extends HttpServlet {
             // 기존 파일 삭제
             FileUtil.deleteFile(req, "/Uploads", prevSfile);
 
-        } else {
+        }
+        /*
+        else {
             if(prevOfile.equals("null")){
                 prevOfile = "default_thumbnail.jpg";
                 prevSfile = "default_thumbnail.jpg";
@@ -124,9 +126,10 @@ public class EditController extends HttpServlet {
             // 첨부 파일이 없으면 기존 이름 유지
             vo.setPostOFile(prevOfile);
             vo.setPostSFile(prevSfile);
-            /*vo.setPostThumbnail(prevThumbnail);*/
+            *//*vo.setPostThumbnail(prevThumbnail);*//*
 
-        }  // if ~ else
+        }
+         */ // if ~ else
 
         // DB에 수정 내용 반영
         PostDAO dao = new PostDAO();
