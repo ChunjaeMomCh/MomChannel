@@ -5,6 +5,7 @@
 package controller.post;
 
 import dao.PostDAO;
+import utils.BoardPage;
 import vo.PostVO;
 
 import javax.servlet.ServletContext;
@@ -33,13 +34,16 @@ public class ListController extends HttpServlet {
         // 검색 기능 구현
         String searchField = req.getParameter("searchField");
         String searchWord = req.getParameter("searchWord");
-
+        String postSortBy = "post_no";// req.getParameter("postSortBy");
+        map.put("postSortBy", postSortBy);
         if (searchWord != null && !searchWord.trim().equals("")) {
             // 쿼리스트링으로 전달받은 매개변수 중 검색어가 있다면 map에 저장
             map.put("searchField", searchField);
             map.put("searchWord", searchWord);
         }
         /* 검색 end */
+        int totalCount = dao.selectCount(map);  // 게시물 개수
+
 
         // 페이징 처리문
         ServletContext application = getServletContext();
@@ -61,6 +65,15 @@ public class ListController extends HttpServlet {
 
         // 게시물 목록 받기
         List<PostVO> postLists = dao.showPosts(map);
+
+        // 뷰에 전달할 매개변수 추가
+        String pagingImg = BoardPage.pagingStr(totalCount, pageSize,
+                blockPage, pageNum,searchField,searchWord, "/view/post/list.do");  // 바로가기 영역 HTML 문자열
+        System.out.println(totalCount);
+        map.put("pagingImg", pagingImg);
+        map.put("totalCount", totalCount);
+        map.put("pageSize", pageSize);
+        map.put("pageNum", pageNum);
 
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("postLists", postLists);
