@@ -28,8 +28,10 @@ public class ChViewController extends HttpServlet {
         // 게시물 불러오기
         ChannelDAO cdao = new ChannelDAO();
         String channelTitle = req.getParameter("channelTitle");
-        ChannelVO cvo = cdao.selectChannel(channelTitle);
 
+
+        ChannelVO cvo = cdao.selectChannel(channelTitle);
+        String chMemId = cvo.getMemId();
         PostDAO pdao = new PostDAO();
 
 
@@ -38,16 +40,16 @@ public class ChViewController extends HttpServlet {
         String memId = (String) session.getAttribute("memId");
 //        List<Integer> chPosts = pdao.selectChPost(channelTitle);
 
-        List<PostVO> postLists = pdao.showPostsByCh(channelTitle);
+        List<PostVO> postLists = pdao.showPostsByCh(chMemId);
 
         Map<String, String> map = new HashMap<>();
         map.put("memId", memId);
-        map.put("channelTitle", cvo.getChannelTitle());
+        map.put("channelTitle", channelTitle);
 
         req.setAttribute("cvo", cvo);
         req.setAttribute("postLists", postLists);
 
-        if (memId == null||memId.equals(cvo.getChannelTitle())){
+        if (memId == null||memId.equals(chMemId)){
             req.getRequestDispatcher("/view/channel/chView.jsp").forward(req, resp);
         }else {
             int check = sdao.subCheck(map);
@@ -55,11 +57,11 @@ public class ChViewController extends HttpServlet {
             req.getRequestDispatcher("/view/channel/chView.jsp").forward(req, resp);
         }
 
-        if (memId!= null){
-
-        } else {
-            req.getRequestDispatcher("/view/channel/chView.jsp").forward(req, resp);
-        }
+//        if (memId!= null){
+//
+//        } else {
+//            req.getRequestDispatcher("/view/channel/chView.jsp").forward(req, resp);
+//        }
 
 
 

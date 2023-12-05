@@ -28,7 +28,7 @@
                         <table summary="전체 채널 리스트" class="tbl_list">
                             <caption>전체 채널 리스트</caption>
                             <thead>
-                            <tr>
+                            <tr><th scope="col">채널 주인장</th>
                                 <th scope="col">채널 이름</th>
                                 <th class="date" scope="col">채널 소개글</th>
                                 <th class="date" scope="col">구독자 수</th>
@@ -46,6 +46,7 @@
                                 <c:otherwise>  <!-- 게시물이 있을 때 -->
                                     <c:forEach items="${ chLists }" var="row" varStatus="loop">
                                         <tr>
+                                            <td>${row.memId}</td>
                                             <td class="notice_title">  <!-- 제목(링크) -->
                                                 <a href="./chview.do?channelTitle=${ row.channelTitle }">${ row.channelTitle }</a>
                                             </td>
