@@ -66,11 +66,13 @@
         }
     </script>
     <script>
-        function validateForm(form){
-            // if(!form.memId.value){
-            //     alert("아이디를 입력하세요.");
-            //     return false;
-            // }
+        function validateFormId(form) {
+            if (!form.memId.value) {
+                alert("아이디를 입력하세요.");
+                return false;
+            }
+        }
+        function validateForm(form) {
             if (form.memName.value==""){
                 alert("이름을 입력하세요.")
                 return false;
@@ -141,7 +143,7 @@
                 
                 <%-- 아이디 중복 체크 --%>
                 <form action="../../member/idcheck.do" method="post"
-                      onsubmit="return validateForm(this);">
+                      onsubmit="return validateFormId(this);">
                     <div class="row mb-3">
                         <label for="memId" class="col-sm-2 col-form-label">아이디</label>
                         <div class="col-sm-7">
