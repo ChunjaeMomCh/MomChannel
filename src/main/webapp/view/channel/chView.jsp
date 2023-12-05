@@ -161,6 +161,26 @@
                         </template>
                     </ul>
                 </div>
+                <form method="get">
+                    <div class="customer_title_area">
+                        <div class="tab_btns select_search">
+                            <span class="content_num mo_none" id="pcTotalCount">총000개</span>
+                            <span class="content_num pc_none" id="mobileTotalCount">총000개</span>
+                            <div class="form_box" style="float: right;">
+                                <select class="form-select search_category" name="searchField">
+                                    <option value="전체">전체</option>
+                                    <option value="중요">중요 </option>
+                                    <option value="공지">공지</option>
+                                    <option value="이벤트">이벤트</option>
+                                </select>
+                                <div class="search_bar_area border">
+                                    <input type="text" name="searchWord" class="search_bar" placeholder="검색어를 입력하세요." value="${ param.searchWord }"/>
+                                </div>
+                                <button type="submit" class="btn btn-secondary search_form_btn">검색</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 <div class="tab_btns select_search">
                     <span class="content_num" x-text="'총 '+totCnt+'개'"></span>
                     <div class="select_area h34">
