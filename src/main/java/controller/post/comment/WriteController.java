@@ -22,15 +22,18 @@ public class WriteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        MemberVO mvo= new MemberVO();
-        HttpSession session = req.getSession();
+        // 게시물 정보 불러오기
         String postNo = req.getParameter("postNo");
-        mvo = (MemberVO) session.getAttribute("loginMember");
-        System.out.println(mvo);
 
-        // 2. 파일 업로드 외 처리 =============================
-        // 폼값을 DTO에 저장
-//        Encrypt en = new Encrypt();
+        HttpSession session = req.getSession();
+        MemberVO mvo = (MemberVO) session.getAttribute("loginMember");
+        System.out.println(mvo);
+        if(mvo == null){
+            JSFunction.alertLocation(resp, "로그인 후 이용할 수 있습니다.",
+                    "../view.do?postNo="+postNo);
+        }
+
+        // 댓글 폼값을 DTO에 저장
         CommentVO cvo = new CommentVO();
         cvo.setMemId(mvo.getMemId());
         cvo.setPostNo(Integer.parseInt(postNo));
