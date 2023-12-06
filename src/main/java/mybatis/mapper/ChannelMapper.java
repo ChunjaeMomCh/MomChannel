@@ -14,11 +14,16 @@ public interface ChannelMapper {
 
     ChannelVO selectChannel(String memId);
 
+    ChannelVO selectChannelById(String memId);
+
     void subPlus(String memId);
     void subMinus(String memId);
 
     int selectChCount(Map<String, Object> map);
 
     List<ChannelVO> selectChList(Map<String, Object> map);
+
+    int updateChannel(ChannelVO cvo);
+
 
 }

@@ -112,22 +112,12 @@
 <%--        <input type="hidden" name="memImg" value="${ mvo.memImg }"/>--%>
         <input type="hidden" name="memSImg" value="${ mvo.memSImg }" />
 
-
-<%--        <tr>--%>
-<%--            <td>회원 이미지</td>--%>
-<%--            <td>--%>
-<%--                <input type="text" name="memImg" style="width:90%;" value="${ mvo.memImg }" />--%>
-<%--            </td>--%>
-<%--        </tr>--%>
         <tr>
             <td>회원 이미지</td>
             <td>
-<%--                <img src="../Uploads/${ mvo.memSImg }" style="max-width:20%;"/>--%>
                 <input type="file" name="memImg" onchange="setThumbnail(event);"/>
-<%--                <% originImg =  mvo.memImg }%>--%>
                 <div id="image_container"></div>
             </td>
-
         </tr>
             <tr>
                 <td>아이디</td>
