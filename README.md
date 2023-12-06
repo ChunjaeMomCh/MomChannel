@@ -1,16 +1,3 @@
-<div align="center">
-
-| <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="100" height="75"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="90" height="90"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="90" height="90"/> |
-| :---: | :---: | :---: |
-| [배포](https://github.com/ChunjaeMomCh/MomChannel) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://www.notion.so/geee1-kim/2-Project-) |
-
-
-</div>
-
-
-
-
-
 # 👨‍👩‍👦 '맘채널' JSP 프로그램
 
 
@@ -33,7 +20,19 @@
 - 회원으로 로그인하면 공유하고 싶은 정보들을 게시판에 등록하고, 학년별, 지역별로 구분해 볼 수 있습니다.
 - 관리자는 공지사항을 관리하고,  문의하기 게시판 회원의 질문 글에 답변을 작성할 수 있습니다.
 
-<br>
+<br><br>
+
+<div align="center">
+
+| <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="150" height="120"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="145" height="145"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="145" height="145"/> |
+| :---: | :---: | :---: |
+| [배포](https://github.com/ChunjaeMomCh/MomChannel) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://www.notion.so/geee1-kim/2-Project-) |
+
+
+</div>
+
+<br><br>
+
 
 ## 팀원 구성과 역할
 
