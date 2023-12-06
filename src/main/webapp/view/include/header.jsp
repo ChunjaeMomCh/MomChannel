@@ -222,19 +222,39 @@
                 </ul>
               </li>
               <li><a href="${pageContext.request.contextPath}/view/post/list.do">학년별 게시판</a>
-                <ul class="submenu" >
-                  <li><a href="#">1-2학년</a></li>
-                  <li><a href="#">3-4학년</a></li>
-                  <li><a href="#">5-6학년</a></li>
-                  <li><a href="#"></a></li>
+                <ul class="submenu">
+                  <div class="row">
+                    <li class="col"><a href="#">1학년</a></li>
+                    <li class="col"><a href="#">2학년</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="#">3학년</a></li>
+                    <li class="col"><a href="#">4학년</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="#">5학년</a></li>
+                    <li class="col"><a href="#">6학년</a></li>
+                  </div>
                 </ul>
               </li>
               <li><a href="${pageContext.request.contextPath}/view/post/list.do">지역별 게시판</a>
-                <ul class="submenu" >
-                  <li><a href="#">서울/경기</a></li>
-                  <li><a href="#">강원/충청</a></li>
-                  <li><a href="#">경상/전라</a></li>
-                  <li><a href="#">전라/제주</a></li>
+                <ul class="submenu container text-center">
+                  <div class="row">
+                    <li class="col"><a href="#">전국</a></li>
+                    <li class="col"><a href="#">서울</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="#">경기</a></li>
+                    <li class="col"><a href="#">강원</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="#">충청</a></li>
+                    <li class="col"><a href="#">경상</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="#">전라</a></li>
+                    <li class="col"><a href="#">제주</a></li>
+                  </div>
                 </ul>
               </li>
               <li class="line"><a href="${pageContext.request.contextPath}/ch/chlist.do">전체 채널</a>
