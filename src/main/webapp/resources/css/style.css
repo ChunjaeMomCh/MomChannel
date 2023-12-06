@@ -7185,6 +7185,9 @@ body.ovh {
   font-size: 18px;
   letter-spacing: -0.18px;
 }
+a.btn.my_follow.subscriber_btn{
+  line-height: 35px;
+}
 .channel_banner .btn_wrap .btn span {
   margin-left: 7px;
   color: #0a64ff;
