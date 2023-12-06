@@ -195,8 +195,9 @@
                   <a href="javascript:void(0);" class="search_btn pc_none"><i class="ico search_01"></i></a>
                   <div class="profile_group">
                     <div class="profile_name">${loginMember.memId}님</div>
-                    <a href="javascript:void(0)" onclick="doLogin()" class="profile"></a>
-                    <a href="javascript:void(0)" class="profile_hover" onclick="doLogin()">로그인하기</a>
+                    <div class="profile"></div>
+<%--                    <a href="javascript:void(0)" onclick="doLogin()" class="profile"></a>--%>
+<%--                    <a href="javascript:void(0)" class="profile_hover" onclick="doLogin()">로그인하기</a>--%>
                     <div class="mo_none">
                     </div>
                   </div>
