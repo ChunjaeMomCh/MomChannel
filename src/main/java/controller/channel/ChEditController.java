@@ -65,7 +65,8 @@ public class ChEditController extends HttpServlet {
 //            session.removeAttribute("pass");
 //                resp.sendRedirect("./chview.do?channelTitle="+channelTitle);
                 JSFunction.alertLocation(resp, "채널 수정 완료.",
-                        "./chview.do?channelTitle="+channelTitle);
+//                        "./chview.do?channelTitle="+channelTitle);
+                        "./chview.do?memId="+memId);
             }
             else {  // 수정 실패
                 JSFunction.alertBack(resp, "수정하지 못했습니다.");

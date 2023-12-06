@@ -41,17 +41,17 @@ public class ChannelDAO {
         sqlSession.close();
         return cvo;
     }
-    public void subPlus(String channelTitle){
+    public void subPlus(String chMemId){
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
-        mapper.subPlus(channelTitle);
+        mapper.subPlus(chMemId);
         sqlSession.commit();
 
     }
-    public void subMinus(String channelTitle){
+    public void subMinus(String chMemId){
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
-        mapper.subMinus(channelTitle);
+        mapper.subMinus(chMemId);
         sqlSession.commit();
     }
 

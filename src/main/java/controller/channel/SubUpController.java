@@ -21,14 +21,21 @@ public class SubUpController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ChannelDAO cdao = new ChannelDAO();
-        String channelTitle = req.getParameter("channelTitle");
+//        String channelTitle = req.getParameter("channelTitle");
+        String chMemId = req.getParameter("memId");
+
+        System.out.println("aaaa"+chMemId);
+
         SubDAO sdao = new SubDAO();
         HttpSession session = req.getSession();
 
         String memId = (String) session.getAttribute("memId");
-        ChannelVO cvo = cdao.selectChannel(channelTitle);
+        ChannelVO cvo = cdao.selectChannelById(chMemId);
 
-        String chMemId = cvo.getMemId();
+        System.out.println("bbbb"+cvo.getChannelTitle());
+
+//        String chMemId = cvo.getMemId();
+        String channelTitle = cvo.getChannelTitle();
 
         Map<String, String> map = new HashMap<>();
         map.put("memId",memId);
@@ -37,7 +44,9 @@ public class SubUpController extends HttpServlet {
         cdao.subPlus(chMemId);
         sdao.subUp(map);
 
-        resp.sendRedirect("../ch/chview.do?channelTitle=" + channelTitle);
+//        resp.sendRedirect("../ch/chview.do?channelTitle=" + channelTitle);
+        resp.sendRedirect("../ch/chview.do?memId=" + chMemId);
+
 
     }
 }
