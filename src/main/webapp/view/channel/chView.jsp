@@ -2,6 +2,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp"%>
 
+
+
+<script>
+    function subscribe(){
+        if(null==${loginMember.memId})
+            alert("로그인 후 이용할 수 있습니다.");
+        if(null==${check} || ""==${check})
+            alert("안체크${check}");
+        else
+            alert("체크${check}");
+        console.log(${check});
+    }
+</script>
+
 <!-- contents -->
 <div class="content" x-data="getMyHome()" x-init="initFn">
     <div class="channel_banner purple">
@@ -36,8 +50,11 @@
                         <c:if test="${check eq 0}">
                             <a href="/ch/subdown.do?channelTitle=${ cvo.channelTitle }" class="btn my_follow subscriber_btn" onclick="return confirm('구독 취소 하시겠습니까?')" style="line-height: 35px; font-weight: bold; background: #ccc">구독<span>${cvo.channelSub}</span></a>
                         </c:if>
-                            <a href="#none" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">구독<span>${cvo.channelSub}</span></a>
+                        <c:if test="${!loginMember.memId}">
+                            <a onclick="return alert('로그인 후 사용할 수 있습니다.')" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">구독수<span>${cvo.channelSub}</span></a>
+                        </c:if>
                         <c:if test="${cvo.memId eq loginMember.memId}">
+                            <a href="#none" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">구독수<span>${cvo.channelSub}</span></a>
                             <a href="../ch/chedit.do?memId=${cvo.memId}" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">내채널 편집</a>
                         </c:if>
                     </div>
@@ -48,25 +65,7 @@
                     </div>
                 </div>
             </div>
-            <!-- 20230801 :: 감싸는 태그 / 채널 추가 버튼 추가 -->
-            <template x-if="myChannelDiv">
-                <div class="edit_btns">
-                    <a href="setting.html" class="channel_plus mo_none"><i class="ico plus_05"></i>채널 추가</a>
-                    <a href="setting.html?channel_id=1262" class="edit_btn mo_none"><i class="ico edit"></i>프로필 편집</a>
-                </div>
-            </template>
-            <template x-if="!myChannelDiv">
-                <div class="edit_btns">
-                    <a href="#none" class="channel_view mo_none" @click="getOtherChannelList()" data-target="channelView"><i class="ico chview"></i>채널 전체 보기</a>
-                </div>
-            </template>
-            <div class="sns_btn_list mo_none">
-                <template x-if="snsLinkList">
-                    <template x-for="(item, idx) in snsLinkList" :key="idx">
-                        <a x-bind:href="item.sns_link" target="_blank"><i x-bind:class="'ico'+' '+item.class"></i></a>
-                    </template>
-                </template>
-            </div>
+
         </div>
     </div>
     <div class="channel_content">
