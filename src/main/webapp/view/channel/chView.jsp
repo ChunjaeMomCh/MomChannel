@@ -31,15 +31,18 @@
                 <div class="btn_wrap mo_none">
                     <div>
                         <c:if test="${check eq 1}">
-                            <a href="/ch/subup.do?channelTitle=${ cvo.channelTitle }" class="btn my_follow subscriber_btn" onclick="return confirm('구독 하시겠습니까?')" style="line-height: 35px;font-weight: bold; ">구독<span>${cvo.channelSub}</span></a>
+<%--                            <a href="/ch/subup.do?channelTitle=${ cvo.channelTitle }" class="btn my_follow subscriber_btn" onclick="return confirm('구독 하시겠습니까?')" style="line-height: 35px;font-weight: bold; ">구독<span>${cvo.channelSub}</span></a>--%>
+                            <a href="/ch/subup.do?memId=${ cvo.memId }" class="btn my_follow subscriber_btn" onclick="return confirm('구독 하시겠습니까?')" style="line-height: 35px;font-weight: bold; ">구독<span>${cvo.channelSub}</span></a>
                         </c:if>
                         <c:if test="${check eq 0}">
-                            <a href="/ch/subdown.do?channelTitle=${ cvo.channelTitle }" class="btn my_follow subscriber_btn" onclick="return confirm('구독 취소 하시겠습니까?')" style="line-height: 35px; font-weight: bold; background: #aaa">구독<span>${cvo.channelSub}</span></a>
+<%--                            <a href="/ch/subdown.do?channelTitle=${ cvo.channelTitle }" class="btn my_follow subscriber_btn" onclick="return confirm('구독 취소 하시겠습니까?')" style="line-height: 35px; font-weight: bold; background: #aaa">구독<span>${cvo.channelSub}</span></a>--%>
+                            <a href="/ch/subdown.do?memId=${ cvo.memId }" class="btn my_follow subscriber_btn" onclick="return confirm('구독 취소 하시겠습니까?')" style="line-height: 35px; font-weight: bold; background: #aaa">구독<span>${cvo.channelSub}</span></a>
                         </c:if>
 
                         <c:if test="${cvo.memId eq loginMember.memId}">
                             <a href="#none" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">구독<span>${cvo.channelSub}</span></a>
-                            <a href="chedit.do?channelTitle=${cvo.channelTitle}" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">내채널 편집</a>
+<%--                            <a href="chedit.do?channelTitle=${cvo.channelTitle}" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">내채널 편집</a>--%>
+                            <a href="chedit.do?memId=${cvo.memId}" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">내채널 편집</a>
                         </c:if>
                     </div>
                 </div>
@@ -520,10 +523,12 @@
 
         <div class="col-lg-6 mt-3">
             <c:if test="${check eq 1}">
-             <a onclick="return confirm('구독 하시겠습니까?')" href="/ch/subup.do?channelTitle=${ cvo.channelTitle }">구독하기</a>
+<%--             <a onclick="return confirm('구독 하시겠습니까?')" href="/ch/subup.do?channelTitle=${ cvo.channelTitle }">구독하기</a>--%>
+             <a onclick="return confirm('구독 하시겠습니까?')" href="/ch/subup.do?memId=${ cvo.memId }">구독하기</a>
             </c:if>
             <c:if test="${check eq 0}">
-             <a onclick="return confirm('구독 취소 하시겠습니까?')" href="/ch/subdown.do?channelTitle=${ cvo.channelTitle }">구독취소</a>
+<%--             <a onclick="return confirm('구독 취소 하시겠습니까?')" href="/ch/subdown.do?channelTitle=${ cvo.channelTitle }">구독취소</a>--%>
+             <a onclick="return confirm('구독 취소 하시겠습니까?')" href="/ch/subdown.do?memId=${ cvo.memId }">구독취소</a>
             </c:if>
         </div>
 

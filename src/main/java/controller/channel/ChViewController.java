@@ -27,11 +27,14 @@ public class ChViewController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 게시물 불러오기
         ChannelDAO cdao = new ChannelDAO();
-        String channelTitle = req.getParameter("channelTitle");
+//        String channelTitle = req.getParameter("channelTitle");
+        String chMemId = req.getParameter("memId");
 
 
-        ChannelVO cvo = cdao.selectChannel(channelTitle);
-        String chMemId = cvo.getMemId();
+//        ChannelVO cvo = cdao.selectChannel(channelTitle);
+        ChannelVO cvo = cdao.selectChannelById(chMemId);
+//        String chMemId = cvo.getMemId();
+        String channelTitle = cvo.getChannelTitle();
         PostDAO pdao = new PostDAO();
 
 

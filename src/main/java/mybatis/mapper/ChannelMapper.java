@@ -16,8 +16,8 @@ public interface ChannelMapper {
 
     ChannelVO selectChannelById(String memId);
 
-    void subPlus(String memId);
-    void subMinus(String memId);
+    void subPlus(String chMemId);
+    void subMinus(String chMemId);
 
     int selectChCount(Map<String, Object> map);
 

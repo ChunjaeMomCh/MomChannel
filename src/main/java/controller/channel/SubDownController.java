@@ -19,14 +19,17 @@ public class SubDownController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ChannelDAO cdao = new ChannelDAO();
-        String channelTitle = req.getParameter("channelTitle");
+//        String channelTitle = req.getParameter("channelTitle");
+        String chMemId = req.getParameter("memId");
 
         SubDAO sdao = new SubDAO();
         HttpSession session = req.getSession();
 
         String memId = (String) session.getAttribute("memId");
-        ChannelVO cvo = cdao.selectChannel(channelTitle);
-        String chMemId = cvo.getMemId();
+        ChannelVO cvo = cdao.selectChannelById(chMemId);
+//        String chMemId = cvo.getMemId();
+        String channelTitle = cvo.getChannelTitle();
+
 
         Map<String, String> map = new HashMap<>();
         map.put("memId", memId);
@@ -35,7 +38,8 @@ public class SubDownController extends HttpServlet {
         cdao.subMinus(chMemId);
         sdao.subDown(map);
 
-        resp.sendRedirect("../ch/chview.do?channelTitle=" + channelTitle);
+//        resp.sendRedirect("../ch/chview.do?channelTitle=" + channelTitle);
+        resp.sendRedirect("../ch/chview.do?memId=" + chMemId);
 
     }
 }
