@@ -159,7 +159,13 @@
     });
   });
   </script>
-
+  <style>
+    .profile_btn {
+        font-weight: 900;
+        color: #7b7a7a;
+        background-color: #fdfdfd;
+    }
+  </style>
 </head>
 <body>
 
@@ -182,8 +188,8 @@
             <div>
               <c:choose>
                 <c:when test="${empty loginMember.memId}">
-                  <a href="/view/Login/loginForm.jsp">로그인</a>
-                  <a href="/view/Login/signForm.jsp">회원가입</a>
+                  <a class="profile_btn" href="/view/Login/loginForm.jsp">로그인</a>
+                  <a class="profile_btn" href="/view/Login/signForm.jsp">회원가입</a>
                 </c:when>
                 <c:when test="${not empty loginMember.memId}">
                   <a href="javascript:void(0);" class="search_btn pc_none"><i class="ico search_01"></i></a>
@@ -194,8 +200,8 @@
                     <div class="mo_none">
                     </div>
                   </div>
-                  <a href="/member/logout.do">로그아웃</a>
-                  <a href="/member/myinfo.do">내정보</a>
+                  <a class="profile_btn" href="/member/logout.do">로그아웃</a>
+                  <a class="profile_btn" href="/member/myinfo.do">내정보</a>
                 </c:when>
               </c:choose>
             </div> <%-- content의 끝 --%>
