@@ -1,7 +1,28 @@
+<div align="center">
+
+| <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="100" height="90"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="100" height="90"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="100" height="90"/> |
+| :---: | :---: | :---: |
+| [AWS](https://github.com/ChunjaeMomCh/MomChannel) | [GIT](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://www.notion.so/geee1-kim/2-Project-) |
+
+
+</div>
+
+
+
+
+
 # 👨‍👩‍👦 '맘채널' JSP 프로그램
 
 
 ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/3054c13b-8c4c-4a5d-a99f-41775fd7ef54)
+
+
+<br>
+
+
+
+
+
 
 
 <br>
@@ -137,6 +158,8 @@
 
   ![java](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/5f830f7d-e824-40c7-98de-de9aece05cf5)
 
+  **!! 클릭하면 확대됩니다. !!**
+  
 </details>
 
 <br>
