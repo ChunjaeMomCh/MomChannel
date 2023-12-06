@@ -317,7 +317,7 @@
 #### [ 하단 고정 메뉴 ( Footer ) ]
 - 팀원들의 GitHub와 회의 내용을 기록한 Notion을 표시
 
-| 게시판 |
+| 하단 고정 메뉴 |
 |----------|
 | ![image](https://github.com/LMH9999/MomChannel/assets/145963633/871a3c12-bd13-429c-87d0-473bc784c109) |
 
