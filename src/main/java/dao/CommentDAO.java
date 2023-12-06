@@ -22,6 +22,14 @@ public class CommentDAO {
         return comments;
     }
 
+    public CommentVO selectComment(String commentNo) {
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        CommentMapper mapper = session.getMapper(CommentMapper.class);
+        CommentVO comment= mapper.selectComment(commentNo);
+        session.close();
+        return comment;
+    }
+
     public int insertWrite(CommentVO vo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
@@ -35,6 +43,19 @@ public class CommentDAO {
         sqlSession.close();
         return result;
     }
+
+    public int deleteComment(String commentNo) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        CommentMapper mapper = sqlSession.getMapper(CommentMapper.class);
+        int result = mapper.deleteComment(commentNo);
+        if (result == 1) {
+            sqlSession.commit();
+        } else {
+            System.out.println("board 삭제 중 오류 발생...");
+        }
+        return result;
+    }
+
     public int insertWriteAnswer(QNABoardVO vo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         QNABoardMapper mapper = sqlSession.getMapper(QNABoardMapper.class);

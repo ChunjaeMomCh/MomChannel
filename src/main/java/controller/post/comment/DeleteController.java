@@ -1,9 +1,13 @@
 package controller.post.comment;
 
 
+import dao.CommentDAO;
+import dao.PostDAO;
 import dao.QNABoardDAO;
 import utils.JSFunction;
+import vo.CommentVO;
 import vo.MemberVO;
+import vo.PostVO;
 import vo.QNABoardVO;
 
 import javax.servlet.ServletException;
@@ -20,19 +24,28 @@ public class DeleteController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        MemberVO mvo= new MemberVO();
-        HttpSession session = req.getSession();
-        mvo = (MemberVO) session.getAttribute("loginMember");
-        String loginId = (String)session.getAttribute("memId");
-        String qnaNo = req.getParameter("qnaNo");
 
-        QNABoardDAO dao = new QNABoardDAO();
-        QNABoardVO vo = dao.selectView(qnaNo);
-        String memId = vo.getMemId();
-        req.setAttribute("vo", vo);
-        if (memId.equals(mvo.getMemId()) || loginId.equals("admin")){
-            dao.deletePost(qnaNo);  // 게시물 삭제
-            JSFunction.alertLocation(resp, "삭제되었습니다.", "./list.do");
+        String commentNo = req.getParameter("commentNo");
+        CommentDAO cdao = new CommentDAO();
+        CommentVO cvo = cdao.selectComment(commentNo);
+        String memId = cvo.getMemId();
+        int postNo = cvo.getPostNo();
+
+        // post 작성자 id 불러오기
+        PostDAO pdao = new PostDAO();
+        PostVO pvo = pdao.viewPost(String.valueOf(postNo));
+
+        HttpSession session = req.getSession();
+        String loginId = (String)session.getAttribute("memId");
+        if(loginId == null || loginId.equals("")){
+            JSFunction.alertLocation(resp, "로그인 후 이용할 수 있습니다.",
+                    "../view.do?postNo="+postNo);
+        }
+
+
+        if (memId.equals(loginId) || loginId.equals(pvo.getMemId())){
+            cdao.deleteComment(commentNo);  // 게시물 삭제
+            JSFunction.alertLocation(resp, "삭제되었습니다.", "../view.do?postNo="+postNo);
         }
         else {
             JSFunction.alertBack(resp, "이 글의 작성자가 아닙니다.");

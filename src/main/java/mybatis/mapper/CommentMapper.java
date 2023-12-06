@@ -11,8 +11,14 @@ import java.util.Map;
 public interface CommentMapper {
 
     List<CommentVO> selectCommentList(String postNo);
+    CommentVO selectComment(String commentNo);
 
     int insertWrite(CommentVO vo);
+
+    int deleteComment(String commentNo);
+
+
+
     int insertWriteAnswer(QNABoardVO vo);
 
     QNABoardVO selectView(String qnoNo);

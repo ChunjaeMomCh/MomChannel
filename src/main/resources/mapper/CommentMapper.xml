@@ -11,11 +11,24 @@
         order by comment_date desc
     </select>
 
+    <select id="selectComment" parameterType="String" resultType="vo.CommentVO">
+        SELECT *
+        from comment
+        where comment_no = #{commentNo}
+    </select>
+
     <insert id="insertWrite" parameterType="vo.CommentVO">
         INSERT
         INTO comment(mem_id, post_no, comment_txt)
         VALUES(#{memId}, #{postNo}, #{commentTxt})
     </insert>
+
+    <delete id="deleteComment">
+        delete
+        from comment
+        where comment_no = #{commentNo}
+    </delete>
+
 
     <insert id="insertWriteAnswer" parameterType="vo.QNABoardVO">
         INSERT

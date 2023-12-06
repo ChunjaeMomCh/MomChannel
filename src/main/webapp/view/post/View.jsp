@@ -126,15 +126,10 @@
                 <%-- 댓글 영역 --%>
                 <script>
                     function commentSave(form){
-                        alert("아이디를 입력하세요.동작");
-                        // if(!form.memId.value){
-                        //     alert("아이디를 입력하세요.");
-                        //     return false;
-                        // }
-                        // if (form.memPw.value == ""){
-                        //     alert("패스워드를 입력하세요.");
-                        //     return false;
-                        // }
+                        if(!form.commentTxt.value){
+                            alert("내용을 입력하세요.");
+                            return false;
+                        }
                     }
                 </script>
                 <div class="comments_area">
@@ -153,72 +148,22 @@
                         <c:forEach items="${ commentLists }" var="row" varStatus="loop">
                             <div class="reply">
                                 <div class="reple_inner">
-                                <figure><img :src="item.userImage" alt=""></figure>
-                                <div class="text_box">
-                                    <a :href="'/channel/home.html?channel_id='+item.userChannelId" class="user_name"
-                                       x-text="item.userChannelName" href="/channel/home.html?channel_id=">${row.memId}</a>
-                                    <p class="reply_text">${row.commentTxt}</p>
-                                    <div class="reply_footer">
-                                        <div class="reply_date">
-                                            <p><fmt:formatDate value="${row.commentDate}" pattern="yyyy-MM-dd"/></p>
-                                            <span class="time"><fmt:formatDate value="${row.commentDate}" type="time" pattern="hh:mm:ss"/></span>
-                                            <a href="#none" class="re_reply"
-                                               @click="reply(idx,item.id), $('.reply').removeClass('modify_ing');">답글</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                </div>
-                                <template x-if="item.disabled == 'false'">
-                                    <div class="reple_inner">
-                                        <template x-if="item.userImage != ''">
-                                            <figure><img :src="item.userImage" alt=""></figure>
-                                        </template>
-                                        <template x-if="item.userImage == ''">
-                                            <figure></figure>
-                                        </template>
-                                        <div class="text_box">
-                                            <a :href="'/channel/home.html?channel_id='+item.userChannelId" class="user_name"
-                                               x-text="item.userChannelName"></a>
-                                            <p class="reply_text" x-text="item.text"></p>
-                                            <div class="reply_footer">
-                                                <div class="reply_date">
-                                                    <p x-text="item.createDate"></p>
-                                                    <span class="time" x-text="item.createTime"></span>
-                                                    <a href="#none" class="re_reply"
-                                                       @click="reply(idx,item.id), $('.reply').removeClass('modify_ing');">답글</a>
-                                                </div>
+                                    <figure><img :src="item.userImage" alt=""></figure>
+                                    <div class="text_box">
+                                        <a :href="'/channel/home.html?channel_id='+item.userChannelId" class="user_name"
+                                           x-text="item.userChannelName" href="/channel/home.html?channel_id=">${row.memId}</a>
+                                        <p class="reply_text">${row.commentTxt}</p>
+                                        <div class="reply_footer">
+                                            <div class="reply_date">
+                                                <p><fmt:formatDate value="${row.commentDate}" pattern="yyyy-MM-dd"/></p>
+                                                <span class="time"><fmt:formatDate value="${row.commentDate}" type="time" pattern="hh:mm:ss"/></span>
+                                                <c:if test="${row.memId eq loginMember.memId or vo.memId eq loginMember.memId}">
+                                                    <a href="./comment/delete.do?commentNo=${row.commentNo}" class="re_reply">삭제</a>
+                                                </c:if>
                                             </div>
                                         </div>
                                     </div>
-                                </template>
-                                <template x-for="(items,index) in item.replyComment" :key="index">
-                                    <div class="re_reply_area">
-                                        <div class="reply">
-                                            <div class="reple_inner">
-                                                <template x-if="items.userImage != ''">
-                                                    <figure><img :src="items.userImage" alt=""></figure>
-                                                </template>
-                                                <template x-if="items.userImage == ''">
-                                                    <figure></figure>
-                                                </template>
-                                                <div class="text_box">
-                                                    <a :href="'/channel/home.html?channel_id='+item.userChannelId"
-                                                       class="user_name" x-text="items.userChannelName"></a>
-                                                    <p class="reply_text" x-text="items.text"></p>
-                                                    <div class="reply_footer">
-                                                        <div class="reply_date">
-                                                            <p x-text="items.createDate"></p>
-                                                            <span class="time" x-text="items.createTime"></span>
-                                                        </div>
-                                                        <div class="reply_btns">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </template>
+                                </div>
                             </div>
                         </c:forEach>
                     </div>
