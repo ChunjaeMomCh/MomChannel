@@ -3,10 +3,12 @@ package dao;
 import mybatis.factory.MyBatisSessionFactory;
 import mybatis.mapper.ChannelMapper;
 import mybatis.mapper.MemberMapper;
+import mybatis.mapper.QNABoardMapper;
 import mybatis.mapper.SubMapper;
 import org.apache.ibatis.session.SqlSession;
 import vo.ChannelVO;
 import vo.MemberVO;
+import vo.QNABoardVO;
 
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,13 @@ public class ChannelDAO {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
         ChannelVO cvo = mapper.selectChannel(memId);
+        sqlSession.close();
+        return cvo;
+    }
+    public ChannelVO selectChannelById(String memId) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
+        ChannelVO cvo = mapper.selectChannelById(memId);
         sqlSession.close();
         return cvo;
     }
@@ -60,6 +69,19 @@ public class ChannelDAO {
         ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
         List<ChannelVO> result = mapper.selectChList(map);
         sqlSession.close();
+        return result;
+    }
+
+    public int updateChannel(ChannelVO cvo) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        ChannelMapper mapper = sqlSession.getMapper(ChannelMapper.class);
+        int result = mapper.updateChannel(cvo);
+        if (result == 1) {
+            sqlSession.commit();
+        } else {
+            System.out.println("board update 중 오류 발생...");
+        }
+        sqlSession.commit();
         return result;
     }
 

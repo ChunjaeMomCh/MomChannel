@@ -482,6 +482,9 @@
 <div class="content">
 
     <h2>채널 상세보기</h2>
+    <button type="button" onclick="location.href='../ch/chedit.do?memId=${ cvo.memId }';">
+        수정하기
+    </button>
 
     <table border="1" width="90%">
         <colgroup>
@@ -502,7 +505,7 @@
 
         <tr>
             <td>채널 이름</td>
-            <td colspan="3">${ cvo.memId }</td>
+            <td colspan="3">${ cvo.channelTitle }</td>
         </tr>
         <tr>
             <td>채널 정보</td>
