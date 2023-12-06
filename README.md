@@ -135,9 +135,7 @@
 <details>
   <summary>클래스 다이어그램</summary>
 
-<!-- ![class](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963704/a574220c-39cd-436f-85f4-f3b2600a660c) -->
-
-
+  ![java](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/5f830f7d-e824-40c7-98de-de9aece05cf5)
 
 </details>
 
