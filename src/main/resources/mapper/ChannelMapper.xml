@@ -16,6 +16,12 @@
         where channel_title = #{channelTitle}
     </select>
 
+    <select id="selectChannelById" parameterType="String" resultType="vo.ChannelVO">
+        select *
+        from channel
+        where mem_id = #{memId}
+    </select>
+
     <update id="subPlus" parameterType="String">
         update channel
         set channel_sub = channel_sub + 1
@@ -36,4 +42,11 @@
     <select id="selectChList" parameterType="map" resultType="vo.ChannelVO">
         SELECT * FROM channel order by channel_title
     </select>
+
+    <update id="updateChannel" parameterType="vo.ChannelVO">
+        update channel
+        set channel_title = #{channelTitle},
+        channel_info = #{channelInfo}
+        where mem_id = #{memId}
+    </update>
 </mapper>
