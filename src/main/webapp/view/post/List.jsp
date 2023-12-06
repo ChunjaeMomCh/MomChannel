@@ -86,7 +86,6 @@
                         <c:forEach items="${ postLists }" var="row" varStatus="loop">
                         <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
                             <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
-<%--                                <figure class="content_img"></figure>--%>
                                 <figure class="content_img">
                                     <c:if test="${row.postSFile eq null}">
                                         <img src="/Uploads/default_thumbnail.jpg" alt="">
@@ -121,8 +120,6 @@
                             ${ map.pagingImg }
                         </ul>
                     </div>
-
-
                 </div>
 
                 </form>

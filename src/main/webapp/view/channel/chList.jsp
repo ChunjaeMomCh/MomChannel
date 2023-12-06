@@ -104,7 +104,7 @@
                     <ul class="subscribe_card_area">
                         <c:choose>
                             <c:when test="${ empty chLists }">  <!-- 게시물이 없을 때 -->
-                                등록된 채널이 없습니다^^* ${ chLists }
+                                등록된 채널이 없습니다 ☺️ ${ chLists }
                             </c:when>
                             <c:otherwise>  <!-- 게시물이 있을 때 -->
                                 <c:forEach items="${ chLists }" var="row" varStatus="loop">
