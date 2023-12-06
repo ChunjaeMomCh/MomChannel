@@ -254,11 +254,15 @@
 - 문의하기
   - 회원이 질문글을 올리고 관리자가 답변을 작성하는 문의하기 게시판
 
-| 상품전체보기 |
+| 맘채널 소개 |
 |----------|
-<!-- |![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/c0801a23-3e3a-4c2a-8c12-162d39f1b70f)| -->
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/08df4e92-60de-496b-8f84-5c078ff142f3) |
 
 <br>
+
+
+
+
 
 
 
