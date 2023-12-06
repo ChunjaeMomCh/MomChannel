@@ -102,8 +102,7 @@
 
 <details>
   <summary>유스케이스 다이어그램</summary>
-
- <!-- ![image (4)](https://github.com/jyeeeh/Shopping-CLI-Java/assets/145963612/a04ebb93-1788-4e51-98d7-df8a6b5d033b) -->
+  
   ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/d143c9f2-23a2-4e43-8e5f-be24c2611a71)
 
 
@@ -116,7 +115,6 @@
   <summary>시퀀스 다이어그램</summary>
 
   1. Actor : 회원 ( Post )
-
   ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/bede9070-4422-4788-8f79-61428f1b29eb)
 
   2. Actor : 회원 ( MyPage, Channel )
@@ -124,11 +122,9 @@
 
 
   3. Actor : 회원 ( CS )
-
   ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/30e7e127-7d20-41f8-b853-8a7bed173d48)
 
   4. Actor : 관리자
-
   ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/91e895c6-7ce4-47b2-b9cd-fe4e7842477f)
 
 
@@ -149,7 +145,7 @@
 
 <details>
   <summary>블록 다이어그램</summary>
-
+  
   ![image](https://github.com/LMH9999/MomChannel/assets/145963633/0b770a0c-3e1e-4c7e-a7a3-5d61c010d37e)
 
 </details>
@@ -181,18 +177,25 @@
   - 로그아웃 
 - 게시판의 종류와 공지사항 문의하기 게시판을 갈 수 있는 풀다운 메뉴
 
-| 초기화면 | 회원 로그인 화면 |
-| --- | --- |
-<!-- | ![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/0ada0842-b780-4db9-87d2-e84ca17faa16) | ![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/a82d09a7-5722-4ebe-94ea-87fcf39163f7) | -->
+| 비회원 & 메뉴 |
+| --- |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/13121206-b032-4434-ac04-89ce0e749d0e) | 
 
+| 회원 & 풀다운 메뉴 |
+| --- |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/277d38f9-b958-45a1-a9b8-8722eb52f59e) |
 
 <br>
 
 ### [ Main Menu ]
 - 맘채널에 관한 소개글 홍보글 등이 보이는 슬라이드 쇼
 - 다양한 기준에 대한 게시물 추천
-  
-<!--   ![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/98e02ab3-449e-45a8-a302-17280991e456) -->
+
+| 슬라이드 쇼 |
+| --- |
+| ![메인화면_슬라이드쇼](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/9ebf0dbe-4d5d-4d3f-8445-47979eb0d922) |
+
+
 
 
 <br>
@@ -200,12 +203,33 @@
 
 ### [ 회원 가입 ]
 - 회원 가입을 하면 DB의 member 테이블에 입력 받은 정보를 저장합니다.
+  - 다음 Open API 를 활용한 주소 입력
   - 아이디 중복체크
   - 비밀번호 확인
-  - 다음 Open API 를 활용한 주소 입력
+  - 이메일 양식 확인
 - 회원가입 성공 후 로그인 화면으로 이동
-  
-<!--   ![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/98e02ab3-449e-45a8-a302-17280991e456) -->
+
+| 회원가입 폼 | 주소 API |
+| --- | --- |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/e5e6a6cf-bcf3-46c6-a63f-c3398527323f) | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/dc0eb020-d02d-4327-8da7-64af1185b878) |
+
+<br>
+
+| 회원 중복 확인 | 알림 |
+| --- | --- |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/68243652-c894-47a7-9205-972805defbf1)  | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/d0984377-3bf5-4da0-99a8-aeaabca1d6f8) | 
+
+<br>
+
+| 비밀번호 확인 | 이메일 양식 |
+| --- | --- |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/1fb77b35-7504-4ada-bda5-9ec7a35b7268) | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/b92a92a8-e357-4000-b8d9-7e9d003b6007) |
+
+<br>
+
+
+
+
 
 
 <br>
@@ -213,9 +237,11 @@
 ### [ 로그인 ]
 - 회원 로그인은 아이디와 비밀번호를 입력하면 DB의 데이터와 비교하여 일치한 경우 로그인에 성공하고 불일치 시 경고창 표시 후 다시 로그인 창으로 이동
 
-| 패스워드 불일치 | 미등록 아이디 |
+| 로그인 폼| 비밀번호 검증 & 정상 로그인 |
 | --- | --- |
-<!-- | ![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/f3e5f591-4a23-4344-9ded-7bdb9ea82821) | ![image](https://github.com/kimg1623/Shopping-CLI-Java/assets/145963790/b99398b4-648d-4225-9689-85a1d172741d)| -->
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/91688597-693c-4ab7-b2f0-be7a282753e2) | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/06510711-94de-4b2e-8e7e-b880d5dff4e7) <br> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/cbab9546-bc10-40b1-aeaf-812efd4d7be8) |
+
+<br>
 
 
 <br>
