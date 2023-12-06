@@ -20,8 +20,16 @@ public class PostDAO {
         PostMapper mapper = session.getMapper(PostMapper.class);
 
         int result = mapper.selectCount(map);
+        session.close();
+        return result;
 
-        System.out.println("selectCount - 행 개수 = " + result);
+    }
+    public int selectCountGrade(Map<String, Object> map) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        int result = mapper.selectCountGrade(map);
         session.close();
         return result;
 
@@ -49,6 +57,16 @@ public class PostDAO {
         session.close();
         return postList;
     }
+    // 학년별 게시판 페이지 불러오기
+    public List<PostVO> showPostsByGrade(Map<String, Object> map) {
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showPostsByGrade(map);
+
+        session.close();
+        return postList;
+    }
 
     // 지역별 게시판 페이지 불러오기
     public List<PostVO> showPostsByRegion(Map<String, Object> map) {
@@ -63,16 +81,6 @@ public class PostDAO {
     }
 
     // 학년별 게시판 페이지 불러오기
-    public List<PostVO> showPostsByGrade(Map<String, Object> map) {
-
-        SqlSession session = MyBatisSessionFactory.getSqlSession();
-        PostMapper mapper = session.getMapper(PostMapper.class);
-
-        List<PostVO> postList = mapper.showPostsByGrade(map);
-
-        session.close();
-        return postList;
-    }
 
     public List<PostVO> showPostsByCh(String channelTitle) {
 
