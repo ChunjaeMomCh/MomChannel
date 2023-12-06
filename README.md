@@ -26,7 +26,7 @@
 
 | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="150" height="120"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="145" height="145"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="145" height="145"/> |
 | :---: | :---: | :---: |
-| [배포](https://github.com/ChunjaeMomCh/MomChannel) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://www.notion.so/geee1-kim/2-Project-) |
+| [배포](https://github.com/ChunjaeMomCh/MomChannel) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://geee1-kim.notion.site/JSP-Project-2061031e0e3b45148829eac978ca199d?pvs=4) |
 
 
 </div>
@@ -52,18 +52,27 @@
 **Language** 
 <div>
 <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white">
+<img src="https://img.shields.io/badge/JSP-de6c1e?style=for-the-badge&logo=jsp&logoColor=white">
+<img src="https://img.shields.io/badge/Servlet-e42c2e?style=for-the-badge&logo=servlet&logoColor=white"><br>
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white"> 
 <img src="https://img.shields.io/badge/Mybatis-000000?style=for-the-badge&logo=Fluentd&logoColor=fff"/><br>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=fff"/>
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=fff"/>
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=000"/>
+<img src="https://img.shields.io/badge/SHA256+SALT-ecd31d?style=for-the-badge&logo=sha256&logoColor=000"/>
 </div> 
 <br>
 
 **Tools** 
 <div>
-<img src="https://img.shields.io/badge/IntelliJIDEA-000000?style=for-the-badge&logo=intellijidea&logoColor=white"></div>  
+<img src="https://img.shields.io/badge/IntelliJIDEA-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
+<img src="https://img.shields.io/badge/DBeaver-362822?style=for-the-badge&logo=dbeaver&logoColor=white">
+<img src="https://img.shields.io/badge/H2-094568?style=for-the-badge&logo=h2&logoColor=white"><br>  
+<img src="https://img.shields.io/badge/AmazonAWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
+<img src="https://img.shields.io/badge/AmazonRDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white">
+<img src="https://img.shields.io/badge/AmazonEC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
+</div>  
 <br>
 
 **Collaboration** 
