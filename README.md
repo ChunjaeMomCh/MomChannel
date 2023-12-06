@@ -290,6 +290,24 @@
 
 <br>
 
+<br>
+
+#### [ 게시판 ]
+- 학부모 회원들이 공유하는 게시글들을 모아서 보는 게시판
+  - 회원인 경우  공유하고 싶은 게시글을 작성, 상세보기, 수정, 삭제 
+
+
+| 게시판 |
+|----------|
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/74b9bc50-2b2a-407f-a587-e1f3942f9692) |
+| 1. 게시글 작성 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/eca5318f-9717-45e3-a187-54b7b8532796) |
+| 2. 상세보기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/2c2a40f4-1116-4664-9fee-66e0e340c9b5) |
+| 3. 수정하기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f0de1480-e1e0-49fb-b2f2-0e946ffcb33f) |
+
+<br>
 
 
 
@@ -299,7 +317,9 @@
 #### [ 하단 고정 메뉴 ( Footer ) ]
 - 팀원들의 GitHub와 회의 내용을 기록한 Notion을 표시
 
-![image](https://github.com/LMH9999/MomChannel/assets/145963633/871a3c12-bd13-429c-87d0-473bc784c109)
+| 게시판 |
+|----------|
+| ![image](https://github.com/LMH9999/MomChannel/assets/145963633/871a3c12-bd13-429c-87d0-473bc784c109) |
 
 
 <br>
