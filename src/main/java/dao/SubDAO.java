@@ -13,7 +13,7 @@ public class SubDAO {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         SubMapper mapper = sqlSession.getMapper(SubMapper.class);
         int result = mapper.subCheck(map);
-        if (result == 1) {
+        if (result > 0) {
             return 0;
         } else {
             return 1;

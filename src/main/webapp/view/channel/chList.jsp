@@ -48,7 +48,8 @@
                                         <tr>
                                             <td>${row.memId}</td>
                                             <td class="notice_title">  <!-- 제목(링크) -->
-                                                <a href="./chview.do?channelTitle=${ row.channelTitle }">${ row.channelTitle }</a>
+<%--                                                <a href="./chview.do?channelTitle=${ row.channelTitle }">${ row.channelTitle }</a>--%>
+                                                <a href="./chview.do?memId=${ row.memId }">${ row.channelTitle }</a>
                                             </td>
                                             <td class="date">${ row.channelInfo }</td>  <!-- 채널 소개글 -->
                                             <td class="date">${ row.channelSub }</td>  <!-- 구독자 수 -->

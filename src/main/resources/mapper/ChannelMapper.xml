@@ -25,13 +25,13 @@
     <update id="subPlus" parameterType="String">
         update channel
         set channel_sub = channel_sub + 1
-        where channel_title = #{channelTitle};
+        where mem_id = #{memId};
     </update>
 
     <update id="subMinus" parameterType="String">
         update channel
         set channel_sub = channel_sub - 1
-        where channel_title = #{channelTitle};
+        where mem_id = #{memId};
     </update>
 
     <select id="selectChCount" parameterType="map" resultType="int">
