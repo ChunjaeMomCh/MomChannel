@@ -71,12 +71,22 @@
         WHERE post_grade IS NOT NULL
         ORDER BY post_no DESC
     </select>
+
+    <select id="showPostsByCh" parameterType="String" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        WHERE mem_id = #{memId}
+        ORDER BY post_no DESC
+    </select>
+
     <!-- 게시글 상세 보기 화면 불러오기 -->
     <select id="viewPost" parameterType="String" resultType="vo.PostVO">
         SELECT *
         FROM post
         WHERE post_no = #{postNo}
     </select>
+
+
     <!-- 게시물 상세 보기 시 조회수 업데이트 -->
     <update id="updateVisitCount" parameterType="String">
         UPDATE post
@@ -104,4 +114,9 @@
         WHERE post_no = #{postNo}
     </delete>
 
+    <select id="selectChPost" parameterType="String" resultType="int">
+        SELECT post_no FROM post WHERE mem_id = #{memId}
+    </select>
+
 </mapper>
+
