@@ -48,9 +48,7 @@ public class ListGradeController extends HttpServlet {
             map.put("searchWord", searchWord);
         }
 
-        int totalCount = dao.selectCount(map);  // 게시물 개수 확인
-
-
+        int totalCount = dao.selectCountGrade(map);  // 게시물 개수 확인
         // 페이징 처리문
         ServletContext application = getServletContext();
         int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
@@ -70,7 +68,7 @@ public class ListGradeController extends HttpServlet {
         /* 페이지 처리 end */
 
         // 게시물 목록 받기
-        List<PostVO> postLists = dao.showPosts(map);
+        List<PostVO> postLists = dao.showPostsByGrade(map);
 
         // 뷰에 전달할 매개변수 추가
         String pagingImg = BoardPage.pagingStr(totalCount, pageSize,

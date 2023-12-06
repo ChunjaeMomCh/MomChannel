@@ -26,6 +26,27 @@
         </if>
         order by #{postSortBy} desc
     </select>
+    <select id="selectCountGrade" parameterType="map" resultType="int">
+        SELECT count(*)
+        FROM post
+        <if test="(searchWord != null and !searchWord.equals('')) or (postGrade != null and !postGrade.equals(''))">
+            WHERE
+            <if test="postGrade != null and !postGrade.equals('')">
+                post_grade=#{postGrade}
+            </if>
+            <if test="searchWord != null and !searchWord.equals('')">
+                <choose>
+                    <when test="searchField == 'title'">
+                        post_title like concat('%',#{searchWord},'%')
+                    </when>
+                    <otherwise>
+                        post_content like concat('%',#{searchWord},'%')
+                    </otherwise>
+                </choose>
+            </if>
+        </if>
+        order by #{postSortBy} desc
+    </select>
     <!-- 게시물 전체 (페이징) -->
     <select id="selectListPage" parameterType="map" resultType="vo.PostVO">
         SELECT *
@@ -70,18 +91,25 @@
         </if>
         ORDER BY post_no DESC
     </select>
-    <!-- 지역별 게시글 보기 -->
-    <select id="showPostsByRegion" parameterType="map" resultType="vo.PostVO">
-        SELECT *
-        FROM post
-        WHERE post_region IS NOT NULL
-        ORDER BY post_no DESC
-    </select>
-    <!-- 학년별 게시글 보기 -->
     <select id="showPostsByGrade" parameterType="map" resultType="vo.PostVO">
         SELECT *
         FROM post
-        WHERE post_grade IS NOT NULL
+        <if test="(searchWord != null and !searchWord.equals('')) or (postGrade != null and !postGrade.equals(''))">
+            WHERE
+            <if test="postGrade != null and !postGrade.equals('')">
+                post_grade=#{postGrade}
+            </if>
+            <if test="searchWord != null and !searchWord.equals('')">
+                <choose>
+                    <when test="searchField == 'title'">
+                        post_title like concat('%',#{searchWord},'%')
+                    </when>
+                    <otherwise>
+                        post_content like concat('%',#{searchWord},'%')
+                    </otherwise>
+                </choose>
+            </if>
+        </if>
         ORDER BY post_no DESC
     </select>
 
