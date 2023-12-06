@@ -19,9 +19,34 @@ public class FileUtil {
         Path saveDirectoryPath = Paths.get(sDirectory);
         Files.createDirectories(saveDirectoryPath);
 
-
         //Part 객체를 통해 서버로 전송된 파일명 읽어오기
         Part part = req.getPart("postOFile");
+
+        //Part 객체의 헤더값 중 content-disposition 읽어오기
+        String partHeader = part.getHeader("content-disposition");
+        //출력결과 => form-data; name="attachedFile"; filename="파일명.jpg"
+        System.out.println("partHeader="+ partHeader);
+
+        //헤더값에서 파일명 잘라내기
+        String[] phArr = partHeader.split("filename=");
+
+        String originalFileName = phArr[1].trim().replace("\"", "");
+
+        //전송된 파일이 있다면 디렉토리에 저장
+        if (!originalFileName.isEmpty()) {
+            part.write(sDirectory+ File.separator +originalFileName);
+        }
+
+        //원본 파일명 반환
+        return originalFileName;
+    }
+    public static String uploadMemImg(HttpServletRequest req, String sDirectory)
+            throws ServletException, IOException {
+        Path saveDirectoryPath = Paths.get(sDirectory);
+        Files.createDirectories(saveDirectoryPath);
+
+        //Part 객체를 통해 서버로 전송된 파일명 읽어오기
+        Part part = req.getPart("memImg");
 
 
         //Part 객체의 헤더값 중 content-disposition 읽어오기
@@ -32,7 +57,6 @@ public class FileUtil {
         //헤더값에서 파일명 잘라내기
         String[] phArr = partHeader.split("filename=");
 
-
         String originalFileName = phArr[1].trim().replace("\"", "");
 
 
@@ -40,7 +64,6 @@ public class FileUtil {
         if (!originalFileName.isEmpty()) {
             part.write(sDirectory+ File.separator +originalFileName);
         }
-
 
         //원본 파일명 반환
         return originalFileName;

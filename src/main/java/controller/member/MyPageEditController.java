@@ -37,12 +37,12 @@ public class MyPageEditController extends HttpServlet {
             throws ServletException, IOException {
         String saveDirectory = req.getServletContext().getRealPath("/Uploads");
 
-        System.out.println(saveDirectory);
+        System.out.println("adadad"+saveDirectory);
 
         // 파일 업로드
         String originalFileName = "";
         try {
-            originalFileName = FileUtil.uploadFile(req, saveDirectory);
+            originalFileName = FileUtil.uploadMemImg(req, saveDirectory);
         }
         catch (Exception e) {
             JSFunction.alertBack(resp, "파일 업로드 오류입니다.");
@@ -105,6 +105,8 @@ public class MyPageEditController extends HttpServlet {
         // DB에 수정 내용 반영
         MemberDAO dao = new MemberDAO();
 
+        System.out.println("qweqwe : "+ memId);
+        System.out.println("asdasd : "+ sMemId);
         //작성자와 현재 로그인된 아이디가 일치하는지 확인후 수정
         if (memId.equals(sMemId)){
             int result = dao.updateMember(mvo);
@@ -113,7 +115,7 @@ public class MyPageEditController extends HttpServlet {
 //            session.removeAttribute("pass");
 //                resp.sendRedirect("../member/myinfo.do");
                 JSFunction.alertLocation(resp, "채널 수정 완료.",
-                        "./member/myinfo.do");
+                        "../member/myinfo.do");
             }
             else {  // 수정 실패
                 JSFunction.alertBack(resp, "수정하지 못했습니다.");
