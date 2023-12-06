@@ -223,12 +223,12 @@
                   <li><a href="#"></a></li>
                 </ul>
               </li>
-              <li><a href="${pageContext.request.contextPath}/view/post/list.do">지역별 게시판</a>
+              <li><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=전국">지역별 게시판</a>
                 <ul class="submenu" >
-                  <li><a href="#">서울/경기</a></li>
-                  <li><a href="#">강원/충청</a></li>
-                  <li><a href="#">경상/전라</a></li>
-                  <li><a href="#">전라/제주</a></li>
+                  <li><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?rgroup=1">서울/경기</a></li>
+                  <li><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?rgroup=2">강원/충청</a></li>
+                  <li><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?rgroup=3">경상/전라/제주</a></li>
+                  <li><a href="#"></a></li>
                 </ul>
               </li>
               <li class="line"><a href="${pageContext.request.contextPath}/ch/chlist.do">전체 채널</a>

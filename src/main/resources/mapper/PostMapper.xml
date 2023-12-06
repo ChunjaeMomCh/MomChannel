@@ -6,18 +6,23 @@
     <!-- 게시글 목록 불러오기 -->
     <!-- 검색 조건에 맞는 목록 불러오기 -->
     <select id="selectCount" parameterType="map" resultType="int">
-        select count(*)
-        from post
-        <if test="searchWord != null and !searchWord.equals('')">
-            where
-            <choose>
-                <when test="searchField == 'title'">
-                    post_title like concat('%', #{searchWord}, '%')
-                </when>
-                <otherwise>
-                    post_content like concat('%', #{searchWord}, '%')
-                </otherwise>
-            </choose>
+        SELECT count(*)
+        FROM post
+        <if test="(searchWord != null and !searchWord.equals('')) or (regionCategory != null and !regionCategory.equals(''))">
+            WHERE
+            <if test="regionCategory != null and !regionCategory.equals('')">
+                post_region=#{regionCategory}
+            </if>
+            <if test="searchWord != null and !searchWord.equals('')">
+                <choose>
+                    <when test="searchField == 'title'">
+                        post_title like concat('%',#{searchWord},'%')
+                    </when>
+                    <otherwise>
+                        post_content like concat('%',#{searchWord},'%')
+                    </otherwise>
+                </choose>
+            </if>
         </if>
         order by #{postSortBy} desc
     </select>
@@ -36,6 +41,9 @@
                     content like concat('%', #{searchWord}, '%')
                 </otherwise>
             </choose>
+            <if test="regionCategory != null and !regionCategory.equals('')">
+                and post_region like #{regionCategory}
+            </if>
         </if>
         ORDER BY post_no DESC) T
         WHERE ROWNUM BETWEEN #{start} AND #{end}
@@ -44,16 +52,21 @@
     <select id="showPosts" parameterType="map" resultType="vo.PostVO">
         SELECT *
         FROM post
-        <if test="searchWord != null and !searchWord.equals('')">
+        <if test="(searchWord != null and !searchWord.equals('')) or (regionCategory != null and !regionCategory.equals(''))">
             WHERE
-            <choose>
-                <when test="searchField == 'title'">
-                    post_title like concat('%', #{searchWord}, '%')
-                </when>
-                <otherwise>
-                    post_content like concat('%', #{searchWord}, '%')
-                </otherwise>
-            </choose>
+            <if test="regionCategory != null and !regionCategory.equals('')">
+                post_region=#{regionCategory}
+            </if>
+            <if test="searchWord != null and !searchWord.equals('')">
+                <choose>
+                    <when test="searchField == 'title'">
+                        post_title like concat('%',#{searchWord},'%')
+                    </when>
+                    <otherwise>
+                        post_content like concat('%',#{searchWord},'%')
+                    </otherwise>
+                </choose>
+            </if>
         </if>
         ORDER BY post_no DESC
     </select>
