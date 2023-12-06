@@ -16,8 +16,8 @@
                                 <button type="button" class="btn btn-light input_form_btn" onclick="location.href='./write.do'">글쓰기</button>
                             </c:if>
                         </p>
+                        <input type="hidden" name="region" value="${param.region}">
                         <div class="tab_btns select_search">
-
                             <span class="content_num mo_none" id="pcTotalCount">총 <b>${map.totalCount}개</b>의 게시글이 있습니다.</span>
                             <span class="content_num pc_none" id="mobileTotalCount">총 <b>${map.totalCount}개</b>의 게시글이 있습니다.</span>
                             <div class="form_box">
@@ -28,6 +28,7 @@
                                 <div class="search_bar_area border">
                                     <input type="text" name="searchWord" class="search_bar" placeholder="검색어를 입력하세요." value="${ param.searchWord }"/>
                                 </div>
+
                                 <button type="submit" class="btn btn-secondary search_form_btn">검색</button>
                             </div>
                         </div>
