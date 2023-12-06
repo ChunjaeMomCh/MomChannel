@@ -69,9 +69,9 @@
 <img src="https://img.shields.io/badge/IntelliJIDEA-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
 <img src="https://img.shields.io/badge/DBeaver-362822?style=for-the-badge&logo=dbeaver&logoColor=white">
 <img src="https://img.shields.io/badge/H2-094568?style=for-the-badge&logo=h2&logoColor=white"><br>  
-<img src="https://img.shields.io/badge/AmazonAWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
-<img src="https://img.shields.io/badge/AmazonRDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white">
-<img src="https://img.shields.io/badge/AmazonEC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
+<img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
+<img src="https://img.shields.io/badge/RDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white">
+<img src="https://img.shields.io/badge/EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
 </div>  
 <br>
 
@@ -87,9 +87,7 @@
 
 ### 개발 기간
 
-- 전체 개발 기간 : 2023-11-20 ~ 2023-12-06
-- 기획 : 2023-11-20 ~ 2023-11-24
-- 기능 구현 : 2023-11-25 ~ 2023-12-04
+- 전체 개발 기간 : `2023-11-27 ~ 2023-12-10`
 
 <br>
 
