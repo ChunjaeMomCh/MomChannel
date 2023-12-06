@@ -215,7 +215,7 @@
                   <li><a href="#"></a></li>
                 </ul>
               </li>
-              <li><a href="${pageContext.request.contextPath}/view/post/list.do">학년별 게시판</a>
+              <li><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=0">학년별 게시판</a>
                 <ul class="submenu" >
                   <li><a href="#">1-2학년</a></li>
                   <li><a href="#">3-4학년</a></li>

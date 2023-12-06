@@ -5,13 +5,19 @@
 <div class="content">
     <div class="content_menu customer_box">
         <div class="inner">
-            <%@ include file="../../include/submenu_region.jsp"%>
+            <%@ include file="../../include/submenu_grade.jsp"%>
 
             <!-- 문의하기 table -->
             <div class="content_tab_area" x-data="getQnaList()" x-init="initFn">
                 <form method="get" id="searchContent">
                     <div class="customer_title_area">
-                        <p class="customer_title mo_none">'${param.region}' 지역 게시글
+                        <p class="customer_title mo_none">
+                            <c:if test="${param.grade eq 0}">
+                                '전학년' 게시글
+                            </c:if>
+                            <c:if test="${param.grade ne 0}">
+                                '${param.grade}학년' 게시글
+                            </c:if>
                             <c:if test="${not empty memId && memId ne 'admin'}">
                                 <button type="button" class="btn btn-light input_form_btn" onclick="location.href='../write.do'">글쓰기</button>
                             </c:if>
