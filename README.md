@@ -260,6 +260,36 @@
 
 <br>
 
+| 공지사항 |
+|----------|
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/89495355-a6e7-4078-8364-0158ad400d92) |
+| 1. 공지 작성 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/4393bacf-f01c-4f09-b75d-9c8bbab26c79) |
+| 2. 상세보기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/47fb1fe8-6d0e-4230-8eae-820b161ac5a7) |
+| 3. 수정하기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/202c6e3f-fbfb-4362-8900-e89f1eb1c432) |
+
+<br>
+
+| 문의하기 |
+|----------|
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/3b89f9e1-4694-4508-a782-38ee7b0af1ec) |
+| 1. 문의글 작성 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/b75d1c1d-ed5d-4d88-ab50-054d08ca97bd) |
+| 2. 상세보기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/1616099f-bcb8-429c-bd66-fc68d2254f8c) |
+| 3. 수정하기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/62c14227-1d43-4e0d-aa30-2f9109324d99) |
+
+<br>
+
+| 관리자 답변 작성 |
+|----------|
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/85469769-30c6-4dff-994f-594e2d20b9d0) |
+
+<br>
+
 
 
 
