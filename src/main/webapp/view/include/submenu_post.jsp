@@ -4,8 +4,8 @@
     <p class="snb_title">전체 게시판</p>
     <ul class="snb_list" id="cs_menu">
         <li class="snb_menu"><a href="/view/post/list.do" class="snb_menu_title">전체 게시판</a></li>
-        <li class="snb_menu"><a href="/view/post/by-grade/list.do" class="snb_menu_title">학년별 게시판</a></li>
-        <li class="snb_menu"><a href="/view/post/by-region/list.do" class="snb_menu_title">지역별 게시판</a></li>
+        <li class="snb_menu"><a href="/view/post/by-grade/list.do?grade=0" class="snb_menu_title">학년별 게시판</a></li>
+        <li class="snb_menu"><a href="/view/post/by-region/list.do?region=전국" class="snb_menu_title">지역별 게시판</a></li>
     </ul>
 </div>
 <script>
@@ -13,9 +13,9 @@
         const path = window.location.pathname;
         if(path == "/view/post/list.do"){
             $('#cs_menu li').eq(0).addClass("active");
-        } else if(path.includes("/view/post/by-grade/")) {
+        } else if(path.includes("/view/post/by-grade/list.do?grade=0")) {
             $('#cs_menu li').eq(1).addClass("active");
-        } else if(path.includes("/view/post/by-region/")) {
+        } else if(path.includes("/view/post/by-region/list.do?region=전국")) {
             $('#cs_menu li').eq(2).addClass("active");
         }
     });

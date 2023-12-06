@@ -221,39 +221,39 @@
                   <li><a href="#"></a></li>
                 </ul>
               </li>
-              <li><a href="${pageContext.request.contextPath}/view/post/list.do">학년별 게시판</a>
+              <li><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=0">학년별 게시판</a>
                 <ul class="submenu">
                   <div class="row">
-                    <li class="col"><a href="#">1학년</a></li>
-                    <li class="col"><a href="#">2학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=1">1학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=2">2학년</a></li>
                   </div>
                   <div class="row">
-                    <li class="col"><a href="#">3학년</a></li>
-                    <li class="col"><a href="#">4학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=3">3학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=4">4학년</a></li>
                   </div>
                   <div class="row">
-                    <li class="col"><a href="#">5학년</a></li>
-                    <li class="col"><a href="#">6학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=5">5학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=6">6학년</a></li>
                   </div>
                 </ul>
               </li>
-              <li><a href="${pageContext.request.contextPath}/view/post/list.do">지역별 게시판</a>
+              <li><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=전국">지역별 게시판</a>
                 <ul class="submenu container text-center">
                   <div class="row">
-                    <li class="col"><a href="#">전국</a></li>
-                    <li class="col"><a href="#">서울</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=전국">전국</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=서울">서울</a></li>
                   </div>
                   <div class="row">
-                    <li class="col"><a href="#">경기</a></li>
-                    <li class="col"><a href="#">강원</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=경기">경기</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=강원">강원</a></li>
                   </div>
                   <div class="row">
-                    <li class="col"><a href="#">충청</a></li>
-                    <li class="col"><a href="#">경상</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=충청">충청</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=경상">경상</a></li>
                   </div>
                   <div class="row">
-                    <li class="col"><a href="#">전라</a></li>
-                    <li class="col"><a href="#">제주</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=전라">전라</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=제주">제주</a></li>
                   </div>
                 </ul>
               </li>
