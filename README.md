@@ -1,8 +1,8 @@
 <div align="center">
 
-| <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="100" height="90"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="100" height="90"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="100" height="90"/> |
+| <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="100" height="75"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="90" height="90"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="90" height="90"/> |
 | :---: | :---: | :---: |
-| [AWS](https://github.com/ChunjaeMomCh/MomChannel) | [GIT](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://www.notion.so/geee1-kim/2-Project-) |
+| [배포](https://github.com/ChunjaeMomCh/MomChannel) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://www.notion.so/geee1-kim/2-Project-) |
 
 
 </div>
