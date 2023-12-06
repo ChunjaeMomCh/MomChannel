@@ -205,8 +205,8 @@
 - 회원 가입을 하면 DB의 member 테이블에 입력 받은 정보를 저장합니다.
   - 다음 Open API 를 활용한 주소 입력
   - 아이디 중복체크
-  - 비밀번호 확인
   - 이메일 양식 확인
+  - 비밀번호 확인
 - 회원가입 성공 후 로그인 화면으로 이동
 
 | 회원가입 폼 | 주소 API |
@@ -221,9 +221,9 @@
 
 <br>
 
-| 비밀번호 확인 | 이메일 양식 |
+| 이메일 양식 | 비밀번호 확인 |
 | --- | --- |
-| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/1fb77b35-7504-4ada-bda5-9ec7a35b7268) | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/b92a92a8-e357-4000-b8d9-7e9d003b6007) |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/b92a92a8-e357-4000-b8d9-7e9d003b6007) | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/1fb77b35-7504-4ada-bda5-9ec7a35b7268) |
 
 <br>
 
