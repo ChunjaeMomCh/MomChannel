@@ -94,12 +94,12 @@
             <div class="scrollbar_area">
                 <ul class="card_area">  <%-- 게시글들을 배치 --%>
                     <c:choose>
-                    <c:when test="${ empty postLists }">  <%-- 게시물이 없을 때 --%>
+                    <c:when test="${ empty topPostLists }">  <%-- 게시물이 없을 때 --%>
                         <p>등록된 게시물이 없습니다 ☺️</p>
                     </c:when>
                     <c:otherwise> <%-- 게시물이 있을 때 --%>
                         <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
-                    <c:forEach items="${ postLists }" var="row" varStatus="loop">
+                    <c:forEach items="${ topPostLists }" var="row" varStatus="loop">
                     <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
                         <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
                             <figure class="content_img">
@@ -119,7 +119,7 @@
                                     <span>${ row.memId }</span>
                                 </p>
                             </div>
-                            <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span>${ row.postLikes }</span></a>
+                            <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span>View ${row.postHit}</span></a>
                         </a>
                         <div class="tag_area">  <%-- 게시글 태그 --%>
                             <span class="badge">${ row.postRegion }</span>
@@ -139,12 +139,12 @@
             <h2 class="content_title">최신 업데이트 콘텐츠</h2>
             <ul class="card_area">  <%-- 게시글들을 배치 --%>
                 <c:choose>
-                <c:when test="${ empty postLists }">  <%-- 게시물이 없을 때 --%>
+                <c:when test="${ empty latestPostLists }">  <%-- 게시물이 없을 때 --%>
                     <p>등록된 게시물이 없습니다 ☺️</p>
                 </c:when>
                 <c:otherwise> <%-- 게시물이 있을 때 --%>
                     <%-- 게시물이 있으면 목록에 출력할 가상번호를 계산하고, 반복 출력한다. --%>
-                <c:forEach items="${ postLists }" var="row" varStatus="loop">
+                <c:forEach items="${ latestPostLists }" var="row" varStatus="loop">
                 <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
                     <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
                         <figure class="content_img">
@@ -164,7 +164,7 @@
                                 <span>${ row.memId }</span>
                             </p>
                         </div>
-                        <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span>${ row.postLikes }</span></a>
+                        <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span>View ${row.postHit}</span></a>
                     </a>
                     <div class="tag_area">  <%-- 게시글 태그 --%>
                         <span class="badge">${ row.postRegion }</span>

@@ -23,4 +23,6 @@ public interface PostMapper {
     int deletePost(String postNo);  // 게시물을 삭제한다.
     List<Integer> selectChPost(String memId);
     List<PostVO> showPostsByCh(String channelTitle);
+    List<PostVO> showLatestPosts();
+    List<PostVO> showTopPosts();
 }
