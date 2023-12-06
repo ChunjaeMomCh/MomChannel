@@ -122,7 +122,7 @@
                                         <span>${ row.memId }</span>
                                     </p>
                                 </div>
-                                <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span>${ row.postLikes }</span></a>
+                                <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span><span>View ${row.postHit}</span></a>
                             </a>
                             <div class="tag_area">  <%-- 게시글 태그 --%>
                                 <span class="badge">${ row.postRegion }</span>
