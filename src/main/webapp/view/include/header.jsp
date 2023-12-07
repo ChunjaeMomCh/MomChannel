@@ -178,11 +178,7 @@
         <div class="inner">
           <a href="#none" class="menu_btn pc_none"><i class="ico menu"></i></a>
           <div class="header_group">
-            <h1 class="logo"><a href="${pageContext.request.contextPath}/"></a></h1>
-            <div class="search_bar_area mo_none">
-              <input type="text" class="search_bar" id="keywordSearch" placeholder="검색어를 입력하세요." value="">
-              <a href="javascript:search('keywordSearch')"><i class="ico search_01"></i></a>
-            </div>
+            <h1 class="logo"><a href="${pageContext.request.contextPath}/main.do"></a></h1>
           </div>
           <div class="header_btn_area">
             <div>
@@ -213,7 +209,7 @@
           <div class="inner">
             <ul class="header_menu navi">
               <!-- 선택 시 해당 li에 active 클래스 추가해주세요 -->
-              <li class="pc_none"><a href="/">홈</a></li>
+              <li class="pc_none"><a href="/main.do">홈</a></li>
               <li><a href="${pageContext.request.contextPath}/view/post/list.do">전체 게시판</a>
                 <ul class="submenu" >
                   <li><a href="#"></a></li>

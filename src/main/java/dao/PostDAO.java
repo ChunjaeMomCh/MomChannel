@@ -68,19 +68,6 @@ public class PostDAO {
         return postList;
     }
 
-    // 지역별 게시판 페이지 불러오기
-    public List<PostVO> showPostsByRegion(Map<String, Object> map) {
-
-        SqlSession session = MyBatisSessionFactory.getSqlSession();
-        PostMapper mapper = session.getMapper(PostMapper.class);
-
-        List<PostVO> postList = mapper.showPostsByRegion(map);
-
-        session.close();
-        return postList;
-    }
-
-    // 학년별 게시판 페이지 불러오기
 
     public List<PostVO> showPostsByCh(String channelTitle) {
 
@@ -185,4 +172,29 @@ public class PostDAO {
         session.close();
         return chPost;
     }
+    // main 페이지에서 최신글 불러오기
+    public List<PostVO> showLatestPosts() {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showLatestPosts();
+
+        session.close();
+        return postList;
+    }
+
+    // main 페이지에서 top4 불러오기
+    public List<PostVO> showTopPosts() {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showTopPosts();
+
+        session.close();
+        return postList;
+    }
+
+
 }

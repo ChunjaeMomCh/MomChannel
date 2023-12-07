@@ -22,6 +22,7 @@ public class ViewController extends HttpServlet {
         // 게시물 불러오기
         NoticeDAO dao = new NoticeDAO();
         String noticeNo = req.getParameter("idx");
+        dao.updateVisitCount(noticeNo);
         NoticeVO vo = dao.selectNoticeView(noticeNo);
 
         // 줄바꿈 처리

@@ -2,73 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp"%>
 
-
-<!-- contents -->
-<div class="content">
-    <div class="content_menu customer_box">
-        <div class="inner">
-            <%@ include file="../include/submenu_cs.jsp"%>
-
-            <!-- 문의하기 table -->
-            <div class="content_tab_area" x-data="getQnaList()" x-init="initFn">
-                <form method="get" id="searchContent">
-                    <div class="customer_title_area">
-                        <p class="customer_title mo_none">전체 채널 보기</p>
-                        <div class="tab_btns select_search">
-                            <span class="content_num mo_none" id="pcTotalCount" x-text="'총 ' + totCnt + '개의 게시글이 있습니다.'"></span>
-                            <span class="content_num pc_none" id="mobileTotalCount" x-text="'총 ' + totCnt + '개'"></span>
-                        </div>
-                    </div>
-
-
-
-
-
-                    <div class="notice_list_area">
-                        <table summary="전체 채널 리스트" class="tbl_list">
-                            <caption>전체 채널 리스트</caption>
-                            <thead>
-                            <tr><th scope="col">채널 주인장</th>
-                                <th scope="col">채널 이름</th>
-                                <th class="date" scope="col">채널 소개글</th>
-                                <th class="date" scope="col">구독자 수</th>
-                            </tr>
-                            </thead>
-                            <tbody id="List_content">
-                            <c:choose>
-                                <c:when test="${ empty chLists }">  <!-- 게시물이 없을 때 -->
-                                    <tr>
-                                        <td colspan="6" align="center">
-                                            등록된 채널이 없습니다^^* ${ chLists }
-                                        </td>
-                                    </tr>
-                                </c:when>
-                                <c:otherwise>  <!-- 게시물이 있을 때 -->
-                                    <c:forEach items="${ chLists }" var="row" varStatus="loop">
-                                        <tr>
-                                            <td>${row.memId}</td>
-                                            <td class="notice_title">  <!-- 제목(링크) -->
-<%--                                                <a href="./chview.do?channelTitle=${ row.channelTitle }">${ row.channelTitle }</a>--%>
-                                                <a href="./chview.do?memId=${ row.memId }">${ row.channelTitle }</a>
-                                            </td>
-                                            <td class="date">${ row.channelInfo }</td>  <!-- 채널 소개글 -->
-                                            <td class="date">${ row.channelSub }</td>  <!-- 구독자 수 -->
-                                        </tr>
-                                    </c:forEach>
-                                </c:otherwise>
-                            </c:choose>
-                            </tbody>
-                        </table>
-
-
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
     // common content board function
     function COMMON_CONTENT_FUNCTION( { getListStatus }={} ){
@@ -155,34 +88,28 @@
                 <div class="swiper content_tab_menu">
                     <p class="channel_title">전체 채널 보기</p>
                     <ul class="swiper-wrapper tab_menu_list">
-                        <!-- 클릭 시 해당 메뉴에 .active 클래스 넣어주세요 -->
-                        <li class="swiper-slide" :class="(selectedSchoolDivision == '') ? 'active' : ''"><a href="javascript:void(0);" @click="searchSchoolDivision('')">전체</a></li>
-                        <li class="swiper-slide" :class="(selectedSchoolDivision == 'C1') ? 'active' : ''"><a href="javascript:void(0);" @click="searchSchoolDivision('C1')">초등</a></li>
-                        <li class="swiper-slide" :class="(selectedSchoolDivision == 'C2') ? 'active' : ''"><a href="javascript:void(0);" @click="searchSchoolDivision('C2')">중학</a></li>
-                        <li class="swiper-slide" :class="(selectedSchoolDivision == 'C3') ? 'active' : ''"><a href="javascript:void(0);" @click="searchSchoolDivision('C3')">고등</a></li>
+<%--                        <!-- 클릭 시 해당 메뉴에 .active 클래스 넣어주세요 -->--%>
+<%--                        <li class="swiper-slide" :class="(selectedSchoolDivision == '') ? 'active' : ''"><a href="javascript:void(0);" @click="searchSchoolDivision('')">전체</a></li>--%>
+<%--                        <li class="swiper-slide" :class="(selectedSchoolDivision == 'C1') ? 'active' : ''"><a href="javascript:void(0);" @click="searchSchoolDivision('C1')">초등</a></li>--%>
+<%--                        <li class="swiper-slide" :class="(selectedSchoolDivision == 'C2') ? 'active' : ''"><a href="javascript:void(0);" @click="searchSchoolDivision('C2')">중학</a></li>--%>
+<%--                        <li class="swiper-slide" :class="(selectedSchoolDivision == 'C3') ? 'active' : ''"><a href="javascript:void(0);" @click="searchSchoolDivision('C3')">고등</a></li>--%>
                     </ul>
                 </div>
                 <div class="tab_btns">
                     <div class="select_area middle h34">
-                        <span class="content_num">총 000개</span>
-                        <a href="#none" x-html="sortText+'<i class=\'ico arrow_03\'></i>'"></a>
-                        <ul class="option_list">
-                            <template x-for="(item, idx) in sortBys">
-                                <li><a href="javascript:void(0);" @click="orderChange(idx)" x-text="item.text"></a></li>
-                            </template>
-                        </ul>
+                        <span class="content_num"></span>
                     </div>
                 </div>
                 <div class="subscribe_card_wrap">
                     <ul class="subscribe_card_area">
                         <c:choose>
                             <c:when test="${ empty chLists }">  <!-- 게시물이 없을 때 -->
-                                등록된 채널이 없습니다^^* ${ chLists }
+                                등록된 채널이 없습니다 ☺️ ${ chLists }
                             </c:when>
                             <c:otherwise>  <!-- 게시물이 있을 때 -->
                                 <c:forEach items="${ chLists }" var="row" varStatus="loop">
                                     <li class="subscribe_card" @click="goChannelHome(item.id)" style="cursor:pointer">
-                                        <a href="./chview.do?channelTitle=${ row.channelTitle }">
+                                        <a href="./chview.do?memId=${ row.memId }">
                                         <figure style="background-image:none;">
                                             <img :src="item.profileImage" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">
                                         </figure>
