@@ -1189,6 +1189,7 @@ header .search_bar_area {
   height: 38px;
   line-height: 38px;
   color: #7b7a7a;
+  width: 100px;
  }
 .profile_group > .profile {
   display: inline-block;
