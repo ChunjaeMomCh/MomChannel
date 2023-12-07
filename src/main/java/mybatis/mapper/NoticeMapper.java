@@ -14,4 +14,6 @@ public interface NoticeMapper {
     int insertWrite(NoticeVO vo);
     int updateNotice(NoticeVO vo);
     int deleteNotice(String noticeNo);
+    int updateVisitCount(String noticeNo);
+
 }

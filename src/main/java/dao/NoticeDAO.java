@@ -80,6 +80,17 @@ public class NoticeDAO {
         return result;
     }
 
+    public void updateVisitCount(String noticeNo){
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+        int result = mapper.updateVisitCount(noticeNo);
+        if (result == 1) {
+            sqlSession.commit();
+        } else {
+            System.out.println("notice 조회수 증가 중 오류 발생...");
+        }
+    }
+
 
 
 

@@ -68,4 +68,6 @@
         where notice_no = #{noticeNo}
     </delete>
 
+
+
 </mapper>
