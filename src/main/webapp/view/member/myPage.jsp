@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp"%>
+<%@ page import="java.util.Date" %>
 
 <style>
         /*td.field {
@@ -71,7 +72,7 @@
                             <div class="col-sm-3 align-items-center img_field">
                                 <div class="row text-center">
                                     <%--            <c:if test="${ isImage eq true }">--%>
-                                    <img src="../Uploads/${ mvo.memSImg }" style="max-width:100%; max-height:80px"/>
+                                    <img src="../Uploads/${ mvo.memSImg }?ver=${currTime}" style="max-width:100%; max-height:80px"/>
                                     <%--            </c:if>--%>
                                 </div>
                                 <div class="row align-items-end text-center"><p>회원 이미지</p></div>

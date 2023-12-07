@@ -22,6 +22,11 @@
         where mem_id = #{memId}
     </select>
 
+    <select id="selectMemList"  resultType="vo.MemberVO">
+        <!--        SELECT * FROM channel order by channel_title-->
+        SELECT * FROM member order by mem_id
+    </select>
+
     <insert id="insertMember" parameterType="vo.MemberVO">
         INSERT
         INTO member(mem_id, mem_name, mem_pw, mem_region, mem_addr, mem_child_grade, mem_phone, mem_email)
@@ -43,6 +48,13 @@
         mem_child_grade = #{memChildGrade},
         mem_phone = #{memPhone},
         mem_email = #{memEmail}
+        where mem_id = #{memId}
+    </update>
+
+    <update id="updateSign" parameterType="vo.MemberVO">
+        update member
+        set mem_img = #{memImg},
+        mem_s_img = #{memSImg}
         where mem_id = #{memId}
     </update>
 </mapper>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,7 @@ public class ListController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 List.jsp로 포워드
         req.setAttribute("boardLists", boardLists);
         req.setAttribute("map", map);
+        req.setAttribute("currTime", new Date().getTime());
         req.getRequestDispatcher("./List.jsp").forward(req, resp);
     }
 }
