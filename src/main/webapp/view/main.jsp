@@ -7,7 +7,7 @@
 
 <script>
     $(document).ready(function(){
-        $(".slider").bxSlider();
+        $(".slider").bxSlider({auto: true});
     });
 </script>
 
