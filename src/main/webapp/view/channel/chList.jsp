@@ -111,7 +111,8 @@
                                     <li class="subscribe_card" @click="goChannelHome(item.id)" style="cursor:pointer">
                                         <a href="./chview.do?memId=${ row.memId }">
                                         <figure style="background-image:none;">
-                                            <img :src="item.profileImage" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">
+<%--&lt;%&ndash;                                            <img :src="item.profileImage" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">&ndash;%&gt;--%>
+                                            <img src="../Uploads/${ memLists[loop.index].memSImg}" />
                                         </figure>
                                         <div class="name_box">
                                             <p class="channel_name">${ row.channelTitle }</p>

@@ -98,7 +98,9 @@
                                     <p class="content_name">${ row.postTitle }</p>
                                     <p class="user_name" @click="goChannelHome(item.channelId)">
                                         <i>
-                                            <img :src="item.channelProfile" onerror="this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">
+<%--                                            <img :src="item.channelProfile" onerror="this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">--%>
+                                            <img src="/Uploads/${ row.memId }.jpg" />
+<%--                                            <c:if test=""/--%>
                                         </i>
                                         <span>${ row.memId }</span>
                                     </p>

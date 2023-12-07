@@ -2,12 +2,15 @@ package dao;
 
 
 import mybatis.factory.MyBatisSessionFactory;
+import mybatis.mapper.ChannelMapper;
 import mybatis.mapper.MemberMapper;
 import org.apache.ibatis.session.SqlSession;
+import vo.ChannelVO;
 import vo.MemberVO;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MemberDAO {
@@ -70,6 +73,27 @@ public class MemberDAO {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
         int result = mapper.updateMember(mvo);
+        if (result == 1) {
+            sqlSession.commit();
+        } else {
+            System.out.println("member update 중 오류 발생...");
+        }
+        sqlSession.commit();
+        return result;
+    }
+
+    public List<MemberVO> selectMemList() {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+        List<MemberVO> result = mapper.selectMemList();
+        sqlSession.close();
+        return result;
+    }
+
+    public int updateSign(MemberVO mvo) {
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+        int result = mapper.updateSign(mvo);
         if (result == 1) {
             sqlSession.commit();
         } else {

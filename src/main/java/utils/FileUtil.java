@@ -13,6 +13,20 @@ import java.io.*;
 
 public class FileUtil {
 
+    public static boolean nioCopy(String inFilePath, String outFilePath) {
+        File orgFile = new File(inFilePath);
+        File outFile = new File(outFilePath);
+
+        try {
+            Files.copy(orgFile.toPath(), outFile.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     //파일 업로드
     public static String uploadFile(HttpServletRequest req, String sDirectory)
             throws ServletException, IOException {
@@ -60,6 +74,7 @@ public class FileUtil {
         String originalFileName = phArr[1].trim().replace("\"", "");
 
 
+
         //전송된 파일이 있다면 디렉토리에 저장
         if (!originalFileName.isEmpty()) {
             part.write(sDirectory+ File.separator +originalFileName);
@@ -86,7 +101,25 @@ public class FileUtil {
         // 변경된 파일명을 반환한다.
         return newFileName;
     }  // renameFile()
-    
+
+    public static String renameProfileFile(String sDirectory, String fileName, String memId) {
+        //원본파일의 확장자 잘라내기
+//        String ext = fileName.substring(fileName.lastIndexOf("."));
+        String ext = ".jpg";
+        //날짜 및 시간을 통해 파일명 생성
+//        String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
+        String now = memId;
+        //"날짜_시간.확장자" 형태의 새로운 파일명 생성
+        String newFileName = now + ext;
+
+        //기존 파일명을 새로운 파일명으로 변경
+        File oldFile = new File(sDirectory + File.separator + fileName);
+        File newFile = new File(sDirectory + File.separator + newFileName);
+        oldFile.renameTo(newFile);
+
+        // 변경된 파일명을 반환한다.
+        return newFileName;
+    }  // renameFile()
 
     //파일 다운로드
     public static void download(HttpServletRequest req, HttpServletResponse resp,

@@ -4,6 +4,7 @@ import dao.ChannelDAO;
 import dao.MemberDAO;
 import dao.QNABoardDAO;
 import utils.Encrypt;
+import utils.FileUtil;
 import utils.JSFunction;
 import vo.MemberVO;
 import vo.QNABoardVO;
@@ -24,6 +25,9 @@ public class SignController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
+
+
+//        System.out.println("status -> " + FileUtil.nioCopy(orgFilePath, outFilePath));
         // 2. 파일 업로드 외 처리 =============================
         // 폼값을 DTO에 저장
 //        Encrypt en = new Encrypt();
@@ -48,6 +52,25 @@ public class SignController extends HttpServlet {
         mvo.setMemPhone(req.getParameter("memPhone"));
         mvo.setMemEmail(req.getParameter("memEmail"));
 
+        mvo.setMemImg(memId+".jpg");
+        mvo.setMemSImg(memId+".jpg");
+        //        String prevMemImg = null;
+//        String prevMemSImg = null;
+//        if (req.getParameter("memImg").equals("default_image.jpg")){
+//            prevMemImg = memId+".jpg";
+//            prevMemSImg = memId+".jpg";
+//        }else {
+//            prevMemImg = req.getParameter("memImg");
+//            prevMemSImg = req.getParameter("memSImg");
+//        }
+
+
+
+        String orgFilePath = req.getServletContext().getRealPath("/Uploads")+"\\default_image.jpg";
+        String outFilePath = req.getServletContext().getRealPath("/Uploads")+"\\"+memId+".jpg";
+        System.out.println("status -> " + FileUtil.nioCopy(orgFilePath, outFilePath));
+
+
         // DAO를 통해 DB에 게시 내용 저장
         MemberDAO dao = new MemberDAO();
         int result = dao.insertMember(mvo);
@@ -60,6 +83,7 @@ public class SignController extends HttpServlet {
 //            req.getRequestDispatcher("/view/Login/loginForm.jsp").forward(req, resp);
             int chResult = cdao.insertChannel(memId);
             if (chResult==1){
+                dao.updateSign(mvo);
                 JSFunction.alertLocation(resp, "회원가입에 성공했습니다.",
                         "../view/Login/loginForm.jsp");
             }

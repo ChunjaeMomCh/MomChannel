@@ -74,8 +74,10 @@
                 <div class="post_btns_area">
                     <div class="channel_name_area">
                         <figure>
-                            <img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/08/24/3edff180-0518-4e9c-b6a5-f011a7043a90/1-removebg-preview (2).png"
-                                 alt="사용자 프로필 이미지"></figure>
+<%--                            <img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/08/24/3edff180-0518-4e9c-b6a5-f011a7043a90/1-removebg-preview (2).png"--%>
+<%--                                 alt="사용자 프로필 이미지">--%>
+                            <img src="/Uploads/${ vo.memId }.jpg" />
+                        </figure>
                         <a href="/channel/home.html?channel_id=1327" class="user_neme">${vo.memId}</a>
                         <!-- 20230428 :: 버튼 공통화 적용 -->
                         <!-- 클릭 시 disabled 클래스 추가해주세요 -->
