@@ -9,6 +9,18 @@
         if(null==${loginMember.memId})
             alert("로그인 후 이용할 수 있습니다.");
     }
+    function changeOrderSelect(){
+        var orderSelect = document.getElementById("selectbox");
+
+        // select element에서 선택된 option의 value가 저장된다.
+        var orderValue = orderSelect.options[orderSelect.selectedIndex].value;
+        console.log(orderValue);
+
+        // select element에서 선택된 option의 text가 저장된다.
+        var orderText = orderSelect.options[langSelect.selectedIndex].text;
+        console.log(orderText);
+
+    }
 </script>
 
 <!-- contents -->
@@ -66,29 +78,16 @@
     <div class="channel_content">
         <div class="inner">
             <div class="content_tab_area">
-                <div class="swiper content_tab_menu">
-                    <ul class="swiper-wrapper tab_menu_list">
-                        <!-- 클릭 시 해당 메뉴에 .active 클래스 넣어주세요 -->
-                        <span class="content_num mo_none" id="pcTotalCount">총000개</span>
-                        <span class="content_num pc_none" id="mobileTotalCount">총000개</span>
-                    </ul>
-                </div>
-                <div class="tab_btns select_search">
-                    <select class="form-select search_category" name="orderField">
-                        <option value="최신순">최신순</option>
-                        <option value="인기순">인기순</option>
-                    </select>
-                </div>
-                <form>
-                    <div class="tab_btns select_search" style="float: right; margin-top: -35px">
-                        <div class="form_box">
-                            <div class="search_bar_area border">
-                                <input type="text" name="searchWord" class="search_bar" placeholder="검색어를 입력하세요." value="${ param.searchWord }"/>
-                            </div>
-                            <button type="submit" class="btn btn-secondary search_form_btn">검색</button>
-                        </div>
+                <div class="swiper content_tab_menu" style="height: 60px">
+                    <span class="content_num mo_none" id="pcTotalCount" style="width: fit-content;display: inline-block;margin-top: 10px">총 ${postListsCount}개의 게시물이 있습니다.</span>
+                    <span class="content_num pc_none" id="mobileTotalCount">총 000개의 게시물이 있습니다.</span>
+                    <div class="tab_btns select_search" style="float: right;display: inline-block;margin-top: -20px">
+                        <select id="selectbox" class="form-select search_category" name="orderField" onchange="changeOrderSelect()">
+                            <option value="최신순" selected>최신순</option>
+                            <option value="인기순">인기순</option>
+                        </select>
                     </div>
-                </form>
+                </div>
                 <div class="content_card_area">
                     <ul class="card_area">  <%-- 게시글들을 배치 --%>
                         <c:choose>

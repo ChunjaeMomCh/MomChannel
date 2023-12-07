@@ -50,6 +50,7 @@ public class ChViewController extends HttpServlet {
         map.put("channelTitle", channelTitle);
 
         req.setAttribute("cvo", cvo);
+        req.setAttribute("postListsCount", postLists.size());
         req.setAttribute("postLists", postLists);
 
         if (memId == null||memId.equals(chMemId)){
