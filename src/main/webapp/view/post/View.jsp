@@ -60,7 +60,7 @@
                         <span class="tag" style="background-color: #0a64ff">${ vo.postRegion }</span>
                         <span class="tag" style="background-color: #00b69e">${ vo.postGrade }</span>
                         <h4 class="content_title">${ vo.postTitle } </h4>
-                        <span class="date">${ vo.postDate }</span>
+                        <span class="date"><fmt:formatDate value="${ vo.postDate }" pattern="yyyy-MM-dd"/></span>
                     </div>
                     <figure>
                         <c:if test="${vo.postSFile eq null}">
@@ -101,28 +101,28 @@
                     </p>
 
                 </div>
-                <div class="attached_file_area">
-                    <p class="post_type_title">첨부파일<span class="num"></span></p>
-                    <div class="file_list">
-                        <div class="list_header">
-                            <div class="checkbox">
-                                <input type="checkbox" id="all">
-                                <label for="all" @click="checkAll()">파일명</label>
-                            </div>
-                            <p class="download_text">다운</p>
-                        </div>
-                        <ul class="attached_file">
-                            <li>
-                                <div class="checkbox">
-                                    <input type="checkbox">
-                                    <label for="1037379">파일명: (3~6학년)새해 첫날이 밝았습니다.zip</label>
-                                </div>
-                                <a class="download_btn" href="javascript:void(0);"
-                                   @click="if(!checkUserLoggIn()){return;}"><i class="ico download"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<%--                <div class="attached_file_area">--%>
+<%--                    <p class="post_type_title">첨부파일<span class="num"></span></p>--%>
+<%--                    <div class="file_list">--%>
+<%--                        <div class="list_header">--%>
+<%--                            <div class="checkbox">--%>
+<%--                                <input type="checkbox" id="all">--%>
+<%--                                <label for="all" @click="checkAll()">파일명</label>--%>
+<%--                            </div>--%>
+<%--                            <p class="download_text">다운</p>--%>
+<%--                        </div>--%>
+<%--                        <ul class="attached_file">--%>
+<%--                            <li>--%>
+<%--                                <div class="checkbox">--%>
+<%--                                    <input type="checkbox">--%>
+<%--                                    <label for="1037379">파일명: (3~6학년)새해 첫날이 밝았습니다.zip</label>--%>
+<%--                                </div>--%>
+<%--                                <a class="download_btn" href="javascript:void(0);"--%>
+<%--                                   @click="if(!checkUserLoggIn()){return;}"><i class="ico download"></i></a>--%>
+<%--                            </li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
                 <%-- 댓글 영역 --%>
                 <script>
                     function commentSave(form){
@@ -141,7 +141,8 @@
                                       onsubmit="return commentSave(this);">
                                     <input type="hidden" name="postNo" value="${vo.postNo}">
                                     <textarea placeholder="댓글을 입력하세요." name="commentTxt"></textarea>
-                                    <button type="submit" class="add_btn" id="btn_comment">확인</button>
+                                    <button type="submit" class="add_btn comment_btn" id="btn_comment">확인</button>
+
                                 </form>
                             </div>
                         </div>
@@ -171,102 +172,9 @@
                 <a href="/view/post/list.do" class="btn large gray list_load">목록</a>
             </div>
 
-            <%--      <div class="related_posts">--%>
-            <%--        <p class="related_title">연관 게시글--%>
-            <%--        <p style="display: none" class="related_post_none">현재 자료와 연관된<br class="mo_none">콘텐츠가 없습니다.</p>--%>
-            <%--        <ul class="related_post_list">--%>
-            <%--          <li>--%>
-            <%--            <a href="javascript:void(0)">--%>
-            <%--              <figure @click="goContentDetail(1928533, false)"><img src="//cdata2.tsherpa.co.kr/tsherpa//ssam_channel/upload/2023/11/27/228019a3-1d20-40a0-8884-c3741ff984bc/슬라이드0001.jpg" alt="게시글 배너이미지"></figure>--%>
-            <%--              <p class="post_title" @click="goContentDetail(1928533, false)">(1,2학년) 새해 첫날 계기교육(영상+학습지+ppt)</p>--%>
-            <%--              <div class="post_inpo">--%>
-            <%--                <p class="user_name" @click="window.location.href='/channel/home.html?channel_id=1327'">쏭쌤 학급운영</p>--%>
-            <%--                <p class="post_date pc_none">2023-11-27<span class="time">15:00:42</span></p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--          </li>--%>
-            <%--          <li>--%>
-            <%--            <a href="javascript:void(0)">--%>
-            <%--              <figure @click="goContentDetail(1928494, false)"><img src="//cdata2.tsherpa.co.kr/tsherpa//ssam_channel/upload/2023/11/27/a0d9f8c6-2e36-4074-ac05-659297cb7a6d/슬라이드0001.jpg" alt="게시글 배너이미지"></figure>--%>
-            <%--              <p class="post_title" @click="goContentDetail(1928494, false)">(3~6학년)겨울방학 안전교육 (영상+ppt+학습지 세트) </p>--%>
-            <%--              <div class="post_inpo">--%>
-            <%--                <p class="user_name" @click="window.location.href='/channel/home.html?channel_id=1327'">쏭쌤 학급운영</p>--%>
-            <%--                <p class="post_date pc_none">2023-11-27<span class="time">14:36:12</span></p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--          </li>--%>
-            <%--          <li>--%>
-            <%--            <a href="javascript:void(0)">--%>
-            <%--              <figure @click="goContentDetail(1928489, false)"><img src="//cdata2.tsherpa.co.kr/tsherpa//ssam_channel/upload/2023/11/27/63f297ca-1e11-4d3a-86a8-c1a6e7960fc1/슬라이드0001.jpg" alt="게시글 배너이미지"></figure>--%>
-            <%--              <p class="post_title" @click="goContentDetail(1928489, false)">(1,2학년)겨울방학 안전교육 (영상+ppt+학습지 세트)</p>--%>
-            <%--              <div class="post_inpo">--%>
-            <%--                <p class="user_name" @click="window.location.href='/channel/home.html?channel_id=1327'">쏭쌤 학급운영</p>--%>
-            <%--                <p class="post_date pc_none">2023-11-27<span class="time">14:33:45</span></p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--          </li>--%>
-            <%--          <li>--%>
-            <%--            <a href="javascript:void(0)">--%>
-            <%--              <figure @click="goContentDetail(1909826, false)"><img src="//cdata2.tsherpa.co.kr/tsherpa//ssam_channel/upload/2023/10/27/268f1e91-c1e6-4e05-b142-c044cbc4ba70/슬라이드0001.jpg" alt="게시글 배너이미지"></figure>--%>
-            <%--              <p class="post_title" @click="goContentDetail(1909826, false)">(3~6학년)11월 11일 친구 사랑의 날 계기교육(영상+학습지+PPT)</p>--%>
-            <%--              <div class="post_inpo">--%>
-            <%--                <p class="user_name" @click="window.location.href='/channel/home.html?channel_id=1327'">쏭쌤 학급운영</p>--%>
-            <%--                <p class="post_date pc_none">2023-10-27<span class="time">08:33:20</span></p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--          </li>--%>
-            <%--          <li>--%>
-            <%--            <a href="javascript:void(0)">--%>
-            <%--              <figure @click="goContentDetail(1909788, false)"><img src="//cdata2.tsherpa.co.kr/tsherpa//ssam_channel/upload/2023/10/26/cc2973e3-2cdb-4ee7-81ca-254232602137/슬라이드0001.jpg" alt="게시글 배너이미지"></figure>--%>
-            <%--              <p class="post_title" @click="goContentDetail(1909788, false)">(1,2학년)11월 11일 친구 사랑의 날 계기교육(영상+학습지+PPT)</p>--%>
-            <%--              <div class="post_inpo">--%>
-            <%--                <p class="user_name" @click="window.location.href='/channel/home.html?channel_id=1327'">쏭쌤 학급운영</p>--%>
-            <%--                <p class="post_date pc_none">2023-10-26<span class="time">15:41:54</span></p>--%>
-            <%--              </div>--%>
-            <%--            </a>--%>
-            <%--          </li>--%>
-            <%--        </ul>--%>
-            <%--      </div>--%>
 
-            <a href="javascript:void(0)" class="btn large gray list_btn pc_none" @click="goList()">목록</a>
         </div>
     </div>
 </div>
 <!-- content 끝 -->
 <%@ include file="../include/footer.jsp" %>
-
-
-
-
-
-
-<script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
-
-<button type="button" id="btn_com">클릭해주세요!</button>
-<div id="data">data</div>
-<script>
-    $('#btn_com').click(function () {
-        $('#data').load(
-            'https://raw.githubusercontent.com/paullabkorea/10000hour/main/index.html h1',
-            function (responseText, statusText, xhr) {
-                console.log(responseText, statusText, xhr);
-                console.log(responseText);
-                console.log(statusText);
-                console.log(xhr);
-                console.log(xhr.status);
-            }
-        );
-    });
-    $('#btn_comment').click(function () {
-        $('#data').load(
-            'https://raw.githubusercontent.com/paullabkorea/10000hour/main/index.html h1',
-            function (responseText, statusText, xhr) {
-                console.log(responseText, statusText, xhr);
-                console.log(responseText);
-                console.log(statusText);
-                console.log(xhr);
-                console.log(xhr.status);
-            }
-        );
-    });
-</script>

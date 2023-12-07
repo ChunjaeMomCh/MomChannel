@@ -159,5 +159,18 @@
         SELECT post_no FROM post WHERE mem_id = #{memId}
     </select>
 
+    <select id="showLatestPosts" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        ORDER BY post_date desc
+        LIMIT 4
+    </select>
+
+    <select id="showTopPosts" resultType="vo.PostVO">
+        SELECT *
+        FROM post
+        ORDER BY post_hit desc
+        LIMIT 4
+    </select>
 </mapper>
 

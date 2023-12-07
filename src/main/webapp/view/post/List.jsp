@@ -86,7 +86,6 @@
                         <c:forEach items="${ postLists }" var="row" varStatus="loop">
                         <li class="content_card">  <%-- 개별 게시글을 카드 형태로 노출 --%>
                             <a href="${pageContext.request.contextPath}/view/post/view.do?postNo=${ row.postNo }">  <%-- 게시글로 이동하는 링크 --%>
-<%--                                <figure class="content_img"></figure>--%>
                                 <figure class="content_img">
                                     <c:if test="${row.postSFile eq null}">
                                         <img src="/Uploads/default_thumbnail.jpg" alt="">
@@ -104,7 +103,7 @@
                                         <span>${ row.memId }</span>
                                     </p>
                                 </div>
-                                <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span>${ row.postLikes }</span></a>
+                                <a href="javascript:void(0)" class="like_btn" :class="item.isUserLike? 'on':''" @click="setLike(item.id, idx)"><i class="ico heart"></i><span>View ${row.postHit}</span></a>
                             </a>
                             <div class="tag_area">  <%-- 게시글 태그 --%>
                                 <span class="badge">${ row.postRegion }</span>
@@ -121,8 +120,6 @@
                             ${ map.pagingImg }
                         </ul>
                     </div>
-
-
                 </div>
 
                 </form>
