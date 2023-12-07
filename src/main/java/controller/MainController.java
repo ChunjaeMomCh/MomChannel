@@ -29,7 +29,7 @@ public class MainController extends HttpServlet {
         // 전달할 데이터를 request 영역에 저장 후 Post.jsp로 포워드
         req.setAttribute("latestPostLists", latestPostLists);
         req.setAttribute("topPostLists", topPostLists);
-        req.getRequestDispatcher("./index.jsp").forward(req, resp);
+        req.getRequestDispatcher("./view/main.jsp").forward(req, resp);
 
 
     }
