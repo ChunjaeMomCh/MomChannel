@@ -45,7 +45,7 @@
                         <c:if test="${check eq 0}">
                             <a href="/ch/subdown.do?memId=${cvo.memId}" class="btn my_follow subscriber_btn" onclick="return confirm('구독 취소 하시겠습니까?')" style="line-height: 35px; font-weight: bold; background: #ccc">구독<span>${cvo.channelSub}</span></a>
                         </c:if>
-                        <c:if test="${!loginMember.memId}">
+                        <c:if test="${loginMember.memId eq ''}">
                             <a onclick="return alert('로그인 후 사용할 수 있습니다.')" class="btn my_follow subscriber_btn" style="line-height: 35px;font-weight: bold; ">구독수<span>${cvo.channelSub}</span></a>
                         </c:if>
                         <c:if test="${cvo.memId eq loginMember.memId}">

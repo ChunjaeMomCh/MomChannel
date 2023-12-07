@@ -109,7 +109,7 @@
                             <c:otherwise>  <!-- 게시물이 있을 때 -->
                                 <c:forEach items="${ chLists }" var="row" varStatus="loop">
                                     <li class="subscribe_card" @click="goChannelHome(item.id)" style="cursor:pointer">
-                                        <a href="./chview.do?channelTitle=${ row.channelTitle }">
+                                        <a href="./chview.do?memId=${ row.memId }">
                                         <figure style="background-image:none;">
                                             <img :src="item.profileImage" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">
                                         </figure>
