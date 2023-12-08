@@ -50,6 +50,7 @@ public class MyPageController extends HttpServlet {
         System.out.println(mvo.getMemPhone());
         req.setAttribute("isImage", isImage);
         req.setAttribute("currTime", new Date().getTime());
+        session.setAttribute("currTime",new Date().getTime());
         req.getRequestDispatcher("/view/member/myPage.jsp").forward(req, resp);
     }
 }
