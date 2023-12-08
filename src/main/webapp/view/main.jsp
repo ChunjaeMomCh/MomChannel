@@ -50,36 +50,36 @@
                     <li class="swiper-slide recommend_ch">
                         <a href="/channel/home.html?channel_id=1385">
                             <figure class="profile_img"><img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/11/16/71fb6991-a0b0-4f39-abe5-83456bb85349/프로필2.JPG" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';"></figure>
-                            <p class="channel_name">자료집 WORLD1</p>
-                            <span class="tag channel gray">초등</span>
+                            <p class="channel_name">아이들나라</p>
+                            <span class="tag channel gray">채널가기</span>
                         </a>
                     </li>
                     <li class="swiper-slide recommend_ch">
                         <a href="/channel/home.html?channel_id=1222">
                             <figure class="profile_img"><img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/07/29/9764986c-59b1-4bcd-9dd3-c75a69f0d493/제목을 입력해주세요_-001 (1).png" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';"></figure>
-                            <p class="channel_name">알로하쌤2</p>
-                            <span class="tag channel gray">초등</span>
+                            <p class="channel_name">부모교사알로하쌤</p>
+                            <span class="tag channel gray">채널가기</span>
                         </a>
                     </li>
                     <li class="swiper-slide recommend_ch">
                         <a href="/channel/home.html?channel_id=1219">
                             <figure class="profile_img"><img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/08/24/141c975b-6399-40f6-b732-3015a4652bd4/채널아이콘.png" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';"></figure>
                             <p class="channel_name">타래샘3</p>
-                            <span class="tag channel gray">초등</span>
+                            <span class="tag channel gray">채널가기</span>
                         </a>
                     </li>
                     <li class="swiper-slide recommend_ch">
                         <a href="/channel/home.html?channel_id=1311">
                             <figure class="profile_img"><img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/08/21/dfc81ac7-96ec-472f-8352-4b53f8a70e1e/02sam(TM)_01_심볼_칼라.png" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';"></figure>
-                            <p class="channel_name">영이샘4</p>
-                            <span class="tag channel gray">초등</span>
+                            <p class="channel_name">쉬운영어</p>
+                            <span class="tag channel gray">채널가기</span>
                         </a>
                     </li>
-                    <li class="swiper-slid recommend_che">
-                        <a href="/channel/home.html?channel_id=1249">
+                    <li class="swiper-slide recommend_ch">
+                        <a href="/channel/home.html?channel_id=1311">
                             <figure class="profile_img"><img src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/upload/2023/08/06/826a11e5-9221-474a-a9ca-5ad1c0b76a65/프로필-001.png" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';"></figure>
-                            <p class="channel_name">상권쌤의 미술 수업 SET5</p>
-                            <span class="tag channel gray">초등</span>
+                            <p class="channel_name">아빠놀이터</p>
+                            <span class="tag channel gray">채널가기</span>
                         </a>
                     </li>
                 </ul>
