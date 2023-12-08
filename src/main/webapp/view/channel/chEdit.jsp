@@ -17,82 +17,35 @@
     }
 </script>
 
-
-<!-- contents -->
 <div class="content">
-    <h2>채널 수정하기</h2>
-    <form method="post" <%--action="../ch/chedit.do"--%> onsubmit="return validateForm(this);">
-        <input type="hidden" name="memId" value="${ cvo.memId }"/>
-
-
-        <table border="1" width="90%">
-            <tr>
-                <td>아이디</td>
-                <td>
-                    ${cvo.memId}
-                </td>
-            </tr>
-            <tr>
-                <td>채널 이름</td>
-                <td>
-                    <input type="text" name="channelTitle" style="width:90%;" value="${ cvo.channelTitle }" />
-                </td>
-            </tr>
-            <tr>
-                <td>채널 정보</td>
-                <td>
-                    <textarea name="channelInfo" style="width:90%;height:100px;">${ cvo.channelInfo }</textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>채널 구독자</td>
-                <td>
-                    ${cvo.channelSub}명
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="2" align="center">
-                    <button type="submit">수정 완료</button>
-                    <button type="reset">RESET</button>
-                    <button type="button" onclick="location.href='../ch/chlist.do';">
-                        목록 바로가기
-                    </button>
-                </td>
-            </tr>
-        </table>
-    </form>
-    <script type="text/javascript">
-        function validateForm(form) {
-            if (form.channelTitle.value == "") {
-                alert("채널 이름을 입력하세요.");
-                form.channelTitle.focus();
-                return false;
-            }
-            if (form.channelInfo.value == "") {
-                alert("채널 정보를 입력하세요.");
-                form.channelInfo.focus();
-                return false;
-            }
-        }
-    </script>
+    <div class="content_menu customer_box">
+        <div class="inner">
+            <div class="content_tab_area">
+                <div class="customer_title_area">
+                    <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>내 채널정보 편집</p>
+                </div>
+                <div class="detail_area">
+                    <div class="text_box">
+                        <div class="input_form">
+                            <form method="post" onsubmit="return validateForm(this);">
+                                <input type="hidden" name="memId" value="${ cvo.memId }"/>
+                                <div class="mb-3 mt-3">
+                                    <label for="channelTitle" class="input_form_title">채널명</label>
+                                    <input type="text" class="form-control" id="channelTitle" name="channelTitle" value="${cvo.channelTitle}" />
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="channelContent" class="input_form_title">채널소개</label>
+                                    <textarea class="form-control" rows="5" id="channelContent" name="channelContent"> ${cvo.channelInfo} </textarea>
+                                </div>
+                                <button type="reset" class="btn btn-secondary input_form_btn">취소</button>
+                                <button type="submit" class="btn btn-light input_form_btn">수정 완료</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- inner -->
+    </div>
 </div>
-<!--// contents -->
 
 <%@ include file="../include/footer.jsp"%>
-
-
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>채널 수정하기</title>
-
-</head>
-
-</body>
-</html>

@@ -21,7 +21,7 @@
 
             <div class="content_tab_area">
                 <div class="customer_title_area">
-                    <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>문의하기</p>
+                    <p class="customer_title"><i class="ico back pc_none" onclick="history.back();"></i>문의하기 - 답변작성</p>
                 </div>
                 <div class="detail_area">
                     <div class="text_box">
@@ -35,8 +35,8 @@
                                     <input type="text" class="form-control" id="title" name="qnaTitle" placeholder="┗━ 답변 : ${ vo.qnaTitle }" disabled>
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="qnaContent" class="input_form_title">문의내용</label>
-                                    <textarea class="form-control" rows="5" id="qnaContent" name="qnaContent"></textarea>
+                                    <label for="qnaContent" class="input_form_title">답변 내용</label>
+                                    <textarea class="form-control" rows="5" id="qnaContent" name="qnaContent">${vo.qnaContent}</textarea>
                                 </div>
                                 <button type="submit" class="btn btn-light input_form_btn">작성 완료</button>
                             </form>
