@@ -180,7 +180,7 @@
                                             <%-- 도로명/지번 주소 --%>
                                             <div class="row">
                                                 <input type="text" name="roadAddr" id="sample4_roadAddress" value="${fn:split(mvo.memAddr,'/')[1]}" placeholder="도로명주소" size="60" >
-                                                <input type="hidden" name="jibunAddr" id="sample4_jibunAddress" placeholder="지번주소"  size="60">
+<%--                                                <input type="hidden" name="jibunAddr" id="sample4_jibunAddress" placeholder="지번주소"  size="60">--%>
                                                 <span id="guide" style="color:#999;display:none"></span>
                                             </div>
                                             <%-- 상세 주소 --%>
