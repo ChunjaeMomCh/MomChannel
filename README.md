@@ -109,16 +109,20 @@
   2. 학부모 정보 공유 게시판
    ![image](https://github.com/LMH9999/MomChannel/assets/145963633/d770a942-9245-4023-9480-1905d4c6914d)
 
-  3. 공지사항 게시판
+  3. 채널
+    ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/0a3c0d8b-dcbf-43c6-adcc-79277738343e)
+
+
+  4. 공지사항 게시판
    ![image](https://github.com/LMH9999/MomChannel/assets/145963633/eb2138f7-a46e-4dc7-93e4-09dad58f5f22)
 
-  4. 문의하기 게시판
+  5. 문의하기 게시판
    ![image](https://github.com/LMH9999/MomChannel/assets/145963633/16f39925-86b9-4b60-acbe-aea63d44a965)
   
-  5. 로그인
+  6. 로그인
   ![image](https://github.com/LMH9999/MomChannel/assets/145963633/9a3547b4-8289-40a1-b465-74fcb4307b44)
 
-  6. 회원가입 
+  7. 회원가입 
   ![image](https://github.com/LMH9999/MomChannel/assets/145963633/aeb9bcad-2557-4e08-8a00-deee7c378537)
 
 

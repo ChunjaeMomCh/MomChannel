@@ -143,6 +143,7 @@
                         <div class="detail_area_content">
                             <input type="hidden" name="memId" value="${ mvo.memId }"/>
                             <input type="hidden" name="memSImg" value="${ mvo.memSImg }" />
+<%--                            <input type="hidden" name="memImg" value="${ mvo.memImg }" />--%>
                             <div class="row info_field">
                                 <%-- 텍스트 정보 --%>
                                 <div class="col-sm-9">

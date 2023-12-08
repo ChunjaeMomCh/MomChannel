@@ -40,7 +40,8 @@
     </select>
 
     <select id="selectChList" parameterType="map" resultType="vo.ChannelVO">
-        SELECT * FROM channel order by channel_title
+<!--        SELECT * FROM channel order by channel_title-->
+        SELECT * FROM channel order by mem_id
     </select>
 
     <update id="updateChannel" parameterType="vo.ChannelVO">

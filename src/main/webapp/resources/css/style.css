@@ -1196,7 +1196,7 @@ header .search_bar_area {
   width: 38px;
   height: 38px;
   margin-left: 12px;
-  background-image: url("../images/img_profile.png");
+  /*background-image: url("../images/img_profile.png");*/
 }
 .profile_group > .profile img {
   width: 100%;
