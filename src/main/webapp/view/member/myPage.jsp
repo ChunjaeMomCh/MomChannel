@@ -76,7 +76,8 @@
 <%--                                    &lt;%&ndash;            </c:if>&ndash;%&gt;--%>
 <%--                                </div>--%>
                                 <figure style="background-image:none; text-align: center">
-                                    <img src="../Uploads/${ mvo.memSImg }?ver=${currTime}" style="max-width:100%; max-height:80px; border-radius: 50%;"/>
+<%--                                    <img src="../Uploads/${ mvo.memSImg }?ver=${currTime}" style="max-width:100%; max-height:80px; border-radius: 50%;"/>--%>
+                                    <img src="/Uploads/${ mvo.memSImg }?ver=${sessionScope.currTime}" style="max-width:100%; max-height:80px; border-radius: 50%;"/>
                                 </figure>
                                 <div class="row align-items-end text-center"><p>회원 이미지</p></div>
                             </div>
