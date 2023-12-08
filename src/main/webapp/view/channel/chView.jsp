@@ -29,7 +29,8 @@
         <img src="../resources/images/channel_bg_01.png">
         <div class="inner">
             <figure class="profile_img">
-                <img src="../Uploads/20231205_131313.jpg"/>
+<%--                <img src="../Uploads/20231205_131313.jpg"/>--%>
+                    <img src="/Uploads/${cvo.memId}.jpg" alt="">
 <%--                <img :src="myChannel.profile_image" onerror="this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">--%>
             </figure>
             <div class="channel_info_area">

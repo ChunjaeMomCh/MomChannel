@@ -112,7 +112,8 @@
                                         <a href="./chview.do?memId=${ row.memId }">
                                         <figure style="background-image:none;">
 <%--&lt;%&ndash;                                            <img :src="item.profileImage" onerror="this.onerror=null;this.src='//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/images/content_img/img_profile_01.png';">&ndash;%&gt;--%>
-                                            <img src="../Uploads/${ memLists[loop.index].memSImg}" />
+<%--                                            <img src="../Uploads/${ memLists[loop.index].memSImg}" />--%>
+                                            <img src="/Uploads/${row.memId}.jpg" alt="">
                                         </figure>
                                         <div class="name_box">
                                             <p class="channel_name">${ row.channelTitle }</p>
