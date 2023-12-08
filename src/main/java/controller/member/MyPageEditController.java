@@ -64,12 +64,16 @@ public class MyPageEditController extends HttpServlet {
         String memPhone = req.getParameter("memPhone");
         String memEmail = req.getParameter("memEmail");
         System.out.println("123123" + req.getParameter("roadAddr")+req.getParameter("jibunAddr"));
-        String addr = null;
-        if (req.getParameter("roadAddr")==null){
-            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("roadAddr")).concat("/").concat(req.getParameter("detailAddr"));
-        }else {
-            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("jibunAddr")).concat("/").concat(req.getParameter("detailAddr"));
-        }
+        String addr1 = req.getParameter("postCode");
+        String addr2 = req.getParameter("roadAddr");
+        String addr3 = req.getParameter("detailAddr");
+//        String addr = null;
+        String addr = addr1+"/"+addr2+"/"+addr3;
+//        if (req.getParameter("roadAddr")==null){
+//            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("roadAddr")).concat("/").concat(req.getParameter("detailAddr"));
+//        }else {
+//            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("jibunAddr")).concat("/").concat(req.getParameter("detailAddr"));
+//        }
 
 
         // 로그인 된 아이디는 session에서 가져옴

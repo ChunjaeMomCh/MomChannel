@@ -32,17 +32,24 @@ public class SignController extends HttpServlet {
         // 폼값을 DTO에 저장
 //        Encrypt en = new Encrypt();
         MemberVO mvo= new MemberVO();
-        String addr = null;
+//        String addr = null;
 
         //암호화해서 저장(sha256+salt)
         Encrypt en = new Encrypt();
 
         String memId = (String) session.getAttribute("memId");
-        if (req.getParameter("roadAddr")==null){
-            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("roadAddr")).concat("/").concat(req.getParameter("detailAddr"));
-        }else {
-            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("jibunAddr")).concat("/").concat(req.getParameter("detailAddr"));
-        }
+
+        String  addr1= req.getParameter("postCode");
+        String  addr2= req.getParameter("roadAddr");
+        String  addr3= req.getParameter("detailAddr");
+        String addr = addr1+"/"+addr2+"/"+addr3;
+
+
+//        if (req.getParameter("roadAddr")==null){
+//            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("roadAddr")).concat("/").concat(req.getParameter("detailAddr"));
+//        }else {
+//            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("jibunAddr")).concat("/").concat(req.getParameter("detailAddr"));
+//        }
         mvo.setMemId(memId);
         mvo.setMemName(req.getParameter("memName"));
         mvo.setMemPw(en.getEncrypt(req.getParameter("memPw")));
