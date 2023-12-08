@@ -277,6 +277,66 @@
 
 <br>
 
+### [ 내 정보 ]
+- 내 정보를 볼 수 있는 내 정보 보기 페이지
+- 내 정보 수정
+  - 내 정보들과 회원가입 시 기본 이미지 였던 프로필 사진 변경 가능
+
+| 내 정보 보기 | 내 정보 수정 |
+| --- | --- |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/ede1d5ef-098c-472d-ba92-70708bdf534f) | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/2142b8fe-5c08-4120-b785-15181ceece6d) |
+
+
+<br>
+
+
+<br>
+
+#### [ 게시판 ]
+- 학부모 회원들이 공유하는 게시글들을 분류별로 모아서 보는 게시판 
+  - 회원인 경우  공유하고 싶은 게시글을 작성, 상세보기, 수정, 삭제
+  - 게시글 작성 및 수정 시 게시 내용에 관한 지역별, 학년별 분류를 선택
+  - 게시글 작성 또는 수정 시 썸네일 이미지를 임의로 선택하지 않을 경우 디폴트 이미지를 자동 선택하여 게시판에 노출시킵니다.
+
+
+| 게시판 |
+|----------|
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/74b9bc50-2b2a-407f-a587-e1f3942f9692) |
+| 1. 게시글 작성 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/eca5318f-9717-45e3-a187-54b7b8532796) |
+| 2. 상세보기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/2c2a40f4-1116-4664-9fee-66e0e340c9b5) |
+| 3. 수정하기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f0de1480-e1e0-49fb-b2f2-0e946ffcb33f) |
+
+<br>
+
+<br>
+
+#### [ 채널 ]
+- 회원가입 시 자동 생성되는 채널
+  - 회원이 작성한 게시물들을 채널에서 확인할 수 있음
+  - 구독 기능 구현 : 회원 당 한 채널은 한번만 구독 가능
+  - 채널 정보 편집
+
+
+| 채 |
+|----------|
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/feee35a7-a23a-46b5-aaf4-3f15f5510f3d) |
+| 1. 채널 상세보기 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/75705a60-9c41-452c-a226-d405d22263db) |
+| 2. 구독 기능 |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/516df8bc-9260-440e-a23e-f77d1733ce2b) ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/cca13a58-9e0d-4e70-a937-231da379b105) |
+| 3. 채널 정보 편집 |
+|  |
+
+<br>
+
+
+
+
+<br>
+
 #### [ 서비스 안내 ]
 - 맘채널 소개
   - 맘채널을 소개하는 포스터
@@ -288,6 +348,9 @@
 | 맘채널 소개 |
 |----------|
 | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/08df4e92-60de-496b-8f84-5c078ff142f3) |
+
+<br>
+
 
 <br>
 
@@ -321,26 +384,6 @@
 
 <br>
 
-<br>
-
-#### [ 게시판 ]
-- 학부모 회원들이 공유하는 게시글들을 분류별로 모아서 보는 게시판 
-  - 회원인 경우  공유하고 싶은 게시글을 작성, 상세보기, 수정, 삭제
-  - 게시글 작성 및 수정 시 게시 내용에 관한 지역별, 학년별 분류를 선택
-  - 게시글 작성 또는 수정 시 썸네일 이미지를 임의로 선택하지 않을 경우 디폴트 이미지를 자동 선택하여 게시판에 노출시킵니다.
-
-
-| 게시판 |
-|----------|
-| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/74b9bc50-2b2a-407f-a587-e1f3942f9692) |
-| 1. 게시글 작성 |
-| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/eca5318f-9717-45e3-a187-54b7b8532796) |
-| 2. 상세보기 |
-| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/2c2a40f4-1116-4664-9fee-66e0e340c9b5) |
-| 3. 수정하기 |
-| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f0de1480-e1e0-49fb-b2f2-0e946ffcb33f) |
-
-<br>
 
 
 
