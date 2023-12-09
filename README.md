@@ -41,6 +41,7 @@
 | **김지원** | **이무현** | **이양진** |
 | :------: | :------: | :------: |
 | [<img src="https://avatars.githubusercontent.com/u/40616792?v=4" height=150 width=150> <br/> @kimg1623](https://github.com/kimg1623) | [<img src="https://avatars.githubusercontent.com/u/145963633?v=4" height=150 width=150> <br/> @lmh9999](https://github.com/LMH9999) | [<img src="https://avatars.githubusercontent.com/u/145524819?v=4" height=150 width=150> <br/> @Lzynee](https://github.com/Lzynee) |
+| 공지사항 게시판 <br> 메인(헤더, 푸터) 페이지 <br> 게시물 Sort 기능 <br> Front-end(jQuery) | 문의하기 게시판 <br> 채널 페이지, 구독 기능 <br> 회원가입/로그인 <br> AWS 배포 | post 게시판 <br> 파일 업로드 <br> 암호화 <br> Front-end(BootStrap) |
 
 
 </div>
@@ -49,7 +50,7 @@
 
 ## 1. 개발 환경
 
-**Language** 
+**Back-End** 
 <div>
 <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white">
 <img src="https://img.shields.io/badge/JSP-de6c1e?style=for-the-badge&logo=jsp&logoColor=white">
@@ -57,10 +58,17 @@
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white"> 
 <img src="https://img.shields.io/badge/Mybatis-000000?style=for-the-badge&logo=Fluentd&logoColor=fff"/><br>
+<img src="https://img.shields.io/badge/SHA256+SALT-ecd31d?style=for-the-badge&logo=sha256&logoColor=000"/>
+</div>
+<br>
+
+**Front-End** 
+<div>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=fff"/>
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=fff"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=000"/>
-<img src="https://img.shields.io/badge/SHA256+SALT-ecd31d?style=for-the-badge&logo=sha256&logoColor=000"/>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=fff"/><br>
+<img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=fff"/>
+<img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=jquery&logoColor=fff"/>
 </div> 
 <br>
 
@@ -87,7 +95,10 @@
 
 ### 개발 기간
 
-- 전체 개발 기간 : `2023-11-27 ~ 2023-12-10`
+<details>
+  <summary>전체 개발 기간 : `2023-11-27 ~ 2023-12-10`</summary>
+  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/40616792/11fa3722-8f03-43a4-bf52-388bb82a306b)
+</details>
 
 <br>
 
@@ -99,7 +110,7 @@
 <br>
 
 ## 3. 요구사항 명세 및 다이어그램
-
+👉 각 이미지를 클릭하면 확대되어 자세한 내요을 확인하실 수 있습니다.
 <details>
   <summary>요구사항 명세서</summary>
 
@@ -111,7 +122,6 @@
 
   3. 채널
     ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/0a3c0d8b-dcbf-43c6-adcc-79277738343e)
-
 
   4. 공지사항 게시판
    ![image](https://github.com/LMH9999/MomChannel/assets/145963633/eb2138f7-a46e-4dc7-93e4-09dad58f5f22)
