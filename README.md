@@ -336,7 +336,7 @@
 | 2. 구독 기능 |
 | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/516df8bc-9260-440e-a23e-f77d1733ce2b) ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/cca13a58-9e0d-4e70-a937-231da379b105) |
 | 3. 채널 정보 편집 |
-|  |
+| ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/e15c9eb9-0b32-479a-a362-2de514ebf905) |
 
 <br>
 
