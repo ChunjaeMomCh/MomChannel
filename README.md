@@ -25,7 +25,7 @@
   
   | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="150" height="120"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="145" height="145"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="145" height="145"/> |
   | :---: | :---: | :---: |
-  | [배포](http://43.202.176.175/) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://geee1-kim.notion.site/JSP-Project-2061031e0e3b45148829eac978ca199d?pvs=4) |
+  | [AWS 배포 사이트](http://43.202.176.175/) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion 팀회의록](https://geee1-kim.notion.site/JSP-Project-2061031e0e3b45148829eac978ca199d?pvs=4) |
  </div>
 
 <br><br>
