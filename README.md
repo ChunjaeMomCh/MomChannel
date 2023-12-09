@@ -1,35 +1,28 @@
-# 👨‍👩‍👦 '맘채널' JSP 프로그램
-
+# 👨‍👩‍👦 '맘채널' JSP 웹 개발 프로젝트
 
 ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/3054c13b-8c4c-4a5d-a99f-41775fd7ef54)
 
-
 <br>
 
+### INDEX
+[프로젝트 소개](#프로젝트-소개-)
+[팀원 구성과 역할](#팀원-구성과-역할)
 
-
-
-
-
-
-<br>
 
 ## 프로젝트 소개
 
-- 학부모 정보 공유 커뮤니티
-- 회원으로 로그인하면 공유하고 싶은 정보들을 게시판에 등록하고, 학년별, 지역별로 구분해 볼 수 있습니다.
-- 관리자는 공지사항을 관리하고,  문의하기 게시판 회원의 질문 글에 답변을 작성할 수 있습니다.
-
-<br><br>
-
-<div align="center">
-
-| <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="150" height="120"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="145" height="145"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="145" height="145"/> |
-| :---: | :---: | :---: |
-| [배포](http://43.202.176.175/) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://geee1-kim.notion.site/JSP-Project-2061031e0e3b45148829eac978ca199d?pvs=4) |
-
-
-</div>
+### 👨‍🏫 학부모를 위한 정보 공유 커뮤니티
+- 학부모들이 직접 채널을 운영하면서, 자녀 교육과 양육에 관한 정보들을 공유합니다.
+  ### 🔍 특징
+  - 회원으로 로그인하면 공유하고 싶은 정보들을 게시판에 등록하고, `학년별`, `지역별`로 구분해 볼 수 있습니다.
+  - 관리자는 공지사항을 관리하고, 문의하기 게시판 회원의 질문 글에 답변을 작성할 수 있습니다.
+  ### 👉 프로젝트 더 알아보기
+  <div align="center">
+  
+  | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/f1b092a8-3ae0-490a-a900-a295750b5533"  width="150" height="120"/> | <img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/267e789a-5f97-445e-832e-27c5734c111f"  width="145" height="145"/> |<img src="https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/564563d2-47e6-4cfa-b744-b11dc31e0ce9"  width="145" height="145"/> |
+  | :---: | :---: | :---: |
+  | [배포](http://43.202.176.175/) | [GitHub](https://github.com/ChunjaeMomCh/MomChannel) | [Notion](https://geee1-kim.notion.site/JSP-Project-2061031e0e3b45148829eac978ca199d?pvs=4) |
+ </div>
 
 <br><br>
 
@@ -96,8 +89,8 @@
 ### 개발 기간
 
 <details>
-  <summary>전체 개발 기간 : `2023-11-27 ~ 2023-12-10`</summary>
-  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/40616792/11fa3722-8f03-43a4-bf52-388bb82a306b)
+  <summary>전체 개발 기간 : 2023-11-27 ~ 2023-12-10</summary>
+  ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/40616792/c2b695a4-c8fe-425e-9a10-8558fd2e7f1b)
 </details>
 
 <br>
@@ -108,6 +101,7 @@
 - Slack을 사용하여 프로젝트 진행상황을 공유하고 Notion에 회의 내용을 기록했습니다.
 
 <br>
+
 
 ## 3. 요구사항 명세 및 다이어그램
 👉 각 이미지를 클릭하면 확대되어 자세한 내요을 확인하실 수 있습니다.
@@ -330,7 +324,7 @@
   - 채널 정보 편집
 
 
-| 채 |
+| 채널 |
 |----------|
 | ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/feee35a7-a23a-46b5-aaf4-3f15f5510f3d) |
 | 1. 채널 상세보기 |
@@ -415,21 +409,17 @@
 ## 5. 프로젝트 후기
 
 ### 🍊 김지원
-
-<!-- 코드를 설계할 때 가장 기본이라고 할 수 있는 CRUD를 처음으로 직접 적용해본 경험이었습니다. 만든 코드로 기능을 구현해보고 그것을 DB와 연동하여 IntelliJ에 나타냈지만, DB 구축에는 아직 낯설어 참여하지 못했던 것이 아쉬웠습니다. 프로젝트를 진행하면서 가장 크게 느꼈던 점이 있었습니다. 바로 '완벽'했을 때 비로소 프로젝트가 '완성'된다는 것이었습니다. 예를 들면 부여된 값 외의 다른 값을 입력할 때에도 코딩을 하는 것처럼 모든 상황을 대비할 수 있어야 한다고 생각했습니다. 부족한 부분은 Git과 함께 리뷰를 하면서 조금씩 채워나가겠습니다. -->
+CRUD가 웹 페이지의 기본이라는 것을 경험할 수 있는 프로젝트였습니다. DB와 세션 등 여러 데이터들을 함께 사용하여 기능을 구현한 부분이 많았는데, 계획 단계에서 팀내 협의가 필요하다는 것을 알게 되었습니다.
 
 <br>
 
 ### 👻 이무현
-
-<!-- 이번 프로젝트에서는 CRUD기능을 모두 활용하는 것과 MVC패턴을 적용해보기 위해 노력했다. 화면을 구성하면서 CRUD가 모두 구현이 가능한지 점검했고, 이후 필요한 데이터들로 DB를 구축했는데 실제 개발을 진행하다보니 다시 고쳐야할 부분들이 보였다. 프로젝트 계획이 탄탄해야하는 이유를 경험할 수 있었다. MVC2 패턴을 적용해보고 싶었는데, Controller와 Service의 차이를 이해하는데 어려워서 완벽히 적용은 어려웠지만 시도해봤다는 점이 의미있었다. 처음으로 Git을 제대로 사용해서 진행한 프로젝트였는데, Git협업에 자신감이 조금 생기게 된 것 같다. -->
+시간 상 처음 구성했던 모든 기능을 구현하지 못한게 아쉽지만 저번 프로젝트와 달리 웹으로 직접적으로 보여지는 홈페이지를 만들었다는 것과 AWS를 이용해 직접 배포해 본 경험이 좋았습니다.
 
 <br>
 
 ### 😎 이양진
-
-
-<!-- 처음으로 CRUD 기능을 구현하며 데이터베이스와의 상호작용을 경험했다. 화면을 구성하고 각 기능을 완성하며 결합하는 과정에서 예상치 못한 오류들이 발생하였다. 이러한 상황에 대비하여 팀원들과의 협업 과정에서 커뮤니케이션과 주석의 중요성을 느낄 수 있었다. 또한, 프로젝트를 시작하기 전에 요구사항 명세서와 다이어그램을 제작하면서 개발의 전체적인 흐름을 파악할 수 있는 기회였다. 처음 개발 프로젝트를 진행하면서 효율적인 코드 작성과 패키지 및 클래스 분리에 대한 어려움이 있었다. 이러한 부분에 대한 보완이 필요하다고 느꼈다. -->
+작성중
 
 <br>
 
