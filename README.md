@@ -2,8 +2,6 @@
 
 ![image](https://github.com/ChunjaeMomCh/MomChannel/assets/145963633/3054c13b-8c4c-4a5d-a99f-41775fd7ef54)
 
-<br>
-
 ### INDEX
 [프로젝트 소개](#프로젝트-소개-)   
 [팀원 구성과 역할](#팀원-구성과-역할)   
