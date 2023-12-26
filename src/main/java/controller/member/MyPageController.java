@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet("/member/myinfo.do")
@@ -48,6 +49,8 @@ public class MyPageController extends HttpServlet {
         System.out.println(mvo.getMemName());
         System.out.println(mvo.getMemPhone());
         req.setAttribute("isImage", isImage);
+        req.setAttribute("currTime", new Date().getTime());
+        session.setAttribute("currTime",new Date().getTime());
         req.getRequestDispatcher("/view/member/myPage.jsp").forward(req, resp);
     }
 }

@@ -22,6 +22,9 @@ public class AnswerContoller extends HttpServlet {
         String qnaNo = req.getParameter("qnaNo");
         QNABoardDAO dao = new QNABoardDAO();
         QNABoardVO vo = dao.selectView(qnaNo);
+        String qnaContent = vo.getQnaContent();
+        qnaContent+="\n=======================================\n";
+        vo.setQnaContent(qnaContent.replaceAll("<br/>", "\r\n"));
         req.setAttribute("vo", vo);
         req.getRequestDispatcher("/view/cs/qna/answer.jsp").forward(req, resp);
     }

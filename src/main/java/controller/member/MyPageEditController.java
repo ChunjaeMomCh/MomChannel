@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 
 @WebServlet("/member/myinfoedit.do")
@@ -37,12 +38,11 @@ public class MyPageEditController extends HttpServlet {
             throws ServletException, IOException {
         String saveDirectory = req.getServletContext().getRealPath("/Uploads");
 
-        System.out.println(saveDirectory);
 
         // 파일 업로드
         String originalFileName = "";
         try {
-            originalFileName = FileUtil.uploadFile(req, saveDirectory);
+            originalFileName = FileUtil.uploadMemImg(req, saveDirectory);
         }
         catch (Exception e) {
             JSFunction.alertBack(resp, "파일 업로드 오류입니다.");
@@ -54,19 +54,26 @@ public class MyPageEditController extends HttpServlet {
         String prevMemImg = req.getParameter("memImg");
         String prevMemSImg = req.getParameter("memSImg");
         String memId = req.getParameter("memId");
+
+
+
 //        String memName = req.getParameter("memName");
         String memRegion = req.getParameter("memRegion");
         String memAddr = req.getParameter("memAddr");
         String memChildGrade = req.getParameter("memChildGrade");
         String memPhone = req.getParameter("memPhone");
         String memEmail = req.getParameter("memEmail");
-
-        String addr = null;
-        if (req.getParameter("roadAddr")==null){
-            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("roadAddr")).concat("/").concat(req.getParameter("detailAddr"));
-        }else {
-            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("jibunAddr")).concat("/").concat(req.getParameter("detailAddr"));
-        }
+        System.out.println("123123" + req.getParameter("roadAddr")+req.getParameter("jibunAddr"));
+        String addr1 = req.getParameter("postCode");
+        String addr2 = req.getParameter("roadAddr");
+        String addr3 = req.getParameter("detailAddr");
+//        String addr = null;
+        String addr = addr1+"/"+addr2+"/"+addr3;
+//        if (req.getParameter("roadAddr")==null){
+//            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("roadAddr")).concat("/").concat(req.getParameter("detailAddr"));
+//        }else {
+//            addr = req.getParameter("postCode").concat("/").concat(req.getParameter("jibunAddr")).concat("/").concat(req.getParameter("detailAddr"));
+//        }
 
 
         // 로그인 된 아이디는 session에서 가져옴
@@ -74,8 +81,8 @@ public class MyPageEditController extends HttpServlet {
         String sMemId = (String) session.getAttribute("memId");
 
         MemberVO mvo = new MemberVO();
-//        mvo.setMemImg(memImg);
-//        mvo.setMemSImg(memSImg);
+//        mvo.setMemImg(prevMemImg);
+//        mvo.setMemSImg(prevMemSImg);
         mvo.setMemId(memId);
 //        mvo.setMemName(memName);
         mvo.setMemRegion(memRegion);
@@ -87,13 +94,14 @@ public class MyPageEditController extends HttpServlet {
 
         // 원본 파일명과 저장된 파일 이름 설정
         if (originalFileName != null && !originalFileName.equals("")) {
-            String savedFileName = FileUtil.renameFile(saveDirectory, originalFileName);
+            FileUtil.deleteFile(req, "/Uploads", prevMemSImg);
+
+            String savedFileName = FileUtil.renameProfileFile(saveDirectory, originalFileName, memId);
 
             mvo.setMemImg(originalFileName);  // 원래 파일 이름
             mvo.setMemSImg(savedFileName);  // 서버에 저장된 파일 이름
 
             // 기존 파일 삭제
-            FileUtil.deleteFile(req, "/Uploads", prevMemSImg);
         }
         else {
             // 첨부 파일이 없으면 기존 이름 유지
@@ -105,13 +113,17 @@ public class MyPageEditController extends HttpServlet {
         // DB에 수정 내용 반영
         MemberDAO dao = new MemberDAO();
 
+        System.out.println("qweqwe : "+ memId);
+        System.out.println("asdasd : "+ sMemId);
         //작성자와 현재 로그인된 아이디가 일치하는지 확인후 수정
         if (memId.equals(sMemId)){
             int result = dao.updateMember(mvo);
             // 성공 or 실패?
             if (result == 1) {  // 수정 성공
 //            session.removeAttribute("pass");
-                resp.sendRedirect("../member/myinfo.do");
+//                resp.sendRedirect("../member/myinfo.do");
+                JSFunction.alertLocation(resp, "채널 수정 완료.",
+                        "../member/myinfo.do");
             }
             else {  // 수정 실패
                 JSFunction.alertBack(resp, "수정하지 못했습니다.");

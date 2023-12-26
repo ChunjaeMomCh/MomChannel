@@ -1,25 +1,31 @@
+/**
+ * 파일 업로드, 다운로드 및 삭제를 위한 유틸리티 메서드
+ * */
+
 package utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
+import java.io.*;
 
 public class FileUtil {
+
+    public static boolean nioCopy(String inFilePath, String outFilePath) {
+        File orgFile = new File(inFilePath);
+        File outFile = new File(outFilePath);
+
+        try {
+            Files.copy(orgFile.toPath(), outFile.toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
     //파일 업로드
     public static String uploadFile(HttpServletRequest req, String sDirectory)
@@ -27,12 +33,8 @@ public class FileUtil {
         Path saveDirectoryPath = Paths.get(sDirectory);
         Files.createDirectories(saveDirectoryPath);
 
-        System.out.println("aaaaaaaaaaaaaa");
-
         //Part 객체를 통해 서버로 전송된 파일명 읽어오기
-        Part part = req.getPart("memImg");
-
-        System.out.println("bbbbbbbbbbbbb");
+        Part part = req.getPart("postOFile");
 
         //Part 객체의 헤더값 중 content-disposition 읽어오기
         String partHeader = part.getHeader("content-disposition");
@@ -42,19 +44,41 @@ public class FileUtil {
         //헤더값에서 파일명 잘라내기
         String[] phArr = partHeader.split("filename=");
 
-        System.out.println("ccccccccc");
-
         String originalFileName = phArr[1].trim().replace("\"", "");
-
-        System.out.println("dddddddd");
-
 
         //전송된 파일이 있다면 디렉토리에 저장
         if (!originalFileName.isEmpty()) {
             part.write(sDirectory+ File.separator +originalFileName);
         }
 
-        System.out.println("eeeeeeeeeee");
+        //원본 파일명 반환
+        return originalFileName;
+    }
+    public static String uploadMemImg(HttpServletRequest req, String sDirectory)
+            throws ServletException, IOException {
+        Path saveDirectoryPath = Paths.get(sDirectory);
+        Files.createDirectories(saveDirectoryPath);
+
+        //Part 객체를 통해 서버로 전송된 파일명 읽어오기
+        Part part = req.getPart("memImg");
+
+
+        //Part 객체의 헤더값 중 content-disposition 읽어오기
+        String partHeader = part.getHeader("content-disposition");
+        //출력결과 => form-data; name="attachedFile"; filename="파일명.jpg"
+        System.out.println("partHeader="+ partHeader);
+
+        //헤더값에서 파일명 잘라내기
+        String[] phArr = partHeader.split("filename=");
+
+        String originalFileName = phArr[1].trim().replace("\"", "");
+
+
+
+        //전송된 파일이 있다면 디렉토리에 저장
+        if (!originalFileName.isEmpty()) {
+            part.write(sDirectory+ File.separator +originalFileName);
+        }
 
         //원본 파일명 반환
         return originalFileName;
@@ -74,14 +98,34 @@ public class FileUtil {
         File newFile = new File(sDirectory + File.separator + newFileName);
         oldFile.renameTo(newFile);
 
-        //변경된 파일명 반환
+        // 변경된 파일명을 반환한다.
         return newFileName;
-    }
+    }  // renameFile()
+
+    public static String renameProfileFile(String sDirectory, String fileName, String memId) {
+        //원본파일의 확장자 잘라내기
+//        String ext = fileName.substring(fileName.lastIndexOf("."));
+        String ext = ".jpg";
+        //날짜 및 시간을 통해 파일명 생성
+//        String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
+        String now = memId;
+        //"날짜_시간.확장자" 형태의 새로운 파일명 생성
+        String newFileName = now + ext;
+
+        //기존 파일명을 새로운 파일명으로 변경
+        File oldFile = new File(sDirectory + File.separator + fileName);
+        File newFile = new File(sDirectory + File.separator + newFileName);
+        oldFile.renameTo(newFile);
+
+        // 변경된 파일명을 반환한다.
+        return newFileName;
+    }  // renameFile()
 
     //파일 다운로드
     public static void download(HttpServletRequest req, HttpServletResponse resp,
                                 String directory, String sfileName, String ofileName) {
         String sDirectory = req.getServletContext().getRealPath(directory);
+
         try {
             // 파일을 찾아 입력 스트림 생성
             File file = new File(sDirectory, sfileName);
@@ -103,39 +147,42 @@ public class FileUtil {
                     "attachment; filename=\"" + ofileName + "\"");
             resp.setHeader("Content-Length", "" + file.length() );
 
-            //out.clear();  // 출력 스트림 초기화
-
             // response 내장 객체로부터 새로운 출력 스트림 생성
             OutputStream oStream = resp.getOutputStream();
 
             // 출력 스트림에 파일 내용 출력
-            byte b[] = new byte[(int)file.length()];
+            byte b[] = new byte[(int) file.length()];
+
             int readBuffer = 0;
+
             while ( (readBuffer = iStream.read(b)) > 0 ) {
                 oStream.write(b, 0, readBuffer);
             }
 
-            // 입/출력 스트림 닫음
+            // 입/출력 스트림 닫기
             iStream.close();
             oStream.close();
-        }
-        catch (FileNotFoundException e) {
+
+        } catch (FileNotFoundException e) {
             System.out.println("파일을 찾을 수 없습니다.");
             e.printStackTrace();
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             System.out.println("예외가 발생하였습니다.");
             e.printStackTrace();
-        }
-    }
+
+        }  // try ~ catch
+    }  // download()   
 
     //파일 삭제
     public static void deleteFile(HttpServletRequest req,
                                   String directory, String filename) {
         String sDirectory = req.getServletContext().getRealPath(directory);
         File file = new File(sDirectory + File.separator + filename);
+
         if (file.exists()) {
             file.delete();
         }
     }
+
 }

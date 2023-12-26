@@ -1189,13 +1189,14 @@ header .search_bar_area {
   height: 38px;
   line-height: 38px;
   color: #7b7a7a;
+  width: 100px;
  }
 .profile_group > .profile {
   display: inline-block;
   width: 38px;
   height: 38px;
   margin-left: 12px;
-  background-image: url("../images/img_profile.png");
+  /*background-image: url("../images/img_profile.png");*/
 }
 .profile_group > .profile img {
   width: 100%;
@@ -1282,7 +1283,28 @@ header .search_bar_area {
   transform: translateX(-50%);
   background-color: #0a64ff;
 }
-.header_nav .header_menu > li a {
+.header_nav .header_menu .submenu {
+  z-index: 10;
+  position: relative;
+  display: none;
+}
+.header_nav .header_menu > li .submenu a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: block;
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.8px;
+  z-index: 10;
+  color:#333333;
+}
+.header_nav .header_menu > li > a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1312,6 +1334,7 @@ header .search_bar_area {
   transform: translateY(-50%);
   background-color: #e0e0e0;
 }
+
 .fix_header {
   display: none;
   position: fixed;
@@ -7162,6 +7185,9 @@ body.ovh {
   background-color: #fff;
   font-size: 18px;
   letter-spacing: -0.18px;
+}
+a.btn.my_follow.subscriber_btn{
+  line-height: 35px;
 }
 .channel_banner .btn_wrap .btn span {
   margin-left: 7px;

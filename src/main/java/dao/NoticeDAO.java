@@ -40,7 +40,11 @@ public class NoticeDAO {
     public int insertWrite(NoticeVO vo) {
         SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
         NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+        System.out.println("vo"+vo);
         int result = mapper.insertWrite(vo);
+
+
+        System.out.println("result"+result);
         if (result == 1) {
             sqlSession.commit();
             System.out.println("새로운 mvcboard 저장 성공");
@@ -74,6 +78,17 @@ public class NoticeDAO {
             System.out.println("notice 삭제 중 오류 발생...");
         }
         return result;
+    }
+
+    public void updateVisitCount(String noticeNo){
+        SqlSession sqlSession = MyBatisSessionFactory.getSqlSession();
+        NoticeMapper mapper = sqlSession.getMapper(NoticeMapper.class);
+        int result = mapper.updateVisitCount(noticeNo);
+        if (result == 1) {
+            sqlSession.commit();
+        } else {
+            System.out.println("notice 조회수 증가 중 오류 발생...");
+        }
     }
 
 

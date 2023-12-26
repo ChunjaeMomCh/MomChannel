@@ -2,6 +2,7 @@ package controller.member;
 
 
 import dao.MemberDAO;
+import utils.Encrypt;
 import utils.JSFunction;
 import vo.MemberVO;
 
@@ -23,10 +24,15 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        if(session.getAttribute("loginMember")!=null){
+            JSFunction.alertBack(resp, "이미 로그인 되어있습니다.");
+        }
         Map<String, Object> map = new HashMap<String, Object>();
         MemberDAO dao = new MemberDAO();
+        Encrypt en = new Encrypt();
         String memId = req.getParameter("memId");
-        String memPw = req.getParameter("memPw");
+        String memPw = en.getEncrypt(req.getParameter("memPw"));
         out.println(memId);
         out.println(memPw);
         MemberVO vo = null;
@@ -40,7 +46,7 @@ public class LoginController extends HttpServlet {
         out.println(check);
         if (check){
             vo = dao.getMember(memId);
-            HttpSession session = req.getSession();
+
             if(session.isNew() || session.getAttribute("loginMember")==null) {
                 session.setAttribute("loginMember", vo);
                 session.setAttribute("memId",memId);

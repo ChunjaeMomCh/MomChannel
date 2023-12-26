@@ -7,7 +7,7 @@ public class Encrypt {
     public String getEncrypt(String pwd) {
 
         String result = "";
-        String salt = "lmh";
+        String salt = "mapgosu";
         try {
             //1. SHA256 알고리즘 객체 생성
             MessageDigest md = MessageDigest.getInstance("SHA-256");

@@ -143,10 +143,29 @@
       }
       location.href = "/search/search_result.html?keyword=" + keywordSearch;
     }
+
   </script>
   <script src="//cdata2.tsherpa.co.kr/tsherpa/ssam_channel/resource/channel/js/jquery-1.12.4.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/javascript/script.js"></script>
-
+  <script src="javascript/jquery-1.12.3.js"></script>
+  <script>
+  jQuery(document).ready(function () {
+    $('.navi>li').mouseover(function () {
+      $('.submenu').stop().slideDown(500);
+      $("#menu_bg").stop().slideDown(500);
+    }).mouseout(function () {
+      $('.submenu').stop().slideUp(500);
+      $("#menu_bg").stop().slideUp(500);
+    });
+  });
+  </script>
+  <style>
+    .profile_btn {
+        font-weight: 900;
+        color: #7b7a7a;
+        background-color: #fdfdfd;
+    }
+  </style>
 </head>
 <body>
 
@@ -154,54 +173,109 @@
   <!-- header -->
   <div id="header">
     <div class="header_wrap " >
+      <div id="menu_bg"></div>
       <header>
         <div class="inner">
           <a href="#none" class="menu_btn pc_none"><i class="ico menu"></i></a>
           <div class="header_group">
-            <h1 class="logo"><a href="${pageContext.request.contextPath}/"></a></h1>
-            <div class="search_bar_area mo_none">
-              <input type="text" class="search_bar" id="keywordSearch" placeholder="검색어를 입력하세요." value="">
-              <a href="javascript:search('keywordSearch')"><i class="ico search_01"></i></a>
-            </div>
+            <h1 class="logo"><a href="${pageContext.request.contextPath}/main.do"></a></h1>
           </div>
           <div class="header_btn_area">
             <div>
               <c:choose>
                 <c:when test="${empty loginMember.memId}">
-                  <a href="/view/Login/loginForm.jsp">로그인</a>
-                  <a href="/view/Login/signForm.jsp">회원가입</a>
+                  <a class="profile_btn" href="/view/Login/loginForm.jsp">로그인</a>
+                  <a class="profile_btn" href="/view/Login/signForm.jsp">회원가입</a>
                 </c:when>
                 <c:when test="${not empty loginMember.memId}">
                   <a href="javascript:void(0);" class="search_btn pc_none"><i class="ico search_01"></i></a>
                   <div class="profile_group">
                     <div class="profile_name">${loginMember.memId}님</div>
-                    <a href="javascript:void(0)" onclick="doLogin()" class="profile"></a>
-                    <a href="javascript:void(0)" class="profile_hover" onclick="doLogin()">로그인하기</a>
+<%--                    <div class="profile"><img src="${pageContext.request.contextPath}/Uploads/${ loginMember.memSImg }?ver=${currTime}" /></div>--%>
+                    <div class="profile"><img src="/Uploads/${ loginMember.memSImg }?ver=${sessionScope.currTime}" /></div>
+<%--                    <a href="javascript:void(0)" onclick="doLogin()" class="profile"></a>--%>
+<%--                    <a href="javascript:void(0)" class="profile_hover" onclick="doLogin()">로그인하기</a>--%>
                     <div class="mo_none">
                     </div>
                   </div>
-                  <a href="/member/logout.do">로그아웃</a>
-                  <a href="/member/myinfo.do">내정보</a>
+                  <a class="profile_btn" href="/member/logout.do">로그아웃</a>
+                  <a class="profile_btn" href="/member/myinfo.do">내정보</a>
                 </c:when>
               </c:choose>
             </div> <%-- content의 끝 --%>
           </div>
         </div>
-        <nav class="header_nav ">
+
+        <nav class="header_nav">
           <div class="inner">
-            <ul class="header_menu">
+            <ul class="header_menu navi">
               <!-- 선택 시 해당 li에 active 클래스 추가해주세요 -->
-              <li class="pc_none"><a href="/">홈</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/post.do">전체 게시판</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/post.do">학년별 게시판</a></li>
-              <li><a href="${pageContext.request.contextPath}/view/post/post.do">지역별 게시판</a></li>
-              <li class="line"><a href="/channel/all.html">전체 채널</a></li>
-              <li class="line"><a href="${pageContext.request.contextPath}/view/cs/introduce.jsp">서비스 안내</a></li>
+              <li class="pc_none"><a href="/main.do">홈</a></li>
+              <li><a href="${pageContext.request.contextPath}/view/post/list.do">전체 게시판</a>
+                <ul class="submenu" >
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+              <li><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=0">학년별 게시판</a>
+                <ul class="submenu">
+                  <div class="row">
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=1">1학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=2">2학년</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=3">3학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=4">4학년</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=5">5학년</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-grade/list.do?grade=6">6학년</a></li>
+                  </div>
+                </ul>
+              </li>
+              <li><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=전국">지역별 게시판</a>
+                <ul class="submenu container text-center">
+                  <div class="row">
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=전국">전국</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=서울">서울</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=경기">경기</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=강원">강원</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=충청">충청</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=경상">경상</a></li>
+                  </div>
+                  <div class="row">
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=전라">전라</a></li>
+                    <li class="col"><a href="${pageContext.request.contextPath}/view/post/by-region/list.do?region=제주">제주</a></li>
+                  </div>
+                </ul>
+              </li>
+              <li class="line"><a href="${pageContext.request.contextPath}/ch/chlist.do">전체 채널</a>
+                <ul class="submenu" >
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+              <li class="line"><a href="${pageContext.request.contextPath}/view/cs/introduce.jsp">서비스 안내</a>
+                <ul class="submenu" >
+                  <li><a href="${pageContext.request.contextPath}/view/cs/introduce.jsp">맘채널 소개</a></li>
+                  <li><a href="${pageContext.request.contextPath}/view/cs/notice/list.do">공지사항</a></li>
+                  <li><a href="${pageContext.request.contextPath}/view/cs/qna/list.do">문의하기</a></li>
+                  <li><a href="#"></a></li>
+                </ul>
+              </li>
+
             </ul>
           </div>
         </nav>
       </header>
     </div>
-  </div>
-  <!-- header 끝 -->
+  </div>  <!-- header 끝 -->
   <!-- 상단 고정 헤더 -->

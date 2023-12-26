@@ -20,8 +20,16 @@ public class PostDAO {
         PostMapper mapper = session.getMapper(PostMapper.class);
 
         int result = mapper.selectCount(map);
+        session.close();
+        return result;
 
-        System.out.println("selectCount - 행 개수 = " + result);
+    }
+    public int selectCountGrade(Map<String, Object> map) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        int result = mapper.selectCountGrade(map);
         session.close();
         return result;
 
@@ -39,11 +47,34 @@ public class PostDAO {
 
     }
 
+    // 전체 게시판 페이지 불러오기
     public List<PostVO> showPosts(Map<String, Object> map) {
         SqlSession session = MyBatisSessionFactory.getSqlSession();
         PostMapper mapper = session.getMapper(PostMapper.class);
 
         List<PostVO> postList = mapper.showPosts(map);
+
+        session.close();
+        return postList;
+    }
+    // 학년별 게시판 페이지 불러오기
+    public List<PostVO> showPostsByGrade(Map<String, Object> map) {
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showPostsByGrade(map);
+
+        session.close();
+        return postList;
+    }
+
+
+    public List<PostVO> showPostsByCh(String channelTitle) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showPostsByCh(channelTitle);
 
         session.close();
         return postList;
@@ -68,20 +99,102 @@ public class PostDAO {
         PostMapper mapper = session.getMapper(PostMapper.class);
 
         int result = mapper.updateVisitCount(postNo);
+        session.commit();
 
         session.close();
         return result;
     }
 
     // 게시물 작성 페이지
-    public int writePost(HashMap<String, Object> map) {
+    public int writePost(PostVO vo) {
 
         SqlSession session = MyBatisSessionFactory.getSqlSession();
         PostMapper mapper = session.getMapper(PostMapper.class);
 
-        int result = mapper.writePost(map);
+        int result = mapper.writePost(vo);
+
+        if (result == 1) {
+            session.commit();
+            System.out.println("새 게시물 저장 성공");
+
+        } else {
+            System.out.println("새 게시물 저장 실패");
+        }
 
         session.close();
         return result;
     }
+
+    // 게시물 수정 기능
+    public int updatePost(PostVO vo) {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        int result = mapper.updatePost(vo);
+        
+        if (result == 1) {
+            session.commit();
+            System.out.println("게시물 수정 성공");
+            
+        } else {
+            System.out.println("게시물 수정 실패");
+        }
+
+        session.close();
+        return result;
+    }
+    
+    public int deletePost(String postNo) {
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        int result = mapper.deletePost(postNo);
+
+        if (result == 1) {
+            session.commit();
+            System.out.println("게시물 삭제 성공");
+
+        } else {
+            System.out.println("게시물 삭제 실패");
+        }
+
+        session.close();
+        return result;
+    }
+
+    public List<Integer> selectChPost(String memId) {
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<Integer> chPost = mapper.selectChPost(memId);
+
+        session.close();
+        return chPost;
+    }
+    // main 페이지에서 최신글 불러오기
+    public List<PostVO> showLatestPosts() {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showLatestPosts();
+
+        session.close();
+        return postList;
+    }
+
+    // main 페이지에서 top4 불러오기
+    public List<PostVO> showTopPosts() {
+
+        SqlSession session = MyBatisSessionFactory.getSqlSession();
+        PostMapper mapper = session.getMapper(PostMapper.class);
+
+        List<PostVO> postList = mapper.showTopPosts();
+
+        session.close();
+        return postList;
+    }
+
+
 }

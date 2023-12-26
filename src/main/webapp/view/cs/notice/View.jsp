@@ -22,7 +22,7 @@
                 <div class="detail_area" >
                     <div class="detail_title_area">
                         <p>${ vo.noticeCategory } ${ vo.noticeTitle }</p>
-                        <span class="date">${ vo.noticeHit }</span>
+                        <span class="date">${vo.noticeDate} | 조회수 ${ vo.noticeHit }</span>
                     </div>
                     <div class="text_box">
                         <p>${ vo.noticeContent }</p>
